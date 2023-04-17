@@ -1,6 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.paciente import pacientes
+
 routes_institution = Blueprint("routes_institution", __name__)
 
 
