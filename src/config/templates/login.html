@@ -1,31 +1,21 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <title>login</title>
-    <link rel="stylesheet" href="assets/css/login.css">
-</head>
-
-<body>
-
-    <div class="login-box">
-        <h1>Login Here</h1>
-        <form action="/ruta" method="post">
-            <!-- USERNAME INPUT -->
-            <label for="username">Username</label>
-            <input type="text" placeholder="Enter Username">
-            <!-- PASSWORD INPUT -->
-            <label for="password">Password</label>
-            <input type="password" placeholder="Enter Password">
+{% extends "./layout.html" %}
+{% block body %}
+<div class="login-box">
+    <h1>Login Here</h1>
+    <form action="/ruta" method="post">
+        <!-- USERNAME INPUT -->
+        <label for="username">Username</label>
+        <input type="text" placeholder="Enter Username">
+        <!-- PASSWORD INPUT -->
+        <label for="password">Password</label>
+        <input type="password" placeholder="Enter Password">
+        
             
-                
-                <input type="submit" value="Log In" formaction="index.html">
-              </form>
-              
-            <a  style="color: black;" href="#">Lost your Password?</a><br>
-            <a  style="color: black;" href="registro.html">Don't have An account?</a>
-        </form>
-    </div>
-</body>
-</html>
+            <input type="submit" value="Log In" formaction="index.html">
+          </form>
+          
+        <a  style="color: black;" href="#">Lost your Password?</a><br>
+        <a  style="color: black;" href="registro.html">Don't have An account?</a>
+    </form>
+</div>
+{% endblock %}
