@@ -20,6 +20,12 @@ def index():
     titulo= "Pagina Princiapl"
     return render_template('/index.html', titles=titulo)
 
+'''
+@app.route("/indexcitas" )
+def indexinstitution():
+    titulo= "Pagina citas"
+    return render_template('/cita.html', titles=titulo)
+'''
 
 
 #esto para que corra el server y ayuda con el puerto
