@@ -23,7 +23,7 @@ from rutas.cita import routes_citas
 
 
 #import bluplint
-
+app.register_blueprint(routes_citas, url_prefix="/fronted")
 
 
 
