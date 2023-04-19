@@ -14,6 +14,18 @@ from model.tratamiento import tratamientos
 from model.histo_clinico import histoclinicos
 
 
+#importar rutas
+from rutas.cita import routes_citas
+
+
+
+
+
+
+#import bluplint
+
+
+
 
 @app.route("/")
 def index():
