@@ -6,6 +6,7 @@ from config.db import db, app, ma
 
 
 
+
 #importar los model en orden
 from model.paciente import pacientes
 from model.odontologo import odontologos
@@ -15,14 +16,11 @@ from model.histo_clinico import histoclinicos
 
 
 #importar rutas
+from rutas.blanqueamentos import routes_blanqueamentos
 from rutas.cita import routes_citas
 
-
-
-
-
-
 #import bluplint
+app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted")
 app.register_blueprint(routes_citas, url_prefix="/fronted")
 
 
@@ -30,7 +28,8 @@ app.register_blueprint(routes_citas, url_prefix="/fronted")
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/index.html', titles=titulo)
+    return render_template('/main/index.html', titles=titulo)
+
 
 '''
 @app.route("/indexcitas" )
