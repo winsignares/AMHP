@@ -2,16 +2,16 @@ from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.paciente import pacientes
 
-routes_citas = Blueprint("routes_citas", __name__)
+routes_cita = Blueprint("routes_cita", __name__)
 
 
-@routes_citas.route("/indexcitas" )
-def indexinstitution():
-    titulo= "Pagina citas"
-    return render_template('/cita.html', titles=titulo)
+@routes_cita.route("/indexcita" )
+def indexcita():
+    titulo= "Pagina cita"
+    return render_template('/main/cita.html', titles=titulo)
 
 
-@routes_citas.route('/guardarinstitution',methods=['POST'])
+@routes_cita.route('/guardarinstitution',methods=['POST'])
 def saveinstitution():
 
     codigo_infraestructura = request.form['codigo_infraestructura']

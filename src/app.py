@@ -17,11 +17,18 @@ from model.histo_clinico import histoclinicos
 
 #importar rutas
 from rutas.blanqueamentos import routes_blanqueamentos
-from rutas.cita import routes_citas
+from rutas.cita import routes_cita
+from rutas.implantes import routes_implantes
+from rutas.ortodoncias import routes_ortodoncias
+
+
+
 
 #import bluplint
-app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted")
-app.register_blueprint(routes_citas, url_prefix="/fronted")
+app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted") 
+app.register_blueprint(routes_cita, url_prefix="/fronted")
+app.register_blueprint(routes_implantes, url_prefix="/fronted")
+app.register_blueprint(routes_ortodoncias, url_prefix="/fronted")
 
 
 
