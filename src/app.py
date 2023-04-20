@@ -21,6 +21,7 @@ from rutas.cita import routes_cita
 from rutas.implantes import routes_implantes
 from rutas.ortodoncias import routes_ortodoncias
 from rutas.registro import routes_registro
+from rutas.index import routes_index
 
 
 
@@ -31,6 +32,7 @@ app.register_blueprint(routes_cita, url_prefix="/fronted")
 app.register_blueprint(routes_implantes, url_prefix="/fronted")
 app.register_blueprint(routes_ortodoncias, url_prefix="/fronted")
 app.register_blueprint(routes_registro, url_prefix="/fronted")
+app.register_blueprint(routes_index, url_prefix="/fronted")
 
 
 
