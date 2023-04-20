@@ -20,6 +20,7 @@ from rutas.blanqueamentos import routes_blanqueamentos
 from rutas.cita import routes_cita
 from rutas.implantes import routes_implantes
 from rutas.ortodoncias import routes_ortodoncias
+from rutas.registro import routes_registro
 
 
 
@@ -29,21 +30,16 @@ app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted")
 app.register_blueprint(routes_cita, url_prefix="/fronted")
 app.register_blueprint(routes_implantes, url_prefix="/fronted")
 app.register_blueprint(routes_ortodoncias, url_prefix="/fronted")
+app.register_blueprint(routes_registro, url_prefix="/fronted")
 
 
 
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/main/index.html', titles=titulo)
+    return render_template('/main/login.html', titles=titulo)
 
 
-'''
-@app.route("/indexcitas" )
-def indexinstitution():
-    titulo= "Pagina citas"
-    return render_template('/cita.html', titles=titulo)
-'''
 
 
 #esto para que corra el server y ayuda con el puerto

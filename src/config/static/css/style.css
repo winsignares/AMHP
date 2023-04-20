@@ -5,14 +5,6 @@
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
-body {
-    background: url(../assets/images/blue-gradient-abstract-wallpaper-preview.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
-}
 
 .imagen {
     max-width: 100%;
@@ -558,4 +550,13 @@ body {
     top: 400px;
     /* Ajusta la cantidad de desplazamiento vertical según tus necesidades */
 
+}
+
+.create{
+    position: relative;
+    top: -10%;
+}
+.formaction{
+    position: relative;
+    top: -15%;
 }

@@ -4,6 +4,7 @@ body {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    
 }
 
 .login-box {
@@ -17,6 +18,8 @@ body {
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
+    height: 53%;
+    
 }
 
 .login-box .avatar {
