@@ -37,7 +37,7 @@ app.register_blueprint(routes_registro, url_prefix="/fronted")
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/main/login.html', titles=titulo)
+    return render_template('/main/index.html', titles=titulo)
 
 
 
