@@ -6,10 +6,9 @@ body {
     background-size: cover;
     
 }
-
 .login-box {
     width: 320px;
-    height: 420px;
+    height: auto;
     background: #ffffff;
     color: #000000;
     top: 50%;
@@ -18,7 +17,6 @@ body {
     transform: translate(-50%, -50%);
     box-sizing: border-box;
     padding: 70px 30px;
-    height: 62%;
     margin: auto;
     
 }
@@ -104,5 +102,4 @@ body {
     width: 100%; /* los elementos internos tienen un ancho fijo del 100% */
     box-sizing: border-box; /* incluye el borde y el padding en el ancho del elemento */
   }
-  
   
