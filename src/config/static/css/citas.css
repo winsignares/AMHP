@@ -13,7 +13,7 @@ body {
     max-width: 100px; /* Ancho máximo del contenedor */
     margin: 80px auto 0; /* Margen superior ajustado */
     background-color: #fff;
-    padding: 30px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }

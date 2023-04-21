@@ -40,7 +40,7 @@
     top: 0;
     left: 0;
     background-color: white;
-    z-index: 2;
+    z-index: 3;
 }
 
 .container {
@@ -561,3 +561,8 @@
     top: -15%;
     margin: auto;
 }
+label[for="btn-menu"] {
+    float: right;
+    margin-right: -20px;
+  }
+    
