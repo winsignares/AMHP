@@ -2,7 +2,7 @@
 {% block body %}
 <div class="login-box">
     <h1 class="create">create Account</h1>
-    <form action="/ruta" method="post" class="formaction">
+    <form action="fronted/indexlogin">
         <!-- NAME INPUT -->
         <label for="username">Name</label>
         <input type="text" placeholder="Enter name">
@@ -15,9 +15,9 @@
         <!-- Password INPUT -->
         <label for="password">Password</label>
         <input type="password" placeholder="Enter Password">
-        <div class="submit-container">
-            <input type="submit" value="create Account" formaction="login.html">
-        </div>
+
+        <input type="submit" value="create Account">
+
     </form>
 </div>
 {% endblock %}
