@@ -1,23 +1,29 @@
-{% extends "layout.html" %}
-{% block body %}
-<div class="login-box">
-    <h1 class="create">create Account</h1>
-    <form action="fronted/indexlogin">
-        <!-- NAME INPUT -->
-        <label for="username">Name</label>
-        <input type="text" placeholder="Enter name">
-        <!-- Username INPUT -->
-        <label for="Username">Username</label>
-        <input type="text" placeholder="Enter Username">
-        <!-- email INPUT -->
-        <label for="Email">Email</label>
-        <input type="text" placeholder="Enter Email">
-        <!-- Password INPUT -->
-        <label for="password">Password</label>
-        <input type="password" placeholder="Enter Password">
-
-        <input type="submit" value="create Account">
-
-    </form>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+</head>
+<body>
+    <div class="login-box">
+        <h1 class="create">create Account</h1>
+        <form action="fronted/indexlogin">
+            <!-- NAME INPUT -->
+            <label for="username">Name</label>
+            <input type="text" placeholder="Enter name">
+            <!-- Username INPUT -->
+            <label for="Username">Username</label>
+            <input type="text" placeholder="Enter Username">
+            <!-- email INPUT -->
+            <label for="Email">Email</label>
+            <input type="text" placeholder="Enter Email">
+            <!-- Password INPUT -->
+            <label for="password">Password</label>
+            <input type="password" placeholder="Enter Password">
+    
+            <input type="submit" value="create Account">
+        </form>
+    </div>
+</body>
+</html>
