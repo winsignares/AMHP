@@ -103,3 +103,6 @@ body {
     box-sizing: border-box; /* incluye el borde y el padding en el ancho del elemento */
   }
   
+.material-control-login{
+    height: 22px;
+}

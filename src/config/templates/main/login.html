@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <title>login</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 </head>
+
 <body>
     <div class="login-box">
         <h1>Login Here</h1>
@@ -15,13 +17,20 @@
             <!-- PASSWORD INPUT -->
             <label for="password">Password</label>
             <input type="password" placeholder="Enter Password">
-    
-    
-            <input type="submit" value="Log In">
+            <br>
+            <div class="group-material">
+                <select class="material-control-login">
+                    <option value="" disabled="" selected="">Tipo de usuario</option>
+                    <option value="Admin">Administrador</option>
+                    <option value="Teacher">usuario</option>
+                </select>
+            <br>
+            <br>
+            <input class="botonlogin" type="submit" value="Log In">
         </form>
-    
         <a style="color: black;" href="">Lost your Password?</a><br>
         <a style="color: black;" href="fronted/indexregistro">Don't have An account?</a>
     </div>
 </body>
+
 </html>
