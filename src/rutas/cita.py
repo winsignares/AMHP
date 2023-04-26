@@ -14,15 +14,15 @@ def indexcita():
 @routes_cita.route('/guardarcita',methods=['POST'])
 def saveinstitution():
 
-    nombre_completo = request.form['nombre_completo']
+    nombre_completos = request.form['nombre_completo']
     edad = request.form['edad']
-    genero = request.form['genero'] 
-    fecha = request.form['fecha'] 
-    consulta = request.form['consulta'] 
-    tarje_tade_credito = request.form['tarje_tade_credito'] 
+    #genero = request.form['genero'] 
+    #fecha = request.form['fecha'] 
+    #consulta = request.form['consulta'] 
+    #tarje_tade_credito = request.form['tarje_tade_credito'] 
     numero_de_tarjeta = request.form['numero_de_tarjeta'] 
-    print(nombre_completo)
-    new_cita = citas (nombre_completo, edad, genero,fecha,consulta,tarje_tade_credito,numero_de_tarjeta)
+    print(nombre_completos)
+    new_cita = citas (nombre_completos, edad,numero_de_tarjeta)
     db.session.add(new_cita)
     db.session.commit()
     return "si"
