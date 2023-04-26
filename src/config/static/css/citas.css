@@ -10,12 +10,15 @@ body {
 
 .container2 {
     position: relative;
-    max-width: 100px; /* Ancho máximo del contenedor */
+    max-width: 10px; /* Ancho máximo del contenedor */
     margin: 80px auto 0; /* Margen superior ajustado */
+    width: 70%;
+    height: 70%;
     background-color: #fff;
-    padding: 40px;
+    padding: 50px; /* Se ha reducido el valor del padding */
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 6%;
 }
 
 h1 {
