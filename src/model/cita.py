@@ -7,7 +7,7 @@ class citas(db.Model):
     id  = db.Column(db.Integer, primary_key=True)
     nombre_completo = db.Column(db.String(50))
     edad = db.Column(db.Integer)
-    genereo = db.Column(db.String(50))
+    genero = db.Column(db.String(50))
     fecha = db.Column(db.Date)
     consulta = db.Column(db.String(50))
     tarje_tade_credito = db.Column(db.Date)
@@ -15,10 +15,10 @@ class citas(db.Model):
     id_paciente = db.Column(db.Integer,db.ForeignKey('tblpaciente.id'))
     id_odontologo = db.Column(db.Integer,db.ForeignKey('tblodontologo.id'))
 
-    def __init__(self, nombre_completo,edad,genereo,fecha,consulta,tarje_tade_credito,id_paciente,id_odontologo):
+    def __init__(self, nombre_completo,edad,genero,fecha,consulta,tarje_tade_credito,id_paciente,id_odontologo):
         self.nombre_completo = nombre_completo
         self.edad = edad
-        self.genereo = genereo
+        self.genereo = genero
         self.fecha = fecha
         self.consulta = consulta
         self.tarje_tade_credito = tarje_tade_credito
@@ -30,4 +30,4 @@ with app.app_context():
 
 class citasSchema(ma.Schema):
     class Meta:
-        fields = ('id','nombre_completo','edad','genereo','fecha','consulta' ,'tarje_tade_credito','id_paciente','id_odontologo')
+        fields = ('id','nombre_completo','edad','genero','fecha','consulta' ,'tarje_tade_credito','id_paciente','id_odontologo')

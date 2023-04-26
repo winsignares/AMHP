@@ -1,18 +1,23 @@
-function addprovedor() {
-    const Nombre_proveedorr = document.getElementById('odontologiaForm').value;
-    const correoprovider = document.getElementById('genero').value;
-    const Direccionprovider = document.getElementById('consultaDate').value;
-    const telefonoprovider = document.getElementById('consulta').value;
+function addprocita() {
+    const nombre_completo = document.getElementById('nombre').value;
+    const edad = document.getElementById('edad').value;
+    const genero = document.getElementById('genero').value;
+    const fecha = document.getElementById('consultaDate').value;
+    const consulta = document.getElementById('consulta').value;
+    const tarje_tade_credito = document.getElementById('tarjeta').value;
+    const numero_de_tarjeta = document.getElementById('cardNumber').value;
 
    alert('a')
-   console.log(Nombre_proveedorr, correoprovider, Direccionprovider, telefonoprovider, responsableprovider)
-    axios.post('guardarprovider', {
+   console.log(nombre_completo, edad, genero, fecha, consulta,tarje_tade_credito,numero_de_tarjeta)
+    axios.post('guardarcita', {
         
-        Nombre_proveedor: Nombre_proveedorr,
-        correo: correoprovider,
-        Direccion: Direccionprovider,
-        telefono: telefonoprovider,
-        Descripcion: responsableprovider       
+        nombre: nombre_completo,
+        edad: edad,
+        genero: genero,
+        consultaDate: fecha,
+        consulta: consulta,       
+        tarjeta: tarje_tade_credito,     
+        cardNumber: numero_de_tarjeta       
 
     }, {
         headers: {
