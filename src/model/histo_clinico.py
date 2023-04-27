@@ -24,6 +24,3 @@ class histoclinicos(db.Model):
 with app.app_context():
     db.create_all()
 
-class histoclinicosSchema(ma.Schema):
-    class Meta:
-        fields = ('id','paciente','odontologo','fecha','notas','id_pacientes','id_odontologos')

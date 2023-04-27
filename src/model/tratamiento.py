@@ -24,6 +24,3 @@ class tratamientos(db.Model):
 with app.app_context():
     db.create_all()
 
-class tratamientosSchema(ma.Schema):
-    class Meta:
-        fields = ('id','paciente','odontologo','fecha','precio','notas','id_citas')

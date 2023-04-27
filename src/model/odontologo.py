@@ -20,7 +20,3 @@ class odontologos(db.Model):
     
 with app.app_context():
     db.create_all()
-
-class odontologosSchema(ma.Schema):
-    class Meta:
-        fields = ('id','nombre','direccion','telefono','correo','especialidad')

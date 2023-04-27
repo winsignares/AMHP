@@ -20,7 +20,3 @@ class pacientes(db.Model):
     
 with app.app_context():
     db.create_all()
-
-class pacientesSchema(ma.Schema):
-    class Meta:
-        fields = ('id','nombre','direccion','telefono','correo','fecha_nacimiento')
