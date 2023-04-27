@@ -28,12 +28,11 @@ document.getElementById('odontologiaForm').addEventListener('submit', function (
     }
 });
 // Obtén los elementos del campo de número de tarjeta y fecha de vencimiento
-
 var expiryDateInput = document.getElementById('expiryDate');
 var consultaDateInput = document.getElementById('consultaDate');
 
-// Agrega un evento de cambio al campo de fecha de vencimiento
 
+// Agrega un evento de cambio al campo de fecha de vencimiento
 expiryDateInput.addEventListener('change', function(event) {
     // Oculta el valor del campo de fecha de vencimiento
     var expiryDateValue = event.target.value;
@@ -45,7 +44,6 @@ expiryDateInput.addEventListener('change', function(event) {
 });
 
 // Agrega un evento de cambio al campo de fecha de consulta
-
 consultaDateInput.addEventListener('change', function(event) {
     // Oculta el valor del campo de fecha de consulta
     var consultaDateValue = event.target.value;
