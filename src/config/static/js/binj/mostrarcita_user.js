@@ -17,7 +17,8 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
-                <td> <button onclick=" myFunction()">actualizar</button> 
+                <td> <button onclick=" myFunction()">actualizar</button>
+                <td> <button onclick=" myFunction()">eliminar</button>
                 
 
               </tr> `;
