@@ -38,6 +38,7 @@
             
             <thead>
               <tr>
+                <th scope="col">id</th>
                 <th scope="col">Nombre completo</th>
                 <th scope="col">Edad</th>
                 <th scope="col">Genero</th>
@@ -45,36 +46,13 @@
                 <th scope="col">Tipo de consulta</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="tabla">
               <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td><button class="btn btn-success">Actualizar</button></td>
-                <td><button class="btn btn-danger">Eliminar</button></td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td><button class="btn btn-success">Actualizar</button></td>
-                <td><button class="btn btn-danger">Eliminar</button></td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td><button class="btn btn-success">Actualizar</button></td>
-                <td><button class="btn btn-danger">Eliminar</button></td>
+               
               </tr>
             </tbody>
           </table>
     </div>
 </div>
+<script src="{{url_for('static', filename='js/binj/mostrarcita_user.js')}}"></script>
 {% endblock %}
