@@ -17,10 +17,8 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
-                <td> <button onclick=" myFunction()">actualizar</button>
-                <td> <button onclick=" myFunction()">eliminar</button>
-                
-
+                <td><a onclick="actualizar() "class="btn btn-primary">Actualizar</a></td>
+                <td><a onclick="eliminar() " class="btn btn-danger">Eliminar</a></td>
               </tr> `;
                 
             }
@@ -34,3 +32,9 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
+function actualizar() {
+    
+
+
+
+}

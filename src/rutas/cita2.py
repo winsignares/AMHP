@@ -30,3 +30,35 @@ def mostarcitasuser():
         }
         goria.append(datos)
     return jsonify(datos)
+
+
+@routes_cita2.route('/actualizar_citas', methods=['POST'] )
+def actualizar_citas():
+    datos= {}
+    resultado = db.session.query(citas).select_from(citas).all()
+    i=0
+    goria = []
+    for cate in resultado:
+        i+=1	       
+        datos[i] = {
+        'id':cate.id,
+		'Nombre_completo':cate.Nombre_completo,
+		'Edad':cate.Edad,                                                    
+		'genero':cate.genero,                                                    
+		'fecha':cate.fecha,                                                    
+		'consulta':cate.consulta,                                                    
+        }
+        goria.append(datos)
+    return jsonify(datos)
+
+
+@routes_cita2.route('/updatesolicitudes', methods=['POST'] )
+def actualizarS():
+    id = request.json['id']
+    solicitudes = request.json['Nombre_proveedor','Telefono','Direccion','Descripcion']
+    pusuario = Solicitudes.query.get(id)
+    pusuario.cantidad = solicitudes
+    db.session.commit()
+    return redirect('/updatesolicitudes')
+
+
