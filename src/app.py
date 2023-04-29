@@ -13,6 +13,7 @@ from model.odontologo import odontologos
 from model.cita import citas
 from model.tratamiento import tratamientos
 from model.histo_clinico import histoclinicos
+from model.login import login
 
 
 #importar rutas
@@ -41,7 +42,7 @@ app.register_blueprint(routes_principal, url_prefix="/fronted")
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/main/principal.html', titles=titulo)
+    return render_template('/main/login.html', titles=titulo)
 
 
 

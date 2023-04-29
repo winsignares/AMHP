@@ -12,6 +12,8 @@ class citas(db.Model):
     consulta = db.Column(db.String(50))
     tarje_tade_credito = db.Column(db.String(50))
     Num_tarjeta = db.Column(db.String(50))
+    id_paciente = db.Column(db.Integer,db.ForeignKey('tblpaciente.id'))
+    id_odontologos = db.Column(db.Integer,db.ForeignKey('tblodontologo.id'))
 
     def __init__(self, Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta):
         self.Nombre_completo = Nombre_completo

@@ -1,4 +1,4 @@
-// Función para manejar el envío del formulario
+ // Función para manejar el envío del formulario
 document.getElementById('odontologiaForm').addEventListener('submit', function (event) {
     event.preventDefault();
 
