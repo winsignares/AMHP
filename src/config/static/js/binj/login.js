@@ -1,4 +1,4 @@
-function login(){
+function admin(){
     var usuario, contrasena
 
     usuario = document.getElementById('usuario').value;

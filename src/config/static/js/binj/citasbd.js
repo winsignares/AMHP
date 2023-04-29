@@ -6,6 +6,7 @@ function addprocita() {
     const consultas = document.getElementById('consultas');
     const tarjetas= document.getElementById('tarjetas');
     const cardNumber = document.getElementById('cardNumber');
+    const problemas = document.getElementById('problemas');
 
     console.log(nombre, edad, cardNumber);
 
@@ -17,7 +18,8 @@ function addprocita() {
             fecha: consultaDates.value,
             consulta: consultas.value,
             tarje_tade_credito: tarjetas.value,
-            Num_tarjeta: cardNumber.value
+            Num_tarjeta: cardNumber.value,
+            problema: problemas.value
         }, {
             headers: {
                 'Content-Type': 'multipart/form-data'
