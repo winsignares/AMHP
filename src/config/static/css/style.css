@@ -565,4 +565,12 @@ label[for="btn-menu"] {
     float: right;
     margin-right: -20px;
   }
+.contenedor_de_la_tabla{
+    position: absolute;
+    top: 20%;
+    background-color: aliceblue;
+    left: 14%;
+    width: 70%;
+   
+}
     
