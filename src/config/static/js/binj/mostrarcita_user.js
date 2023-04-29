@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
-                <td><a onclick="actualizar() "class="btn btn-primary">Actualizar</a></td>
+                <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger">Eliminar</a></td>
               </tr> `;
                 
@@ -33,8 +33,9 @@ window.addEventListener('load', function() {
     mostrar();
 })
 function actualizar() {
-    
+    $(document).on('click', '.btn-edit', function(e){
+        e.preventDefault();
+        console.log("si funciona")
 
-
-
+    });
 }
