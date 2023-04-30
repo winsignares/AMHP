@@ -8,22 +8,23 @@
 <body>
     <div class="login-box">
         <h1 class="create">create Account</h1>
-        <form action="fronted/indexlogin">
             <!-- NAME INPUT -->
             <label for="username">Name</label>
-            <input type="text" placeholder="Enter name">
+            <input id="name" type="text" placeholder="Enter name" name="name"> 
             <!-- Username INPUT -->
             <label for="Username">Username</label>
-            <input type="text" placeholder="Enter Username">
+            <input id="username" type="text" placeholder="Enter Username" name="username">
             <!-- email INPUT -->
             <label for="Email">Email</label>
-            <input type="text" placeholder="Enter Email">
+            <input id="email" type="text" placeholder="Enter Email" name="email">
             <!-- Password INPUT -->
             <label for="password">Password</label>
-            <input type="password" placeholder="Enter Password">
+            <input id="password" type="password" placeholder="Enter Password" name="password">
     
-            <input type="submit" value="create Account">
+            <input onclick="crearcuenta(event)" type="submit" value="create Account">
         </form>
     </div>
+    <script src="{{url_for('static', filename='js/binj/registrobd.js')}}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 </html>

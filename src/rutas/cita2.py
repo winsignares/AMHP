@@ -56,7 +56,7 @@ def actualizar_citas():
 def actualizarS():
     id = request.json['id']
     solicitudes = request.json['Nombre_proveedor','Telefono','Direccion','Descripcion']
-    pusuario = Solicitudes.query.get(id)
+    pusuario = solicitudes.query.get(id)
     pusuario.cantidad = solicitudes
     db.session.commit()
     return redirect('/updatesolicitudes')

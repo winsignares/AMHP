@@ -14,6 +14,8 @@ from model.cita import citas
 from model.tratamiento import tratamientos
 from model.histo_clinico import histoclinicos
 from model.login import login
+from model.registro import registro
+
 
 
 #importar rutas
@@ -24,6 +26,7 @@ from rutas.ortodoncias import routes_ortodoncias
 from rutas.registro import routes_registro
 from rutas.index import routes_principal
 from rutas.cita2 import routes_cita2
+from rutas.login import routes_login
 
 
 
@@ -37,6 +40,7 @@ app.register_blueprint(routes_ortodoncias, url_prefix="/fronted")
 app.register_blueprint(routes_registro, url_prefix="/fronted")
 app.register_blueprint(routes_principal, url_prefix="/fronted")
 app.register_blueprint(routes_cita2, url_prefix="/fronted")
+app.register_blueprint(routes_login , url_prefix="/fronted")
 
 
 
