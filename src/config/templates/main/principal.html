@@ -1,6 +1,5 @@
 {% extends "layout.html" %}
 {% block body %}
-
 <header class="header">
     <div class="container">
         <div class="btn-menu">
@@ -12,7 +11,6 @@
             <a style="color: black;" href="/fronted/indexortodoncias">Ortodoncias</a>
             <a style="color: black;" href="/fronted/indexblanqueamentos">Blanquiamentos</a>
             <a style="color: black;" href="/fronted/indeximplantes">Implantes</a>
-            <a style="color: black;" href="/fronted/indexcita">Haga su cita</a>
         </nav>
     </div>
 </header>
@@ -54,22 +52,25 @@ crossorigin="anonymous"></script>
 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
 crossorigin="anonymous"></script>
 <!-- Nuevo div debajo del carrusel -->
-<div class="nuevo-div">
-    <p class="p5">12 Razones para estar con Nosotros:</p>
-    <p class="p6">Contamos con el mejor equipo de especialistas liderados por el Dr. Marlon Becerra.
-        Tenemos todos los protocolos de Bioseguridad Activos para asegurar tu visita.
-        Odontología orgullosamente colombiana con más de 30 años de experiencia.
-        Valoración con nuestro Equipo Completo de Especialistas que evalúa, analiza y diagnóstica tu plan de
-        tratamiento.
-        Somos pioneros en Odontología integral y especializada en Colombia.
-        Tenemos los mejores estándares de calidad y bioseguridad para brindarte la mayor seguridad durante tu
-        tratamiento.
-        Unimos el Arte y la Academia para crear tu mejor sonrisa.
-        Aquí no eres un paciente más, tu tratamiento es único para nosotros.
-        Creamos sonrisas funcionales y estéticas.
-        Garantizamos la salud y la satisfacción completa a nuestros pacientes.
-        Expertos en casos complejos. Trabajamos en lo que realmente necesitas.
-        Nuestra prioridad es que tu sonrisa luzca naturalmente hermosa.
-    </p>
+<div class="container">
+    <div class="page-header">
+      <h1 class="all-tittles">Sistema bibliotecario <small>Inicio</small></h1>
+    </div>
 </div>
+<section class="full-reset text-center" style="padding: 40px 0;">
+    <article class="tile">
+        <div class="tile-icon full-reset"><img src="{{url_for('static', filename='assets/images/agendar cita (2).jpg')}}" alt="Agendar citas"></div></i>
+        <div class="tile-name all-tittles"><a href="/fronted/indexcita">Agenda tu cita</div>
+        <div class="tile-num full-reset"></div>
+    </article>
+    <article class="tile">
+        <div class="tile-icon full-reset"><img src="{{url_for('static', filename='assets/images/registrate (1).jpg')}}" alt="Registrate"></div></i>
+        <div class="tile-name all-tittles"><a href="index">Registrate</div>
+        <div class="tile-num full-reset"></div>
+    </article>
+    <article class="tile">
+        <div class="tile-icon full-reset"><img src="{{url_for('static', filename='assets/images/cita.jfif')}}" alt="Cita"></div></i>
+        <div class="tile-name all-tittles"><a href="indexreportesyestadisticas">Ver cita</div>
+        <div class="tile-num full-reset"></div>
+    </article>
 {% endblock %}
