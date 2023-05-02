@@ -32,6 +32,7 @@ from rutas.login import routes_login
 
 
 
+
 #import bluplint
 app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted") 
 app.register_blueprint(routes_cita, url_prefix="/fronted")

@@ -23,7 +23,7 @@ function crearcuenta(event) {
     ).then((res) => {
         console.log(res.data)
         alert("registro existoso")
-        window.location.href = "/fronted/indexlogin";
+        window.location.href = "/fronted/indexprincipal";
     })
     .catch((error) => {
         console.error(error)
