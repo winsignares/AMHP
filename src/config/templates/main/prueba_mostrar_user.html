@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+{% block body %}
+<header class="header">
+    <div class="container">
+        <div class="btn-menu">
+            <label for="btn-menu" style="color: black;">☰</label>
+        </div>
+        <div class="logo">
+        </div>
+        <nav class="menu">
+            <a style="color: black;" href="indexortodoncias">Ortodoncias</a>
+            <a style="color: black;" href="indeximplantes">Implantes</a>
+            <a style="color: black;" href="indexprincipal">Inicio</a>
+            <a style="color: black;" href="indexcita">Cita</a>
+        </nav>
+    </div>
+</header>
+<div class="capa"></div>
+<input type="checkbox" id="btn-menu">
+<div class="container-menu">
+    <div class="cont-menu">
+        <nav>
+            <a href="terror.html">$</a>
+            <a href="comedia.html">$</a>
+            <a href="ciencia ficcion.html">$</a>
+            <a href="aventuras.html">$</a>
+            <a href="romance.html">$</a>
+            <a href="drama.html">$</a>
+            <a href="misterio.html">$</a>
+            <a href="series.html">$</a>
+        </nav>
+        <label for="btn-menu">✖️</label>
+    </div>
+</div>
+<div class="contenedor_de_la_tabla">
+    <div class="tabla_de_mi_cita">
+        <table class="table">
+            
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Edad</th>
+                <th scope="col">NAME</th>
+                <th scope="col">opcion</th>
+              </tr>
+            </thead>
+            <tbody id="tabla">
+              <tr>
+               
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<script src="{{url_for('static', filename='js/binj/mostrarcita_user.js')}}"></script>
+{% endblock %}

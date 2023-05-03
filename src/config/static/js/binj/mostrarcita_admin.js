@@ -1,6 +1,6 @@
 function mostrar() {
     const divcate = document.getElementById('tabla');
-    axios.get('mostrar_citas_user',{
+    axios.get('mostrar_citas_admin',{
         responseType: 'json'
     } )
       

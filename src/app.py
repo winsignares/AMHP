@@ -27,6 +27,7 @@ from rutas.registro import routes_registro
 from rutas.index import routes_principal
 from rutas.cita2 import routes_cita2
 from rutas.login import routes_login
+from rutas.mostrarcitas_user import routes_mos_user
 
 
 
@@ -42,6 +43,7 @@ app.register_blueprint(routes_registro, url_prefix="/fronted")
 app.register_blueprint(routes_principal, url_prefix="/fronted")
 app.register_blueprint(routes_cita2, url_prefix="/fronted")
 app.register_blueprint(routes_login , url_prefix="/fronted")
+app.register_blueprint(routes_mos_user , url_prefix="/fronted")
 
 
 
