@@ -25,7 +25,7 @@ from rutas.implantes import routes_implantes
 from rutas.ortodoncias import routes_ortodoncias
 from rutas.registro import routes_registro
 from rutas.index import routes_principal
-from rutas.cita2 import routes_cita2
+from rutas.tablaadmin import routes_cita2
 from rutas.login import routes_login
 from rutas.mostrarcitas_user import routes_mos_user
 

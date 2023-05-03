@@ -8,7 +8,7 @@ routes_cita2 = Blueprint("routes_cita2", __name__)
 @routes_cita2.route("/indexcita2" )
 def indexcita2():
     titulo= "Pagina cita2"
-    return render_template('/main/cita2.html', titles=titulo)
+    return render_template('/main/tablaadmin.html', titles=titulo)
 
 
 
