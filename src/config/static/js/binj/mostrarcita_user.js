@@ -1,6 +1,6 @@
 function mostrar() {
     const divcate = document.getElementById('tabla');
-    axios.get('mostrar_citas_user',{
+    axios.get('a',{
         responseType: 'json'
     } )
       
@@ -32,16 +32,45 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
-function actualizar() {
-    // se hace que actualize solo la funcion
-    $(document).on('click', '.btn-edit', function(e){
-        e.preventDefault();
-        console.log("si funciona")
-
-    });
-    $(document).on('click', '.btn-eliminar', function(e){
-        e.preventDefault();
-        console.log("si funciona")
-
-    });
+/*
+function habilitar() {
+    nom = document.getElementById("nombre").value;
+    edadd = document.getElementById("edad").value;
+    gene = document.getElementById("generos").value;
+    fecha = document.getElementById("consultaDates").value;
+    consul = document.getElementById("consultas").value;
+    tarje = document.getElementById("tarjetas").value;
+    num = document.getElementById("cardNumber").value;
+    val = 0;
+    if (nom == "") {
+        val++;
+    }
+    if (edadd == "") {
+        val++;
+    }if (gene == "") {
+        val++;
+    }if (fecha == "") {
+        val++;
+    }if (consul== "") {
+        val++;
+    }if (tarje == "") {
+        val++;
+    }if (num == "") {
+            val++;
+    } if (val == 0) {
+        document.getElementById("btn").disabled = false;
+    } else {
+        document.getElementById("btn").disabled = true;
+    }
 }
+document.getElementById("nombre").addEventListener("keyup", habilitar);
+document.getElementById("edad").addEventListener("keyup", habilitar);
+document.getElementById("generos").addEventListener("keyup", habilitar);
+document.getElementById("consultaDates").addEventListener("keyup", habilitar);
+document.getElementById("consultas").addEventListener("keyup", habilitar);
+document.getElementById("tarjetas").addEventListener("keyup", habilitar);
+document.getElementById("cardNumber").addEventListener("keyup", habilitar);
+document.getElementById("btn").addEventListener("click", () => {
+    console.log("se llenaron los input");
+});
+*/
