@@ -32,7 +32,7 @@ def actualizar_citas():
     #     goria.append(datos)
     # return jsonify(datos)
     
-#########################
+
 # db = MySQLdb.connect(app.config['MYSQL_HOST'], app.config['MYSQL_USER'], app.config['MYSQL_PASSWORD'], app.config['MYSQL_DB'])
 #     cursor = db.cursor()
 #     cursor.execute("SELECT * FROM tabla")
