@@ -1,5 +1,5 @@
 function admin(){
-    var usuario, contrasena
+    
 
     usuario = document.getElementById('usuario').value;
     contrasena = document.getElementById('contrasena').value;

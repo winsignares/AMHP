@@ -12,9 +12,10 @@ function mostrar() {
             for (let index = 1; index < length; index++) {
                 mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
+                <td>${datos[index].Name}</td>
+                <td>${datos[index].Username}</td>
                 <td>${datos[index].Nombre_completo}</td>
-                <td>${datos[index].Edad}</td>
-                <td>${datos[index].Username}</td>   
+               
                 <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
