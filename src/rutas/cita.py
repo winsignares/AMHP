@@ -9,7 +9,7 @@ routes_cita = Blueprint("routes_cita", __name__)
 @routes_cita.route("/indexcita",  methods=['GET'])
 def indexcita():
     titulo = "Pagina cita"
-    return render_template('/main/cita.html', titles=titulo)
+    return render_template('/main/savecita_user.html', titles=titulo)
 
 
 @routes_cita.route('/guardarcita', methods=['POST'])
