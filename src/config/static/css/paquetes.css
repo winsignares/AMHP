@@ -30,6 +30,7 @@
 .tile-num {
     background-color: #F5F5F5;
     font-size: 40px;
+    z-index: 1;
 }
 
 .tile-name {
@@ -45,6 +46,7 @@
     max-width: 95%;
     min-width: 60%;
     width: auto;
+    z-index: 1;
 }
 
 .tile:hover .tile-icon i {
