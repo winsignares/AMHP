@@ -9,7 +9,7 @@ routes_mos_user = Blueprint("routes_mos_user", __name__)
 @routes_mos_user.route("/tablauser" )
 def indexcita2():
     titulo= "Pagina tabla user"
-    return render_template('/main/prueba_mostrar_user.html', titles=titulo)
+    return render_template('/main/tabla_cita_user.html', titles=titulo)
 
 
 @routes_mos_user.route('/mostrar_citas', methods=['GET'] )

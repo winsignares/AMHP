@@ -120,6 +120,7 @@
 #btn-menu:checked~.container-menu {
     opacity: 1;
     visibility: visible;
+    
 }
 
 .cont-menu {
@@ -596,4 +597,17 @@ label[for="btn-menu"] {
 .s2{
     text-align: left;
     font-size: 22px;
+}
+.logox{
+    position: relative;
+    left: 200px;
+    
+}
+.contenedor_de_la_tabla2{
+    position: absolute;
+    top: 80%;
+    background-color: aliceblue;
+    left: 14%;
+    width: 70%;
+   
 }

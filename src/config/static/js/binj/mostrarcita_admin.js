@@ -44,4 +44,14 @@ function actualizar() {
         console.log("si funciona")
 
     });
+    $(document).ready(function() {
+        $("#boton-buscar").click(function() {
+          var value = $("#buscador").val().toLowerCase();
+          $("#tabla tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      
+      
 }

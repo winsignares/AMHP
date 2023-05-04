@@ -8,10 +8,7 @@
         <div class="logo">
         </div>
         <nav class="menu">
-            <a style="color: black;" href="indexortodoncias">Ortodoncias</a>
-            <a style="color: black;" href="indeximplantes">Implantes</a>
-            <a style="color: black;" href="indexprincipal">Inicio</a>
-            <a style="color: black;" href="indexcita">Cita</a>
+            <a style="color: black;" href="indexcita">Cerrar sesion</a>
         </nav>
     </div>
 </header>
@@ -20,22 +17,45 @@
 <div class="container-menu">
     <div class="cont-menu">
         <nav>
-            <a href="terror.html">$</a>
-            <a href="comedia.html">$</a>
-            <a href="ciencia ficcion.html">$</a>
-            <a href="aventuras.html">$</a>
-            <a href="romance.html">$</a>
-            <a href="drama.html">$</a>
-            <a href="misterio.html">$</a>
-            <a href="series.html">$</a>
+            <a href="terror.html">Calendario</a>
+            <a href="comedia.html">Citas</a>
+            <a href="ciencia ficcion.html">Pacientes</a>
+            <a href="aventuras.html">Medicos</a>
+            <a href="romance.html">Reportes de citas</a>
+            <a href="drama.html">Facturacion</a>
         </nav>
-        <label for="btn-menu">✖️</label>
+        <label class="logox" for="btn-menu">✖️</label>
     </div>
 </div>
 <div class="contenedor_de_la_tabla">
     <div class="tabla_de_mi_cita">
-        <table class="table">
-            
+        <div class="d-flex mb-3">
+            <input type="text" id="buscador" class="form-control mr-2" placeholder="Buscar en la tabla..." style="width: 200px;">
+            <button class="btn btn-primary" type="button" id="boton-buscar" style="margin-top: 2px; height: 43px; margin-left:15px" >Buscar</button>
+          </div>
+        <table class="table ">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre completo</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Fecha seleccionada</th>
+                <th scope="col">Tipo de consulta</th>
+                <th scope="col">opcion</th>
+              </tr>
+            </thead>
+            <tbody id="tabla">
+              <tr>
+               
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+<div class="contenedor_de_la_tabla2">
+    <div class="tabla_de_mi_cita">
+        <table class="table ">
             <thead>
               <tr>
                 <th scope="col">id</th>

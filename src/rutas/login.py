@@ -9,4 +9,4 @@ routes_login = Blueprint("routes_login", __name__)
 @routes_login.route("/indexlogin" )
 def indexlogin():
     titulo= "Pagina login"
-    return render_template('/main/login.html', titles=titulo)
+    return render_template('/main/login_admin.html', titles=titulo)

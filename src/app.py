@@ -18,6 +18,7 @@ from model.registro import registro
 
 
 
+
 #importar rutas
 from rutas.blanqueamentos import routes_blanqueamentos
 from rutas.cita import routes_cita
