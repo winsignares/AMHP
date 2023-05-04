@@ -573,4 +573,27 @@ label[for="btn-menu"] {
     width: 70%;
    
 }
-    
+.Bienvenido{
+    position: relative;
+    top: -320px;
+    color: #ffffff;
+    font-size: 40px;
+   
+}
+.counter{
+    color: #fff;
+    position: relative;
+    float: left;
+    text-align: left;
+    font-size: 22px;
+    margin-top: 3%;
+}
+.s1{
+    text-align: left;
+    margin-top: 3%;
+    font-size: 22px;
+}
+.s2{
+    text-align: left;
+    font-size: 22px;
+}
