@@ -55,6 +55,7 @@
 .logo {
     float: left;
     line-height: 100px;
+    margin-left: 1%;
 }
 
 .container .btn-menu label {
