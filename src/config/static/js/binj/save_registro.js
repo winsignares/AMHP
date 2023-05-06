@@ -1,6 +1,6 @@
 
 function registrarme() {
-    const name = document.getElementById('name');
+    const name = document.getElementById('Fullname');
     const Cedula = document.getElementById('Cedula');
     const Telefono = document.getElementById('Telefono');
     const Direccion = document.getElementById('Direccion');
@@ -18,7 +18,7 @@ function registrarme() {
         
 
     }, {
-        headers: {
+        headers: { 
         'Content-Type': 'multipart/form-data'
 
         }
