@@ -22,7 +22,7 @@ def saveregistro():
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
     print(Name)
-    new_reg = registro(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
+    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "si"
