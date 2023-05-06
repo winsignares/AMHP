@@ -1,17 +1,20 @@
 
-function crearcuenta(event) {
-    event.preventDefault();
+function registrarme() {
     const name = document.getElementById('name');
-    const username = document.getElementById('username');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
-   
+    const Cedula = document.getElementById('Cedula');
+    const Telefono = document.getElementById('Telefono');
+    const Direccion = document.getElementById('Direccion');
+    const Correo = document.getElementById('Correo');
+    const Fechadenacimento = document.getElementById('fecha');
+    alert('Registrar')
 
     axios.post('guardaregistro', {
         Name: name.value,
-        Username: username.value,
-        Email: email.value,
-        Password: password.value,
+        cedula: Cedula.value,
+        telefono: Telefono.value,
+        direccion: Direccion.value,
+        Email: Correo.value,
+        fecha_nacimiento: Fechadenacimento.value
         
 
     }, {

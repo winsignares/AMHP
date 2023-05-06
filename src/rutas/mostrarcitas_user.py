@@ -12,23 +12,23 @@ def indexcita2():
     return render_template('/main/tabla_cita_user.html', titles=titulo)
 
 
-@routes_mos_user.route('/mostrar_citas', methods=['GET'] )
-def actualizar_citas():
+# @routes_mos_user.route('/mostrar_citas', methods=['GET'] )
+# def actualizar_citas():
 
-    datos= {}
-    resultado = db.session.query(registro,citas).join(registro,citas.id == registro.id).all()
-    i=0
-    goria = []
-    for cate in resultado:
-        i+=1	       
-        datos[i] = {
-        'id':cate.id,
-		'Name':cate.Name,
-		'Username':cate.Username,                                                    
-		'Nombre_completo':cate.Nombre_completo,                                                                                                    
-        }
-        goria.append(datos)
-    return jsonify(datos)
+#     datos= {}
+#     resultado = db.session.query(registro,citas).join(registro,citas.id == registro.id).all()
+#     i=0
+#     goria = []
+#     for cate in resultado:
+#         i+=1	       
+#         datos[i] = {
+#         'id':cate.id,
+# 		'Name':cate.Name,
+# 		'Username':cate.Username,                                                    
+# 		'Nombre_completo':cate.Nombre_completo,                                                                                                    
+#         }
+#         goria.append(datos)
+#     return jsonify(datos)
 
 
 
