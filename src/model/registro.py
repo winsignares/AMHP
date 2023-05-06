@@ -1,6 +1,6 @@
 from config.db import db, app, ma 
 
-class registro(db.Model):
+class registros(db.Model):
     __tablename__ = "tblregistro"
 
     

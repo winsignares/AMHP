@@ -1,6 +1,6 @@
 function mostrar() {
     const divcate = document.getElementById('tabla');
-    axios.get('mostrar_citas',{
+    axios.get('mostrar_citas_user',{
         responseType: 'json'
     } )
       
@@ -12,10 +12,11 @@ function mostrar() {
             for (let index = 1; index < length; index++) {
                 mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
-                <td>${datos[index].Name}</td>
-                <td>${datos[index].Username}</td>
                 <td>${datos[index].Nombre_completo}</td>
-               
+                <td>${datos[index].Edad}</td>
+                <td>${datos[index].genero}</td>  
+                <td>${datos[index].fecha}</td>  
+                <td>${datos[index].consulta}</td>  
                 <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
@@ -31,45 +32,26 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
-/*
-function habilitar() {
-    nom = document.getElementById("nombre").value;
-    edadd = document.getElementById("edad").value;
-    gene = document.getElementById("generos").value;
-    fecha = document.getElementById("consultaDates").value;
-    consul = document.getElementById("consultas").value;
-    tarje = document.getElementById("tarjetas").value;
-    num = document.getElementById("cardNumber").value;
-    val = 0;
-    if (nom == "") {
-        val++;
-    }
-    if (edadd == "") {
-        val++;
-    }if (gene == "") {
-        val++;
-    }if (fecha == "") {
-        val++;
-    }if (consul== "") {
-        val++;
-    }if (tarje == "") {
-        val++;
-    }if (num == "") {
-            val++;
-    } if (val == 0) {
-        document.getElementById("btn").disabled = false;
-    } else {
-        document.getElementById("btn").disabled = true;
-    }
+function actualizar() {
+    // se hace que actualize solo la funcion
+    $(document).on('click', '.btn-edit', function(e){
+        e.preventDefault();
+        console.log("si funciona")
+
+    });
+    $(document).on('click', '.btn-eliminar', function(e){
+        e.preventDefault();
+        console.log("si funciona")
+
+    });
+    $(document).ready(function() {
+        $("#boton-buscar").click(function() {
+          var value = $("#buscador").val().toLowerCase();
+          $("#tabla tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      
+      
 }
-document.getElementById("nombre").addEventListener("keyup", habilitar);
-document.getElementById("edad").addEventListener("keyup", habilitar);
-document.getElementById("generos").addEventListener("keyup", habilitar);
-document.getElementById("consultaDates").addEventListener("keyup", habilitar);
-document.getElementById("consultas").addEventListener("keyup", habilitar);
-document.getElementById("tarjetas").addEventListener("keyup", habilitar);
-document.getElementById("cardNumber").addEventListener("keyup", habilitar);
-document.getElementById("btn").addEventListener("click", () => {
-    console.log("se llenaron los input");
-});
-*/

@@ -1,6 +1,6 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
-from model.registro import registro
+from model.registro import registros
 
 
 routes_registro = Blueprint("routes_registro", __name__)
