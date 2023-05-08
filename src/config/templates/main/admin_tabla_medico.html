@@ -18,7 +18,6 @@
     <div class="cont-menu">
         <nav>
             <a href="indexcalendario">Calendario</a>
-            <a href="indexadmin_tabla_medico">Medicos</a>
             <a href="#">Reportes de citas</a>
             <a href="#">Facturacion</a>
         </nav>
@@ -37,11 +36,10 @@
               <tr>
                 <th scope="col">id</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Cedula</th>
-                <th scope="col">Telefono</th>
                 <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
                 <th scope="col">Email</th>
-                <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">Especialidad</th>
               </tr>
             </thead>
             <tbody id="tabla">
@@ -62,19 +60,16 @@
         <form id="odontologiaForm" method="post">
           <label id="id-e"></label>
           <br>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
-          <label for="edad">Cedula:</label>
-          <input type="number" id="Cedula" name="Cedula" min="1" max="120" required>
+          <label for="Nombre">Nombre:</label>
+          <input type="text" id="Nombre" name="Nombre" required>
+          <label for="Direccion">Direccion:</label>
+          <input type="text" name="direccion" id="direccion" min="1" max="120" required>
           <label for="Telefono">Telefono:</label>
           <input type="number" id="Telefono" name="Telefono" min="1" max="120" required>
-          <label for="Direccion">Direccion:</label>
-          <input type="text" name="direccion" id="direccion" pattern="[0-9]+\s[A-z]+\s[A-z]+" min="1" max="120" required>
           <label for="Email">Email:</label>
           <input type="email" name="email" min="1" max="120"  required>
-          <br>
-          <label for="consultaDate">Selecciona la fecha deseada</label>
-          <input type="date" id="fecha" name="fecha">
+          <label for="Especialidad">Especialidad:</label>
+          <input type="text" name="text" min="1" max="120"  required>
           <br>
           <input id="btn" onclick="guardar_cita_admin()" type="submit" value="Enviar" >
           <input id="btn" onclick="cancelar()" type="submit" value="cancelar" disabled>
