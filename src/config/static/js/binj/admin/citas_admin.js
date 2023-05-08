@@ -85,6 +85,7 @@ function guardar_cita_admin() {
           }
       }).then((res) => {
           console.log(res.data)
+          
       })
   } catch (error) {
       console.error(error)
