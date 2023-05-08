@@ -1,3 +1,4 @@
+//esta funcion muestra los datos en una tabla inmediatamente que se habre la vista
 function mostrar() {
     const divcate = document.getElementById('tabla');
     axios.get('mostrar_pacientes_admin',{
