@@ -37,5 +37,15 @@ window.addEventListener("click", (evento) => {
       modal2.style.display = "none";
     }
   });
+
   
 
+  // var modals =document.querySelector("modal1")
+  // var closeBtn =document.querySelector("close1")
+  // // Cuando se hace clic en el botón de cierre del modal, ocultar el modal
+  // modal.addEventListener("click", function (event) {
+  //   if(event.target === modal){
+  //     modal.style.display = "none";  // ocultar el modal
+  
+  //   }
+  // });
