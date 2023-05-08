@@ -12,7 +12,7 @@ def indexcita():
     return render_template('/main/savecita_user.html', titles=titulo)
 
 
-@routes_cita.route('/guardarcita', methods=['POST'])
+@routes_cita.route('/guardarcitas', methods=['POST'])
 def savecita():
 
     Nombre_completo = request.form['Nombre_completo']
@@ -27,4 +27,4 @@ def savecita():
     new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema)
     db.session.add(new_cit)
     db.session.commit()
-    return "si"
+    return "si" 

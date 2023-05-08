@@ -1,6 +1,6 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
-from model.registro import registro
+from model.registro import registros
 
 
 routes_registro = Blueprint("routes_registro", __name__)
@@ -14,13 +14,15 @@ def indexregistro():
 
 @routes_registro.route('/guardaregistro', methods=['POST'])
 def saveregistro():
-
+    print("hola")
     Name = request.form['Name']
-    Username = request.form['Username']
+    cedula = request.form['cedula']
+    telefono = request.form['telefono']
+    direccion = request.form['direccion']
     Email = request.form['Email']
-    Password = request.form['Password']
+    fecha_nacimiento = request.form['fecha_nacimiento']
     print(Name)
-    new_reg = registro(Name,Username,Email,Password)
+    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "si"
