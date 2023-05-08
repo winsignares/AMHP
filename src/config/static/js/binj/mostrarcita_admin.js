@@ -55,3 +55,37 @@ function actualizar() {
       
       
 }
+
+function guardar_cita_admin() {
+  const nombres = document.getElementById('nombre');
+  const edades = document.getElementById('edad');
+  const generos= document.getElementById('generos');
+  const fecha = document.getElementById('fecha');
+  const consultas = document.getElementById('consultas');
+  const tarjetas= document.getElementById('tarjetas');
+  const cardNumber = document.getElementById('cardNumber');
+  const problemas = document.getElementById('problemas');
+  alert('si sirve ome ')
+  
+ 
+  try {
+      axios.post('guardarcitas', {
+          Nombre_completo: nombres.value,
+          Edad: edades.value,
+          genero: generos.value,
+          fecha: fecha.value,
+          consulta: consultas.value,
+          tarje_tade_credito: tarjetas.value,
+          Num_tarjeta: cardNumber.value,
+          problema: problemas.value
+      }, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+          }
+      }).then((res) => {
+          console.log(res.data)
+      })
+  } catch (error) {
+      console.error(error)
+  }
+}
