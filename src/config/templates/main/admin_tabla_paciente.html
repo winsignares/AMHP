@@ -61,22 +61,26 @@
       <div class="text">
         <form id="odontologiaForm" method="post">
           <label id="id-e"></label>
-          <br>
-          <label for="nombre">Nombre:</label>
-          <input type="text" id="nombre" name="nombre" required>
-          <label for="edad">Cedula:</label>
-          <input type="number" id="Cedula" name="Cedula" min="1" max="120" required>
-          <label for="Telefono">Telefono:</label>
-          <input type="number" id="Telefono" name="Telefono" min="1" max="120" required>
-          <label for="Direccion">Direccion:</label>
-          <input type="text" name="direccion" id="direccion"  min="1" max="120" required>
-          <label for="Email">Email:</label>
-          <input type="email" name="email" min="1" max="120"  required>
-          <br>
-          <label for="consultaDate">Selecciona la fecha deseada</label>
-          <input type="date" id="fecha" name="fecha">
-          <br>
-          <input id="btn" onclick="registrar_paciente()" type="submit" value="Enviar" >
+          <label for="Fullname">Full name</label>
+          <input id="Fullname" type="text" placeholder="Fullname" name="Fullname"> 
+          <!-- Cedula INPUT -->
+          <label for="Cedula">Cedula</label>
+          <input id="Cedula" type="text" placeholder="Cedula" name="Cedula">
+          <!-- Telefono INPUT -->
+          <label for="Telefono">Telefono</label>
+          <input id="Telefono" type="text" placeholder="Telefono" name="Telefono">
+          <!-- Direccion INPUT -->
+          <label for="Direccion">Direccion</label>
+          <input id="Direccion" type="text" placeholder="Direccion" name="Direccion">
+          <!-- Correo INPUT -->
+          <label for="Correo">Correo</label>
+          <input id="Correo" type="text" placeholder="Correo" name="Correo">
+           <!-- Fecha de nacimento INPUT -->
+           <label for="Fechadenacimento">Fecha de nacimento</label>
+           <br>
+           <input type="date" id="fecha" name="fecha">
+         
+          <input  type="submit" onclick="registrar_paciente()" value="Enviar" >
           <input id="btn" onclick="cancelar()" type="submit" value="cancelar" disabled>
          </form>
          <div id="mensajeExito" class="message success">¡Formulario enviado con éxito!</div>

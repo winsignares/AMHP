@@ -36,22 +36,23 @@ window.addEventListener('load', function() {
 })
   
 //esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
+
 function registrar_paciente() {
-    const name = document.getElementById('nombre');
+    const name = document.getElementById('Fullname');
     const Cedula = document.getElementById('Cedula');
     const Telefono = document.getElementById('Telefono');
     const Direccion = document.getElementById('Direccion');
     const Correo = document.getElementById('Correo');
     const Fechadenacimento = document.getElementById('fecha');
-    alert('Registrar paci')
+    alert('Registrar')
 
     axios.post('guardarpaciente_admin', {
-        Names: name.value,
-        cedulas: Cedula.value,
-        telefonos: Telefono.value,
-        direccions: Direccion.value,
-        Emails: Correo.value,
-        fecha_nacimientos: Fechadenacimento.value
+        Name: name.value,
+        cedula: Cedula.value,
+        telefono: Telefono.value,
+        direccion: Direccion.value,
+        Email: Correo.value,
+        fecha_nacimiento: Fechadenacimento.value
         
 
     }, {
@@ -63,7 +64,7 @@ function registrar_paciente() {
     ).then((res) => {
         console.log(res.data)
         alert("registro existoso")
-        window.location.href = "/fronted/indexprincipal";
+        
     })
     .catch((error) => {
         console.error(error)

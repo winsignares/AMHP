@@ -13,17 +13,18 @@ def indexadmin_tabla_paciente():
 
 @routes_admin_tabla_paciente.route('/guardarpaciente_admin', methods=['POST'])
 def saveregistro_admin():
-    Names = request.form['Name']
-    cedulas = request.form['cedula']
-    telefonos = request.form['telefono']
-    direccions = request.form['direccion']
-    Emails = request.form['Email']
-    fecha_nacimientos = request.form['fecha_nacimiento']
-    print(Names)
-    new_reg = registros(Names,cedulas,telefonos,direccions,Emails,fecha_nacimientos)
+    Name = request.form['Name']
+    cedula = request.form['cedula']
+    telefono = request.form['telefono']
+    direccion = request.form['direccion']
+    Email = request.form['Email']
+    fecha_nacimiento = request.form['fecha_nacimiento']
+    print(Name)
+    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "si"
+
 
 @routes_admin_tabla_paciente.route('/mostrar_pacientes_admin', methods=['GET'])
 def mostarpaciente_admin():
