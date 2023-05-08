@@ -19,6 +19,24 @@
     background-color: rgba(0, 0, 0, 0.4);
     /*Fondonegrosemitransparenteparaelmodal*/
 }
+.modal2 {
+    align-items: center;
+    justify-content: center;
+    display: none;
+    /*Ocultaelmodalpordefecto*/
+    position: fixed;
+    /*Posiciónfijaparaelmodal*/
+    z-index: 1;
+    /*Hacequeelmodalaparezcaporencimadetodolodemás*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /*Añadescrollsielcontenidodelmodalesmuylargo*/
+    background-color: rgba(0, 0, 0, 0.4);
+    /*Fondonegrosemitransparenteparaelmodal*/
+}
 
 /* Estilos para el contenido del modal */
 
