@@ -9,7 +9,7 @@
 #     direccion = db.Column(db.String(50))
 #     telefono = db.Column(db.Integer)
 #     correo = db.Column(db.String(50))
-#     fecha_nacimiento = db.Column(db.Date)
+#     fecha_nacimiento = db.Column(db.String(50))
 
 #     def __init__(self, nombre,direccion,telefono,correo,fecha_nacimiento):
 #         self.nombre = nombre

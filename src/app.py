@@ -9,11 +9,11 @@ from config.db import db, app, ma
 
 #importar los model en orden
 # from model.paciente import pacientes
-# from model.odontologo import odontologos
+from model.odontologo import odontologos
 from model.cita import citas
 # from model.tratamiento import tratamientos
 # from model.histo_clinico import histoclinicos
-# from model.login import login
+from model.login import login
 from model.registro import registros
 
 
