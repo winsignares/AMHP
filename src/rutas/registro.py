@@ -26,20 +26,3 @@ def saveregistro():
     db.session.add(new_reg)
     db.session.commit()
     return "si"
-
-
-#esta es la ruta de odontologo para guardar
-@routes_registro.route('/guardaodontologo', methods=['POST'])
-def saveodontologo():
-    print("hola")
-    Name = request.form['Name']
-    cedula = request.form['cedula']
-    telefono = request.form['telefono']
-    direccion = request.form['direccion']
-    Email = request.form['Email']
-    fecha_nacimiento = request.form['fecha_nacimiento']
-    print(Name)
-    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
-    db.session.add(new_reg)
-    db.session.commit()
-    return "si"

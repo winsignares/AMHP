@@ -77,7 +77,8 @@ function guardar_cita_admin() {
           consulta: consultas.value,
           tarje_tade_credito: tarjetas.value,
           Num_tarjeta: cardNumber.value,
-          problema: problemas.value
+          problema: problemas.value,
+          
       }, {
           headers: {
               'Content-Type': 'multipart/form-data'
