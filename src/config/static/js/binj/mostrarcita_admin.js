@@ -55,7 +55,7 @@ function actualizar() {
       
       
 }
-
+//esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
   const nombres = document.getElementById('nombre');
   const edades = document.getElementById('edad');
