@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
-                <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="mostrarModalActualizar2() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
                 
@@ -89,5 +89,34 @@ function guardar_cita_admin() {
       })
   } catch (error) {
       console.error(error)
+  }
+}
+// Función para mostrar el modal de actualizar
+function mostrarModalActualizar2() {
+  // Obtener el modal
+  var tablaadmin = document.getElementById("tablaadmin");
+  // Mostrar el modal
+  tablaadmin.style.display = "block";
+}
+
+// Función para cerrar el modal de actualizar
+function cerrarModalActualizar2() {
+  // Obtener el modal
+  var tablaadmin = document.getElementById("tablaadminr");
+  // Ocultar el modal
+  tablaadmin.style.display = "none";
+}
+
+// Agregar un evento al botón de cerrar del modal
+var cerrar = document.getElementsByClassName("close1")[0];
+cerrar.onclick = function() {
+  cerrarModalActualizar2();
+}
+
+// Agregar un evento al hacer clic fuera del modal
+window.onclick = function(event) {
+  var modal = document.getElementById("tablaadmin");
+  if (event.target == modal) {
+    cerrarModalActualizar2();
   }
 }
