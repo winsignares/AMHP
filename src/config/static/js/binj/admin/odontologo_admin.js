@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].direccion}</td>
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].correo}</td>  
-                <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="mostrarModalActualizar3() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
                 
@@ -68,3 +68,33 @@ function registrar_odontologo() {
 
     
 }
+// Función para mostrar el modal de actualizar
+function mostrarModalActualizar3() {
+    // Obtener el modal
+    var modal = document.getElementById("tabla_odontoogo");
+    // Mostrar el modal
+    modal.style.display = "block";
+  }
+  
+  // Función para cerrar el modal de actualizar
+  function cerrarModalActualizar3() {
+    // Obtener el modal
+    var modal = document.getElementById("tabla_odontoogo");
+    // Ocultar el modal
+    modal.style.display = "none";
+  }
+  
+  // Agregar un evento al botón de cerrar del modal
+  var cerrar = document.getElementsByClassName("close1")[0];
+  cerrar.onclick = function() {
+    cerrarModalActualizar3();
+  }
+  
+  // Agregar un evento al hacer clic fuera del modal
+  window.onclick = function(event) {
+    var modal = document.getElementById("tabla_odontoogo");
+    if (event.target == modal) {
+      cerrarModalActualizar3();
+    }
+  }
+  
