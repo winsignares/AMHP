@@ -20,12 +20,12 @@ botonNuevaCita2.addEventListener("click", () => {
     modal2.style.display = "block";
   });
 // Cuando se hace clic en el botón de cierre del modal, ocultar el modal
-botonCerrar.addEventListener("click", () => {
-  modal.style.display = "none";
+modal.addEventListener("click", function (event) {
+  if(event.target === modal){
+    modal.style.display = "none";  // ocultar el modal
+
+  }
 });
-botonCerrar2.addEventListener("click", () => {
-    modal2.style.display = "none";
-  });
 // Cuando el usuario hace clic fuera del modal, cerrar el modal
 window.addEventListener("click", (evento) => {
   if (evento.target == modal) {
@@ -39,13 +39,3 @@ window.addEventListener("click", (evento) => {
   });
 
   
-
-  // var modals =document.querySelector("modal1")
-  // var closeBtn =document.querySelector("close1")
-  // // Cuando se hace clic en el botón de cierre del modal, ocultar el modal
-  // modal.addEventListener("click", function (event) {
-  //   if(event.target === modal){
-  //     modal.style.display = "none";  // ocultar el modal
-  
-  //   }
-  // });

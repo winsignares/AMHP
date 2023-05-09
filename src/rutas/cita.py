@@ -2,6 +2,7 @@ from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from model.cita import citas
+# from datetime import datetime,time
 
 routes_cita = Blueprint("routes_cita", __name__)
 
@@ -23,6 +24,7 @@ def savecita():
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
     problema = request.form['problema']
+    # problema = date.today()
     print(Nombre_completo)
     new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema)
     db.session.add(new_cit)

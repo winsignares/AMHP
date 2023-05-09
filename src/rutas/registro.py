@@ -26,3 +26,4 @@ def saveregistro():
     db.session.add(new_reg)
     db.session.commit()
     return "si"
+
