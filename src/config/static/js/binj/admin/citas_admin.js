@@ -32,29 +32,7 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
-function actualizar() {
-    // se hace que actualize solo la funcion
-    $(document).on('click', '.btn-edit', function(e){
-        e.preventDefault();
-        console.log("si funciona")
-
-    });
-    $(document).on('click', '.btn-eliminar', function(e){
-        e.preventDefault();
-        console.log("si funciona")
-
-    });
-    $(document).ready(function() {
-        $("#boton-buscar").click(function() {
-          var value = $("#buscador").val().toLowerCase();
-          $("#tabla tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-          });
-        });
-      });
-      
-      
-}
+//------------------------------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
   const nombres = document.getElementById('nombre');
@@ -66,8 +44,6 @@ function guardar_cita_admin() {
   const cardNumber = document.getElementById('cardNumber');
   const problemas = document.getElementById('problemas');
   alert('si sirve ome ')
-  
- 
   try {
       axios.post('guardarcitas', {
           Nombre_completo: nombres.value,
@@ -91,6 +67,7 @@ function guardar_cita_admin() {
       console.error(error)
   }
 }
+//-------------------------------------------------------------------------
 // Función para mostrar el modal de actualizar
 function mostrarModalActualizar2() {
   // Obtener el modal

@@ -75,7 +75,6 @@ function mostrarModalActualizar3() {
     // Mostrar el modal
     modal.style.display = "block";
   }
-  
   // Función para cerrar el modal de actualizar
   function cerrarModalActualizar3() {
     // Obtener el modal
