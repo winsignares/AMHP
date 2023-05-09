@@ -1,3 +1,39 @@
+
+//-----------------------------modal--------------------------------------------
+
+// Función para mostrar el modal de actualizar
+function mostrarModalActualizar2() {
+  // Obtener el modal
+  var tablaadmin = document.getElementById("tablaadmin");
+  // Mostrar el modal
+  tablaadmin.style.display = "block";
+}
+
+// Función para cerrar el modal de actualizar
+function cerrarModalActualizar2() {
+  // Obtener el modal
+  var tablaadmin = document.getElementById("tablaadminr");
+  // Ocultar el modal
+  tablaadmin.style.display = "none";
+}
+
+// Agregar un evento al botón de cerrar del modal
+var cerrar = document.getElementsByClassName("close1")[0];
+cerrar.onclick = function() {
+  cerrarModalActualizar2();
+}
+
+// Agregar un evento al hacer clic fuera del modal
+window.onclick = function(event) {
+  var modal = document.getElementById("tablaadmin");
+  if (event.target == modal) {
+    cerrarModalActualizar2();
+  }
+}
+
+
+
+//----------------------funcion mostrar tabla de citas 
 function mostrar() {
     const divcate = document.getElementById('tabla');
     axios.get('mostrar_citas_admin',{
@@ -32,7 +68,9 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
-//------------------------------------------------------------------------//
+
+
+//-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
   const nombres = document.getElementById('nombre');
@@ -67,34 +105,29 @@ function guardar_cita_admin() {
       console.error(error)
   }
 }
-//-----------------------------modal--------------------------------------------
 
-// Función para mostrar el modal de actualizar
-function mostrarModalActualizar2() {
-  // Obtener el modal
-  var tablaadmin = document.getElementById("tablaadmin");
-  // Mostrar el modal
-  tablaadmin.style.display = "block";
-}
-
-// Función para cerrar el modal de actualizar
-function cerrarModalActualizar2() {
-  // Obtener el modal
-  var tablaadmin = document.getElementById("tablaadminr");
-  // Ocultar el modal
-  tablaadmin.style.display = "none";
-}
-
-// Agregar un evento al botón de cerrar del modal
-var cerrar = document.getElementsByClassName("close1")[0];
-cerrar.onclick = function() {
-  cerrarModalActualizar2();
-}
-
-// Agregar un evento al hacer clic fuera del modal
-window.onclick = function(event) {
-  var modal = document.getElementById("tablaadmin");
-  if (event.target == modal) {
-    cerrarModalActualizar2();
+function buscadordecitas() {
+  // Obtiene el valor del campo de búsqueda
+  var datoabuscar = document.getElementById("buscadorcitasadmin").value.toUpperCase();
+  
+  // Obtiene la tabla y los registros de la misma
+  var tabla = document.getElementById("tabla");
+  var rows = tabla.getElementsByTagName("tr");
+  
+  // Itera sobre los registros y los oculta si no coinciden con la búsqueda
+  for (var i = 0; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var match = false;
+    for (var j = 0; j < cells.length; j++) {
+      if (cells[j].innerHTML.toUpperCase().indexOf(datoabuscar) > -1) {
+        match = true;
+        break;
+      }
+    }
+    if (match) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
   }
 }
