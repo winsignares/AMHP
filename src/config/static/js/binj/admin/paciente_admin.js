@@ -19,7 +19,7 @@ function mostrar() {
                 <td>${datos[index].direccion}</td>  
                 <td>${datos[index].Email}</td>  
                 <td>${datos[index].fecha_nacimiento}</td>  
-                <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="mostrarModalActualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
                 
@@ -70,5 +70,34 @@ function registrar_paciente() {
         console.error(error)
     })
 
-    
 }
+// Función para mostrar el modal de actualizar
+function mostrarModalActualizar() {
+    // Obtener el modal
+    var modal = document.getElementById("modalActualizar");
+    // Mostrar el modal
+    modal.style.display = "block";
+  }
+  
+  // Función para cerrar el modal de actualizar
+  function cerrarModalActualizar() {
+    // Obtener el modal
+    var modal = document.getElementById("modalActualizar");
+    // Ocultar el modal
+    modal.style.display = "none";
+  }
+  
+  // Agregar un evento al botón de cerrar del modal
+  var cerrar = document.getElementsByClassName("close1")[0];
+  cerrar.onclick = function() {
+    cerrarModalActualizar();
+  }
+  
+  // Agregar un evento al hacer clic fuera del modal
+  window.onclick = function(event) {
+    var modal = document.getElementById("modalActualizar");
+    if (event.target == modal) {
+      cerrarModalActualizar();
+    }
+  }
+  
