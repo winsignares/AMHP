@@ -67,7 +67,8 @@ function guardar_cita_admin() {
       console.error(error)
   }
 }
-//-------------------------------------------------------------------------
+//-----------------------------modal--------------------------------------------
+
 // Función para mostrar el modal de actualizar
 function mostrarModalActualizar2() {
   // Obtener el modal
