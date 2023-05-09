@@ -1,3 +1,35 @@
+//-------------------------modal
+// Función para mostrar el modal de actualizar
+function mostrarModalActualizar() {
+  // Obtener el modal
+  var modal = document.getElementById("modalActualizar");
+  // Mostrar el modal
+  modal.style.display = "block";
+}
+
+// Función para cerrar el modal de actualizar
+function cerrarModalActualizar() {
+  // Obtener el modal
+  var modal = document.getElementById("modalActualizar");
+  // Ocultar el modal
+  modal.style.display = "none";
+}
+
+// Agregar un evento al botón de cerrar del modal
+var cerrar = document.getElementsByClassName("close1")[0];
+cerrar.onclick = function() {
+  cerrarModalActualizar();
+}
+
+// Agregar un evento al hacer clic fuera del modal
+window.onclick = function(event) {
+  var modal = document.getElementById("modalActualizar");
+  if (event.target == modal) {
+    cerrarModalActualizar();
+  }
+}
+
+//--------------------------------------------------------------
 //esta funcion muestra los datos en una tabla inmediatamente que se habre la vista
 function mostrar() {
     const divcate = document.getElementById('tabla');
@@ -35,8 +67,8 @@ window.addEventListener('load', function() {
     mostrar();
 })
   
+//----------------------------------------------------------------
 //esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
-
 function registrar_paciente() {
     const name = document.getElementById('Fullname');
     const Cedula = document.getElementById('Cedula');
@@ -45,7 +77,6 @@ function registrar_paciente() {
     const Correo = document.getElementById('Correo');
     const Fechadenacimento = document.getElementById('fecha');
     alert('Registrar')
-
     axios.post('guardarpaciente_admin', {
         Name: name.value,
         cedula: Cedula.value,
@@ -53,8 +84,6 @@ function registrar_paciente() {
         direccion: Direccion.value,
         Email: Correo.value,
         fecha_nacimiento: Fechadenacimento.value
-        
-
     }, {
         headers: { 
         'Content-Type': 'multipart/form-data'
@@ -71,33 +100,31 @@ function registrar_paciente() {
     })
 
 }
-// Función para mostrar el modal de actualizar
-function mostrarModalActualizar() {
-    // Obtener el modal
-    var modal = document.getElementById("modalActualizar");
-    // Mostrar el modal
-    modal.style.display = "block";
-  }
+
+//----------------------------------------------------------------
+//buscador
+function buscadorpaciente() {
+  // Obtiene el valor del campo de búsqueda
+  var datoabuscar = document.getElementById("buscadorpacienteadmin").value.toUpperCase();
   
-  // Función para cerrar el modal de actualizar
-  function cerrarModalActualizar() {
-    // Obtener el modal
-    var modal = document.getElementById("modalActualizar");
-    // Ocultar el modal
-    modal.style.display = "none";
-  }
+  // Obtiene la tabla y los registros de la misma
+  var tabla = document.getElementById("tabla");
+  var rows = tabla.getElementsByTagName("tr");
   
-  // Agregar un evento al botón de cerrar del modal
-  var cerrar = document.getElementsByClassName("close1")[0];
-  cerrar.onclick = function() {
-    cerrarModalActualizar();
-  }
-  
-  // Agregar un evento al hacer clic fuera del modal
-  window.onclick = function(event) {
-    var modal = document.getElementById("modalActualizar");
-    if (event.target == modal) {
-      cerrarModalActualizar();
+  // Itera sobre los registros y los oculta si no coinciden con la búsqueda
+  for (var i = 0; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var match = false;
+    for (var j = 0; j < cells.length; j++) {
+      if (cells[j].innerHTML.toUpperCase().indexOf(datoabuscar) > -1) {
+        match = true;
+        break;
+      }
+    }
+    if (match) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
     }
   }
-  
+}
