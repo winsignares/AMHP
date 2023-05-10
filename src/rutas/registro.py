@@ -1,6 +1,6 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
-from model.registro import registros
+from model.paciente import pacientes
 
 
 routes_registro = Blueprint("routes_registro", __name__)
@@ -22,7 +22,7 @@ def saveregistro():
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
     print(Name)
-    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
+    new_reg = pacientes(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "si"

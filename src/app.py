@@ -14,7 +14,7 @@ from model.cita import citas
 # from model.tratamiento import tratamientos
 # from model.histo_clinico import histoclinicos
 from model.login import login
-from model.registro import registros
+from model.paciente import pacientes
 from model.fechas_disponibles import fechas_dispo
 
 

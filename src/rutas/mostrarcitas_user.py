@@ -1,7 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.cita import citas 
-from model.registro import registros
+# from model.paciente import registros
 
 routes_mos_user = Blueprint("routes_mos_user", __name__)
 

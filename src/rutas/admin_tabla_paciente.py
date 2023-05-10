@@ -1,6 +1,6 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
-from model.registro import registros
+from model.paciente import pacientes
 
 routes_admin_tabla_paciente = Blueprint("routes_admin_tabla_paciente", __name__)
 
@@ -20,7 +20,7 @@ def saveregistro_admin():
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
     print(Name)
-    new_reg = registros(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
+    new_reg = pacientes(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "si"
@@ -29,7 +29,7 @@ def saveregistro_admin():
 @routes_admin_tabla_paciente.route('/mostrar_pacientes_admin', methods=['GET'])
 def mostarpaciente_admin():
     datos= {}
-    resultado = db.session.query(registros).select_from(registros).all()
+    resultado = db.session.query(pacientes).select_from(pacientes).all()
     i=0
     goria = []
     for cate in resultado:
