@@ -31,7 +31,7 @@
         <div class="d-flex mb-3">
             <input type="text" id="buscadorpacienteadmin" onkeyup="buscadorpaciente()" class="form-control mr-2" placeholder="Buscar en la tabla..." style="width: 200px;">
             <button class="btn btn-primary" type="button" id="boton-buscar" style="margin-top: 2px; height: 43px; margin-left:15px" >Buscar</button>
-            <button id="boton-nueva-cita" class="btn btn-primary" type="button" style="margin-top: 2px; height: 43px; margin-left:15px" >Nueva paciente</button>
+            <button id="myBtn_3" class="btn btn-primary" type="button" style="margin-top: 2px; height: 43px; margin-left:15px" >Nueva paciente</button>
           </div>
         <table class="table ">
             <thead>
@@ -43,6 +43,7 @@
                 <th scope="col">Direccion</th>
                 <th scope="col">Email</th>
                 <th scope="col">Fecha de nacimiento</th>
+                <th scope="col">option</th>
               </tr>
             </thead>
             <tbody id="tabla">
@@ -54,42 +55,28 @@
           </table>
     </div>
 </div>
-<div class="modal1" id="modalActualizar">
-  <div class="modal-content1">
-      <span class="close1"></span>
-      <div class="mensaje1">
-          <h1>Formulario de new paciente</h1>
-      </div>
-      <div class="text">
-        <form id="odontologiaForm" method="post">
-          <label id="id-e"></label>
-          <label for="Fullname">Full name</label>
-          <input id="Fullname" type="text" placeholder="Fullname" name="Fullname"> 
-          <!-- Cedula INPUT -->
-          <label for="Cedula">Cedula</label>
-          <input id="Cedula" type="text" placeholder="Cedula" name="Cedula">
-          <!-- Telefono INPUT -->
-          <label for="Telefono">Telefono</label>
-          <input id="Telefono" type="text" placeholder="Telefono" name="Telefono">
-          <!-- Direccion INPUT -->
-          <label for="Direccion">Direccion</label>
-          <input id="Direccion" type="text" placeholder="Direccion" name="Direccion">
-          <!-- Correo INPUT -->
-          <label for="Correo">Correo</label>
-          <input id="Correo" type="text" placeholder="Correo" name="Correo">
-           <!-- Fecha de nacimento INPUT -->
-           <label for="Fechadenacimento">Fecha de nacimento</label>
-           <br>
-           <input type="date" id="fecha" name="fecha">
-         
-          <input  type="submit" onclick="registrar_paciente()" value="Enviar" >
-          <input id="btn" onclick="cancelar()" type="submit" value="cancelar" disabled>
-         </form>
-         <div id="mensajeExito" class="message success">¡Formulario enviado con éxito!</div>
-         <div id="mensajeError" class="message">Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.</div>
-      </div>
+<div id="myModal_tabla_paciente_1" class="modal_tabla_paciente">
+  <div class="modal-content3">
+    <label for="Fullname">Full name</label>
+            <input id="Fullname" type="text" placeholder="Fullname" name="Fullname"> 
+            <!-- Cedula INPUT -->
+            <label for="Cedula">Cedula</label>
+            <input id="Cedula" type="text" placeholder="Cedula" name="Cedula">
+            <!-- Telefono INPUT -->
+            <label for="Telefono">Telefono</label>
+            <input id="Telefono" type="text" placeholder="Telefono" name="Telefono">
+            <!-- Direccion INPUT -->
+            <label for="Direccion">Direccion</label>
+            <input id="Direccion" type="text" placeholder="Direccion" name="Direccion">
+            <!-- Correo INPUT -->
+            <label for="Correo">Correo</label>
+            <input id="Correo" type="text" placeholder="Correo" name="Correo">
+             <!-- Fecha de nacimento INPUT -->
+             <label for="Fechadenacimento">Fecha de nacimento</label>
+             <input type="date" id="fecha" name="fecha">
+            <input onclick="addregistro()" type="submit" value="enviar">
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/paciente_admin.js')}}"></script>
-<script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
+<script src="{{url_for('static', filename='js/binj/funcion_modal_paciente.js')}}"></script>
 {% endblock %}

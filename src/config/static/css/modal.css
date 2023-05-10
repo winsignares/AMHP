@@ -1,162 +1,129 @@
-/* Estilos para el modal */
-
-
-.modal1 {
-    align-items: center;
-    justify-content: center;
-    display: none;
-    /*Ocultaelmodalpordefecto*/
-    position: fixed;
-    /*Posiciónfijaparaelmodal*/
-    z-index: 1;
-    /*Hacequeelmodalaparezcaporencimadetodolodemás*/
+/* Estilo del botón que abre el modal */
+#myBtn_1 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  #myBtn_2 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  #myBtn_3 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  #myBtn_4 {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+  /* Estilo del modal */
+  .modal_tabla_admin {
+    display: none; /* El modal está oculto por defecto */
+    position: fixed; /* Fija la posición del modal */
+    z-index: 1; /* Pone el modal por encima del resto de elementos */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    /*Añadescrollsielcontenidodelmodalesmuylargo*/
-    background-color: rgba(0, 0, 0, 0.4);
-    /*Fondonegrosemitransparenteparaelmodal*/
-}
-.modal2 {
-    align-items: center;
-    justify-content: center;
-    display: none;
-    /*Ocultaelmodalpordefecto*/
-    position: fixed;
-    /*Posiciónfijaparaelmodal*/
-    z-index: 1;
-    /*Hacequeelmodalaparezcaporencimadetodolodemás*/
+    overflow: auto; /* Permite desplazar el contenido del modal si es demasiado grande */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo oscuro */
+  }
+  .modal_tabla_admin2 {
+    display: none; /* El modal está oculto por defecto */
+    position: fixed; /* Fija la posición del modal */
+    z-index: 1; /* Pone el modal por encima del resto de elementos */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    /*Añadescrollsielcontenidodelmodalesmuylargo*/
-    background-color: rgba(0, 0, 0, 0.4);
-    /*Fondonegrosemitransparenteparaelmodal*/
-}
-
-/* Estilos para el contenido del modal */
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    /* Centra el modal verticalmente y lo desplaza hacia abajo */
+    overflow: auto; /* Permite desplazar el contenido del modal si es demasiado grande */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo oscuro */
+  }
+  .modal_tabla_paciente {
+    display: none; /* El modal está oculto por defecto */
+    position: fixed; /* Fija la posición del modal */
+    z-index: 1; /* Pone el modal por encima del resto de elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite desplazar el contenido del modal si es demasiado grande */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo oscuro */
+  }
+  .modal_tabla_odontologo {
+    display: none; /* El modal está oculto por defecto */
+    position: fixed; /* Fija la posición del modal */
+    z-index: 1; /* Pone el modal por encima del resto de elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite desplazar el contenido del modal si es demasiado grande */
+    background-color: rgba(0,0,0,0.4); /* Color de fondo oscuro */
+  }
+  
+  
+  
+  /* Estilo del contenido del modal */
+  .modal-content {
+    background-color: #fefefe; /* Color de fondo del contenido */
+    margin: 15% auto; /* Centra el contenido verticalmente */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-}
-
-.modal-content1 {
-    font-family: Arial, Helvetica, sans-serif;
-    border-radius: 15px;
-    background-color: #fefefe;
-    margin: 15% auto;
-    /*Centraelmodalverticalmenteylodesplazahaciaabajo*/
+    width: 80%; /* Ancho del contenido */
+  }
+  .modal-content2 {
+    background-color: #fefefe; /* Color de fondo del contenido */
+    margin: 15% auto; /* Centra el contenido verticalmente */
     padding: 20px;
-    width: 30%;
-    -webkit-border-radius: 15px;
-    position: absolute;
-    top: -28%;
-    right: 34%;
-}
+    border: 1px solid #888;
+    width: 80%; /* Ancho del contenido */
+  }
+  .modal-content3 {
+    background-color: #fefefe; /* Color de fondo del contenido */
+    margin: 15% auto; /* Centra el contenido verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del contenido */
+  }
+  .modal-content4 {
+    background-color: #fefefe; /* Color de fondo del contenido */
+    margin: 15% auto; /* Centra el contenido verticalmente */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del contenido */
+  }
 
-body {
-    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-/* Estilos para el botón de cerrar */
-
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close1 {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-
-
-.close:focus,
-.close:hover {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn btn-outline-primary {
-    left: 0;
-    justify-items: center;
-    align-items: center;
-}
-
-.btn {
-    justify-items: center;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-.text {
-    justify-items: center;
-    display: flex;
-    align-items: center;
-    top: 20%;
-}
-
-.form-control {
-    justify-content: center;
-    align-items: center;
-}
-
-h1 {
-    text-align: center;
-}
-
-form {
-    width: 400px;
-    margin: 0 auto;
-}
-
-label {
-    display: block;
-    margin-top: 10px;
-}
-
-input,
-select {
-    width: 100%;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid gray;
-    margin-top: 5px;
-}
-
-input[type="submit"] {
-    background-color: #4caf50;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-}
-.moti{
-    width: 300px;
-    height: 100px;
-}
+  

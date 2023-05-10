@@ -1,85 +1,75 @@
 {% extends "layout.html" %}
 {% block body %}
 <header class="header">
-    <div class="container">
-        <div class="btn-menu">
-            <label for="btn-menu" style="color: black;">☰</label>
-        </div>
-        <div class="logo">
-        </div>
-        <nav class="menu">
-            <a style="color: black;" href="indexcita">Cerrar sesion</a>
-        </nav>
+  <div class="container">
+    <div class="btn-menu">
+      <label for="btn-menu" style="color: black;">☰</label>
     </div>
+    <div class="logo">
+    </div>
+    <nav class="menu">
+      <a style="color: black;" href="indexcita">Cerrar sesion</a>
+    </nav>
+  </div>
 </header>
 <div class="capa"></div>
 <input type="checkbox" id="btn-menu">
 <div class="container-menu">
-    <div class="cont-menu">
-        <nav>
-            <a href="indexcalendario">Calendario</a>
-            <a href="indexcita2">Pacientes</a>
-            <a href="#">Reportes de citas</a>
-            <a href="#">Facturacion</a>
-        </nav>
-        <label class="logox" for="btn-menu">✖️</label>
-    </div>
+  <div class="cont-menu">
+    <nav>
+      <a href="indexcalendario">Calendario</a>
+      <a href="indexcita2">Pacientes</a>
+      <a href="indexcita2">citas</a>
+      <a href="#">Facturacion</a>
+    </nav>
+    <label class="logox" for="btn-menu">✖️</label>
+  </div>
 </div>
 <div class="contenedor_de_la_tabla">
-    <div class="tabla_de_mi_cita">
-        <div class="d-flex mb-3">
-            <input type="text" id="buscador" class="form-control mr-2" placeholder="Buscar en la tabla..." style="width: 200px;">
-            <button class="btn btn-primary" type="button" id="boton-buscar" style="margin-top: 2px; height: 43px; margin-left:15px" >Buscar</button>
-            <button id="boton-nueva-cita" class="btn btn-primary" type="button" style="margin-top: 2px; height: 43px; margin-left:15px" >Nueva odontologo</button>
-          </div>
-        <table class="table ">
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Direccion</th>
-                <th scope="col">Telefono</th>
-                <th scope="col">Email</th>
-                <th scope="col">Especialidad</th>
-              </tr>
-            </thead>
-            <tbody id="tabla">
-              <tr>
-               
-              </tr>
-            </tbody>
-          </table>
+  <div class="tabla_de_mi_cita">
+    <div class="d-flex mb-3">
+      <input type="text" id="buscador" class="form-control mr-2" placeholder="Buscar en la tabla..."
+        style="width: 200px;">
+      <button class="btn btn-primary" type="button" id="boton-buscar"
+        style="margin-top: 2px; height: 43px; margin-left:15px">Buscar</button>
+      <button id="myBtn_4" class="btn btn-primary" type="button"
+        style="margin-top: 2px; height: 43px; margin-left:15px">Nueva odontologo</button>
     </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Direccion</th>
+          <th scope="col">Telefono</th>
+          <th scope="col">Email</th>
+          <th scope="col">Especialidad</th>
+          <th scope="col">option</th>
+        </tr>
+      </thead>
+      <tbody id="tabla">
+        <tr>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
-<div class="modal1" id="tabla_odontoogo">
-  <div class="modal-content1">
-      <span class="close1"></span>
-      <div class="mensaje1">
-          <h1>Formulario de new paciente</h1>
-      </div>
-      <div class="text">
-        <form id="odontologiaForm" method="post">
-          <label id="id-e"></label>
-          <br>
-          <label for="Nombre">Nombre:</label>
-          <input type="text" id="Nombre" name="Nombre" required>
-          <label for="Direccion">Direccion:</label>
-          <input type="text" name="direccion" id="direccion"required>
-          <label for="Telefono">Telefono:</label>
-          <input type="number" id="Telefono" name="Telefono"  required>
-          <label for="Email">Email:</label>
-          <input type="text" name="email" id="Correo"  required>
-          <label for="Especialidad">Especialidad:</label>
-          <input type="text" name="text" id="Especialidad"  required>
-          <br>
-          <input id="btn" onclick="registrar_odontologo()" type="submit" value="Enviar" >
-          <input id="btn" onclick="cancelar()" type="submit" value="cancelar" disabled>
-         </form>
-         <div id="mensajeExito" class="message success">¡Formulario enviado con éxito!</div>
-         <div id="mensajeError" class="message">Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.</div>
-      </div>
+<div id="myModal_tabla_odontologo_1" class="modal_tabla_odontologo">
+  <div class="modal-content4">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombres" name="nombre" required>
+    <label for="Direccion">Direccion</label>
+    <input id="Direccion" type="text" placeholder="Direccion" name="Direccion">
+    <label for="Telefono">Telefono</label>
+    <input id="Telefono" type="text" placeholder="Telefono" name="Telefono">
+    <label for="Email">Email</label>
+    <input id="Email" type="text" placeholder="Email" name="Email">
+    <label for="Especialidad">Especialidad:</label>
+    <input type="text" id="Especialidad" name="Especialidad" required>
+    <input id="btn" onclick="" type="submit" value="Enviar">
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/odontologo_admin.js')}}"></script>
-<script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
+<script src="{{url_for('static', filename='js/binj/funcion_modal_odontologo.js')}}"></script>
 {% endblock %}

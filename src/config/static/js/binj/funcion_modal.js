@@ -1,41 +1,23 @@
-// Obtener el botón "Nueva cita"
-const botonNuevaCita = document.querySelector("#boton-nueva-cita");
-const botonNuevaCita2 = document.querySelector("#boton-nueva-cita-disponible");
-
-
 // Obtener el modal
-const modal = document.querySelector(".modal1");
-const modal2 = document.querySelector(".modal2");
+var modal = document.getElementById("myModal_tabla_admin_1");
+var modal2 = document.getElementById("myModal_tabla_admin_2");
 
+// Obtener el botón que abre el modal
+var btn = document.getElementById("myBtn_1");
+var btn2 = document.getElementById("myBtn_2");
 
-// Obtener el botón de cierre del modal
-const botonCerrar = document.querySelector(".close");
-const botonCerrar2 = document.querySelector(".close2");
-
-// Cuando se hace clic en el botón "Nueva cita", mostrar el modal
-botonNuevaCita.addEventListener("click", () => {
+// Cuando el usuario haga clic en el botón, abrir el modal
+btn.onclick = function () {
   modal.style.display = "block";
-});
-botonNuevaCita2.addEventListener("click", () => {
-    modal2.style.display = "block";
-  });
-// Cuando se hace clic en el botón de cierre del modal, ocultar el modal
-modal.addEventListener("click", function (event) {
-  if(event.target === modal){
-    modal.style.display = "none";  // ocultar el modal
-
-  }
-});
-// Cuando el usuario hace clic fuera del modal, cerrar el modal
-window.addEventListener("click", (evento) => {
-  if (evento.target == modal) {
+}
+btn2.onclick = function () {
+  modal2.style.display = "block";
+}
+// Cuando el usuario haga clic fuera del modal, cerrarlo
+window.onclick = function (event) {
+  if (event.target == modal) {
     modal.style.display = "none";
+  } else if (event.target == modal2) {
+    modal2.style.display = "none";
   }
-});
-window.addEventListener("click", (evento) => {
-    if (evento.target == modal2) {
-      modal2.style.display = "none";
-    }
-  });
-
-  
+}
