@@ -39,8 +39,8 @@ window.addEventListener('load', function() {
 //-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
-  const nombres = document.getElementById('nombre');
-  const edades = document.getElementById('edad');
+  const nombres = document.getElementById('nombres');
+  const edades = document.getElementById('edades');
   const generos= document.getElementById('generos');
   const fecha = document.getElementById('fecha');
   const consultas = document.getElementById('consultas');
@@ -49,7 +49,7 @@ function guardar_cita_admin() {
   const problemas = document.getElementById('problemas');
   alert('si sirve ome ')
   try {
-      axios.post('guardarcitas', {
+      axios.post('guardarcitas_admin', {
           Nombre_completo: nombres.value,
           Edad: edades.value,
           genero: generos.value,
@@ -65,7 +65,7 @@ function guardar_cita_admin() {
           }
       }).then((res) => {
           console.log(res.data)
-          
+          alert("cita admin")
       })
   } catch (error) {
       console.error(error)

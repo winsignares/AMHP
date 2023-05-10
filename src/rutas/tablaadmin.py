@@ -32,24 +32,23 @@ def mostarcitasuser():
     return jsonify(datos)
 
 
-# @routes_cita2.route('/actualizar_citas', methods=['POST'] )
-# def actualizar_citas():
-#     datos= {}
-#     resultado = db.session.query(citas).select_from(citas).all()
-#     i=0
-#     goria = []
-#     for cate in resultado:
-#         i+=1	       
-#         datos[i] = {
-#         'id':cate.id,
-# 		'Nombre_completo':cate.Nombre_completo,
-# 		'Edad':cate.Edad,                                                    
-# 		'genero':cate.genero,                                                    
-# 		'fecha':cate.fecha,                                                    
-# 		'consulta':cate.consulta,                                                    
-#         }
-#         goria.append(datos)
-#     return jsonify(datos)
+@routes_cita2.route('/guardarcitas_admin', methods=['POST'])
+def savecitass():
+
+    Nombre_completo = request.form['Nombre_completo']
+    Edad = request.form['Edad']
+    genero = request.form['genero']
+    fecha = request.form['fecha']
+    consulta = request.form['consulta']
+    tarje_tade_credito = request.form['tarje_tade_credito']
+    Num_tarjeta = request.form['Num_tarjeta']
+    problema = request.form['problema']
+    # problema = date.today()
+    print(Nombre_completo)
+    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema)
+    db.session.add(new_cit)
+    db.session.commit()
+    return "si" 
 
 
 # @routes_cita2.route('/updatesolicitudes', methods=['POST'] )

@@ -27,6 +27,7 @@ function save_cit() {
             }
         }).then((res) => {
             console.log(res.data)
+            alert("sita agendada cono user")
         })
     } catch (error) {
         console.error(error)
