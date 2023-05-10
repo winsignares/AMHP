@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].direccion}</td>
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].correo}</td> 
-                <td>${datos[index].Especialidad}</td> 
+                <td>${datos[index].especialidad}</td> 
                 <td><a onclick="acualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
@@ -38,9 +38,9 @@ window.addEventListener('load', function () {
 
 function registrar_odontologo() {
     const Nombre = document.getElementById('Nombre');
-    const direccion = document.getElementById('direccion');
+    const direccion = document.getElementById('Direccion');
     const Telefono = document.getElementById('Telefono');
-    const Correo = document.getElementById('Correo');
+    const Correo = document.getElementById('Email');
     const Especialidad = document.getElementById('Especialidad');
     alert('Registrar odontologo')
 

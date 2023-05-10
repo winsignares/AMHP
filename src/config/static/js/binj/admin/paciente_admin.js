@@ -48,7 +48,7 @@ function registrar_paciente() {
     const Correo = document.getElementById('Correo');
     const Fechadenacimento = document.getElementById('fecha');
     alert('Registrar')
-    axios.post('guardarpaciente_admin', {
+    axios.post('guardarpaciente_admin', { 
         Name: name.value,
         cedula: Cedula.value,
         telefono: Telefono.value,
@@ -99,3 +99,5 @@ function buscadorpaciente() {
     }
   }
 }
+//-------modal paciente-----
+

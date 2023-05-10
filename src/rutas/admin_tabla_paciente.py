@@ -11,7 +11,7 @@ def indexadmin_tabla_paciente():
     return render_template('/main/admin_tabla_paciente.html', titles=titulo)
 
 
-@routes_admin_tabla_paciente.route('/guardarpaciente_admin', methods=['POST'])
+@routes_admin_tabla_paciente.route('/guardarpaciente_admin', methods=['POST']) 
 def saveregistro_admin():
     Name = request.form['Name']
     cedula = request.form['cedula']
@@ -34,7 +34,7 @@ def mostarpaciente_admin():
     goria = []
     for cate in resultado:
         i+=1	       
-        datos[i] = {
+        datos[i] = { 
         'id':cate.id,
 		'Name':cate.Name,
 		'cedula':cate.cedula,                                                    

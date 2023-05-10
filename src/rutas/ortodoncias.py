@@ -17,9 +17,9 @@ def saveodontologos_admin():
     direccion = request.form['direccion']
     telefono = request.form['telefono']
     correo = request.form['correo']
-    especialidad = request.form['especialidad']
+    especialidad = request.form['especialidad']     
     print(nombre)
-    new_reg = odontologos(nombre,direccion,telefono,correo,especialidad,)
+    new_reg = odontologos(nombre,direccion,telefono,correo,especialidad)
     db.session.add(new_reg)
     db.session.commit()
     return "si"
