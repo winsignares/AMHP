@@ -18,7 +18,7 @@ function mostrar() {
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].correo}</td> 
                 <td>${datos[index].especialidad}</td> 
-                <td><a onclick="acualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="acualizar_odontologo() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
 
@@ -69,3 +69,14 @@ function registrar_odontologo() {
 
 
 }
+//-----modal de odontologo-----
+function acualizar_odontologo() {
+    // ... resto del código
+    
+    // Obtener el modal
+    var modal = document.getElementById("myModal_tabla_odontologo_1");
+  
+    // Abrir el modal
+    modal.style.display = "block";
+  }
+  

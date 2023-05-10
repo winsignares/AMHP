@@ -22,7 +22,7 @@ function mostrar() {
                 <td>${datos[index].direccion}</td>  
                 <td>${datos[index].Email}</td>  
                 <td>${datos[index].fecha_nacimiento}</td>   
-                <td><a onclick="actualizar() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="actualizar_paciente() "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
                 
@@ -100,4 +100,13 @@ function buscadorpaciente() {
   }
 }
 //-------modal paciente-----
+function actualizar_paciente() {
+  // ... resto del código
+  
+  // Obtener el modal
+  var modal = document.getElementById("myModal_tabla_paciente_1");
+
+  // Abrir el modal
+  modal.style.display = "block";
+}
 

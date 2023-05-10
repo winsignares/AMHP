@@ -19,7 +19,7 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
-                <td><a onclick="actualizar()"class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="actualizar_citas()"class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
                 
@@ -34,7 +34,6 @@ function mostrar() {
 window.addEventListener('load', function() {
     mostrar();
 })
-
 
 //-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
@@ -96,4 +95,14 @@ function buscadordecitas() {
       rows[i].style.display = "none";
     }
   }
+}
+//-----modal de citas-----
+function actualizar_citas() {
+  // ... resto del código
+  
+  // Obtener el modal
+  var modal = document.getElementById("myModal_tabla_admin_1");
+
+  // Abrir el modal
+  modal.style.display = "block";
 }
