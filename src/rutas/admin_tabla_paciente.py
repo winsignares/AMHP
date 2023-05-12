@@ -26,6 +26,22 @@ def saveregistro_admin():
     return "si"
 
 
+@routes_admin_tabla_paciente.route('/eliminar_paciente_admin', methods=['POST'])
+def eliminar_paciente_admin():
+    # Obtener el ID del paciente a eliminar desde la solicitud POST
+    id_paciente = request.json['id']
+
+    # Lógica para eliminar el paciente en la base de datos
+    # Aquí debes escribir el código para eliminar el paciente utilizando la biblioteca o método que estés utilizando para interactuar con la base de datos
+    
+    paciente = pacientes.query.get(id_paciente)  # Busca el paciente por ID
+    if paciente:
+        db.session.delete(paciente)  # Elimina el paciente
+        db.session.commit()  # Confirma los cambios en la base de datos
+        return jsonify({'message': 'Paciente eliminado correctamente'})
+    else:
+        return jsonify({'message': 'Paciente no encontrado'})
+    
 @routes_admin_tabla_paciente.route('/mostrar_pacientes_admin', methods=['GET'])
 def mostarpaciente_admin():
     datos= {}
