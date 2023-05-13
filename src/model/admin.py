@@ -1,7 +1,7 @@
 from config.db import db, app, ma 
 
-class login(db.Model):
-    __tablename__ = "tbllogin"
+class admins(db.Model):
+    __tablename__ = "tbladmin"
 
     
     id  = db.Column(db.Integer, primary_key=True)

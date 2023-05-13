@@ -10,7 +10,7 @@ from config.db import db, app, ma
 #importar los model en orden
 from model.paciente import pacientes
 from model.odontologo import odontologos
-# from model.login import login
+from model.admin import admins
 # from model.fechas_disponibles import fechas_dispo
 from model.histo_clinico import histoclinicos
 from model.cita import citas
