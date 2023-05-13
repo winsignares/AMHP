@@ -2,9 +2,6 @@
 {% block body %}
 <header class="header">
     <div class="container">
-        <div class="btn-menu">
-            <label for="btn-menu" style="color: black;">☰</label>
-        </div>
         <div class="logo">
         </div>
         <nav class="menu">
@@ -34,23 +31,32 @@
 </div>
 <div class="contenedor_de_la_tabla">
     <div class="tabla_de_mi_cita">
-        <table class="table">
-            
-            <thead>
-              <tr>
-                <th scope="col">id</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Edad</th>
-                <th scope="col">NAME</th>
-                <th scope="col">opcion</th>
-              </tr>
-            </thead>
-            <tbody id="tabla">
-              <tr>
-               
-              </tr>
-            </tbody>
-          </table>
+        <div class="d-flex mb-3">
+            <input type="text" id="buscadorpacienteadmin" onkeyup="buscadorpaciente()" class="form-control mr-2"
+                placeholder="Buscar en la tabla...">
+            <button class="btn btn-primary" type="button" id="boton-buscar">Buscar</button>
+        </div>
+        <div class="table-responsive_user">
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Fecha selecionada</th>
+                        <th scope="col">Consulta</th>
+                        <th scope="col">Option</th> 
+                    </tr>
+                </thead>
+                <tbody id="tabla">
+                    <tr>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/user/mostrarcita_user.js')}}"></script>

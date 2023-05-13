@@ -68,7 +68,7 @@ function eliminar_odontologo(id) {
 //esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
 
 function registrar_odontologo() {
-    const Nombre = document.getElementById('Nombre');
+    const Nombre = document.getElementById('nombres');
     const direccion = document.getElementById('Direccion');
     const Telefono = document.getElementById('Telefono');
     const Correo = document.getElementById('Email');
