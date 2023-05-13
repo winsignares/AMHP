@@ -118,8 +118,12 @@ function buscadorpaciente() {
 function actualizar_paciente() {
   // Obtener el modal
   var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
-
   // Abrir el modal
   modal.style.display = "block";
+  //se cierra el modal con solo pressionar afuera de el
+window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
 }
-
