@@ -8,18 +8,17 @@ from config.db import db, app, ma
 
 
 #importar los model en orden
-# from model.paciente import pacientes
-from model.odontologo import odontologos
-from model.cita import citas
-# from model.tratamiento import tratamientos
-# from model.histo_clinico import histoclinicos
-from model.login import login
 from model.paciente import pacientes
-from model.fechas_disponibles import fechas_dispo
+from model.odontologo import odontologos
+# from model.login import login
+# from model.fechas_disponibles import fechas_dispo
+from model.histo_clinico import histoclinicos
+from model.cita import citas
+from model.tratamiento import tratamientos
 
 
 
-#importar rutas
+# importar rutas
 from rutas.blanqueamentos import routes_blanqueamentos
 from rutas.cita import routes_cita
 from rutas.implantes import routes_implantes
@@ -39,7 +38,7 @@ from rutas.admin_tabla_medico import routes_admin_tabla_medico
 
 
 
-#import bluplint
+# import bluplint
 app.register_blueprint(routes_blanqueamentos, url_prefix="/fronted") 
 app.register_blueprint(routes_cita, url_prefix="/fronted")
 app.register_blueprint(routes_implantes, url_prefix="/fronted")

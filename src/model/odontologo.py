@@ -1,7 +1,7 @@
 from config.db import db, app, ma 
 
 class odontologos(db.Model):
-    __tablename__ = "tblodontologo"
+    __tablename__ = "tblodontologos"
 
     
     id  = db.Column(db.Integer, primary_key=True)

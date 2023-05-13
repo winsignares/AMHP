@@ -49,14 +49,14 @@ function guardar_cita_admin() {
   alert('si sirve ome ')
   try {
       axios.post('guardarcitas_admin', {
-          Nombre_completo: nombres.value,
-          Edad: edades.value,
-          genero: generos.value,
-          fecha: fecha.value,
-          consulta: consultas.value,
-          tarje_tade_credito: tarjetas.value,
-          Num_tarjeta: cardNumber.value,
-          problema: problemas.value,
+        Nombre_completo: nombres.value,
+        Edad: edades.value,
+        genero: generos.value,
+        fecha: fecha.value,
+        consulta: consultas.value,
+        tarje_tade_credito: tarjetas.value,
+        Num_tarjeta: cardNumber.value,
+        problema: problemas.value
           
       }, {
           headers: {

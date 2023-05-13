@@ -11,7 +11,6 @@ class pacientes(db.Model):
     direccion = db.Column(db.String(50))
     Email = db.Column(db.String(50))
     fecha_nacimiento = db.Column(db.String(50))
-
     def __init__(self, Name,cedula,telefono,direccion,Email,fecha_nacimiento):
         self.Name = Name
         self.cedula = cedula

@@ -33,7 +33,7 @@ def mostarcitasuser():
 
 
 @routes_cita2.route('/guardarcitas_admin', methods=['POST'])
-def savecitass():
+def savecita_admins():
 
     Nombre_completo = request.form['Nombre_completo']
     Edad = request.form['Edad']
