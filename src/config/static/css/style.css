@@ -274,9 +274,12 @@
 }
 
 .p7 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 40px;
     margin-top: 80px;
     color: #fff;
@@ -286,9 +289,12 @@
 
 
 .p8 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 40px;
     margin-top: 70px;
     color: #fff;
@@ -297,9 +303,12 @@
 }
 
 .p9 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 10px;
     margin-top: 70px;
     color: #fff;
@@ -309,9 +318,12 @@
 
 
 .p10 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 10px;
     margin-top: 20px;
     color: #fff;
@@ -320,9 +332,12 @@
 }
 
 .p11 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -10px;
     margin-top: 80px;
     color: #fff;
@@ -331,9 +346,12 @@
 }
 
 .p12 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 20px;
     margin-top: 20px;
     color: #fff;
@@ -342,9 +360,12 @@
 }
 
 .p13 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 70px;
     margin-top: 20px;
     color: #fff;
@@ -353,9 +374,12 @@
 }
 
 .p14 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 80px;
     margin-top: 20px;
     color: #fff;
@@ -365,9 +389,12 @@
 }
 
 .p15 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 200px;
     margin-top: 20px;
     color: #fff;
@@ -376,9 +403,12 @@
 }
 
 .p16 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 220px;
     margin-top: 20px;
     color: #fff;
@@ -390,21 +420,27 @@
 }
 
 .p17 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 322px;
     margin-top: 20px;
     color: #fff;
     font-size: 20px;
-    margin-left:3%;
+    margin-left: 3%;
 
 }
 
 .p18 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 322px;
     margin-top: 20px;
     color: #fff;
@@ -415,9 +451,12 @@
 }
 
 .p19 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 40px;
     margin-top: 80px;
     color: #fff;
@@ -427,9 +466,12 @@
 }
 
 .p20 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 40px;
     margin-top: 80px;
     color: #fff;
@@ -440,9 +482,12 @@
 }
 
 .p21 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -400px;
     margin-top: 80px;
     color: #fff;
@@ -453,9 +498,12 @@
 }
 
 .p22 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -420px;
     margin-top: 80px;
     color: #fff;
@@ -466,61 +514,82 @@
 }
 
 .p23 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -390px;
     margin-top: 80px;
     color: #fff;
     font-size: 20px;
     margin-left: 1%;
     max-width: 500%;
-    text-align: left;;
+    text-align: left;
+    ;
 }
 
 .p24 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -420px;
     margin-top: 80px;
     color: #fff;
     font-size: 20px;
     margin-left: 1%;
     max-width: 500%;
-    text-align: left;;
+    text-align: left;
+    ;
 }
 
 .p25 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -480px;
     margin-top: 80px;
     color: #fff;
     font-size: 20px;
     margin-left: 1%;
     max-width: 500%;
-    text-align: left;;
+    text-align: left;
+    ;
 
 }
+
 .p26 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: -480px;
     margin-top: 80px;
     color: #fff;
     font-size: 40px;
     margin-left: 1%;
     max-width: 500%;
-    text-align: left;;
+    text-align: left;
+    ;
 
 }
+
 .p27 {
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 800%;
     margin-top: 80px;
     color: #fff;
@@ -530,10 +599,14 @@
     text-align: left;
 
 }
-.ul1{
-    position: relative; /*cambiamos de absolute a relative*/
-    left: 50%; /*colocamos el elemento en el centro*/
-    transform: translateX(-50%); /*centramos horizontalmente*/
+
+.ul1 {
+    position: relative;
+    /*cambiamos de absolute a relative*/
+    left: 50%;
+    /*colocamos el elemento en el centro*/
+    transform: translateX(-50%);
+    /*centramos horizontalmente*/
     top: 800%;
     margin-top: -500px;
     color: #fff;
@@ -567,7 +640,7 @@
 
 .imagen-circular {
     position: absolute;
-    top: 130%;
+    top: 115%;
     left: 100px;
     border-radius: 10%;
     /* Define un radio del 50% para que tenga forma de círculo */
@@ -577,16 +650,18 @@
     /* Ajusta la altura de la imagen según tus necesidades */
     object-fit: cover;
     /* Opcional: ajusta la forma en que la imagen se ajusta dentro del contenedor */
-    margin: 0 auto; /* centra el contenedor horizontalmente */
-    overflow: hidden; /* oculta cualquier parte de la imagen que se salga del contenedor */
+    margin: 0 auto;
+    /* centra el contenedor horizontalmente */
+    overflow: hidden;
+    /* oculta cualquier parte de la imagen que se salga del contenedor */
     margin-left: 5%;
-    
+
 }
 
 
 .imagen-circular2 {
     position: absolute;
-    top: 166%;
+    top: 150%;
     left: 50px;
     border-radius: 10%;
     /* Define un radio del 50% para que tenga forma de círculo */
@@ -611,7 +686,7 @@
     object-fit: cover;
     /* Opcional: ajusta la forma en que la imagen se ajusta dentro del contenedor */
     margin-left: 60%;
-    
+
 }
 
 
@@ -726,16 +801,19 @@ label[for="btn-menu"] {
 .table-responsive_citas {
     overflow-x: auto;
     margin-top: 5%;
- 
+
 }
+
 .table-responsive_paciente {
     overflow-x: auto;
     margin-top: 5%;
 }
+
 .table-responsive_medico {
     overflow-x: auto;
     margin-top: 5%;
 }
+
 .table-responsive_user {
     overflow-x: auto;
     margin-top: 5%;
@@ -752,20 +830,22 @@ label[for="btn-menu"] {
     margin-top: 10px;
     height: 40px;
     margin-left: 15px
-    
 }
+
 .table {
     word-break: break-word;
-    
-  }
-  footer {
+
+}
+
+footer {
     background-color: #f2f2f2;
     color: #333;
     padding: 20px;
     text-align: center;
-  }
-  
-  .video {
-    margin-top: -40%; /* Ajusta el valor según tu necesidad */
+}
+
+.video {
+    margin-top: -40%;
+    /* Ajusta el valor según tu necesidad */
     margin-left: 1%;
 }
