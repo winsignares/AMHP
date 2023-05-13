@@ -274,189 +274,276 @@
 }
 
 .p7 {
-    position: absolute;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
     top: 40px;
-    left: 1151px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
-    font-size: 30px;
+    font-size: 42px;
+    margin-left: 25%;
 }
 
+
 .p8 {
-    position: absolute;
-    top: 120px;
-    left: 1010px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 40px;
+    margin-top: 70px;
     color: #fff;
+    font-size: 30px;
+    margin-left: 15%;
 }
 
 .p9 {
-    position: absolute;
-    top: 200px;
-    left: 600px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 10px;
+    margin-top: 70px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
 }
 
+
 .p10 {
-    position: absolute;
-    top: 300px;
-    left: 600px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 10px;
+    margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
 }
 
 .p11 {
-    position: absolute;
-    top: 440px;
-    left: 850px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -10px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
-    font-size: 30px;
+    font-size: 42px;
+    margin-left: 1%;
 }
 
 .p12 {
-    position: absolute;
-    top: 550px;
-    left: 600px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 20px;
+    margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
 }
 
 .p13 {
-    position: absolute;
-    top: 700px;
-    left: 620px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 70px;
+    margin-top: 20px;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+    margin-left: 1%;
 }
 
 .p14 {
-    position: absolute;
-    top: 840px;
-    left: 910px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 80px;
+    margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    margin-left: -23.2%;
+    max-width: 800px;
 }
 
 .p15 {
-    position: absolute;
-    top: 1010px;
-    left: 1050px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 200px;
+    margin-top: 20px;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+    margin-left: 20%;
 }
 
 .p16 {
-    position: absolute;
-    top: 1090px;
-    left: 1050px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 220px;
+    margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 5%;
+    max-width: 800px;
+
 
 }
 
 .p17 {
-    position: absolute;
-    top: 1300px;
-    left: 1200px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 322px;
+    margin-top: 20px;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+    margin-left:3%;
 
 }
 
 .p18 {
-    position: absolute;
-    top: 1400px;
-    left: 1200px;
-    margin-top: 80px;
-    margin-left: -590px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 322px;
+    margin-top: 20px;
     color: #fff;
+    font-size: 20px;
+    margin-left: -20%;
+    max-width: 800px;
 
 }
 
 .p19 {
-    position: absolute;
-    top: 100px;
-    left: 700px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 40px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
-    font-size: 30px;
+    font-size: 42px;
+    margin-left: 20%;
 
 }
 
 .p20 {
-    position: absolute;
-    top: 170px;
-    left: 600px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 40px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
+    max-width: 500%;
 
 }
 
 .p21 {
-    position: absolute;
-    top: -50px;
-    left: 1200px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -400px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
-    font-size: 30px;
+    font-size: 40px;
+    margin-left: 26%;
+    max-width: 500%;
+
 }
 
 .p22 {
-    position: absolute;
-    top: 60px;
-    left: 1190px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -420px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 26%;
+    max-width: 500%;
+    text-align: left;
 }
 
 .p23 {
-    position: absolute;
-    top: 300px;
-    left: 600px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -390px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
+    max-width: 500%;
+    text-align: left;;
 }
 
 .p24 {
-    position: absolute;
-    top: 400px;
-    left: 600px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -420px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
-    font-size: 30px;
+    font-size: 20px;
+    margin-left: 1%;
+    max-width: 500%;
+    text-align: left;;
 }
 
 .p25 {
-    position: absolute;
-    top: 460px;
-    left: 600px;
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -480px;
     margin-top: 80px;
-    margin-left: -590px;
     color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
+    max-width: 500%;
+    text-align: left;;
 
 }
+.p26 {
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: -480px;
+    margin-top: 80px;
+    color: #fff;
+    font-size: 40px;
+    margin-left: 1%;
+    max-width: 500%;
+    text-align: left;;
+
+}
+.p27 {
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 800%;
+    margin-top: 80px;
+    color: #fff;
+    font-size: 40px;
+    margin-left: 1%;
+    max-width: 500%;
+    text-align: left;
+
+}
+.ul1{
+    position: relative; /*cambiamos de absolute a relative*/
+    left: 50%; /*colocamos el elemento en el centro*/
+    transform: translateX(-50%); /*centramos horizontalmente*/
+    top: 800%;
+    margin-top: -500px;
+    color: #fff;
+    font-size: 20px;
+    margin-left: 1%;
+    max-width: 800%;
+    text-align: left;
+}
+
+
 
 .container {
     position: relative;
@@ -469,6 +556,7 @@
     max-width: 100%;
     height: auto;
     z-index: 1;
+
 }
 
 .container3 {
@@ -479,45 +567,54 @@
 
 .imagen-circular {
     position: absolute;
-    top: 840px;
+    top: 130%;
     left: 100px;
-    border-radius: 80%;
+    border-radius: 10%;
     /* Define un radio del 50% para que tenga forma de círculo */
-    width: 200px;
+    max-width: 200px;
     /* Ajusta el ancho de la imagen según tus necesidades */
     height: 200px;
     /* Ajusta la altura de la imagen según tus necesidades */
     object-fit: cover;
     /* Opcional: ajusta la forma en que la imagen se ajusta dentro del contenedor */
+    margin: 0 auto; /* centra el contenedor horizontalmente */
+    overflow: hidden; /* oculta cualquier parte de la imagen que se salga del contenedor */
+    margin-left: 5%;
+    
 }
+
 
 .imagen-circular2 {
     position: absolute;
-    top: 1114px;
-    left: 240px;
-    border-radius: 80%;
+    top: 166%;
+    left: 50px;
+    border-radius: 10%;
     /* Define un radio del 50% para que tenga forma de círculo */
-    width: 200px;
+    max-width: 200px;
     /* Ajusta el ancho de la imagen según tus necesidades */
     height: 200px;
     /* Ajusta la altura de la imagen según tus necesidades */
     object-fit: cover;
     /* Opcional: ajusta la forma en que la imagen se ajusta dentro del contenedor */
+    margin-left: 60%;
 }
 
 .imagen-circular3 {
     position: absolute;
-    top: 1390px;
-    left: 400px;
-    border-radius: 80%;
+    top: 90%;
+    left: 50px;
+    max-width: 100%;
+    border-radius: 10%;
     /* Define un radio del 50% para que tenga forma de círculo */
-    width: 200px;
-    /* Ajusta el ancho de la imagen según tus necesidades */
     height: 200px;
     /* Ajusta la altura de la imagen según tus necesidades */
     object-fit: cover;
     /* Opcional: ajusta la forma en que la imagen se ajusta dentro del contenedor */
+    margin-left: 60%;
+    
 }
+
+
 
 .menu {
     /* Estilos para el menú */
@@ -661,3 +758,14 @@ label[for="btn-menu"] {
     word-break: break-word;
     
   }
+  footer {
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .video {
+    margin-top: -40%; /* Ajusta el valor según tu necesidad */
+    margin-left: 1%;
+}
