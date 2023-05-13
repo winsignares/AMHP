@@ -116,10 +116,8 @@ function buscadorpaciente() {
 }
 //-------modal paciente de actualizar-----
 function actualizar_paciente() {
-  // ... resto del código
-  
   // Obtener el modal
-  var modal = document.getElementById("myModal_tabla_paciente_1");
+  var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
 
   // Abrir el modal
   modal.style.display = "block";
