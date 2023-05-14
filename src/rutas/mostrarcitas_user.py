@@ -12,25 +12,6 @@ def indexcitauser():
     return render_template('/main/tabla_cita_user.html', titles=titulo)
 
 
-# @routes_mos_user.route('/mostrar_citas_user', methods=['GET'] )
-# def actualizar_citas():
-
-#     datos= {}
-#     resultado = db.session.query(citas).select_from(citas).all()
-#     i=0
-#     goria = []
-#     for cate in resultado:
-#         i+=1	       
-#         datos[i] = {
-#       'id':cate.id,
-# 		'Nombre_completo':cate.Nombre_completo,
-# 		'Edad':cate.Edad,                                                    
-# 		'genero':cate.genero,                                                    
-# 		'fecha':cate.fecha,                                                    
-# 		'consulta':cate.consulta,                                                    
-#         }
-#         goria.append(datos)
-#     return jsonify(datos)
 @routes_mos_user.route("/buscarpapo", methods=["POST"])
 def validar_logisssn():
   
@@ -55,33 +36,3 @@ def validar_logisssn():
   
 
     
-@routes_mos_user.route('buscarcita_pacientes', methods=['POST'])
-def buscarcita_paciente():
-    # Obtener el ID de búsqueda enviado en la solicitud
-    id_busqueda = request.form.get('buscar')
-
-    # Aquí puedes realizar las operaciones necesarias para buscar la cita en la base de datos
-    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
-
-    # Ejemplo de búsqueda usando SQLAlchemy
-    cita = citas.query.get(id_busqueda)
-
-    if cita is not None:
-        # Se encontró la cita
-        # Puedes construir un diccionario con los datos de la cita para enviar como respuesta
-        datos_cita = {
-            'id': cita.id,
-            'Nombre_completo': cita.Nombre_completo,
-            'Edad': cita.Edad,
-            'genero': cita.genero,
-            'fecha': cita.fecha,
-            'consulta': cita.consulta
-        }
-        
-        
-
-        # Enviar los datos de la cita como respuesta
-        return jsonify(datos_cita)
-    else:
-        # No se encontró la cita
-        return jsonify({'message': 'Cita no encontrada'})
