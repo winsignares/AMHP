@@ -182,6 +182,8 @@ function buscadorpaciente() {
     }
   }
 }
+
+
 // //-------modal paciente de actualizar-----
 // function actualizar_paciente() {
 //   // Obtener el modal
