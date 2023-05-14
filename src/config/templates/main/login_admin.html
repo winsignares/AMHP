@@ -17,12 +17,13 @@
             <label for="password">Password</label>
             <input id="contrasena" type="password" placeholder="Enter Password" required>
             <br>
-            <input class="botonlogin" onclick="admin()" type="submit" value="Log In">
+            <input class="botonlogin" onclick="ingrso()" type="submit" value="Log In">
         <a style="color: black;" href="">Lost your Password?</a><br>
         <a style="color: black;" href="fronted/indexregistro">Don't have An account?</a>
     </div>
     
 </body>
 <script src="{{url_for('static', filename='js/binj/admin/login.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </html>

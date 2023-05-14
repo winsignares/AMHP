@@ -1,14 +1,17 @@
-function admin(){
+
+function ingrso(){
     
-
-    usuario = document.getElementById('usuario').value;
-    contrasena = document.getElementById('contrasena').value;
-
-    if (usuario == "admin" && contrasena == "1234"){ //condicional ternario (usar "==" o "equals") y usar "==" para iguales, "equals" para diferentes.
-        window.location.href = 'indexcita2'; //redirigimos al inicio. Para modificar el nombre del document
-    }
-    else{ //condicional if por condicional (usar "else if" o "elif") y usar "else" para sal
-        alert("Usuario o contraseña incorrectos"); //alerta de texto. Para modificar el título del m
-
-    }
+    const user = document.getElementById('usuario');
+    const contrasena = document.getElementById('contrasena');
+    axios.post('login', {
+        usuario: user.value,
+        contraseña: contrasena.value
+    })
+        .then(function (response) {
+            console.log(response)
+                window.location.href = '/fronted/indexcita2';
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
 }
