@@ -89,6 +89,6 @@ def actualizar_paciente():
 
     # Guardar los cambios en la base de datos
     db.session.commit()
-
+      
     # Enviar una respuesta exitosa
     return jsonify({'message': 'Datos actualizados correctamente'})
