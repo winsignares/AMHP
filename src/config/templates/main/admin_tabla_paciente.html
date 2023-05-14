@@ -83,24 +83,29 @@
     <!-- modal de actualizar  -->
     <div id="myModal_tabla_paciente_admin_actualizar" class="modal_tabla_paciente_admin_actualizar">
       <div class="modal-content3-actualizar">
+        <!-- id inpppput -->
+        <label for="id">id</label>
+        <input id="id_nuevo" type="text" name="idactu">
+        <!-- fulll name imput -->
         <label for="Fullname">Full name</label>
-        <input id="Fullname" type="text" placeholder="Fullname" name="Fullname">
+        <input id="Fullname_nuevo" type="text" placeholder="Fullname" name="Fullname">
         <!-- Cedula INPUT -->
         <label for="Cedula">Cedula</label>
-        <input id="Cedula" type="text" placeholder="Cedula" name="Cedula">
+        <input id="Cedula_nuevo" type="text" placeholder="Cedula" name="Cedula">
         <!-- Telefono INPUT -->
         <label for="Telefono">Telefono</label>
-        <input id="Telefono" type="text" placeholder="Telefono" name="Telefono">
+        <input id="Telefono_nuevo" type="text" placeholder="Telefono" name="Telefono">
         <!-- Direccion INPUT -->
         <label for="Direccion">Direccion</label>
-        <input id="Direccion" type="text" placeholder="Direccion" name="Direccion">
+        <input id="Direccion_nuevo" type="text" placeholder="Direccion" name="Direccion">
         <!-- Correo INPUT -->
         <label for="Correo">Correo</label>
-        <input id="Correo" type="text" placeholder="Correo" name="Correo">
+        <input id="Correo_nuevo" type="text" placeholder="Correo" name="Correo">
         <!-- Fecha de nacimento INPUT -->
         <label for="Fechadenacimento">Fecha de nacimento</label>
-        <input type="date" id="fecha" name="fecha">
-        <input onclick="actualizar_paciente()" type="submit" value="enviar">
+        <input type="date" id="fecha_nuevo" name="fecha">
+        <!-- <input onclick="actualizar_paciente()" type="submit" value="enviar"> -->
+        <button id="btn-actualizarpaciente" class="btn-primary">avtualizar</button>
       </div>
     </div>
   <script src="{{url_for('static', filename='js/binj/admin/paciente_admin.js')}}"></script>

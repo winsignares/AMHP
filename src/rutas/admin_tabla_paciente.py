@@ -61,3 +61,34 @@ def mostarpaciente_admin():
         }
         goria.append(datos)
     return jsonify(datos)
+
+
+
+@routes_admin_tabla_paciente.route('/actualizar_paciente_admin', methods=['POST'] )
+def actualizar_paciente():
+  # Obtener los datos enviados en la solicitud
+    id = request.form.get('id')
+    name = request.form.get('Name')
+    cedula = request.form.get('cedula')
+    telefono = request.form.get('telefono')
+    direccion = request.form.get('direccion')
+    email = request.form.get('Email')
+    fecha_nacimiento = request.form.get('fecha_nacimiento')
+
+    # Aquí puedes realizar las operaciones necesarias para actualizar los datos en la base de datos
+    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
+
+    # Ejemplo de actualización usando SQLAlchemy
+    paciente = pacientes.query.get(id)
+    paciente.Name = name
+    paciente.cedula = cedula
+    paciente.telefono = telefono
+    paciente.direccion = direccion
+    paciente.Email = email
+    paciente.fecha_nacimiento = fecha_nacimiento
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+
+    # Enviar una respuesta exitosa
+    return jsonify({'message': 'Datos actualizados correctamente'})

@@ -22,7 +22,7 @@ function mostrar() {
                 <td>${datos[index].direccion}</td>  
                 <td>${datos[index].Email}</td>  
                 <td>${datos[index].fecha_nacimiento}</td>   
-                <td><a onclick="actualizar_paciente() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="abrir_modal_actualizar(${datos[index].id}) "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar(${datos[index].id})" class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
             }
@@ -37,6 +37,74 @@ window.addEventListener('load', function() {
     mostrar();
 })
   
+
+
+//----------este es el js-------------------------------
+function abrir_modal_actualizar(id) {
+  // Obtener el modal
+  var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
+  const edwin= document.getElementById("id_nuevo")
+
+  edwin.value = id
+
+  // Abrir el modal
+  modal.style.display = "block";
+  //cierra el modal en cualquier parte de la pantalla
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+}
+
+
+//este es el id del boton
+const btnActualizar = document.getElementById('btn-actualizarpaciente');
+btnActualizar.onclick = function() {
+      // Obtener los nuevos valores de los campos del formulario
+      const name_new = document.getElementById('Fullname_nuevo');
+      const cedula_new = document.getElementById('Cedula_nuevo');
+      const telefono_new = document.getElementById('Telefono_nuevo');
+      const direccion_new = document.getElementById('Direccion_nuevo');
+      const Correo_new = document.getElementById('Correo_nuevo');
+      const Fechadenacimento_new = document.getElementById('fecha_nuevo');
+      
+      alert('Registrar')
+      axios.post('actualizar_paciente_admin', { 
+        id: edwin.value,
+        Name: name_new.value,
+        cedula: cedula_new.value,
+        telefono: telefono_new.value,
+        direccion: direccion_new.value,
+        Email: Correo_new.value,
+        fecha_nacimiento: Fechadenacimento_new.value
+      }, {
+          headers: { 
+          'Content-Type': 'multipart/form-data'
+   
+          }
+      }
+      ).then((res) => {
+          console.log(res.data)
+          alert("se actualizio con exito")
+          
+      })
+      .catch((error) => {
+          console.error(error)
+      })
+  
+  }
+}
+   
+      
+
+
+
+
+
+
+
+
+
 //-------------------eliminar---------------------------------------------
 function eliminar(id) {
   axios.post('eliminar_paciente_admin', {
@@ -114,16 +182,16 @@ function buscadorpaciente() {
     }
   }
 }
-//-------modal paciente de actualizar-----
-function actualizar_paciente() {
-  // Obtener el modal
-  var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
-  // Abrir el modal
-  modal.style.display = "block";
-  //se cierra el modal con solo pressionar afuera de el
-window.onclick = function (event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-}
+// //-------modal paciente de actualizar-----
+// function actualizar_paciente() {
+//   // Obtener el modal
+//   var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
+//   // Abrir el modal
+//   modal.style.display = "block";
+//   //se cierra el modal con solo pressionar afuera de el
+// window.onclick = function (event) {
+//     if (event.target == modal) {
+//       modal.style.display = "none";
+//     }
+//   }
+// }
