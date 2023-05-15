@@ -18,7 +18,7 @@ function mostrar() {
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].correo}</td> 
                 <td>${datos[index].especialidad}</td> 
-                <td><a onclick="acualizar_odontologo() "class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="acualizar_odontologo(${datos[index].id}) "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar_odontologo(${datos[index].id}) " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
 
@@ -38,17 +38,17 @@ function eliminar_odontologo(id) {
     axios.post('eliminar_odontologo_admin', {
         id: id
     })
-    .then(function (response) {
-        // Manejar la respuesta de éxito aquí
-        console.log(response);
-        // Ejecutar la función mostrar() nuevamente para actualizar la tabla
-        mostrar();
-    })
-    .catch(function (error) {
-        // Manejar los errores aquí
-        console.log(error);
-    });
-  }
+        .then(function (response) {
+            // Manejar la respuesta de éxito aquí
+            console.log(response);
+            // Ejecutar la función mostrar() nuevamente para actualizar la tabla
+            mostrar();
+        })
+        .catch(function (error) {
+            // Manejar los errores aquí
+            console.log(error);
+        });
+}
 //-------------------eliminar---------------------------------------------
 // function eliminar(id) {
 //     axios.post('eliminar_paciente_admin', {
@@ -96,18 +96,61 @@ function registrar_odontologo() {
     })
         .catch((error) => {
             console.error(error)
-    })
+        })
 
 
 }
 //-----modal de odontologo-----
-function acualizar_odontologo() {
+function acualizar_odontologo(id) {
     // ... resto del código
-    
+
     // Obtener el modal
-    var modal = document.getElementById("myModal_tabla_odontologo_1");
-  
+    var modal2 = document.getElementById("myModal_tabla_odontologo_2");
+    const odontologo = document.getElementById("id_nuevo2")
+
+    odontologo.value = id
+
     // Abrir el modal
-    modal.style.display = "block";
-  }
-  
+    modal2.style.display = "block";
+    //cierra el modal en cualquier parte de la pantalla
+    window.onclick = function (event) {
+        if (event.target == modal2) {
+            modal2.style.display = "none";
+        }
+    }
+    //este es el id del boton
+    const btnActualizar2 = document.getElementById('btn-actualizarmedico');
+    btnActualizar2.onclick = function () {
+        // Obtener los nuevos valores de los campos del formulario
+        const nombres_nuevo2 = document.getElementById('nombres_nuevo2');
+        const Direccion_nuevo2 = document.getElementById('Direccion_nuevo2');
+        const Telefono_nuevo2 = document.getElementById('Telefono_nuevo2');
+        const Email_nuevo2 = document.getElementById('Email_nuevo2');
+        const Especialidad_nuevo2 = document.getElementById('Especialidad_nuevo2');
+        alert('Registrar odontologo')
+    
+        axios.post('actualizar_odontologos_admin', {
+            id: odontologo.value,
+            nombre: nombres_nuevo2.value,
+            direccion: Direccion_nuevo2.value,
+            telefono: Telefono_nuevo2.value,
+            correo: Email_nuevo2.value,
+            especialidad: Especialidad_nuevo2.value
+        }, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+
+            }
+        }
+        ).then((res) => {
+            console.log(res.data)
+            alert("se actualizio con exito")
+
+        })
+            .catch((error) => {
+                console.error(error)
+            })
+
+    }
+
+}

@@ -54,6 +54,7 @@
     </div>
   </div>
 </div>  
+<!-- modal de tabla odontologo  -->
 <div id="myModal_tabla_odontologo_1" class="modal_tabla_odontologo">
   <div class="modal-content4">
     <label for="nombre">Nombre:</label>
@@ -67,6 +68,26 @@
     <label for="Especialidad">Especialidad:</label>
     <input type="text" id="Especialidad" name="Especialidad" required>
     <input id="btn" onclick="registrar_odontologo()" type="submit" value="Enviar">
+  </div>
+</div>
+<!-- modal de actualizar odontologo  -->
+<div id="myModal_tabla_odontologo_2" class="modal_tabla_odontologo_admin_actulizar">
+  <div class="modal-content4-actualizar">
+     <!-- id inpppput -->
+     <label for="id">id</label>
+     <input id="id_nuevo2" type="text" name="idactus">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombres_nuevo2" name="nombre" required>
+    <label for="Direccion">Direccion</label>
+    <input id="Direccion_nuevo2" type="text" placeholder="Direccion" name="Direccion">
+    <label for="Telefono">Telefono</label>
+    <input id="Telefono_nuevo2" type="text" placeholder="Telefono" name="Telefono">
+    <label for="Email">Email</label>
+    <input id="Email_nuevo2" type="text" placeholder="Email" name="Email">
+    <label for="Especialidad">Especialidad:</label>
+    <input type="text" id="Especialidad_nuevo2" name="Especialidad" required>
+    <button id="btn-actualizarmedico" class="btn-primary">avtualizar</button>
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/odontologo_admin.js')}}"></script>
