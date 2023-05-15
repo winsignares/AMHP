@@ -5,12 +5,6 @@ from model.cita import citas
 routes_cita2 = Blueprint("routes_cita2", __name__)
 
 
-@routes_cita2.route("/indexcita2" )
-def indexcita2():
-    titulo= "Pagina cita2"
-    return render_template('/main/tablaadmin.html', titles=titulo)
-
-
 
 @routes_cita2.route('/mostrar_citas_admin', methods=['GET'])
 def mostarcitasuser():

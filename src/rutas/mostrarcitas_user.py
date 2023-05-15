@@ -6,11 +6,6 @@ from model.cita import citas
 routes_mos_user = Blueprint("routes_mos_user", __name__)
 
 
-@routes_mos_user.route("/tablauser" )
-def indexcitauser():
-    titulo= "Pagina tabla user"
-    return render_template('/main/tabla_cita_user.html', titles=titulo)
-
 
 @routes_mos_user.route("/buscarpapo", methods=["POST"])
 def validar_logisssn():

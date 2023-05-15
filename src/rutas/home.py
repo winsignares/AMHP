@@ -22,8 +22,60 @@ def indexadmin_tabla_paciente():
     return render_template('/main/admin_tabla_paciente.html', titles=titulo)
 
 
-
 @routes_home.route("/indexblanqueamentos" )
 def indexblanqueamentos():
     titulo= "Pagina blanqueamentos"
     return render_template('/main/blanqueamentos.html', titles=titulo)
+
+@routes_home.route("/indexcalendario" )
+def indexcalenda():
+    titulo= "Pagina calendario_admin"
+    return render_template('/main/calendario_admin.html', titles=titulo)
+
+
+@routes_home.route("/indeximplantes" )
+def indeximplantes():
+    titulo= "Pagina implantes"
+    return render_template('/main/implantes.html', titles=titulo)
+
+
+@routes_home.route("/indexprincipal" )
+def indexprincipal():
+    titulo= "Pagina principal"
+    return render_template('/main/principal.html', titles=titulo)
+
+
+@routes_home.route("/indexlogin" )
+def indexlogin():
+    titulo= "Pagina login"
+    return render_template('/main/login_admin.html', titles=titulo)
+
+
+
+@routes_home.route("/tablauser" )
+def indexcitauser():
+    titulo= "Pagina tabla user"
+    return render_template('/main/tabla_cita_user.html', titles=titulo)
+
+
+
+@routes_home.route("/indexortodoncias" )
+def indexortodoncias():
+    titulo= "Pagina ortodoncias"
+    return render_template('/main/ortodoncias.html', titles=titulo) 
+
+
+
+@routes_home.route("/indexregistro" )
+def indexregistro():
+    titulo= "Pagina registro"
+    return render_template('/main/registro_user.html', titles=titulo)
+
+
+
+
+@routes_home.route("/indexcita2" )
+def indexcita2():
+    titulo= "Pagina cita2"
+    return render_template('/main/tablaadmin.html', titles=titulo)
+
