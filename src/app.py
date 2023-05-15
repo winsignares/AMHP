@@ -31,6 +31,7 @@ from rutas.mostrarcitas_user import routes_mos_user
 from rutas.calendario import routes_calendario_admin
 from rutas.admin_tabla_paciente import routes_admin_tabla_paciente
 from rutas.admin_tabla_medico import routes_admin_tabla_medico
+from rutas.home import routes_home
 
 
 
@@ -51,6 +52,7 @@ app.register_blueprint(routes_mos_user , url_prefix="/fronted")
 app.register_blueprint(routes_calendario_admin , url_prefix="/fronted")
 app.register_blueprint(routes_admin_tabla_paciente , url_prefix="/fronted")
 app.register_blueprint(routes_admin_tabla_medico , url_prefix="/fronted")
+app.register_blueprint(routes_home , url_prefix="/fronted")
 
 
 

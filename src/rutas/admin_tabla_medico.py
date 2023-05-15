@@ -6,10 +6,6 @@ from model.odontologo import odontologos
 routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
 
 
-@routes_admin_tabla_medico.route("/indexadmin_tabla_medico" )
-def indexadmin_tabla_medico():
-    titulo= "Pagina admin_tabla_medico"
-    return render_template('/main/admin_tabla_medico.html', titles=titulo)
 
 
 @routes_admin_tabla_medico.route('/guardarodontologos_admin', methods=['POST'])

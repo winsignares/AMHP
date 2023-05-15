@@ -7,11 +7,6 @@ from model.cita import citas
 routes_cita = Blueprint("routes_cita", __name__)
 
 
-@routes_cita.route("/indexcita",  methods=['GET'])
-def indexcita():
-    titulo = "Pagina cita"
-    return render_template('/main/savecita_user.html', titles=titulo)
-
 
 @routes_cita.route('/guardarcitas', methods=['POST'])
 def savecita():
@@ -24,9 +19,11 @@ def savecita():
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
     problema = request.form['problema']
+    id_paciente = request.form['id_paciente']
+    id_odontologos = request.form['id_odontologos']
     # problema = date.today()
     print(Nombre_completo)
-    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema)
+    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema,id_paciente,id_odontologos)
     db.session.add(new_cit)
     db.session.commit()
     return "si" 
