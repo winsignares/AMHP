@@ -1,6 +1,6 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
-# from model.paciente import pacientes
+# from model.odontologos import odontologoss
 from model.odontologo import odontologos
 
 routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
@@ -64,3 +64,29 @@ def eliminar_odontologo_admin():
     
 
 
+@routes_admin_tabla_medico.route('/actualizar_odontologos_admin', methods=['POST'] )
+def actualizar_odontologos():
+  # Obtener los datos enviados en la solicitud
+    id = request.form.get('id')
+    nombre = request.form['nombre']
+    direccion = request.form['direccion']
+    telefono = request.form['telefono']
+    correo = request.form['correo']
+    especialidad = request.form['especialidad'] 
+
+    # Aquí puedes realizar las operaciones necesarias para actualizar los datos en la base de datos
+    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
+
+    # Ejemplo de actualización usando SQLAlchemy
+    odontologo = odontologos.query.get(id)
+    odontologo.nombre = nombre
+    odontologo.direccion = correo
+    odontologo.telefono = telefono
+    odontologo.correo = direccion
+    odontologo.especialidad = especialidad
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+      
+    # Enviar una respuesta exitosa
+    return jsonify({'message': 'Datos actualizados correctamente'})
