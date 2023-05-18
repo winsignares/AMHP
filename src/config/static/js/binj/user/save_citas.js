@@ -1,37 +1,43 @@
-
 function save_cit() {
-    const nombres = document.getElementById('nombres');
-    const edades = document.getElementById('edades');
-    const generos= document.getElementById('generos');
-    const fecha = document.getElementById('fecha');
-    const consultas = document.getElementById('consultas');
-    const tarjetas= document.getElementById('tarjetas');
-    const cardNumber = document.getElementById('cardNumber');
-    const problemas = document.getElementById('problemas');
-    alert('si sirve ome ')
-    
-   
-    try {
-        axios.post('guardarcitas', {
-            Nombre_completo: nombres.value,
-            Edad: edades.value,
-            genero: generos.value,
-            fecha: fecha.value,
-            consulta: consultas.value,
-            tarje_tade_credito: tarjetas.value,
-            Num_tarjeta: cardNumber.value,
-            problema: problemas.value
-        }, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then((res) => {
-            console.log(res.data)
-            alert("sita agendada cono user")
-        })
-    } catch (error) {
-        console.error(error)
-    }
+  const nombres = document.getElementById("nombres");
+  const edades = document.getElementById("edades");
+  const generos = document.getElementById("generos");
+  const fecha = document.getElementById("fecha");
+  const consultas = document.getElementById("consultas");
+  const tarjetas = document.getElementById("tarjetas");
+  const cardNumber = document.getElementById("cardNumber");
+  const estado_cita = document.getElementById("estado_cita");
+  const problemas = document.getElementById("problemas");
+  alert("si sirve ome ");
+
+  try {
+    axios
+      .post(
+        "guardarcitas",
+        {
+          Nombre_completo: nombres.value,
+          Edad: edades.value,
+          genero: generos.value,
+          fecha: fecha.value,
+          consulta: consultas.value,
+          tarje_tade_credito: tarjetas.value,
+          Num_tarjeta: cardNumber.value,
+          estado_cita: estado_cita.value,
+          problema: problemas.value,
+        },
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+        alert("sita agendada cono user");
+      });
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 // function habilitar() {

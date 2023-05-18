@@ -46,13 +46,16 @@
     <br />
     <label for="cardNumber">Número de Tarjeta</label>
     <input type="text" id="cardNumber" name="cardNumber" />
-    <label for="consulta">problema</label>
-    <textarea id="problemas" name="consulta" rows="5" required></textarea>
-    <br />
-    <label for="tarjeta">estado de cita</label>
+    <br>
+    <label for="estado">estado de cita</label>
     <select id="estado_cita" name="estado_citas" required>
       <option value="pendiente">pendiente</option>
     </select>
+    <br>
+    <label for="consulta">problema</label>
+    <textarea id="problemas" rows="5" required></textarea>
+    <br />
+   
     <input id="btn" onclick="save_cit()" type="submit" value="Enviar" />
   </form>
   <div id="mensajeExito" class="message success">

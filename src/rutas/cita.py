@@ -11,19 +11,18 @@ routes_cita = Blueprint("routes_cita", __name__)
 @routes_cita.route('/guardarcitas', methods=['POST'])
 def savecita():
 
-    Nombre_completo = request.form['Nombre_completo']
+    Nombre_completo = request.form['Nombre_completo'] 
     Edad = request.form['Edad']
     genero = request.form['genero']
     fecha = request.form['fecha']
     consulta = request.form['consulta']
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
+    estado_cita = request.form['estado_cita']
     problema = request.form['problema']
-    id_paciente = request.form['id_paciente']
-    id_odontologos = request.form['id_odontologos']
     # problema = date.today()
     print(Nombre_completo)
-    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema,id_paciente,id_odontologos)
+    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,estado_cita,problema)
     db.session.add(new_cit)
     db.session.commit()
     return "si" 
