@@ -1,19 +1,17 @@
-{% extends "layout.html" %}
-{% block body %}
+{% extends "layout.html" %} {% block body %}
 <header class="header">
   <div class="container">
     <div class="btn-menu">
-      <label for="btn-menu" style="color: black;">☰</label>
+      <label for="btn-menu" style="color: black">☰</label>
     </div>
-    <div class="logo">
-    </div>
+    <div class="logo"></div>
     <nav class="menu">
-      <a style="color: black;" href="indexprincipal">Cerrar sesion</a>
+      <a style="color: black" href="indexprincipal">Cerrar sesion</a>
     </nav>
   </div>
 </header>
 <div class="capa"></div>
-<input type="checkbox" id="btn-menu">
+<input type="checkbox" id="btn-menu" />
 <div class="container-menu">
   <div class="cont-menu">
     <nav>
@@ -29,14 +27,26 @@
 <div class="contenedor_de_la_tabla">
   <div class="tabla_de_mi_cita">
     <div class="d-flex mb-3">
-  <input type="text" id="buscadorcitasadmin" onkeyup="buscadordecitas()" class="form-control mr-2" placeholder="Buscar en la tabla...">
-  <button class="btn btn-primary" type="button" id="boton-buscar">Buscar</button>
-  <button id="myBtn_1" class="btn btn-primary" type="button">Nueva cita</button>
-  <button id="myBtn_2" class="btn btn-primary" type="button">Citas disponibles</button>
-</div>
+      <input
+        type="text"
+        id="buscadorcitasadmin"
+        onkeyup="buscadordecitas()"
+        class="form-control mr-2"
+        placeholder="Buscar en la tabla..."
+      />
+      <button class="btn btn-primary" type="button" id="boton-buscar">
+        Buscar
+      </button>
+      <button id="myBtn_1" class="btn btn-primary" type="button">
+        Nueva cita
+      </button>
+      <button id="myBtn_2" class="btn btn-primary" type="button">
+        Citas disponibles
+      </button>
+    </div>
 
     <div class="table-responsive_citas">
-      <table class="table"> 
+      <table class="table">
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -49,20 +59,19 @@
           </tr>
         </thead>
         <tbody id="tabla">
-          <tr>
-
-          </tr>
+          <tr></tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<!-- tabla de agregar citas -->
 <div id="myModal_tabla_admin_1" class="modal_tabla_admin">
   <div class="modal-content">
     <label for="nombre">Nombre completo:</label>
-    <input type="text" id="nombres" name="nombre" required>
+    <input type="text" id="nombres" name="nombre" required />
     <label for="edad">Edad:</label>
-    <input type="number" id="edades" name="edad" min="1" max="120" required>
+    <input type="number" id="edades" name="edad" min="1" max="120" required />
     <label for="genero">Género:</label>
     <select id="generos" name="genero" required>
       <option value="">Seleccionar</option>
@@ -70,10 +79,10 @@
       <option value="femenino">Femenino</option>
       <option value="otro">Otro</option>
     </select>
-    <br>
+    <br />
     <label for="consultaDate">Selecciona la fecha deseada</label>
-    <input type="date" id="fecha" name="fecha">
-    <br>
+    <input type="date" id="fecha" name="fecha" />
+    <br />
     <label for="consulta">Consulta:</label>
     <select id="consultas" name="consulta" required>
       <option value="">Seleccione</option>
@@ -81,7 +90,7 @@
       <option value="ortodoncia">Ortodoncia (Costo: $50.000)</option>
       <option value="implantes">Implantes (Costo: $10.000)</option>
     </select>
-    <br>
+    <br />
     <label for="tarjeta">Tarjeta de crédito:</label>
     <select id="tarjetas" name="tarjeta" required>
       <option value="">Seleccione</option>
@@ -89,22 +98,39 @@
       <option value="mastercard">Mastercard</option>
       <option value="amex">American Express</option>
     </select>
-    <br>
+    <br />
     <label for="cardNumber">Número de Tarjeta</label>
-    <input type="text" id="cardNumber" name="cardNumber">
+    <input type="text" id="cardNumber" name="cardNumber" />
+    <br />
+    <label for="tarjeta">estado de cita</label>
+    <select id="estado_cita" name="estado_citas" required>
+      <option value="pendiente">pendiente</option>
+    </select>
     <label for="consulta">problema</label>
     <textarea id="problemas" name="consulta" rows="5" required></textarea>
-    <input id="btn" onclick="guardar_cita_admin()" type="submit" value="Enviar">
-    <div id="mensajeExito" class="message success">¡Formulario enviado con éxito!</div>
-    <div id="mensajeError" class="message">Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.</div>
+
+    <input
+      id="btn"
+      onclick="guardar_cita_admin()"
+      type="submit"
+      value="Enviar"
+    />
+    <div id="mensajeExito" class="message success">
+      ¡Formulario enviado con éxito!
+    </div>
+    <div id="mensajeError" class="message">
+      Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.
+    </div>
   </div>
 </div>
+
+<!-- modal de citas disponibles -->
 <div id="myModal_tabla_admin_2" class="modal_tabla_admin2">
   <div class="modal-content2">
     <label for="consultaDate">Selecciona la fecha disponible</label>
-    <input type="date" id="fecha_disponible" name="fecha">
-    <br>
-    <input id="btn" onclick="fecha_disponible()" type="submit" value="Enviar">
+    <input type="date" id="fecha_disponible" name="fecha" />
+    <br />
+    <input id="btn" onclick="fecha_disponible()" type="submit" value="Enviar" />
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/citas_admin.js')}}"></script>

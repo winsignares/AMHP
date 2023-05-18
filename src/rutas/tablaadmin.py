@@ -36,10 +36,11 @@ def savecita_admins():
     consulta = request.form['consulta']
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
+    cita_estado = request.form['cita_estado']
     problema = request.form['problema']
     # problema = date.today()
     print(Nombre_completo)
-    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,problema)
+    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
     db.session.add(new_cit)
     db.session.commit()
     return "si" 
