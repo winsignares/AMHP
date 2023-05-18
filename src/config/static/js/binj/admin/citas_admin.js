@@ -1,6 +1,7 @@
 //----------------------funcion mostrar tabla de citas
 function mostrar() {
   const divcate = document.getElementById("tabla");
+  const selectnombre = document.getElementById("nombre_prueba");
   axios
     .get("mostrar_citas_admin", {
       responseType: "json",
@@ -19,9 +20,14 @@ function mostrar() {
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
+                <td>${datos[index].tarje_credi}</td>  
+                <td>${datos[index].Num_tarjeta}</td>  
+                <td>${datos[index].estado_citas}</td>  
+                <td>${datos[index].problema}</td>  
                 <td><a onclick="actualizar_citas()"class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
+     
       }
       divcate.innerHTML = mostrar;
     })
@@ -34,10 +40,35 @@ window.addEventListener("load", function () {
   mostrar();
 });
 
+// function mostrarcategoriabook() {
+//   const selectnombre = document.getElementById("nombre_prueba");
+//   axios
+//     .get("obtener_nombres_pacientes")
+//     .then(function (response) {
+//       // manejar respuesta exitosa
+//       console.log(response.data);
+//       const data = response.data;
+//       for (items in data) {
+//         const opcion = document.createElement("option");
+//         opcion.value = data[items].id;
+//         opcion.text = data[items].Nombre_completo;
+//         selectnombre.appendChild(opcion);
+//       }
+//     })
+//     .catch(function (error) {
+//       // manejar error
+//       console.log(error);
+//     })
+//     .finally(function () {
+//       // siempre sera executado
+//       console.log("Ejcucion");
+//     });
+// }
+
 //-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
-  const nombres = document.getElementById("nombres");
+  const nombres = document.getElementById("nombre_prueba");
   const edades = document.getElementById("edades");
   const generos = document.getElementById("generos");
   const fecha = document.getElementById("fecha");
@@ -114,3 +145,34 @@ function actualizar_citas() {
   // Abrir el modal
   modal.style.display = "block";
 }
+
+//----------------------funcion mostrar tabla de citas
+function mostrarcategoriabooks() {
+  
+  const selectnombre = document.getElementById("nombre_prueba");
+  axios.get("obtener_nombres_pacientes", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 1;
+     
+      i = 0;
+      for (let index = 1; index < length; index++) {
+       
+        const opcion = document.createElement("option");
+        
+        opcion.text = datos[index].Nombre_completo;
+        selectnombre.appendChild(opcion);
+      }
+      divcate.innerHTML = mostrar;
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrarcategoriabooks();
+});

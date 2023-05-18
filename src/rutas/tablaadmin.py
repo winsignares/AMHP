@@ -1,6 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.cita import citas
+from model.paciente import pacientes
 
 routes_cita2 = Blueprint("routes_cita2", __name__)
 
@@ -21,10 +22,26 @@ def mostarcitasuser():
 		'genero':cate.genero,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
+		'tarje_credi':cate.tarje_tade_credito,                                                    
+		'Num_tarjeta':cate.Num_tarjeta,                                                    
+		'estado_citas':cate.estado_citas,                                                    
+		'problema':cate.problema                                                     
         }
         goria.append(datos)
     return jsonify(datos)
 
+@routes_cita2.route('/obtener_nombres_pacientes')
+def obtener_nombres_pacientes():
+    datos = []
+    resultado = db.session.query(pacientes).select_from(pacientes).all()
+    i = 0
+    for cate in resultado:
+        i += 1	       
+        datos.append({
+            
+            'Nombre_completo': cate.Name
+        })
+    return jsonify(datos)
 
 @routes_cita2.route('/guardarcitas_admin', methods=['POST'])
 def savecita_admins():
