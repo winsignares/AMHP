@@ -19,6 +19,8 @@ function buscar_citas_user() {
       <td>${datos[index].genero}</td>
       <td>${datos[index].fecha}</td>
       <td>${datos[index].consulta}</td>
+      <td>${datos[index].estado_citas}</td>
+      <td>${datos[index].problema}</td>
       <td><a onclick="actualizar()" class="btn btn-primary btn-edit">Actualizar</a></td>
       <td><a onclick="eliminar()" class="btn btn-danger btn-eliminar">Eliminar</a></td>
     </tr>`;

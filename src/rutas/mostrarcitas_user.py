@@ -25,6 +25,8 @@ def validar_logisssn():
 		'genero':cate.genero,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
+		'estado_citas':cate.estado_citas,                                                    
+		'problema':cate.problema                                                    
         }
         goria.append(datos)
     return jsonify(datos)
