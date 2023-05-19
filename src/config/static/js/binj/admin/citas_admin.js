@@ -39,6 +39,35 @@ function mostrar() {
 window.addEventListener("load", function () {
   mostrar();
 });
+//---------------mostrar nombre de pacientes en un select---------------
+function mostrarcategoriabooks() {
+  const selectnombre = document.getElementById("nombre_prueba");
+  axios.get("obtener_nombres_pacientes", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 1;
+     
+      i = 0;
+      for (let index = 0; index < length; index++) {
+       
+        const opcion = document.createElement("option");
+        
+        opcion.text = datos[index].Nombre_completo;
+        selectnombre.appendChild(opcion);
+      }
+      divcate.innerHTML = mostrar;
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrarcategoriabooks();
+});
 
 // function mostrarcategoriabook() {
 //   const selectnombre = document.getElementById("nombre_prueba");
@@ -146,33 +175,5 @@ function actualizar_citas() {
   modal.style.display = "block";
 }
 
-//----------------------funcion mostrar tabla de citas
-function mostrarcategoriabooks() {
-  
-  const selectnombre = document.getElementById("nombre_prueba");
-  axios.get("obtener_nombres_pacientes", {
-      responseType: "json",
-    })
 
-    .then(function (response) {
-      let datos = response.data;
-      var length = Object.keys(datos).length + 1;
-     
-      i = 0;
-      for (let index = 1; index < length; index++) {
-       
-        const opcion = document.createElement("option");
-        
-        opcion.text = datos[index].Nombre_completo;
-        selectnombre.appendChild(opcion);
-      }
-      divcate.innerHTML = mostrar;
-    })
-    .catch(function (error) {
-      // Maneja los errores aquí
-      console.log(error);
-    });
-}
-window.addEventListener("load", function () {
-  mostrarcategoriabooks();
-});
+
