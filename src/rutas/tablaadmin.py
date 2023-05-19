@@ -17,7 +17,7 @@ def mostarcitasuser():
         i+=1	       
         datos[i] = {
         'id':cate.id,
-		'Nombre_completo':cate.Nombre_completo,
+		'Nombre_completos':cate.Nombre_completo,
 		'Edad':cate.Edad,                                                    
 		'genero':cate.genero,                                                    
 		'fecha':cate.fecha,                                                    
@@ -39,7 +39,7 @@ def obtener_nombres_pacientes():
         i += 1	       
         datos.append({
             
-            'Nombre_completo': cate.Name
+            'Nombre_paciente': cate.Name
         })
     return jsonify(datos)
 

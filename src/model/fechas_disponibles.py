@@ -1,7 +1,7 @@
 from config.db import db, app, ma 
 
 class fechas_dispo(db.Model):
-    __tablename__ = "tblfechadispo"
+    __tablename__ = "tblfechadisponible"
 
     
     id  = db.Column(db.Integer, primary_key=True)

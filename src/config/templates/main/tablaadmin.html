@@ -74,9 +74,7 @@
   <div class="modal-content">
     <select
       id="nombre_prueba"
-      title="Elige el nombre del paciente"
-      onclick="mostrarcategoriabook()"
-    >
+      title="Elige el nombre del paciente">
       <option value="">Selecciona el nombre</option>
     </select>
 
@@ -125,7 +123,6 @@
     </select>
     <label for="consulta">problema</label>
     <textarea id="problemas" name="consulta" rows="5" required></textarea>
-
     <input
       id="btn"
       onclick="guardar_cita_admin()"
@@ -144,12 +141,14 @@
 <!-- modal de citas disponibles -->
 <div id="myModal_tabla_admin_2" class="modal_tabla_admin2">
   <div class="modal-content2">
-    <label for="consultaDate">Selecciona la fecha disponible</label>
-    <input type="date" id="fecha_disponible" name="fecha" />
+    <label for="fecha_dispo">Selecciona la fecha deseada</label>
+    <input type="date" id="fecha_disponible_id" name="fecha_dispo" />
     <br />
-    <input id="btn" onclick="fecha_disponible()" type="submit" value="Enviar" />
+    <input  onclick="fecha_disponible_save()" type="submit" value="Enviar" />
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/citas_admin.js')}}"></script>
+<script src="{{url_for('static', filename='js/binj/admin/save_fechasdispo.js')}}"></script>
+
 <script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
 {% endblock %}

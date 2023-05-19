@@ -15,7 +15,7 @@ function mostrar() {
       for (let index = 1; index < length; index++) {
         mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
-                <td>${datos[index].Nombre_completo}</td>
+                <td>${datos[index].Nombre_completos}</td>
                 <td>${datos[index].Edad}</td>
                 <td>${datos[index].genero}</td>  
                 <td>${datos[index].fecha}</td>  
@@ -48,17 +48,17 @@ function mostrarcategoriabooks() {
 
     .then(function (response) {
       let datos = response.data;
-      var length = Object.keys(datos).length + 1;
+      var length = Object.keys(datos).length + 0;
      
       i = 0;
       for (let index = 0; index < length; index++) {
        
         const opcion = document.createElement("option");
         
-        opcion.text = datos[index].Nombre_completo;
+        opcion.text = datos[index].Nombre_paciente;
         selectnombre.appendChild(opcion);
       }
-      divcate.innerHTML = mostrar;
+      
     })
     .catch(function (error) {
       // Maneja los errores aquí

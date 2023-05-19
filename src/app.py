@@ -11,7 +11,7 @@ from config.db import db, app, ma
 from model.paciente import pacientes
 from model.odontologo import odontologos
 from model.admin import admins
-# from model.fechas_disponibles import fechas_dispo
+from model.fechas_disponibles import fechas_dispo
 from model.histo_clinico import histoclinicos
 from model.cita import citas
 from model.tratamiento import tratamientos
