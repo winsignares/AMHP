@@ -69,31 +69,6 @@ window.addEventListener("load", function () {
   mostrarcategoriabooks();
 });
 
-// function mostrarcategoriabook() {
-//   const selectnombre = document.getElementById("nombre_prueba");
-//   axios
-//     .get("obtener_nombres_pacientes")
-//     .then(function (response) {
-//       // manejar respuesta exitosa
-//       console.log(response.data);
-//       const data = response.data;
-//       for (items in data) {
-//         const opcion = document.createElement("option");
-//         opcion.value = data[items].id;
-//         opcion.text = data[items].Nombre_completo;
-//         selectnombre.appendChild(opcion);
-//       }
-//     })
-//     .catch(function (error) {
-//       // manejar error
-//       console.log(error);
-//     })
-//     .finally(function () {
-//       // siempre sera executado
-//       console.log("Ejcucion");
-//     });
-// }
-
 //-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
