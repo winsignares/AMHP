@@ -54,7 +54,7 @@ function mostrarcategoriabooks() {
       for (let index = 0; index < length; index++) {
        
         const opcion = document.createElement("option");
-        
+
         opcion.text = datos[index].Nombre_paciente;
         selectnombre.appendChild(opcion);
       }
@@ -142,10 +142,8 @@ function buscadordecitas() {
 //-----modal de citas-----
 function actualizar_citas() {
   // ... resto del código
-
   // Obtener el modal
   var modal = document.getElementById("myModal_tabla_admin_1");
-
   // Abrir el modal
   modal.style.display = "block";
 }

@@ -10,6 +10,7 @@ class admins(db.Model):
     # tipo_user = db.Column(db.Integer)
     # id_pacientes = db.Column(db.Integer,db.ForeignKey('tblpaciente.id'))
     # id_odontologos = db.Column(db.Integer,db.ForeignKey('tblodontologo.id'))
+    id_citas= db.Column(db.Integer,db.ForeignKey('tblcitas.id'))
 
     def __init__(self, usuario,contraseña):
         self.usuario = usuario

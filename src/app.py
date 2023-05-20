@@ -1,7 +1,7 @@
 #https://docs.sqlalchemy.org/en/14/core/type_basics.html
 #https://flask.palletsprojects.com/en/2.2.x/
 #from api.user import *
-from flask import Flask,  redirect, request, jsonify, json, session, render_template
+from flask import Flask,  redirect, request, jsonify, json, session, render_template,url_for
 from config.db import db, app, ma
 
 
@@ -10,10 +10,13 @@ from config.db import db, app, ma
 #importar los model en orden
 from model.paciente import pacientes
 from model.odontologo import odontologos
-from model.admin import admins
 from model.fechas_disponibles import fechas_dispo
+
 from model.histo_clinico import histoclinicos
+
 from model.cita import citas
+from model.admin import admins
+
 from model.tratamiento import tratamientos
 
 
@@ -47,7 +50,13 @@ app.register_blueprint(routes_admin_tabla_medico , url_prefix="/fronted")
 
 
 
-
+@app.errorhandler(404)
+def not_found(error):
+    if 'conectado' in session:
+        return redirect(url_for('index'))
+    else:
+        return render_template('/main/principal.html')
+    
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
