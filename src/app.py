@@ -10,12 +10,13 @@ from config.db import db, app, ma
 #importar los model en orden
 from model.paciente import pacientes
 from model.odontologo import odontologos
-from model.fechas_disponibles import fechas_dispo
 
 from model.histo_clinico import histoclinicos
 
 from model.cita import citas
 from model.admin import admins
+from model.fechas_disponibles import  fechas_disponi
+
 
 from model.tratamiento import tratamientos
 
@@ -56,6 +57,7 @@ def not_found(error):
         return redirect(url_for('index'))
     else:
         return render_template('/main/principal.html')
+    
     
 @app.route("/")
 def index():

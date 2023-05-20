@@ -72,9 +72,7 @@
 <!-- tabla de agregar citas -->
 <div id="myModal_tabla_admin_1" class="modal_tabla_admin">
   <div class="modal-content">
-    <select
-      id="nombre_prueba"
-      title="Elige el nombre del paciente">
+    <select id="nombre_prueba" title="Elige el nombre del paciente">
       <option value="">Selecciona el nombre</option>
     </select>
 
@@ -141,14 +139,14 @@
 <!-- modal de citas disponibles -->
 <div id="myModal_tabla_admin_2" class="modal_tabla_admin2">
   <div class="modal-content2">
-    <label for="fecha_dispo">Selecciona la fecha deseada</label>
-    <input type="date" id="fecha_disponible_id" name="fecha_dispo" />
+    <label for="consultaDate">Selecciona la fecha disponible</label>
+    <input type="date" id="fecha_disponible_" name="fecha" />
     <br />
-    <input  onclick="fecha_disponible_save()" type="submit" value="Enviar" />
+    <input onclick="fecha_disponible_save()" type="submit" value="Enviar" />
   </div>
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/citas_admin.js')}}"></script>
-<script src="{{url_for('static', filename='js/binj/admin/save_fechasdispo.js')}}"></script>
+<script src="{{url_for('static', filename='js/binj/admin/fecha_disponible.js')}}"></script>
 
 <script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
 {% endblock %}

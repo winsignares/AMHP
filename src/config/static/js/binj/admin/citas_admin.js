@@ -27,7 +27,6 @@ function mostrar() {
                 <td><a onclick="actualizar_citas()"class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
-     
       }
       divcate.innerHTML = mostrar;
     })
@@ -42,23 +41,22 @@ window.addEventListener("load", function () {
 //---------------mostrar nombre de pacientes en un select---------------
 function mostrarcategoriabooks() {
   const selectnombre = document.getElementById("nombre_prueba");
-  axios.get("obtener_nombres_pacientes", {
+  axios
+    .get("obtener_nombres_pacientes", {
       responseType: "json",
     })
 
     .then(function (response) {
       let datos = response.data;
       var length = Object.keys(datos).length + 0;
-     
+
       i = 0;
       for (let index = 0; index < length; index++) {
-       
         const opcion = document.createElement("option");
 
         opcion.text = datos[index].Nombre_paciente;
         selectnombre.appendChild(opcion);
       }
-      
     })
     .catch(function (error) {
       // Maneja los errores aquí
@@ -147,6 +145,4 @@ function actualizar_citas() {
   // Abrir el modal
   modal.style.display = "block";
 }
-
-
 

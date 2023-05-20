@@ -1,15 +1,15 @@
-
+//esta es la fecha o citas que introducira el amdin y se encntraran disponibles
+//se usa la tabla frecha dispononible
 function fecha_disponible_save() {
-
-    const fechas_dispon = document.getElementById("fecha_disponible_id");
-  alert("fecha disponible")
+    const fecha_disponible = document.getElementById("fecha_disponible_");
+    alert("fecha dispo");
+  
     try {
-      axios.post(
+      axios
+        .post(
           "ingresar_fechas_disponibles",
           {
-      
-            fechas_dispon: fechas_dispon.value,
-         
+            fechas_dispon: fecha_disponible.value,
           },
           {
             headers: {
@@ -19,9 +19,10 @@ function fecha_disponible_save() {
         )
         .then((res) => {
           console.log(res.data);
-         
+          alert("cita disponoible");
         });
     } catch (error) {
       console.error(error);
     }
   }
+  

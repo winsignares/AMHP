@@ -2,6 +2,7 @@ from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.cita import citas
 from model.paciente import pacientes
+from model.fechas_disponibles import fechas_disponi
 
 routes_cita2 = Blueprint("routes_cita2", __name__)
 
@@ -73,3 +74,15 @@ def savecita_admins():
 #     return redirect('/updatesolicitudes')
 
 
+@routes_cita2.route('ingresar_fechas_disponibles', methods=['POST'])
+def fecha_dis():
+
+
+    fechas_dispon = request.form['fechas_dispon']
+   
+    new_fecha = fechas_disponi(fechas_dispon)
+    db.session.add(new_fecha)
+    db.session.commit()
+    return "si se puso la fecha disponoble"
+
+ 
