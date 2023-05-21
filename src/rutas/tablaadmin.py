@@ -61,7 +61,23 @@ def savecita_admins():
     new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
     db.session.add(new_cit)
     db.session.commit()
-    return "si" 
+   
+    
+
+#esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 
+
+   
+     
+    fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
+    if fechadis:
+        db.session.delete(fechadis)  # Elimina el fecha
+        db.session.commit()  # Confirma los cambios en la base de datos
+        return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
+    else:
+        return jsonify({'message': 'fecha no encontrado'})
+    
+
+ 
 
 
 # @routes_cita2.route('/updatesolicitudes', methods=['POST'] )
@@ -74,16 +90,16 @@ def savecita_admins():
 #     return redirect('/updatesolicitudes')
 
 
+
+#esta guada  la fecha disponible de la tabla fecha disponible
 @routes_cita2.route('ingresar_fechas_disponibles', methods=['POST'])
 def fecha_dis():
-
-
     fechas_dispon = request.form['fechas_dispon']
-   
     new_fecha = fechas_disponi(fechas_dispon)
     db.session.add(new_fecha)
     db.session.commit()
     return "si se puso la fecha disponoble"
+
 
 @routes_cita2.route('/obtener_fechas_dispo')
 def obtener_fechas_dispo():
@@ -93,7 +109,10 @@ def obtener_fechas_dispo():
     for cate in resultado:
         i += 1	       
         datos.append({
-            
             'fecha_disp': cate.fechas_dispon
         })
     return jsonify(datos)
+
+
+
+   

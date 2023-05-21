@@ -81,9 +81,7 @@ function guardar_cita_admin() {
   const problemas = document.getElementById("problemas");
   alert("si sirve ome ");
   try {
-    axios
-      .post(
-        "guardarcitas_admin",
+    axios.post("guardarcitas_admin",
         {
           Nombre_completo: nombres.value,
           Edad: edades.value,
