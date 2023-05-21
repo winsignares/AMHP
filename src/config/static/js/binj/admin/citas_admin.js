@@ -145,4 +145,3 @@ function actualizar_citas() {
   // Abrir el modal
   modal.style.display = "block";
 }
-

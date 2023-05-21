@@ -85,4 +85,15 @@ def fecha_dis():
     db.session.commit()
     return "si se puso la fecha disponoble"
 
- 
+@routes_cita2.route('/obtener_fechas_dispo')
+def obtener_fechas_dispo():
+    datos = []
+    resultado = db.session.query(fechas_disponi).select_from(fechas_disponi).all()
+    i = 0
+    for cate in resultado:
+        i += 1	       
+        datos.append({
+            
+            'fecha_disp': cate.fechas_dispon
+        })
+    return jsonify(datos)
