@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].Nombre_completos}</td>
                 <td>${datos[index].Edad}</td>
-                <td>${datos[index].genero}</td>  
+                <td>${datos[index].nombre_odontologos}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  
                 <td>${datos[index].tarje_credi}</td>  
@@ -72,7 +72,7 @@ window.addEventListener("load", function () {
 function guardar_cita_admin() {
   const nombres = document.getElementById("nombre_prueba");
   const edades = document.getElementById("edades");
-  const generos = document.getElementById("generos");
+  const odontlogos = document.getElementById("odontlogos");
   const fecha = document.getElementById("fecha");
   const consultas = document.getElementById("consultas");
   const tarjetas = document.getElementById("tarjetas");
@@ -82,23 +82,23 @@ function guardar_cita_admin() {
   alert("si sirve ome ");
   try {
     axios.post("guardarcitas_admin",
-        {
-          Nombre_completo: nombres.value,
-          Edad: edades.value,
-          genero: generos.value,
-          fecha: fecha.value,
-          consulta: consultas.value,
-          tarje_tade_credito: tarjetas.value,
-          Num_tarjeta: cardNumber.value,
-          cita_estado: estado_cita.value,
-          problema: problemas.value,
+      {
+        Nombre_completo: nombres.value,
+        Edad: edades.value,
+        odontlogos: odontlogos.value,
+        fecha: fecha.value,
+        consulta: consultas.value,
+        tarje_tade_credito: tarjetas.value,
+        Num_tarjeta: cardNumber.value,
+        cita_estado: estado_cita.value,
+        problema: problemas.value,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
         },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
+      }
+    )
       .then((res) => {
         console.log(res.data);
         alert("cita admin");
@@ -143,3 +143,33 @@ function actualizar_citas() {
   // Abrir el modal
   modal.style.display = "block";
 }
+
+
+//function que mustra odontologo en un select
+function mostrarnombre_odontologo() {
+  const selectodontologo = document.getElementById("odontlogos");
+  axios
+    .get("obtener_nombres_odonlogo", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 0;
+
+      i = 0;
+      for (let index = 0; index < length; index++) {
+        const opcion = document.createElement("option");
+
+        opcion.text = datos[index].Nombre_odontologo;
+        selectodontologo.appendChild(opcion);
+      }
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrarnombre_odontologo();
+});

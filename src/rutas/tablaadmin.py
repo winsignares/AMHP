@@ -20,7 +20,7 @@ def mostarcitasuser():
         'id':cate.id,
 		'Nombre_completos':cate.Nombre_completo,
 		'Edad':cate.Edad,                                                    
-		'genero':cate.genero,                                                    
+		'nombre_odontologos':cate.nombre_odontologo,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
 		'tarje_credi':cate.tarje_tade_credito,                                                    
@@ -49,7 +49,7 @@ def savecita_admins():
 
     Nombre_completo = request.form['Nombre_completo']
     Edad = request.form['Edad']
-    genero = request.form['genero']
+    genero = request.form['odontlogos']
     fecha = request.form['fecha']
     consulta = request.form['consulta']
     tarje_tade_credito = request.form['tarje_tade_credito']
@@ -61,13 +61,8 @@ def savecita_admins():
     new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
     db.session.add(new_cit)
     db.session.commit()
-   
-    
-
+ 
 #esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 
-
-   
-     
     fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
     if fechadis:
         db.session.delete(fechadis)  # Elimina el fecha

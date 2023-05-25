@@ -86,3 +86,19 @@ def actualizar_odontologos():
       
     # Enviar una respuesta exitosa
     return jsonify({'message': 'Datos actualizados correctamente'})
+
+
+
+
+@routes_admin_tabla_medico.route('/obtener_nombres_odonlogo')
+def obtener_nombres_odonlogo():
+    datos = []
+    resultado = db.session.query(odontologos).select_from(odontologos).all()
+    i = 0
+    for odon in resultado:
+        i += 1	       
+        datos.append({
+            
+            'Nombre_odontologo': odon.nombre 
+        })
+    return jsonify(datos)
