@@ -2,13 +2,14 @@ from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from model.cita import citas
+from model.odontologo import odontologos
 # from datetime import datetime,time
 
-routes_cita = Blueprint("routes_cita", __name__)
+routes_cita_user = Blueprint("routes_cita_user", __name__)
 
 
 
-@routes_cita.route('/guardarcitas', methods=['POST'])
+@routes_cita_user.route('/guardarcitas', methods=['POST'])
 def savecita():
 
     Nombre_completo = request.form['Nombre_completo'] 
@@ -26,3 +27,17 @@ def savecita():
     db.session.add(new_cit)
     db.session.commit()
     return "si" 
+
+
+@routes_cita_user.route('/obtener_nombre_odon_como_user')
+def select_nombre_odontologo():
+    datos = []
+    resultado = db.session.query(odontologos).select_from(odontologos).all()
+    i = 0
+    for cate in resultado:
+        i += 1	       
+        datos.append({
+            
+            'select_nom_odontologo': cate.nombre
+        })
+    return jsonify(datos)

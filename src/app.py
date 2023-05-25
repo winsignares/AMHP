@@ -23,7 +23,7 @@ from model.tratamiento import tratamientos
 
 
 # importar rutas
-from rutas.cita import routes_cita
+from rutas.save_cita_user import routes_cita_user
 from rutas.registro import routes_registro
 from rutas.tablaadmin import routes_cita2
 from rutas.login import routes_login
@@ -39,7 +39,7 @@ app.register_blueprint(routes_home , url_prefix="/fronted")
 
 
 # import bluplint
-app.register_blueprint(routes_cita, url_prefix="/fronted")
+app.register_blueprint(routes_cita_user, url_prefix="/fronted")
 app.register_blueprint(routes_registro, url_prefix="/fronted")
 app.register_blueprint(routes_cita2, url_prefix="/fronted")
 app.register_blueprint(routes_login , url_prefix="/fronted")

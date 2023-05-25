@@ -107,7 +107,8 @@ function guardar_cita_admin() {
     console.error(error);
   }
 }
-
+//--------------------buscador de citas --------------------------------------------
+//esta funcion busca las citas en la tabla
 function buscadordecitas() {
   // Obtiene el valor del campo de búsqueda
   var datoabuscar = document

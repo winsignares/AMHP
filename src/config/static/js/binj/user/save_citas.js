@@ -1,7 +1,7 @@
 function save_cit() {
   const nombres = document.getElementById("nombres");
   const edades = document.getElementById("edades");
-  const generos = document.getElementById("generos");
+  const generos = document.getElementById("nombre_odonto");
   const fecha = document.getElementById("fecha");
   const consultas = document.getElementById("consultas");
   const tarjetas = document.getElementById("tarjetas");
@@ -38,7 +38,36 @@ function save_cit() {
   } catch (error) {
     console.error(error);
   }
+
 }
+
+function mostrar_nombre_odontologo_select() {
+  const select_name_odontologos = document.getElementById("nombre_odonto");
+  axios
+    .get("/obtener_nombre_odon_como_user", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 0;
+
+      i = 0;
+      for (let index = 0; index < length; index++) {
+        const opcion = document.createElement("option");
+
+        opcion.text = datos[index].select_nom_odontologo;
+        select_name_odontologos.appendChild(opcion);
+      }
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrar_nombre_odontologo_select();
+});
 
 // function habilitar() {
 //     nom = document.getElementById("nombre").value;
