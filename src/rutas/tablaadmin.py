@@ -95,7 +95,7 @@ def fecha_dis():
     db.session.commit()
     return "si se puso la fecha disponoble"
 
-
+#mustra los datos de fercha disponible en un select
 @routes_cita2.route('/obtener_fechas_dispo')
 def obtener_fechas_dispo():
     datos = []

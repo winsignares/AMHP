@@ -39,7 +39,7 @@ window.addEventListener("load", function () {
   mostrar();
 });
 //---------------mostrar nombre de pacientes en un select---------------
-function mostrarcategoriabooks() {
+function mostrarnombrepaciente() {
   const selectnombre = document.getElementById("nombre_prueba");
   axios
     .get("obtener_nombres_pacientes", {
@@ -64,7 +64,7 @@ function mostrarcategoriabooks() {
     });
 }
 window.addEventListener("load", function () {
-  mostrarcategoriabooks();
+  mostrarnombrepaciente();
 });
 
 //-----------------------agendar citas-------------------------------------------------//

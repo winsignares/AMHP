@@ -41,10 +41,11 @@ function save_cit() {
 
 }
 
-function mostrar_nombre_odontologo_select() {
-  const select_name_odontologos = document.getElementById("nombre_odonto");
+//function que mustra odontologo en un select
+function mostrarnombre_odontologo() {
+  const select_name_odontologo = document.getElementById("nombre_odonto");
   axios
-    .get("/obtener_nombre_odon_como_user", {
+    .get("select_odontologo_mostrars", {
       responseType: "json",
     })
 
@@ -54,10 +55,10 @@ function mostrar_nombre_odontologo_select() {
 
       i = 0;
       for (let index = 0; index < length; index++) {
-        const opcion = document.createElement("option");
+        const opcions = document.createElement("option");
 
-        opcion.text = datos[index].select_nom_odontologo;
-        select_name_odontologos.appendChild(opcion);
+        opcions.text = datos[index].name_odontologo;
+        select_name_odontologo.appendChild(opcions);
       }
     })
     .catch(function (error) {
@@ -66,7 +67,7 @@ function mostrar_nombre_odontologo_select() {
     });
 }
 window.addEventListener("load", function () {
-  mostrar_nombre_odontologo_select();
+  mostrarnombre_odontologo();
 });
 
 // function habilitar() {

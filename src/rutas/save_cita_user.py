@@ -29,15 +29,17 @@ def savecita():
     return "si" 
 
 
-@routes_cita_user.route('/obtener_nombre_odon_como_user')
-def select_nombre_odontologo():
+
+#este codigo saca solo el dato del nombre del odontologo para mostrarlo en un select
+@routes_cita_user.route('/select_odontologo_mostrars')
+def select_odontologo_mostrar():
     datos = []
     resultado = db.session.query(odontologos).select_from(odontologos).all()
     i = 0
-    for cate in resultado:
+    for odon in resultado:
         i += 1	       
         datos.append({
             
-            'select_nom_odontologo': cate.nombre
+            'name_odontologo': odon.nombre 
         })
     return jsonify(datos)
