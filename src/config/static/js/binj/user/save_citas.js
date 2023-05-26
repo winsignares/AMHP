@@ -2,7 +2,7 @@ function save_cit() {
   const nombres = document.getElementById("nombres");
   const edades = document.getElementById("edades");
   const generos = document.getElementById("nombre_odonto");
-  const fecha = document.getElementById("fecha");
+  const fechadipo_user = document.getElementById("fechadipo_user");
   const consultas = document.getElementById("consultas");
   const tarjetas = document.getElementById("tarjetas");
   const cardNumber = document.getElementById("cardNumber");
@@ -18,7 +18,7 @@ function save_cit() {
           Nombre_completo: nombres.value,
           Edad: edades.value,
           genero: generos.value,
-          fecha: fecha.value,
+          fecha: fechadipo_user.value,
           consulta: consultas.value,
           tarje_tade_credito: tarjetas.value,
           Num_tarjeta: cardNumber.value,
@@ -41,7 +41,7 @@ function save_cit() {
 
 }
 
-//function que mustra odontologo en un select
+//function que mustra odontologo en un select usando la ruta save_cita_user
 function mostrarnombre_odontologo() {
   const select_name_odontologo = document.getElementById("nombre_odonto");
   axios
@@ -68,6 +68,35 @@ function mostrarnombre_odontologo() {
 }
 window.addEventListener("load", function () {
   mostrarnombre_odontologo();
+});
+
+
+
+//esta funcion hace que se muestre las fechas disponibles en el select usando la ruta save_cita_user
+function mostrarfechadispo_user() {
+  const selectfecha_dispo_user = document.getElementById("fechadipo_user");
+  axios
+    .get("obtener_fechas_dispo_como_user", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 0;
+      i = 0;
+      for (let index = 0; index < length; index++) {
+        const opcions_fecha = document.createElement("option");
+        opcions_fecha.text = datos[index].fecha_disponomble_user;
+        selectfecha_dispo_user.appendChild(opcions_fecha);
+      }
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrarfechadispo_user();
 });
 
 // function habilitar() {
