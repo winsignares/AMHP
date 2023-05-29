@@ -131,6 +131,12 @@ function registrar_paciente() {
       showConfirmButton: false,
       timer: 2000,
     })
+    document.getElementById("Fullname").value = "";
+    document.getElementById("Cedula").value = "";
+    document.getElementById("Telefono").value = "";
+    document.getElementById("Direccion").value = "";
+    document.getElementById("Correo").value = "";
+    document.getElementById("fecha").value = "";
 
   })
     .catch((error) => {
@@ -188,16 +194,19 @@ function eliminar(id) {
     confirmButtonColor: '#3085d6',
     cancelButtonColor: 'red',
     confirmButtonText: 'Aceptar'
+    
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({ 
         title: 'paciente Eliminado(a) con éxito!',
         icon: 'success'
+        
       });
       axios.post('eliminar_paciente_admin', {
         id: id
       })
         .then(function (response) {
+          
           console.log(response);
           mostrar();
         })
