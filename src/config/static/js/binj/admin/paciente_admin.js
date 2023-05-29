@@ -174,9 +174,15 @@ function buscadorpaciente() {
 
 //-------------------eliminar---------------------------------------------
 
+
 function eliminar(id) {
   Swal.fire({
-    title: '¿Desea eliminar paciente?',
+    title: '¿Desea eliminar el paciente?',
+    text: 'Esta acción no se puede deshacer',
+    imageUrl: '/static/img/eliminar_paciente.png', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
+    imageWidth: 200, // Ancho de la imagen en píxeles
+    imageHeight: 200, // Alto de la imagen en píxeles
+    imageAlt: 'Imagen de la cita', // Descripción de la imagen
     icon: 'info',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -185,9 +191,9 @@ function eliminar(id) {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({ 
-        title: '¡Paciente Eliminado con exito!',
+        title: 'paciente Eliminado(a) con éxito!',
         icon: 'success'
-    })
+      });
       axios.post('eliminar_paciente_admin', {
         id: id
       })
@@ -195,14 +201,14 @@ function eliminar(id) {
           console.log(response);
           mostrar();
         })
+        .catch(function (error) {
+          console.log(error);
+        });
     } else {
       Swal.fire({
         title: '¡Cancelado!',
         icon: 'error'
-      })
+      });
     }
-  })
-    .catch(function (error) {
-      console.log(error);
-    });
+  });
 }
