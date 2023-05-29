@@ -132,6 +132,7 @@ def eliminar_citas_admin():
 # actualizar citas
 @routes_cita2.route('/actualizar_citas_admin', methods=['POST'] )
 def actualizar_cita_admin():
+  
   # Obtener los datos enviados en la solicitud
     id = request.form.get('id')
     Nombre_completo = request.form['Nombre_completo']
@@ -144,23 +145,31 @@ def actualizar_cita_admin():
     cita_estado = request.form['cita_estado']
     problema = request.form['problema']
 
-    # Aquí puedes realizar las operaciones necesarias para actualizar los datos en la base de datos
-    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
-
-    # Ejemplo de actualización usando SQLAlchemy
+    # Obtener el registro existente de la base de datos
     cita_actualizar = citas.query.get(id)
-    cita_actualizar.Nombre_completo = Nombre_completo
-    cita_actualizar.Edad = Edad
-    cita_actualizar.nombre_odontologo = nombre_odontologo
-    cita_actualizar.fecha = fecha
-    cita_actualizar.consulta = consulta
-    cita_actualizar.tarje_tade_credito = tarje_tade_credito
-    cita_actualizar.Num_tarjeta = Num_tarjeta
-    cita_actualizar.estado_citas = cita_estado
-    cita_actualizar.problema = problema
+
+    # Verificar qué campos se deben actualizar
+    if Nombre_completo:
+        cita_actualizar.Nombre_completo = Nombre_completo
+    if Edad:
+        cita_actualizar.Edad = Edad
+    if nombre_odontologo:
+        cita_actualizar.nombre_odontologo = nombre_odontologo
+    if fecha:
+        cita_actualizar.fecha = fecha
+    if consulta:
+        cita_actualizar.consulta = consulta
+    if tarje_tade_credito:
+        cita_actualizar.tarje_tade_credito = tarje_tade_credito
+    if Num_tarjeta:
+        cita_actualizar.Num_tarjeta = Num_tarjeta
+    if cita_estado:
+        cita_actualizar.estado_citas = cita_estado
+    if problema:
+        cita_actualizar.problema = problema
+
     # Guardar los cambios en la base de datos
     db.session.commit()
-    
 
 
     fechadis_actualizar=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
