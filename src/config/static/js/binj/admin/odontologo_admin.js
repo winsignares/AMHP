@@ -33,29 +33,6 @@ function mostrar() {
 window.addEventListener('load', function () {
     mostrar();
 })
-//funcion que elimina 
-function eliminar_odontologo(id) {
-    axios.post('eliminar_odontologo_admin', {
-        id: id
-    })
-        .then(function (response) {
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Odontologo eliminado Exitosa mente!',
-                showConfirmButton: false,
-                timer: 2000,
-              })
-            // Manejar la respuesta de éxito aquí
-            console.log(response);
-            // Ejecutar la función mostrar() nuevamente para actualizar la tabla
-            mostrar();
-        })
-        .catch(function (error) {
-            // Manejar los errores aquí
-            console.log(error);
-        });
-}
 
 
 // ----------------guardar odontologo----------------------
@@ -156,3 +133,38 @@ function acualizar_odontologo(id) {
     }
 
 }
+
+
+//funcion que elimina Odontologo
+function eliminar_odontologo(id) {
+    Swal.fire({
+      title: '¿Desea eliminar Odontologo?',
+      icon: 'info',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: 'red',
+      confirmButtonText: 'Aceptar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({ 
+          title: 'Odontologo Eliminado con exito!',
+          icon: 'success'
+      })
+        axios.post('eliminar_odontologo_admin', {
+          id: id
+        })
+          .then(function (response) {
+            console.log(response);
+            mostrar();
+          })
+      } else {
+        Swal.fire({
+          title: '¡Cancelado!',
+          icon: 'error'
+        })
+      }
+    })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }

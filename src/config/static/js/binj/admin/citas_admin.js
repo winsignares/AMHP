@@ -39,30 +39,6 @@ window.addEventListener("load", function () {
   mostrar();
 });
 
-// eliminar citas como admin
-function eliminarcitaadmin(id) {
-  axios.post('eliminar_citas_admin', {
-      id: id
-  })
-      .then(function (response) {
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: 'cita eliminada Exitosa mente!',
-          showConfirmButton: false,
-          timer: 2000,
-        })
-          // Manejar la respuesta de éxito aquí
-          console.log(response);
-          // Ejecutar la función mostrar() nuevamente para actualizar la tabla
-          mostrar();
-      })
-      .catch(function (error) {
-          // Manejar los errores aquí
-          console.log(error);
-      });
-}
-
 
 //---------------mostrar nombre de pacientes en un select---------------
 function mostrarnombrepaciente() {
@@ -281,4 +257,38 @@ function actualizar_citas_admin(id) {
 
   }
 
+}
+
+// eliminar citas como admin
+function eliminarcitaadmin(id) {
+  Swal.fire({
+    title: '¿Desea eliminar la cita?',
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: 'red',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({ 
+        title: 'Cita Eliminada con exito!',
+        icon: 'success'
+    })
+      axios.post('eliminar_citas_admin', {
+        id: id
+      })
+        .then(function (response) {
+          console.log(response);
+          mostrar();
+        })
+    } else {
+      Swal.fire({
+        title: '¡Cancelado!',
+        icon: 'error'
+      })
+    }
+  })
+    .catch(function (error) {
+      console.log(error);
+    });
 }

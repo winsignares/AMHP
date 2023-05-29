@@ -98,29 +98,7 @@ function abrir_modal_actualizar(id) {
 
   }
 }
-//-------------------eliminar---------------------------------------------
-function eliminar(id) {
-  axios.post('eliminar_paciente_admin', {
-    id: id
-  })
-    .then(function (response) {
-      Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: '¡Paciente aliminado Exitosa mente!',
-        showConfirmButton: false,
-        timer: 2000,
-      })
-      // Manejar la respuesta de éxito aquí
-      console.log(response);
-      // Ejecutar la función mostrar() nuevamente para actualizar la tabla
-      mostrar();
-    })
-    .catch(function (error) {
-      // Manejar los errores aquí
-      console.log(error);
-    });
-}
+
 
 //esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
 function registrar_paciente() {
@@ -191,3 +169,40 @@ function buscadorpaciente() {
   }
 }
 
+
+
+
+//-------------------eliminar---------------------------------------------
+
+function eliminar(id) {
+  Swal.fire({
+    title: '¿Desea eliminar paciente?',
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: 'red',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({ 
+        title: '¡Paciente Eliminado con exito!',
+        icon: 'success'
+    })
+      axios.post('eliminar_paciente_admin', {
+        id: id
+      })
+        .then(function (response) {
+          console.log(response);
+          mostrar();
+        })
+    } else {
+      Swal.fire({
+        title: '¡Cancelado!',
+        icon: 'error'
+      })
+    }
+  })
+    .catch(function (error) {
+      console.log(error);
+    });
+}
