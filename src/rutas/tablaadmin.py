@@ -158,11 +158,20 @@ def actualizar_cita_admin():
     cita_actualizar.Num_tarjeta = Num_tarjeta
     cita_actualizar.estado_citas = cita_estado
     cita_actualizar.problema = problema
-
     # Guardar los cambios en la base de datos
     db.session.commit()
-      
-    # Enviar una respuesta exitosa
-    return jsonify({'message': 'Datos actualizados correctamente de la cita'})
+    
+
+
+    fechadis_actualizar=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
+    if fechadis_actualizar:
+        db.session.delete(fechadis_actualizar)  # Elimina el fecha
+        db.session.commit()  # Confirma los cambios en la base de datos
+        return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
+    else:
+        return jsonify({'message': 'fecha no encontrado'})
+    
+
+    
 
 
