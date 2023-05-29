@@ -109,42 +109,61 @@ function registrar_paciente() {
   const Correo = document.getElementById('Correo');
   const Fechadenacimento = document.getElementById('fecha');
 
-  axios.post('guardarpaciente_admin', {
-    Name: name.value,
-    cedula: Cedula.value,
-    telefono: Telefono.value,
-    direccion: Direccion.value,
-    Email: Correo.value,
-    fecha_nacimiento: Fechadenacimento.value
-  }, {
-    headers: {
-      'Content-Type': 'multipart/form-data'
-
-    }
-  }
-  ).then((res) => {
-    console.log(res.data)
-      Swal.fire({
+  // Validar si hay datos en todos los campos
+  if (
+    name.value === '' ||
+    Cedula.value === '' ||
+    Telefono.value === '' ||
+    Direccion.value === '' ||
+    Correo.value === '' ||
+    Fechadenacimento.value === ''
+  ) {
+    // Mostrar la alerta de error
+    Swal.fire({
       position: 'top-center',
-      icon: 'success',
-      title: '¡Paciente Registrado Exitosa mente!',
+      icon: 'error',
+      title: 'Por favor, complete todos los campos.',
       showConfirmButton: false,
       timer: 2000,
-    })
-    document.getElementById("Fullname").value = "";
-    document.getElementById("Cedula").value = "";
-    document.getElementById("Telefono").value = "";
-    document.getElementById("Direccion").value = "";
-    document.getElementById("Correo").value = "";
-    document.getElementById("fecha").value = "";
+    });
+    return; // Salir de la función si no hay datos en todos los campos
+  }
 
-  })
+  axios
+    .post('guardarpaciente_admin', {
+      Name: name.value,
+      cedula: Cedula.value,
+      telefono: Telefono.value,
+      direccion: Direccion.value,
+      Email: Correo.value,
+      fecha_nacimiento: Fechadenacimento.value,
+    }, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+      // Mostrar la alerta de éxito
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Paciente Registrado Exitosamente!',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+
+      // Restablecer los valores de los campos
+      name.value = '';
+      Cedula.value = '';
+      Telefono.value = '';
+      Direccion.value = '';
+      Correo.value = '';
+      Fechadenacimento.value = '';
+    })
     .catch((error) => {
-      
-      console.error(error)
-
-    })
-
+      console.error(error);
+    });
 }
 
 //----------------------------------------------------------------

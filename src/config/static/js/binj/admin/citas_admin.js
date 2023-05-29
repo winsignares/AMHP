@@ -88,51 +88,77 @@ function guardar_cita_admin() {
   const cardNumber = document.getElementById("cardNumber");
   const estado_cita = document.getElementById("estado_cita");
   const problemas = document.getElementById("problemas");
-  
+
+  // Validar si hay datos en todos los campos
+  if (
+    nombres.value === "" ||
+    edades.value === "" ||
+    odontlogos.value === "" ||
+    fecha.value === "" ||
+    consultas.value === "" ||
+    tarjetas.value === "" ||
+    cardNumber.value === "" ||
+    estado_cita.value === "" ||
+    problemas.value === ""
+  ) {
+    // Mostrar la alerta de error
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'Por favor, complete todos los campos.',
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    return; // Salir de la función si no hay datos en todos los campos
+  }
+
   try {
-    axios.post("guardarcitas_admin",
-      {
-        Nombre_completo: nombres.value,
-        Edad: edades.value,
-        odontlogos: odontlogos.value,
-        fecha: fecha.value,
-        consulta: consultas.value,
-        tarje_tade_credito: tarjetas.value,
-        Num_tarjeta: cardNumber.value,
-        cita_estado: estado_cita.value,
-        problema: problemas.value,
-      },
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
+    axios
+      .post(
+        "guardarcitas_admin",
+        {
+          Nombre_completo: nombres.value,
+          Edad: edades.value,
+          odontlogos: odontlogos.value,
+          fecha: fecha.value,
+          consulta: consultas.value,
+          tarje_tade_credito: tarjetas.value,
+          Num_tarjeta: cardNumber.value,
+          cita_estado: estado_cita.value,
+          problema: problemas.value,
         },
-      }
-    )
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((res) => {
         console.log(res.data);
         Swal.fire({
           position: 'top-center',
           icon: 'success',
-          title: '¡Cita gurdada Exitosa mente!',
+          title: '¡Cita guardada Exitosamente!',
           showConfirmButton: false,
           timer: 2000,
-        })
-        //esto limpia depues que guarda
-        document.getElementById("nombre_prueba").value = "";
-        document.getElementById("edades").value = "";
-        document.getElementById("odontlogos").value = "";
-        document.getElementById("fecha").value = "";
-        document.getElementById("consultas").value = "";
-        document.getElementById("tarjetas").value = "";
-        document.getElementById("cardNumber").value = "";
-        document.getElementById("estado_cita").value = "";
-        document.getElementById("problemas").value = "";
-     
+        });
+
+        // Limpiar los valores de los campos después de guardar
+        nombres.value = "";
+        edades.value = "";
+        odontlogos.value = "";
+        fecha.value = "";
+        consultas.value = "";
+        tarjetas.value = "";
+        cardNumber.value = "";
+        estado_cita.value = "";
+        problemas.value = "";
       });
   } catch (error) {
     console.error(error);
   }
 }
+
 //--------------------buscador de citas --------------------------------------------
 //esta funcion busca las citas en la tabla
 function buscadordecitas() {
