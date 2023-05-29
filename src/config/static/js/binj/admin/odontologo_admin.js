@@ -39,6 +39,13 @@ function eliminar_odontologo(id) {
         id: id
     })
         .then(function (response) {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Odontologo eliminado Exitosa mente!',
+                showConfirmButton: false,
+                timer: 2000,
+              })
             // Manejar la respuesta de éxito aquí
             console.log(response);
             // Ejecutar la función mostrar() nuevamente para actualizar la tabla
@@ -58,7 +65,6 @@ function registrar_odontologo() {
     const Telefono = document.getElementById('Telefono');
     const Correo = document.getElementById('Email');
     const Especialidad = document.getElementById('Especialidad');
-    alert('Registrar odontologo')
 
     axios.post('guardarodontologos_admin', {
         nombre: Nombre.value,
@@ -76,8 +82,13 @@ function registrar_odontologo() {
     }
     ).then((res) => {
         console.log(res.data)
-        alert("registro existoso")
-
+        Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: '¡odontologo gurdado Exitosa mente!',
+            showConfirmButton: false,
+            timer: 2000,
+          })
     })
         .catch((error) => {
             console.error(error)
@@ -112,7 +123,7 @@ function acualizar_odontologo(id) {
         const Telefono_nuevo2 = document.getElementById('Telefono_nuevo2');
         const Email_nuevo2 = document.getElementById('Email_nuevo2');
         const Especialidad_nuevo2 = document.getElementById('Especialidad_nuevo2');
-        alert('Registrar odontologo')
+      
     
         axios.post('actualizar_odontologos_admin', {
             id: odontologo.value,
@@ -129,7 +140,13 @@ function acualizar_odontologo(id) {
         }
         ).then((res) => {
             console.log(res.data)
-            alert("se actualizio con exito")
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Odontologo Actualizado Exitosa mente!',
+                showConfirmButton: false,
+                timer: 2000,
+              })
 
         })
             .catch((error) => {

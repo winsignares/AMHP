@@ -45,6 +45,13 @@ function eliminarcitaadmin(id) {
       id: id
   })
       .then(function (response) {
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'cita eliminada Exitosa mente!',
+          showConfirmButton: false,
+          timer: 2000,
+        })
           // Manejar la respuesta de éxito aquí
           console.log(response);
           // Ejecutar la función mostrar() nuevamente para actualizar la tabla
@@ -105,7 +112,7 @@ function guardar_cita_admin() {
   const cardNumber = document.getElementById("cardNumber");
   const estado_cita = document.getElementById("estado_cita");
   const problemas = document.getElementById("problemas");
-  alert("si sirve ome ");
+  
   try {
     axios.post("guardarcitas_admin",
       {
@@ -127,7 +134,13 @@ function guardar_cita_admin() {
     )
       .then((res) => {
         console.log(res.data);
-        alert("cita admin");
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: '¡Cita gurdada Exitosa mente!',
+          showConfirmButton: false,
+          timer: 2000,
+        })
       });
   } catch (error) {
     console.error(error);
@@ -231,7 +244,7 @@ function actualizar_citas_admin(id) {
       const cardNumber = document.getElementById("cardNumber_actualizar");
       const estado_cita = document.getElementById("estado_cita_actualizar");
       const problemas = document.getElementById("problemas_actualizar");
-      alert('actualizar_citas')
+
   
       axios.post('actualizar_citas_admin', {
         id:id_citas.value,
@@ -252,12 +265,18 @@ function actualizar_citas_admin(id) {
       }
       ).then((res) => {
           console.log(res.data)
-          alert("se actualizio citas con exito")
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: '¡Cita Actualizada Exitosa mente!',
+            showConfirmButton: false,
+            timer: 2000,
+          })
 
       })
           .catch((error) => {
               console.error(error)
-              alert("no se pudo actualizar")
+              
           })
 
   }

@@ -2,7 +2,7 @@
 //se usa la tabla frecha dispononible
 function fecha_disponible_save() {
     const fecha_disponible = document.getElementById("fecha_disponible_");
-    alert("fecha dispo");
+   
   
     try {
       axios
@@ -19,7 +19,13 @@ function fecha_disponible_save() {
         )
         .then((res) => {
           console.log(res.data);
-          alert("cita disponoible");
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: '¡Se a guardado la Fecha disponible!',
+            showConfirmButton: false,
+            timer: 2000,
+          })
         });
     } catch (error) {
       console.error(error);
