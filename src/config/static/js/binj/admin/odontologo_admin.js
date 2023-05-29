@@ -136,9 +136,15 @@ function acualizar_odontologo(id) {
 
 
 //funcion que elimina Odontologo
-function eliminar_odontologo(id) {
+
+  function eliminar_odontologo(id) {
     Swal.fire({
-      title: '¿Desea eliminar Odontologo?',
+      title: '¿Desea eliminar al Odontologo(a)?',
+      text: 'Esta acción no se puede deshacer',
+      imageUrl: '/static/img/odontologo_eliminar.png', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
+      imageWidth: 200, // Ancho de la imagen en píxeles
+      imageHeight: 200, // Alto de la imagen en píxeles
+      imageAlt: 'Imagen de la cita', // Descripción de la imagen
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -147,9 +153,9 @@ function eliminar_odontologo(id) {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({ 
-          title: 'Odontologo Eliminado con exito!',
+          title: '!Odontologo(a) Eliminado(a) con éxito!',
           icon: 'success'
-      })
+        });
         axios.post('eliminar_odontologo_admin', {
           id: id
         })
@@ -157,14 +163,14 @@ function eliminar_odontologo(id) {
             console.log(response);
             mostrar();
           })
+          .catch(function (error) {
+            console.log(error);
+          });
       } else {
         Swal.fire({
           title: '¡Cancelado!',
           icon: 'error'
-        })
+        });
       }
-    })
-      .catch(function (error) {
-        console.log(error);
-      });
+    });
   }
