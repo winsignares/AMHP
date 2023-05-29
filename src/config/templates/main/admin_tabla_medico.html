@@ -1,30 +1,18 @@
 {% extends "layout.html" %}
 {% block body %}
-<header class="header">
-  <div class="container">
-    <div class="btn-menu">
-      <label for="btn-menu" style="color: black;">☰</label>
-    </div>
-    <div class="logo">
-    </div>
-    <nav class="menu">
-      <a style="color: black;" href="indexprincipal">Cerrar sesion</a>
-    </nav>
+<header id="home">
+  <div class="menu">
+      <div class="logo"></div><!--logo-->
+      <nav class="desktop-menu">
+          <ul>         
+              <li><a href="/fronted/indexcalendario">Calendario</a></li>
+              <li><a href="/fronted/indexadmin_tabla_paciente">Paciente</a></li>
+              <li><a href="/fronted/indexcita2">Citas</a></li>
+              <li><a href="/fronted/indexprincipal">Cerrar sesion</a></li>
+          </ul>
+      </nav>
   </div>
-</header>
-<div class="capa"></div>
-<input type="checkbox" id="btn-menu">
-<div class="container-menu">
-  <div class="cont-menu">
-    <nav>
-      <a href="indexcalendario">Calendario</a>
-      <a href="indexadmin_tabla_paciente">Pacientes</a>
-      <a href="indexcita2">citas</a>
-      <a href="#">Facturacion</a>
-    </nav>
-    <label class="logox" for="btn-menu">✖️</label>
-  </div>
-</div>
+</div><!--container-->
 <div class="contenedor_de_la_tabla">
   <div class="tabla_de_mi_cita">
     <div class="d-flex mb-3">

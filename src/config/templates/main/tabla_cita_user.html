@@ -1,69 +1,45 @@
-{% extends "layout.html" %} {% block body %}
-<header class="header">
-  <div class="container">
-    <div class="logo"></div>
-    <nav class="menu">
-      <a style="color: black" href="indexortodoncias">Ortodoncias</a>
-      <a style="color: black" href="indeximplantes">Implantes</a>
-      <a style="color: black" href="indexprincipal">Inicio</a>
-      <a style="color: black" href="indexcita">Cita</a>
-    </nav>
-  </div>
-</header>
-<div class="capa"></div>
-<input type="checkbox" id="btn-menu" />
-<div class="container-menu">
-  <div class="cont-menu">
-    <nav>
-      <a href="terror.html">$</a>
-      <a href="comedia.html">$</a>
-      <a href="ciencia ficcion.html">$</a>
-      <a href="aventuras.html">$</a>
-      <a href="romance.html">$</a>
-      <a href="drama.html">$</a>
-      <a href="misterio.html">$</a>
-      <a href="series.html">$</a>
-    </nav>
-    <label for="btn-menu">✖️</label>
-  </div>
-</div>
-<div class="contenedor_de_la_tabla">
-  <div class="tabla_de_mi_cita">
-    <div class="d-flex mb-3">
-      <input
-        type="text"
-        id="buscarcitasuser_id"
-        class="form-control mr-2"
-        placeholder="Buscar en la tabla..."
-      />
-      <input
-        class="btn btn-primary"
-        onclick="buscar_citas_user()"
-        type="button"
-        value="buscar"
-      />
+{% extends "layout.html" %}
+{% block body %}
+<section id="contact">
+    <div class="container">
+        <div class="title">
+            <h1 class="title-cita">Citas</h1>
+            <p>Aqui podra ver su citas </p>
+        </div>
+        <div class="contenedor_de_la_tabla"> 
+            <div class="tabla_de_mi_cita">
+                <div class="d-flex mb-3">
+                    <input type="text" id="buscarcitasuser_id" class="form-control mr-2"
+                        placeholder="Buscar en la tabla...">
+                    <input class="btn btn-primary" onclick="buscar_citas_user()" type="button"  value="buscar">
+                </div>
+                <div class="table-responsive_user">
+                    <table class="table">
+        
+                        <thead>
+                            <tr>
+                                <th scope="col">id</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Edad</th>
+                                <th scope="col">Genero</th>
+                                <th scope="col">Fecha selecionada</th>
+                                <th scope="col">Consulta</th>
+                                <th scope="col">estado de cita</th>
+                                <th scope="col">problema</th>
+                                <th scope="col">Option</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla">
+                            <tr>
+        
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="table-responsive_user">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Edad</th>
-            <th scope="col">Genero</th>
-            <th scope="col">Fecha selecionada</th>
-            <th scope="col">Consulta</th>
-            <th scope="col">estado de cita</th>
-            <th scope="col">problema</th>
-            <th scope="col">Option</th>
-          </tr>
-        </thead>
-        <tbody id="tabla">
-          <tr></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+    
+</section>
 <script src="{{url_for('static', filename='js/binj/user/mostrarcita_user.js')}}"></script>
 {% endblock %}

@@ -1,38 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
-<header class="header">
-  <div class="container">
-    <div class="btn-menu">
-      <label for="btn-menu" style="color: black;">☰</label>
-    </div>
-    <div class="logo">
-    </div>
-    <nav class="menu">
-      <a style="color: black;" href="indexprincipal">Cerrar sesion</a>
-    </nav>
+<header id="home">
+  <div class="menu">
+      <div class="logo"></div><!--logo-->
+      <nav class="desktop-menu">
+          <ul>         
+              <li><a href="/fronted/indexcalendario">Calendario</a></li>
+              <li><a href="/fronted/indexadmin_tabla_medico">Medico</a></li>
+              <li><a href="/fronted/indexcita2">Citas</a></li>
+              <li><a href="/fronted/indexprincipal">Cerrar sesion</a></li>
+          </ul>
+      </nav>
   </div>
-</header>
-<div class="capa"></div>
-<input type="checkbox" id="btn-menu">
-<div class="container-menu">
-  <div class="cont-menu">
-    <nav>
-      <a href="indexcalendario">Calendario</a>
-      <a href="indexadmin_tabla_medico">Medicos</a>
-      <a href="indexcita2">citas</a>
-      <a href="#">Reportes de citas</a>
-      <a href="#">Facturacion</a>
-    </nav>
-    <label class="logox" for="btn-menu">✖️</label>
-  </div>
-</div>
+</div><!--container-->
 <div class="contenedor_de_la_tabla">
   <div class="tabla_de_mi_cita">
     <div class="d-flex mb-3">
       <input type="text" id="buscadorpacienteadmin" onkeyup="buscadorpaciente()" class="form-control mr-2"
         placeholder="Buscar en la tabla...">
-      <button class="btn btn-primary" type="button" id="boton-buscar">Buscar</button>
-      <button id="myBtn_3" class="btn btn-primary" type="button">Nuevo paciente</button>
+      <button class="btn btn-primary4" type="button" id="boton-buscar">Buscar</button>
+      <button id="myBtn_3" class="btn btn-primary5" type="button">Nuevo paciente</button>
     </div>
     <div class="table-responsive_paciente">
       <table class="table">
@@ -83,7 +70,7 @@
     <!-- modal de actualizar  -->
     <div id="myModal_tabla_paciente_admin_actualizar" class="modal_tabla_paciente_admin_actualizar">
       <div class="modal-content3-actualizar">
-        <!-- id inpppput -->
+          <!-- id inpppput -->
         <label for="id">id</label>
         <input id="id_nuevo" type="text" name="idactu">
         <!-- fulll name imput -->

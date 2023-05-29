@@ -748,10 +748,11 @@ label[for="btn-menu"] {
 
 .contenedor_de_la_tabla {
     position: absolute;
-    top: 20%;
-    background-color: aliceblue;
+    top: 100%;
+    background-color: rgba(255, 255, 255, 0.507);
     left: 14%;
     width: 70%;
+    border-radius: 10px;
 
 }
 
@@ -792,7 +793,7 @@ label[for="btn-menu"] {
 .contenedor_de_la_tabla2 {
     position: absolute;
     top: 80%;
-    background-color: aliceblue;
+    background-color: rgb(255, 255, 255);
     left: 14%;
     width: 70%;
 
@@ -807,6 +808,7 @@ label[for="btn-menu"] {
 .table-responsive_paciente {
     overflow-x: auto;
     margin-top: 5%;
+    
 }
 
 .table-responsive_medico {
@@ -821,9 +823,9 @@ label[for="btn-menu"] {
 
 .d-flex input {
     max-width: 30%;
-    height: 42px;
-    margin-top: 10px;
-
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 11px;
 }
 
 .d-flex button {
@@ -834,6 +836,7 @@ label[for="btn-menu"] {
 
 .table {
     word-break: break-word;
+
 
 }
 
@@ -848,4 +851,36 @@ footer {
     margin-top: -40%;
     /* Ajusta el valor según tu necesidad */
     margin-left: 1%;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table thead tr th {
+    background-color: #f2f2f2;
+    padding: 12px;
+    text-align: left;
+    font-weight: bold;
+    color: #333;
+}
+
+.table tbody tr td {
+    padding: 12px;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+    background-color: #ddd;
+}
+
+.table-responsive_user {
+    overflow-x: auto;
+}
+.title-cita{
+    color: #fff;
 }

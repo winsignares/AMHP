@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<section id="about">
+    <div class="container">
+        <div class="title">
+            <h1>Sobre Nós</h1>
+            <p>Qualidade e modernidade para você</p>
+        </div>
+        <div class="content">
+            <div class="left">
+                <p>Vivamus scelerisque quis risus sed dapibus. Nulla non enim nec nisi sagittis pellentesque. 
+                Curabitur tellus enim, euismod id ipsum vel, faucibus mollis diam. Curabitur commodo rutrum mi 
+                non interdum. Nulla facilisi. Mauris facilisis mattis metus sit amet accumsan. Morbi id molestie 
+                elit. Duis sagittis quam cursus erat sollicitudin efficitur. Donec ante diam, pretium quis mi ut,
+                ornare malesuada neque. Etiam condimentum luctus euismod. Nam tortor metus, fringilla vitae odio 
+                facilisis, pretium consequat felis. Pellentesque elit turpis, efficitur eget fringilla in, vestibulum 
+                sit amet dolor. Fusce sed congue enim. Quisque a dictum nunc, in tempor metus. Nunc sollicitudin sit 
+                amet ante ut ultricies. Duis justo ligula, facilisis at volutpat et, molestie vel erat.</p>
+            </div>
+            <div class="right">
+                <div class="box">
+                    <img src="{{url_for('static', filename='img/5.png')}}" alt="">
+                    <h1>Nossa Visão</h1>
+                    <p>Quisque scelerisque eget lectus ut dapibus. Nam eu luctus neque, vitae dictum dui.Quisque scelerisque 
+                    eget lectus ut dapibus. Nam eu luctus neque, vitae dictum dui.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+{% endblock %}

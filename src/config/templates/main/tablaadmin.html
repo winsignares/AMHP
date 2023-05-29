@@ -1,52 +1,29 @@
-{% extends "layout.html" %} {% block body %}
-<header class="header">
-  <div class="container">
-    <div class="btn-menu">
-      <label for="btn-menu" style="color: black">☰</label>
+{% extends "layout.html" %}
+{% block body %}
+<header id="home">
+    <div class="menu">
+        <div class="logo"></div><!--logo-->
+        <nav class="desktop-menu">
+            <ul>         
+                <li><a href="/fronted/indexcalendario">Calendario</a></li>
+                <li><a href="/fronted/indexadmin_tabla_paciente">Pacientes</a></li>
+                <li><a href="/fronted/indexadmin_tabla_medico">Medicos</a></li>
+                <li><a href="/fronted/indexprincipal">Cerrar sesion</a></li>
+            </ul>
+        </nav>
     </div>
-    <div class="logo"></div>
-    <nav class="menu">
-      <a style="color: black" href="indexprincipal">Cerrar sesion</a>
-    </nav>
-  </div>
-</header>
-<div class="capa"></div>
-<input type="checkbox" id="btn-menu" />
-<div class="container-menu">
-  <div class="cont-menu">
-    <nav>
-      <a href="indexcalendario">Calendario</a>
-      <a href="indexadmin_tabla_paciente">Pacientes</a>
-      <a href="indexadmin_tabla_medico">Medicos</a>
-      <a href="#">Reportes de citas</a>
-      <a href="#">Facturacion</a>
-    </nav>
-    <label class="logox" for="btn-menu">✖️</label>
-  </div>
-</div>
+</div><!--container-->
 <div class="contenedor_de_la_tabla">
   <div class="tabla_de_mi_cita">
     <div class="d-flex mb-3">
-      <input
-        type="text"
-        id="buscadorcitasadmin"
-        onkeyup="buscadordecitas()"
-        class="form-control mr-2"
-        placeholder="Buscar en la tabla..."
-      />
-      <button class="btn btn-primary" type="button" id="boton-buscar">
-        Buscar
-      </button>
-      <button id="myBtn_1" class="btn btn-primary" type="button">
-        Nueva cita
-      </button>
-      <button id="myBtn_2" class="btn btn-primary" type="button">
-        Citas disponibles
-      </button>
-    </div>
+    <input type="text" id="buscadorcitasadmin" onkeyup="buscadordecitas()" class="form-control mr-2" placeholder="Buscar en la tabla...">
+   <button class="btn btn-primary1" type="button" id="boton-buscar">Buscar</button>
+    <button id="myBtn_1" class="btn btn-primary2" type="button">Nueva cita</button>
+    <button id="myBtn_2" class="btn btn-primary3" type="button">Citas disponibles</button>
+</div>
 
     <div class="table-responsive_citas">
-      <table class="table">
+      <table class="table"> 
         <thead>
           <tr>
             <th scope="col">id</th>
@@ -63,13 +40,15 @@
           </tr>
         </thead>
         <tbody id="tabla">
-          <tr></tr>
+          <tr>
+
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<!-- tabla de agregar citas -->
+
 <div id="myModal_tabla_admin_1" class="modal_tabla_admin">
   <div class="modal-content">
     <select id="nombre_prueba" title="Elige el nombre del paciente">
@@ -148,6 +127,6 @@
 </div>
 <script src="{{url_for('static', filename='js/binj/admin/citas_admin.js')}}"></script>
 <script src="{{url_for('static', filename='js/binj/admin/fecha_disponible.js')}}"></script>
-
 <script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
+</header>
 {% endblock %}
