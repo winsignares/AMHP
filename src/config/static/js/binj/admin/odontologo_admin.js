@@ -49,24 +49,9 @@ function eliminar_odontologo(id) {
             console.log(error);
         });
 }
-//-------------------eliminar---------------------------------------------
-// function eliminar(id) {
-//     axios.post('eliminar_paciente_admin', {
-//         id: id
-//     })
-//     .then(function (response) {
-//         // Manejar la respuesta de éxito aquí
-//         console.log(response);
-//         // Ejecutar la función mostrar() nuevamente para actualizar la tabla
-//         mostrar();
-//     })
-//     .catch(function (error) {
-//         // Manejar los errores aquí
-//         console.log(error);
-//     });
-//   }
-//esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
 
+
+// ----------------guardar odontologo----------------------
 function registrar_odontologo() {
     const Nombre = document.getElementById('nombres');
     const direccion = document.getElementById('Direccion');

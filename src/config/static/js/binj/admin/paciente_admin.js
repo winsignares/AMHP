@@ -56,7 +56,6 @@ function abrir_modal_actualizar(id) {
     }
   }
 
-
   //este es el id del boton
   const btnActualizar = document.getElementById('btn-actualizarpaciente');
   btnActualizar.onclick = function () {
@@ -68,7 +67,6 @@ function abrir_modal_actualizar(id) {
     const Correo_new = document.getElementById('Correo_nuevo');
     const Fechadenacimento_new = document.getElementById('fecha_nuevo');
 
-    alert('Registrar')
     axios.post('actualizar_paciente_admin', {
       id: edwin.value,
       Name: name_new.value,
@@ -85,7 +83,13 @@ function abrir_modal_actualizar(id) {
     }
     ).then((res) => {
       console.log(res.data)
-      alert("se actualizio con exito")
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Paciente Actualizado Exitosa mente!',
+        showConfirmButton: false,
+        timer: 2000,
+      })
 
     })
       .catch((error) => {
@@ -100,6 +104,13 @@ function eliminar(id) {
     id: id
   })
     .then(function (response) {
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Paciente aliminado Exitosa mente!',
+        showConfirmButton: false,
+        timer: 2000,
+      })
       // Manejar la respuesta de éxito aquí
       console.log(response);
       // Ejecutar la función mostrar() nuevamente para actualizar la tabla
@@ -119,7 +130,7 @@ function registrar_paciente() {
   const Direccion = document.getElementById('Direccion');
   const Correo = document.getElementById('Correo');
   const Fechadenacimento = document.getElementById('fecha');
-  alert('Registrar')
+
   axios.post('guardarpaciente_admin', {
     Name: name.value,
     cedula: Cedula.value,
@@ -135,11 +146,19 @@ function registrar_paciente() {
   }
   ).then((res) => {
     console.log(res.data)
-    alert("registro existoso")
+      Swal.fire({
+      position: 'top-center',
+      icon: 'success',
+      title: '¡Paciente Registrado Exitosa mente!',
+      showConfirmButton: false,
+      timer: 2000,
+    })
 
   })
     .catch((error) => {
+      
       console.error(error)
+
     })
 
 }
@@ -172,19 +191,3 @@ function buscadorpaciente() {
   }
 }
 
-
-// //-------modal paciente de actualizar-----
-// function actualizar_paciente() {
-//   // Obtener el modal
-//   var modal = document.getElementById("myModal_tabla_paciente_admin_actualizar");
-//   // Abrir el modal
-//   modal.style.display = "block";
-//   //se cierra el modal con solo pressionar afuera de el
-// window.onclick = function (event) {
-//     if (event.target == modal) {
-//       modal.style.display = "none";
-//     }
-//   }
-// }
-
- 

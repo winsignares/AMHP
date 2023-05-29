@@ -1,7 +1,7 @@
 //----------------------funcion mostrar tabla de citas
 function mostrar() {
   const divcate = document.getElementById("tabla");
-  const selectnombre = document.getElementById("nombre_prueba");
+
   axios
     .get("mostrar_citas_admin", {
       responseType: "json",
