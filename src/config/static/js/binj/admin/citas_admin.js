@@ -24,7 +24,7 @@ function mostrar() {
                 <td>${datos[index].Num_tarjeta}</td>  
                 <td>${datos[index].estado_citas}</td>  
                 <td>${datos[index].problema}</td>  
-                <td><a onclick="actualizar_citas()"class="btn btn-primary btn-edit">Actualizar</a></td>
+                <td><a onclick="actualizar_citas_admin(${datos[index].id})"class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminarcitaadmin(${datos[index].id}) " class="btn btn-danger btn-eliminar"">Eliminar</a></td>
               </tr> `;
       }
@@ -59,7 +59,10 @@ function eliminarcitaadmin(id) {
 
 //---------------mostrar nombre de pacientes en un select---------------
 function mostrarnombrepaciente() {
+  //este mustra en el select del modal de agendar citas
   const selectnombre = document.getElementById("nombre_prueba");
+  // aqui mustra en el select del modal de actualizar
+  const selectnombre2 = document.getElementById("nombre_paciente_actualizar");
   axios
     .get("obtener_nombres_pacientes", {
       responseType: "json",
@@ -72,9 +75,13 @@ function mostrarnombrepaciente() {
       i = 0;
       for (let index = 0; index < length; index++) {
         const opcion = document.createElement("option");
+        const opcion2 = document.createElement("option");
 
         opcion.text = datos[index].Nombre_paciente;
+        opcion2.text = datos[index].Nombre_paciente;
+        
         selectnombre.appendChild(opcion);
+        selectnombre2.appendChild(opcion2);
       }
     })
     .catch(function (error) {
@@ -155,19 +162,13 @@ function buscadordecitas() {
     }
   }
 }
-//-----modal de citas-----
-function actualizar_citas() {
-  // ... resto del código
-  // Obtener el modal
-  var modal = document.getElementById("myModal_tabla_admin_1");
-  // Abrir el modal
-  modal.style.display = "block";
-}
+
 
 
 //function que mustra odontologo en un select
 function mostrarnombre_odontologo() {
   const selectodontologo = document.getElementById("odontlogos");
+  const selectodontologo2 = document.getElementById("nombre_odontologo_actualizar");
   axios
     .get("obtener_nombres_odonlogo", {
       responseType: "json",
@@ -180,9 +181,13 @@ function mostrarnombre_odontologo() {
       i = 0;
       for (let index = 0; index < length; index++) {
         const opcion = document.createElement("option");
+        const opcion2 = document.createElement("option");
 
         opcion.text = datos[index].Nombre_odontologo;
+        opcion2.text = datos[index].Nombre_odontologo;
         selectodontologo.appendChild(opcion);
+        selectodontologo2.appendChild(opcion2);
+
       }
     })
     .catch(function (error) {
@@ -193,3 +198,68 @@ function mostrarnombre_odontologo() {
 window.addEventListener("load", function () {
   mostrarnombre_odontologo();
 });
+
+
+// --------------actualizar citas---------------------
+function actualizar_citas_admin(id) {
+  // ... resto del código
+
+  // Obtener el modal
+  var modal = document.getElementById("myModal_tabla_admin_actualizar");
+  const id_citas = document.getElementById("id_citas_actualizar")
+
+  id_citas.value = id
+
+  // Abrir el modal
+  modal.style.display = "block";
+  //cierra el modal en cualquier parte de la pantalla
+  window.onclick = function (event) {
+      if (event.target == modal) {
+          modal.style.display = "none";
+      }
+  }
+  //este es el id del boton
+  const btnActualizar_cita_amin = document.getElementById('btn-actualizarcita_admin');
+  btnActualizar_cita_amin.onclick = function () {
+      // Obtener los nuevos valores de los campos del formulario
+      const nombres = document.getElementById("nombre_paciente_actualizar");
+      const edades = document.getElementById("edad_actualizar");
+      const odontlogos = document.getElementById("nombre_odontologo_actualizar");
+      const fecha = document.getElementById("fecha_actualizar");
+      const consultas = document.getElementById("consultas_actualizar");
+      const tarjetas = document.getElementById("tarjetas_actualizar");
+      const cardNumber = document.getElementById("cardNumber_actualizar");
+      const estado_cita = document.getElementById("estado_cita_actualizar");
+      const problemas = document.getElementById("problemas_actualizar");
+      alert('actualizar_citas')
+  
+      axios.post('actualizar_citas_admin', {
+        id:id_citas.value,
+        Nombre_completo: nombres.value,
+        Edad: edades.value,
+        odontlogos: odontlogos.value,
+        fecha: fecha.value,
+        consulta: consultas.value,
+        tarje_tade_credito: tarjetas.value,
+        Num_tarjeta: cardNumber.value,
+        cita_estado: estado_cita.value,
+        problema: problemas.value,
+      }, {
+          headers: {
+              'Content-Type': 'multipart/form-data'
+
+          }
+      }
+      ).then((res) => {
+          console.log(res.data)
+          alert("se actualizio citas con exito")
+
+      })
+          .catch((error) => {
+              console.error(error)
+              alert("no se pudo actualizar")
+          })
+
+  }
+
+}

@@ -126,3 +126,43 @@ def eliminar_citas_admin():
     else:
         return jsonify({'message': 'cita no encontrado'})
     
+
+
+
+# actualizar citas
+@routes_cita2.route('/actualizar_citas_admin', methods=['POST'] )
+def actualizar_cita_admin():
+  # Obtener los datos enviados en la solicitud
+    id = request.form.get('id')
+    Nombre_completo = request.form['Nombre_completo']
+    Edad = request.form['Edad']
+    nombre_odontologo = request.form['odontlogos']
+    fecha = request.form['fecha']
+    consulta = request.form['consulta']
+    tarje_tade_credito = request.form['tarje_tade_credito']
+    Num_tarjeta = request.form['Num_tarjeta']
+    cita_estado = request.form['cita_estado']
+    problema = request.form['problema']
+
+    # Aquí puedes realizar las operaciones necesarias para actualizar los datos en la base de datos
+    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
+
+    # Ejemplo de actualización usando SQLAlchemy
+    cita_actualizar = citas.query.get(id)
+    cita_actualizar.Nombre_completo = Nombre_completo
+    cita_actualizar.Edad = Edad
+    cita_actualizar.nombre_odontologo = nombre_odontologo
+    cita_actualizar.fecha = fecha
+    cita_actualizar.consulta = consulta
+    cita_actualizar.tarje_tade_credito = tarje_tade_credito
+    cita_actualizar.Num_tarjeta = Num_tarjeta
+    cita_actualizar.estado_citas = cita_estado
+    cita_actualizar.problema = problema
+
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+      
+    # Enviar una respuesta exitosa
+    return jsonify({'message': 'Datos actualizados correctamente de la cita'})
+
+

@@ -85,6 +85,22 @@
   background-color: rgba(0, 0, 0, 0.4);
   /* Color de fondo oscuro */
 }
+.myModal_tabla_admin_actualizar {
+  display: none;
+  /* El modal está oculto por defecto */
+  position: fixed;
+  /* Fija la posición del modal */
+  z-index: 1;
+  /* Pone el modal por encima del resto de elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  /* Permite desplazar el contenido del modal si es demasiado grande */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Color de fondo oscuro */
+}
 
 .modal_tabla_paciente {
   display: none;

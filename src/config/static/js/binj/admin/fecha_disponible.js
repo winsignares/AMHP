@@ -30,6 +30,7 @@ function fecha_disponible_save() {
 //se coloca el codigo que muestre las fechas disponibles en un select
 function mostrarfechadispo() {
   const selectfecha = document.getElementById("fecha");
+  const selectfecha2 = document.getElementById("fecha_actualizar");
   axios
     .get("obtener_fechas_dispo", {
       responseType: "json",
@@ -42,9 +43,13 @@ function mostrarfechadispo() {
       i = 0;
       for (let index = 0; index < length; index++) {
         const opcions = document.createElement("option");
+        const opcions2 = document.createElement("option");
 
         opcions.text = datos[index].fecha_disp;
+        opcions2.text = datos[index].fecha_disp;
+
         selectfecha.appendChild(opcions);
+        selectfecha2.appendChild(opcions2);
       }
     })
     .catch(function (error) {
