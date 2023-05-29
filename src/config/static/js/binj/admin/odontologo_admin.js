@@ -36,13 +36,25 @@ window.addEventListener('load', function () {
 
 
 // ----------------guardar odontologo----------------------
-function registrar_odontologo() {
-    const Nombre = document.getElementById('nombres');
-    const direccion = document.getElementById('Direccion');
-    const Telefono = document.getElementById('Telefono');
-    const Correo = document.getElementById('Email');
-    const Especialidad = document.getElementById('Especialidad');
-
+    function registrar_odontologo() {
+      const Nombre = document.getElementById('nombres');
+      const direccion = document.getElementById('Direccion');
+      const Telefono = document.getElementById('Telefono');
+      const Correo = document.getElementById('Email');
+      const Especialidad = document.getElementById('Especialidad');
+  
+      // Validar si hay datos en todos los campos
+      if (Nombre.value === '' || direccion.value === '' || Telefono.value === '' || Correo.value === '' || Especialidad.value === '') {
+          // Mostrar la alerta de error
+          Swal.fire({
+              position: 'top-center',
+              icon: 'error',
+              title: 'Por favor, complete todos los campos.',
+              showConfirmButton: false,
+              timer: 2000
+          });
+          return; // Salir de la función si no hay datos en todos los campos
+      }
     axios.post('guardarodontologos_admin', {
         nombre: Nombre.value,
         direccion: direccion.value,
@@ -58,19 +70,22 @@ function registrar_odontologo() {
         }
     }
     ).then((res) => {
-        console.log(res.data)
-        Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: '¡odontologo gurdado Exitosa mente!',
-            showConfirmButton: false,
-            timer: 2000,
-          })
-          document.getElementById("nombres").value = "";
-          document.getElementById("Direccion").value = "";
-          document.getElementById("Telefono").value = "";
-          document.getElementById("Email").value = "";
-          document.getElementById("Especialidad").value = "";
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Odontólogo registrado exitosamente!',
+        showConfirmButton: false,
+        timer: 2000
+    });
+
+    // Restablecer los valores de los campos
+    Nombre.value = '';
+    direccion.value = '';
+    Telefono.value = '';
+    Correo.value = '';
+    Especialidad.value = '';
+
+      console.log(res.data)
       
         })
         .catch((error) => {
