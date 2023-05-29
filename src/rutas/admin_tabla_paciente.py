@@ -58,10 +58,9 @@ def mostarpaciente_admin():
     return jsonify(datos)
 
 
-
-@routes_admin_tabla_paciente.route('/actualizar_paciente_admin', methods=['POST'] )
+@routes_admin_tabla_paciente.route('/actualizar_paciente_admin', methods=['POST'])
 def actualizar_paciente():
-  # Obtener los datos enviados en la solicitud
+    # Obtener los datos enviados en la solicitud
     id = request.form.get('id')
     name = request.form.get('Name')
     cedula = request.form.get('cedula')
@@ -70,20 +69,26 @@ def actualizar_paciente():
     email = request.form.get('Email')
     fecha_nacimiento = request.form.get('fecha_nacimiento')
 
-    # Aquí puedes realizar las operaciones necesarias para actualizar los datos en la base de datos
-    # por ejemplo, usando un ORM como SQLAlchemy o ejecutando consultas directas a la base de datos
-
-    # Ejemplo de actualización usando SQLAlchemy
+    # Obtener el registro existente de la base de datos
     paciente = pacientes.query.get(id)
-    paciente.Name = name
-    paciente.cedula = cedula
-    paciente.telefono = telefono
-    paciente.direccion = direccion
-    paciente.Email = email
-    paciente.fecha_nacimiento = fecha_nacimiento
+
+    # Verificar qué campos se deben actualizar
+    if name:
+        paciente.Name = name
+    if cedula:
+        paciente.cedula = cedula
+    if telefono:
+        paciente.telefono = telefono
+    if direccion:
+        paciente.direccion = direccion
+    if email:
+        paciente.Email = email
+    if fecha_nacimiento:
+        paciente.fecha_nacimiento = fecha_nacimiento
 
     # Guardar los cambios en la base de datos
     db.session.commit()
-      
+
     # Enviar una respuesta exitosa
     return jsonify({'message': 'Datos actualizados correctamente'})
+
