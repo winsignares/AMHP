@@ -109,5 +109,20 @@ def obtener_fechas_dispo():
     return jsonify(datos)
 
 
+# esto es para eliminar citas como admin
+@routes_cita2.route('/eliminar_citas_admin', methods=['POST'])
+def eliminar_citas_admin():
+    # Obtener el ID del odontologo a eliminar desde la solicitud POST
+    id_citas = request.json['id']
 
-   
+    # Lógica para eliminar el odontologo en la base de datos
+    # Aquí debes escribir el código para eliminar el odontologo utilizando la biblioteca o método que estés utilizando para interactuar con la base de datos
+    
+    cita = citas.query.get(id_citas)  # Busca el odontologo por ID
+    if cita:
+        db.session.delete(cita)  # Elimina el odontologo
+        db.session.commit()  # Confirma los cambios en la base de datos
+        return jsonify({'message': 'cita eliminado correctamente'})
+    else:
+        return jsonify({'message': 'cita no encontrado'})
+    

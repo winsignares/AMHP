@@ -25,7 +25,7 @@ function mostrar() {
                 <td>${datos[index].estado_citas}</td>  
                 <td>${datos[index].problema}</td>  
                 <td><a onclick="actualizar_citas()"class="btn btn-primary btn-edit">Actualizar</a></td>
-                <td><a onclick="eliminar() " class="btn btn-danger btn-eliminar">Eliminar</a></td>
+                <td><a onclick="eliminarcitaadmin(${datos[index].id}) " class="btn btn-danger btn-eliminar"">Eliminar</a></td>
               </tr> `;
       }
       divcate.innerHTML = mostrar;
@@ -38,6 +38,25 @@ function mostrar() {
 window.addEventListener("load", function () {
   mostrar();
 });
+
+// eliminar citas como admin
+function eliminarcitaadmin(id) {
+  axios.post('eliminar_citas_admin', {
+      id: id
+  })
+      .then(function (response) {
+          // Manejar la respuesta de éxito aquí
+          console.log(response);
+          // Ejecutar la función mostrar() nuevamente para actualizar la tabla
+          mostrar();
+      })
+      .catch(function (error) {
+          // Manejar los errores aquí
+          console.log(error);
+      });
+}
+
+
 //---------------mostrar nombre de pacientes en un select---------------
 function mostrarnombrepaciente() {
   const selectnombre = document.getElementById("nombre_prueba");
