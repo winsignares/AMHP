@@ -117,6 +117,17 @@ function guardar_cita_admin() {
           showConfirmButton: false,
           timer: 2000,
         })
+        //esto limpia depues que guarda
+        document.getElementById("nombre_prueba").value = "";
+        document.getElementById("edades").value = "";
+        document.getElementById("odontlogos").value = "";
+        document.getElementById("fecha").value = "";
+        document.getElementById("consultas").value = "";
+        document.getElementById("tarjetas").value = "";
+        document.getElementById("cardNumber").value = "";
+        document.getElementById("estado_cita").value = "";
+        document.getElementById("problemas").value = "";
+     
       });
   } catch (error) {
     console.error(error);

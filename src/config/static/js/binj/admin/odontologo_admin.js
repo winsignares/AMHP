@@ -66,7 +66,13 @@ function registrar_odontologo() {
             showConfirmButton: false,
             timer: 2000,
           })
-    })
+          document.getElementById("nombres").value = "";
+          document.getElementById("Direccion").value = "";
+          document.getElementById("Telefono").value = "";
+          document.getElementById("Email").value = "";
+          document.getElementById("Especialidad").value = "";
+      
+        })
         .catch((error) => {
             console.error(error)
         })
