@@ -22,10 +22,11 @@ def indexadmin_tabla_paciente():
     return render_template('/main/admin_tabla_paciente.html', titles=titulo)
 
 
-@routes_home.route("/indexblanqueamentos" )
+
+@routes_home.route("/indexcontacto" )
 def indexblanqueamentos():
     titulo= "Pagina blanqueamentos"
-    return render_template('/main/blanqueamentos.html', titles=titulo)
+    return render_template('/main/contacto.html', titles=titulo)
 
 @routes_home.route("/indexcalendario" )
 def indexcalenda():
@@ -33,10 +34,10 @@ def indexcalenda():
     return render_template('/main/calendario_admin.html', titles=titulo)
 
 
-@routes_home.route("/indeximplantes" )
+@routes_home.route("/indexsobre" )
 def indeximplantes():
     titulo= "Pagina implantes"
-    return render_template('/main/implantes.html', titles=titulo)
+    return render_template('/main/sobre.html', titles=titulo)
 
 
 @routes_home.route("/indexprincipal" )
@@ -59,10 +60,10 @@ def indexcitauser():
 
 
 
-@routes_home.route("/indexortodoncias" )
+@routes_home.route("/indexservice" )
 def indexortodoncias():
     titulo= "Pagina ortodoncias"
-    return render_template('/main/ortodoncias.html', titles=titulo) 
+    return render_template('/main/service.html', titles=titulo) 
 
 
 
