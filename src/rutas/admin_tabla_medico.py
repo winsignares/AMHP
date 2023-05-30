@@ -58,6 +58,10 @@ def eliminar_odontologo_admin():
     else:
         return jsonify({'message': 'odontologo no encontrado'})
     
+
+
+
+    
 @routes_admin_tabla_medico.route('/actualizar_odontologos_admin', methods=['POST'])
 def actualizar_odontologos():
     # Obtener los datos enviados en la solicitud

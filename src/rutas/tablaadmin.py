@@ -3,7 +3,7 @@ from flask import Blueprint, Flask,  redirect, request, jsonify, session, render
 from model.cita import citas
 from model.paciente import pacientes
 from model.fechas_disponibles import fechas_disponi
-
+import datetime
 routes_cita2 = Blueprint("routes_cita2", __name__)
 
 
@@ -128,7 +128,6 @@ def eliminar_citas_admin():
     
 
 
-
 # actualizar citas
 @routes_cita2.route('/actualizar_citas_admin', methods=['POST'] )
 def actualizar_cita_admin():
@@ -181,6 +180,5 @@ def actualizar_cita_admin():
         return jsonify({'message': 'fecha no encontrado'})
     
 
-    
 
 
