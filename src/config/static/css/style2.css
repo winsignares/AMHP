@@ -778,8 +778,8 @@ body {
 .table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffff50;
-    height: 550px;
+    background-color: #ffffffbf;
+    height: 200px;
     border-radius: 10px;
 }
 
@@ -787,7 +787,7 @@ body {
 .table td {
     padding: 10px;
     text-align: left;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #000000;
 }
 
 /* Estilos de los botones */
@@ -1007,3 +1007,4 @@ body {
     max-height: 400px; /* Establece la altura máxima deseada para el contenedor */
     overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
   }
+
