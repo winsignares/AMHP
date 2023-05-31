@@ -7,8 +7,8 @@ routes_mos_user = Blueprint("routes_mos_user", __name__)
 
 
 
-@routes_mos_user.route("/buscarpapo", methods=["POST"])
-def validar_logisssn():
+@routes_mos_user.route("/buscarcita_user", methods=["POST"])
+def buscar_cita():
   
     id_buscar = request.json["buscar"]
     datos= {}
@@ -20,15 +20,17 @@ def validar_logisssn():
         i+=1	       
         datos[i] = {
         'id':cate.id,
-		'Nombre_completo':cate.Nombre_completo,
+		'Nombre_completos':cate.Nombre_completo,
 		'Edad':cate.Edad,                                                    
-		'genero':cate.genero,                                                    
+		'nombre_odontologos':cate.nombre_odontologo,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
+		# 'tarje_credi':cate.tarje_tade_credito,                                                    
+		# 'Num_tarjeta':cate.Num_tarjeta,                                                    
 		'estado_citas':cate.estado_citas,                                                    
-		'problema':cate.problema                                                    
+		'problema':cate.problema                                                      
         }
-        goria.append(datos)
+        goria.append(datos) 
     return jsonify(datos)
   
 

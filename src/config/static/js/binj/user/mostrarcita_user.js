@@ -1,8 +1,9 @@
+//esta es el js que hace el filtro
 function buscar_citas_user() { 
   const divcate = document.getElementById('tabla');
   const ids = document.getElementById('buscarcitasuser_id');
   alert("sisi")
-  axios.post('buscarpapo', {
+  axios.post('buscarcita_user', {
     buscar: ids.value
       
   })
@@ -14,9 +15,9 @@ function buscar_citas_user() {
     for (let index = 1; index < length; index++) {
       mostrar += `<tr>
       <td>${datos[index].id}</td>
-      <td>${datos[index].Nombre_completo}</td>
+      <td>${datos[index].Nombre_completos}</td>
       <td>${datos[index].Edad}</td>
-      <td>${datos[index].genero}</td>
+      <td>${datos[index].nombre_odontologos}</td>
       <td>${datos[index].fecha}</td>
       <td>${datos[index].consulta}</td>
       <td>${datos[index].estado_citas}</td>
@@ -33,4 +34,7 @@ function buscar_citas_user() {
 console.log(error);
 });
 }
+
+
+
 
