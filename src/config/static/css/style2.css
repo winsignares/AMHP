@@ -453,6 +453,7 @@ header .container {
     margin-bottom: 60px;
     text-transform: uppercase;
     color: #48186D;
+    margin-left: 81px;
 }
 
 #contact .container .content .left form input[type=submit] {
@@ -1008,3 +1009,7 @@ body {
     overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
   }
 
+.btn-buscar{
+margin-right: auto;
+margin-left: -20%;
+}

@@ -1,17 +1,25 @@
 {% extends "layout.html" %}
 {% block body %}
-<section id="contact">
-    <div class="container">
-        <div class="title">
-            <h1 class="title-cita">Citas</h1>
-            <p>Aqui podra ver su citas </p>
-        </div>
+<header id="home">
+    <div class="menu">
+        <div class="logo"></div><!--logo-->
+        <nav class="desktop-menu">
+            <ul>
+                <li><a href="/fronted/indexprincipal">Inicio</a></li>
+                <li><a href="/fronted/indexservice">serviços</a></li>
+                <li><a href="/fronted/indexsobre">sobre</a></li>
+                <li><a href="/fronted/indexcita">agendar cita</a></li>
+                <li><a href="/fronted/indexregistro">registar</a></li>
+                <li><a href="/fronted/indexlogin">logins</a></li>
+            </ul>
+        </nav>
+    </div>
         <div class="contenedor_de_la_tabla"> 
             <div class="tabla_de_mi_cita">
                 <div class="d-flex mb-3">
                     <input type="text" id="buscarcitasuser_id" class="form-control mr-2"
                         placeholder="Buscar en la tabla...">
-                    <input class="btn btn-primary" onclick="buscar_citas_user()" type="button"  value="buscar">
+                    <input class="btn btn-primary btn-buscar" onclick="buscar_citas_user()" type="button"  value="buscar">
                 </div>
                 <div class="table-responsive_user">
                     <table class="table">
@@ -39,7 +47,6 @@
             </div>
         </div>
     </div>
-    
-</section>
+</footer>
 <script src="{{url_for('static', filename='js/binj/user/mostrarcita_user.js')}}"></script>
 {% endblock %}

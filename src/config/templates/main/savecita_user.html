@@ -1,6 +1,19 @@
 {% extends "layout.html" %}
 {% block body %}
-<section id="contact">
+<header id="home">
+  <div class="menu">
+      <div class="logo"></div><!--logo-->
+      <nav class="desktop-menu">
+          <ul>
+            <li><a href="/fronted/indexprincipal">Inicio</a></li>
+              <li><a href="/fronted/indexservice">serviços</a></li>
+              <li><a href="/fronted/indexsobre">sobre</a></li>
+              <li><a href="/fronted/tablauser">ver citas</a></li>
+              <li><a href="/fronted/indexregistro">registar</a></li>
+              <li><a href="/fronted/indexlogin">logins</a></li>
+          </ul>
+      </nav>
+  </div>
     <div class="container">
         <div class="title">
         </div>
@@ -58,6 +71,6 @@
             <div id="mensajeError" class="message">Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.</div>
         </div> 
     </div>
-</section>
+  </footer>
 <script src="{{url_for('static', filename='js/binj/user/save_citas.js')}}"></script>
 {% endblock %}
