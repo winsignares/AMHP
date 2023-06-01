@@ -26,7 +26,7 @@ function registrarme() {
     ).then((res) => {
         console.log(res.data)
         alert("registro existoso")
-        window.location.href = "/fronted/indexprincipal";
+        
     })
     .catch((error) => {
         console.error(error)

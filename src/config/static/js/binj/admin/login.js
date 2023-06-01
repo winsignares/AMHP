@@ -9,7 +9,14 @@ function ingrso(){
     })
         .then(function (response) {
             console.log(response)
-                window.location.href = '/fronted/indexcita2';
+        //alerta de inicio de seccion
+            // Swal.fire({
+            //     position: 'top-center',
+            //     icon: 'success',
+            //     title: '¡seccion exitosa!',
+            //     showConfirmButton: false,
+            //     timer: 2000
+            // });
           
               
         })

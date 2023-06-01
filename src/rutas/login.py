@@ -11,8 +11,10 @@ def validar_login():
   
     usuario = request.json["usuario"]
     contraseña = request.json["contraseña"]
-    verificacion = db.session.query(admins).filter(admins.usuario == usuario,admins.contraseña == contraseña,).first()
+    verificacion = db.session.query(admins).filter(admins.usuario == usuario,admins.contraseña == contraseña).first()
 
     # Busca el usuario en la base de datos
     if verificacion:  
         return "Correcto"
+    else:
+        return "malo"

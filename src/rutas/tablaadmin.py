@@ -18,6 +18,7 @@ def mostarcitasuser():
         i+=1	       
         datos[i] = {
         'id':cate.id,
+        'Rol':cate.Rol,
 		'Nombre_completos':cate.Nombre_completo,
 		'Edad':cate.Edad,                                                    
 		'nombre_odontologos':cate.nombre_odontologo,                                                    
@@ -48,6 +49,7 @@ def obtener_nombres_pacientes():
 def savecita_admins():
 
     Nombre_completo = request.form['Nombre_completo']
+    Rol = "admin"
     Edad = request.form['Edad']
     genero = request.form['odontlogos']
     fecha = request.form['fecha']
@@ -58,7 +60,7 @@ def savecita_admins():
     problema = request.form['problema']
     # problema = date.today()
     print(Nombre_completo)
-    new_cit = citas( Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
+    new_cit = citas( Rol,Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
     db.session.add(new_cit)
     db.session.commit()
  

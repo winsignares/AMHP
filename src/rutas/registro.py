@@ -7,7 +7,7 @@ routes_registro = Blueprint("routes_registro", __name__)
 
 
 
-@routes_registro.route('/guardaregistro', methods=['POST'])
+@routes_registro.route('/guardaregistro', methods=['GET', 'POST'])
 def saveregistro():
     print("hola")
     Name = request.form['Name']
@@ -17,6 +17,10 @@ def saveregistro():
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
     print(Name)
+    
+    
+    
+    
     new_reg = pacientes(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()

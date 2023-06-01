@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>login</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
-</head>
+{% extends "layout.html" %}
+{% block body %}
 <body>
+   
     <div class="login-box">
+       
         <h1 class="create">create Account</h1>
         <!-- NAME INPUT -->
         <label for="Fullname">Full name</label>
@@ -25,16 +22,15 @@
         <input id="Correo" type="text" placeholder="Correo" name="Correo">
          <!-- Fecha de nacimento INPUT -->
          <label for="Fechadenacimento">
-        
             Fecha de nacimento</label>
          <br>
          <input type="date" id="fecha" name="fecha">
        
         <input onclick="registrarme()" type="submit" value="registrarme">
-        </form>
+        
     </div>
     <script src="{{url_for('static', filename='js/binj/user/save_registro.js')}}"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
 </body> 
-</html>
+{% endblock %}
