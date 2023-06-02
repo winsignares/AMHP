@@ -144,27 +144,39 @@ function registrar_paciente() {
     })
     .then((res) => {
       console.log(res.data);
-      // Mostrar la alerta de éxito
-      Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: '¡Paciente Registrado Exitosamente!',
-        showConfirmButton: false,
-        timer: 2000,
-      });
+      if (res.data === 'Paciente already exists in the database') {
+        // Mostrar la alerta de paciente existente
+        Swal.fire({
+          position: 'top-center',
+          icon: 'warning',
+          title: 'El paciente ya existe en la base de datos.',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        // Mostrar la alerta de éxito
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: '¡Paciente Registrado Exitosamente!',
+          showConfirmButton: false,
+          timer: 2000,
+        });
 
-      // Restablecer los valores de los campos
-      name.value = '';
-      Cedula.value = '';
-      Telefono.value = '';
-      Direccion.value = '';
-      Correo.value = '';
-      Fechadenacimento.value = '';
+        // Restablecer los valores de los campos
+        name.value = '';
+        Cedula.value = '';
+        Telefono.value = '';
+        Direccion.value = '';
+        Correo.value = '';
+        Fechadenacimento.value = '';
+      }
     })
     .catch((error) => {
       console.error(error);
     });
 }
+
 
 //----------------------------------------------------------------
 //buscador

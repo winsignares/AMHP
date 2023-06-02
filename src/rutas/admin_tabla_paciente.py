@@ -14,11 +14,18 @@ def saveregistro_admin():
     direccion = request.form['direccion']
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
-    print(Name)
-    new_reg = pacientes(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
+
+    # Check if the patient already exists in the database
+    existing_patient = pacientes.query.filter(
+        (pacientes.cedula == cedula) | (pacientes.Email == Email)
+    ).first()
+    if existing_patient:
+        return "Paciente already exists in the database"
+
+    new_reg = pacientes(Name, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
-    return "si"
+    return "Record saved successfully"
 
 
 @routes_admin_tabla_paciente.route('/eliminar_paciente_admin', methods=['POST'])
