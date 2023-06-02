@@ -15,15 +15,22 @@ def saveodontologos_admin():
     Rol = "Admin"
     fecha_registro = date.today()
     nombre = request.form['nombre']
+    cedula = request.form['cedula_odon']
     direccion = request.form['direccion']
     telefono = request.form['telefono']
     correo = request.form['correo']
     especialidad = request.form['especialidad']     
     print(nombre)
-    newodontologo = odontologos(Rol,fecha_registro,nombre,direccion,telefono,correo,especialidad)
+    
+    # Check if the odontólogo already exists in the database
+    existing_odontologo = odontologos.query.filter_by(cedula=cedula).first()
+    if existing_odontologo:
+        return "El odontólogo ya existe en la base de datos"
+    
+    newodontologo = odontologos(Rol, fecha_registro, nombre, cedula, direccion, telefono, correo, especialidad)
     db.session.add(newodontologo)
     db.session.commit()
-    return "si"
+    return "Registro exitoso"
 
 
 @routes_admin_tabla_medico.route('/mostrar_odontologos_admin', methods=['GET'])
@@ -37,6 +44,7 @@ def mostarodontologo_admin():
         datos[i] = {
         'id':cate.id,
 		'nombre':cate.nombre,
+		'cedula':cate.cedula,
 		'direccion':cate.direccion,                                                    
 		'telefono':cate.telefono,                                                    
 		'correo':cate.correo,                                                                                                       

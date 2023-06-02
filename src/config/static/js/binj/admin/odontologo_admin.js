@@ -14,6 +14,7 @@ function mostrar() {
                 mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].nombre}</td>
+                <td>${datos[index].cedula}</td>
                 <td>${datos[index].direccion}</td>
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].correo}</td> 
@@ -36,64 +37,82 @@ window.addEventListener('load', function () {
 
 
 // ----------------guardar odontologo----------------------
-    function registrar_odontologo() {
-      const Nombre = document.getElementById('nombres');
-      const direccion = document.getElementById('Direccion');
-      const Telefono = document.getElementById('Telefono');
-      const Correo = document.getElementById('Email');
-      const Especialidad = document.getElementById('Especialidad');
-  
-      // Validar si hay datos en todos los campos
-      if (Nombre.value === '' || direccion.value === '' || Telefono.value === '' || Correo.value === '' || Especialidad.value === '') {
-          // Mostrar la alerta de error
-          Swal.fire({
-              position: 'top-center',
-              icon: 'error',
-              title: 'Por favor, complete todos los campos.',
-              showConfirmButton: false,
-              timer: 2000
-          });
-          return; // Salir de la función si no hay datos en todos los campos
-      }
-    axios.post('guardarodontologos_admin', {
-        nombre: Nombre.value,
-        direccion: direccion.value,
-        telefono: Telefono.value,
-        correo: Correo.value,
-        especialidad: Especialidad.value
+function registrar_odontologo() {
+  const Nombre = document.getElementById('nombres');
+  const cedula_odon = document.getElementById('cedula_odon');
+  const direccion = document.getElementById('Direccion');
+  const Telefono = document.getElementById('Telefono');
+  const Correo = document.getElementById('Email');
+  const Especialidad = document.getElementById('Especialidad');
 
+  // Validar si hay datos en todos los campos
+  if (
+    Nombre.value === '' ||
+    cedula_odon.value === '' ||
+    direccion.value === '' ||
+    Telefono.value === '' ||
+    Correo.value === '' ||
+    Especialidad.value === ''
+  ) {
+    // Mostrar la alerta de error
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'Por favor, complete todos los campos.',
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    return; // Salir de la función si no hay datos en todos los campos
+  }
 
+  axios
+    .post('guardarodontologos_admin', {
+      nombre: Nombre.value,
+      cedula_odon: cedula_odon.value,
+      direccion: direccion.value,
+      telefono: Telefono.value,
+      correo: Correo.value,
+      especialidad: Especialidad.value,
     }, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    })
+    .then((res) => {
+      console.log(res.data);
+      if (res.data === 'El odontólogo ya existe en la base de datos') {
+        // Mostrar la alerta de odontólogo existente
+        Swal.fire({
+          position: 'top-center',
+          icon: 'warning',
+          title: 'El odontólogo ya existe en la base de datos.',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      } else {
+        // Mostrar la alerta de éxito
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: '¡Odontólogo registrado exitosamente!',
+          showConfirmButton: false,
+          timer: 2000,
+        });
 
-        }
-    }
-    ).then((res) => {
-      Swal.fire({
-        position: 'top-center',
-        icon: 'success',
-        title: '¡Odontólogo registrado exitosamente!',
-        showConfirmButton: false,
-        timer: 2000
+        // Restablecer los valores de los campos
+        Nombre.value = '';
+        cedula_odon.value = '';
+        direccion.value = '';
+        Telefono.value = '';
+        Correo.value = '';
+        Especialidad.value = '';
+      }
+    })
+    .catch((error) => {
+      console.error(error);
     });
 
-    // Restablecer los valores de los campos
-    Nombre.value = '';
-    direccion.value = '';
-    Telefono.value = '';
-    Correo.value = '';
-    Especialidad.value = '';
-
-      console.log(res.data)
-      
-        })
-        .catch((error) => {
-            console.error(error)
-        })
-
-
-}
+  }
 //-----modal de odontologo-----
 function acualizar_odontologo(id) {
     // ... resto del código
