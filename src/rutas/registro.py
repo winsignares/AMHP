@@ -9,21 +9,21 @@ routes_registro = Blueprint("routes_registro", __name__)
 
 @routes_registro.route('/guardaregistro', methods=['GET', 'POST'])
 def saveregistro():
-    print("hola")
     Name = request.form['Name']
     cedula = request.form['cedula']
     telefono = request.form['telefono']
     direccion = request.form['direccion']
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
-    print(Name)
     
+    # Check if the patient already exists in the database
+    existing_patient = pacientes.query.filter(
+        (pacientes.cedula == cedula) | (pacientes.Email == Email)
+    ).first()
+    if existing_patient:
+        return "Paciente already exists in the database"
     
-    
-    
-    new_reg = pacientes(Name,cedula,telefono,direccion,Email,fecha_nacimiento)
+    new_reg = pacientes(Name, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
-    return "si"
-
- 
+    return "Registro exitoso"
