@@ -1,23 +1,44 @@
-function save_cit() {
+function save_citas_user() {
   const nombres = document.getElementById("nombres");
   const edades = document.getElementById("edades");
-  const generos = document.getElementById("nombre_odonto");
+  const odontlogos = document.getElementById("nombre_odonto");
   const fechadipo_user = document.getElementById("fechadipo_user");
   const consultas = document.getElementById("consultas");
   const tarjetas = document.getElementById("tarjetas");
   const cardNumber = document.getElementById("cardNumber");
   const estado_cita = document.getElementById("estado_cita");
   const problemas = document.getElementById("problemas");
-  alert("si sirve ome ");
+ 
+  if (
+    nombres.value === "" ||
+    edades.value === "" ||
+    odontlogos.value === "" ||
+    fechadipo_user.value === "" ||
+    consultas.value === "" ||
+    tarjetas.value === "" ||
+    cardNumber.value === "" ||
+    estado_cita.value === "" ||
+    problemas.value === ""
+  ) {
+    // Mostrar la alerta de error
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'Por favor, complete todos los campos.',
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    return; // Salir de la función si no hay datos en todos los campos
+  }
 
   try {
     axios
       .post(
-        "guardarcitas",
+        "guardarcitas_user",
         {
           Nombre_completo: nombres.value,
           Edad: edades.value,
-          genero: generos.value,
+          odontlogos: odontlogos.value,
           fecha: fechadipo_user.value,
           consulta: consultas.value,
           tarje_tade_credito: tarjetas.value,
@@ -33,7 +54,26 @@ function save_cit() {
       )
       .then((res) => {
         console.log(res.data);
-        alert("sita agendada cono user");
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: '¡Cita agendada con Exito!',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+
+        // Restablecer los valores de los campos
+        nombres.value = "";
+        edades.value = "";
+        odontlogos.value = "";
+        fechadipo_user.value = "";
+        consultas.value = "";
+        tarjetas.value = "";
+        cardNumber.value = "";
+        estado_cita.value = "";
+        problemas.value = "";
+      
+   
       });
   } catch (error) {
     console.error(error);

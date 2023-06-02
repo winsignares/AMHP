@@ -2,7 +2,6 @@
 {% block body %}
 <header id="home">
   <div class="menu">
-      <div class="logo"></div><!--logo-->
       <nav class="desktop-menu">
           <ul>
             <li><a href="/fronted/indexprincipal">Inicio</a></li>
@@ -15,11 +14,9 @@
       </nav>
   </div>
     <div class="container">
-        <div class="title">
-        </div>
         <div class="container2">
             <h1>Formulario de Odontología</h1>
-            <form id="odontologiaForm" method="post">
+           
                 <label for="nombre">Nombre completo:</label>
                 <input type="text" id="nombres" name="nombre" required />
                 <label for="edad">Edad:</label>
@@ -63,14 +60,16 @@
                 <br>
                 <label for="consulta">problema</label>
                 <textarea id="problemas" rows="5" required></textarea>
-                <br />
+                <br /> 
                
-                <input id="btn" onclick="save_cit()" type="submit" value="Enviar" />
-              </form>
-            <div id="mensajeExito" class="message success">¡Formulario enviado con éxito!</div>
-            <div id="mensajeError" class="message">Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.</div>
-        </div> 
+                <input id="btn" onclick="save_citas_user()" type="submit" value="Enviar" />
+              
+          
+       
+       </div>
+        
     </div>
-  </footer>
-<script src="{{url_for('static', filename='js/binj/user/save_citas.js')}}"></script>
+    <script src="{{url_for('static', filename='js/binj/user/save_citas.js')}}"></script>
+  </header>
+
 {% endblock %}

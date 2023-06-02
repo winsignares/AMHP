@@ -10,22 +10,22 @@ routes_cita_user = Blueprint("routes_cita_user", __name__)
 
 
 
-@routes_cita_user.route('/guardarcitas', methods=['POST'])
-def savecita():
+@routes_cita_user.route('/guardarcitas_user', methods=['POST'])
+def savecita_user():
 
     Nombre_completo = request.form['Nombre_completo'] 
     Rol = "user"
     Edad = request.form['Edad']
-    genero = request.form['genero']
+    odontlogos = request.form['odontlogos']
     fechadi = request.form['fecha']
-    consulta = request.form['consulta']
+    consulta = request.form['consulta'] 
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
     estado_cita = request.form['estado_cita']
     problema = request.form['problema']
     # problema = date.today()
     print(Nombre_completo)
-    new_cit = citas(Rol, Nombre_completo, Edad,genero,fechadi,consulta,tarje_tade_credito, Num_tarjeta,estado_cita,problema)
+    new_cit = citas(Rol, Nombre_completo, Edad,odontlogos,fechadi,consulta,tarje_tade_credito, Num_tarjeta,estado_cita,problema)
     db.session.add(new_cit)
     db.session.commit()
 
