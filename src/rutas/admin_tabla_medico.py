@@ -1,7 +1,9 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 # from model.odontologos import odontologoss
+from datetime import datetime,date
 from model.odontologo import odontologos
+
 
 routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
 
@@ -10,13 +12,15 @@ routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
 
 @routes_admin_tabla_medico.route('/guardarodontologos_admin', methods=['POST'])
 def saveodontologos_admin():
+    Rol = "Admin"
+    fecha_registro = date.today()
     nombre = request.form['nombre']
     direccion = request.form['direccion']
     telefono = request.form['telefono']
     correo = request.form['correo']
     especialidad = request.form['especialidad']     
     print(nombre)
-    newodontologo = odontologos(nombre,direccion,telefono,correo,especialidad)
+    newodontologo = odontologos(Rol,fecha_registro,nombre,direccion,telefono,correo,especialidad)
     db.session.add(newodontologo)
     db.session.commit()
     return "si"

@@ -23,5 +23,5 @@ class pacientes(db.Model):
         self.Email = Email
         self.fecha_nacimiento = fecha_nacimiento
      
-with app.app_context():
+with app.app_context(): 
     db.create_all()
