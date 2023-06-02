@@ -1,6 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.paciente import pacientes
+from datetime import datetime,date
 
 
 routes_registro = Blueprint("routes_registro", __name__)
@@ -9,7 +10,8 @@ routes_registro = Blueprint("routes_registro", __name__)
 
 @routes_registro.route('/guardaregistro', methods=['GET', 'POST'])
 def saveregistro():
-    Rol = "user"
+    Rol = "user" 
+    fecha_registro = date.today()
     Name = request.form['Name']
     cedula = request.form['cedula']
     telefono = request.form['telefono']
@@ -24,7 +26,7 @@ def saveregistro():
     if existing_patient:
         return "Paciente already exists in the database"
     
-    new_reg = pacientes(Rol,Name, cedula, telefono, direccion, Email, fecha_nacimiento)
+    new_reg = pacientes(Rol,fecha_registro,Name, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "Registro exitoso"
