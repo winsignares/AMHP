@@ -8,6 +8,7 @@ routes_admin_tabla_paciente = Blueprint("routes_admin_tabla_paciente", __name__)
 
 @routes_admin_tabla_paciente.route('/guardarpaciente_admin', methods=['POST']) 
 def saveregistro_admin():
+    Rol = "admin"
     Name = request.form['Name']
     cedula = request.form['cedula']
     telefono = request.form['telefono']
@@ -22,7 +23,7 @@ def saveregistro_admin():
     if existing_patient:
         return "Paciente already exists in the database"
 
-    new_reg = pacientes(Name, cedula, telefono, direccion, Email, fecha_nacimiento)
+    new_reg = pacientes(Rol,Name, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "Record saved successfully"

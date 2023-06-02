@@ -5,13 +5,15 @@ class pacientes(db.Model):
 
     
     id  = db.Column(db.Integer, primary_key=True)
+    Rol = db.Column(db.String(50))
     Name = db.Column(db.String(50))
     cedula = db.Column(db.Integer)
     telefono = db.Column(db.Integer)
     direccion = db.Column(db.String(50))
     Email = db.Column(db.String(50))
     fecha_nacimiento = db.Column(db.String(50))
-    def __init__(self, Name,cedula,telefono,direccion,Email,fecha_nacimiento):
+    def __init__(self, Rol,Name,cedula,telefono,direccion,Email,fecha_nacimiento):
+        self.Rol = Rol
         self.Name = Name
         self.cedula = cedula
         self.telefono = telefono
