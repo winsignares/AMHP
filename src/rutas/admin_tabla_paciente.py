@@ -56,6 +56,8 @@ def mostarpaciente_admin():
         i+=1	       
         datos[i] = { 
         'id':cate.id,
+		'Rol':cate.Rol,
+		'fecha_de_regitro':cate.fecha_de_regitro,
 		'Name':cate.Name,
 		'cedula':cate.cedula,                                                    
 		'telefono':cate.telefono,                                                    
