@@ -42,7 +42,7 @@ textarea {
     margin-top: 5px;
     resize: vertical;
     background-color: #ffffff88;
-    margin: -3px 240px;
+    margin: -3px 70px;
     margin-left: 0px;
     border-block-end-color: black;
 }
@@ -88,4 +88,7 @@ h1 {
 
 label {
     color: rgb(0, 0, 0);
+}
+.btn-buscar_cita{
+    margin-left: 10%;
 }

@@ -18,7 +18,7 @@ function ingrso(){
             //     timer: 2000
             // });
           
-              
+              window.location.href = '/fronted/indexcita2'
         })
         .catch(function (error) {
             console.log(error);
