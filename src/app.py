@@ -30,6 +30,7 @@ from rutas.login import routes_login
 from rutas.mostrarcitas_user import routes_mos_user
 from rutas.admin_tabla_paciente import routes_admin_tabla_paciente
 from rutas.admin_tabla_medico import routes_admin_tabla_medico
+from rutas.admin_tabla_medico import routes_admin_tabla_medico
 
 
 #importar la ruta hoome 
@@ -51,6 +52,7 @@ app.register_blueprint(routes_admin_tabla_medico , url_prefix="/fronted")
 
 
 
+
 @app.errorhandler(404)
 def not_found(error):
     if 'conectado' in session:
@@ -62,7 +64,7 @@ def not_found(error):
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/main/principal.html', titles=titulo)
+    return render_template('/main/registro_admin.html', titles=titulo)
 
 
 

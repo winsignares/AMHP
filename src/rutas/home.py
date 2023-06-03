@@ -80,3 +80,8 @@ def indexcita2():
     titulo= "Pagina cita2"
     return render_template('/main/tablaadmin.html', titles=titulo)
 
+
+@routes_home.route("/indexregistroadmin" )
+def jjjjjj():
+    titulo= "Pagina registroadmin"
+    return render_template('/main/registro_admin.html', titles=titulo)

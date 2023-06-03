@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+<body>
+    <header id="home">
+        <div class="menu">
+            <div class="logo"></div><!--logo-->
+            <nav class="desktop-menu">
+                <ul>
+                    <li><a href="/fronted/indexcita2">regresar</a></li>
+                </ul>
+            </nav>
+        </div>
+    <meta charset="utf-8">
+    <title>login</title>
+</head> 
+    <div class="login-box">
+        <h1 class="create">create Account admin</h1>
+        <!-- NAME INPUT -->
+        <label for="Fullname">Nombre</label>
+        <input id="#" type="text" placeholder="nombre" name="nombre"> 
+        <!-- Cedula INPUT -->
+        <label for="Apellido">Apellido</label>
+        <input id="#" type="text" placeholder="Apellido" name="Apellido">
+          <!-- Cedula INPUT -->
+          <label for="Correo">Correo</label>
+          <input id="#" type="Email" placeholder="Correo" name="Correo">
+        <!-- Telefono INPUT -->
+        <label for="Contraseña">Contraseña</label>
+        <input id="#" type="password" placeholder="password" name="password">
+        <input onclick="#" type="submit" value="registrarme">
+    </div>
+</body> 
+{% endblock %}
