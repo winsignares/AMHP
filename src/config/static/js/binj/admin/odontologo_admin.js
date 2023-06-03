@@ -13,6 +13,8 @@ function mostrar() {
             for (let index = 1; index < length; index++) {
                 mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
+                <td>${datos[index].Rol}</td>  
+                <td>${datos[index].fecha_de_regitro}</td>  
                 <td>${datos[index].nombre}</td>
                 <td>${datos[index].cedula}</td>
                 <td>${datos[index].direccion}</td>

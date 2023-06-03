@@ -43,6 +43,8 @@ def mostarodontologo_admin():
         i+=1	       
         datos[i] = {
         'id':cate.id,
+        'Rol':cate.Rol,
+        'fecha_de_regitro':cate.fecha_de_regitro,
 		'nombre':cate.nombre,
 		'cedula':cate.cedula,
 		'direccion':cate.direccion,                                                    
