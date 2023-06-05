@@ -1,6 +1,4 @@
-
-function ingrso(){
-    
+function ingreso() {
     const usuario = document.getElementById('usuario');
     const contrasena = document.getElementById('contrasena');
     axios.post('login', {
@@ -8,21 +6,34 @@ function ingrso(){
         contraseña: contrasena.value
     })
         .then(function (response) {
-            console.log(response)
-        //alerta de inicio de seccion
-            // Swal.fire({
-            //     position: 'top-center',
-            //     icon: 'success',
-            //     title: '¡seccion exitosa!',
-            //     showConfirmButton: false,
-            //     timer: 2000
-            // });
-          
-              window.location.href = '/fronted/indexcita2'
+            console.log(response);
+            
+            if (response.data.status === "Correcto") {
+                // Alerta de inicio de sesión exitoso
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'success',
+                    title: '¡Inicio de sesión exitoso!',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+
+                // Redirigir a otra vista
+                window.location.href = '/fronted/indexcita2'  // Reemplaza '/otra_vista' con la URL de la vista deseada
+            } else if (response.data.status === "Error") {
+                // Alerta de datos incorrectos
+                Swal.fire({
+                    position: 'top-center',
+                    icon: 'error',
+                    title: 'Datos incorrectos',
+                    text: response.data.message,
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            }
         })
         .catch(function (error) {
             console.log(error);
-           
         });
 }
 
