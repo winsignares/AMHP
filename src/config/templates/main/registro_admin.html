@@ -17,17 +17,18 @@
         <h1 class="create">create Account admin</h1>
         <!-- NAME INPUT -->
         <label for="Fullname">Nombre</label>
-        <input id="#" type="text" placeholder="nombre" name="nombre"> 
+        <input id="nombre_admin" type="text" placeholder="nombre" name="nombre"> 
         <!-- Cedula INPUT -->
         <label for="Apellido">Apellido</label>
-        <input id="#" type="text" placeholder="Apellido" name="Apellido">
+        <input id="apellido_admin" type="text" placeholder="Apellido" name="Apellido">
           <!-- Cedula INPUT -->
           <label for="Correo">Correo</label>
-          <input id="#" type="Email" placeholder="Correo" name="Correo">
+          <input id="correo_admin" type="Email" placeholder="Correo" name="Correo">
         <!-- Telefono INPUT -->
         <label for="Contraseña">Contraseña</label>
-        <input id="#" type="password" placeholder="password" name="password">
-        <input onclick="#" type="submit" value="registrarme">
+        <input id="conrasena_admin" type="password" placeholder="password" name="password">
+        <input onclick="registro_admin()" type="submit" value="registrarme">
     </div>
 </body> 
+<script src="{{url_for('static', filename='js/binj/admin/login.js')}}"></script>
 {% endblock %}

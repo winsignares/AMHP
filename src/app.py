@@ -64,7 +64,7 @@ def not_found(error):
 @app.route("/")
 def index():
     titulo= "Pagina Princiapl"
-    return render_template('/main/registro_admin.html', titles=titulo)
+    return render_template('/main/principal.html', titles=titulo)
 
 
 
