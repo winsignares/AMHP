@@ -1,6 +1,22 @@
 function ingreso() {
     const usuario = document.getElementById('usuario');
     const contrasena = document.getElementById('contrasena');
+   
+    if (
+        usuario.value === '' ||
+        contrasena.value === ''
+      
+      ) {
+        // Mostrar la alerta de error
+        Swal.fire({
+          position: 'top-center',
+          icon: 'error',
+          title: 'Por favor, complete todos los campos.',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        return; // Salir de la función si no hay datos en todos los campos
+      }
     axios.post('login', {
         usuario: usuario.value,
         contraseña: contrasena.value
@@ -19,13 +35,13 @@ function ingreso() {
                 });
 
                 // Redirigir a otra vista
-                window.location.href = '/fronted/indexcita2'  // Reemplaza '/otra_vista' con la URL de la vista deseada
+                window.location.href = '/otra_vista';  // Reemplaza '/otra_vista' con la URL de la vista deseada
             } else if (response.data.status === "Error") {
-                // Alerta de datos incorrectos
+                // Alerta de error con mensaje específico
                 Swal.fire({
                     position: 'top-center',
                     icon: 'error',
-                    title: 'Datos incorrectos',
+                    title: 'Error',
                     text: response.data.message,
                     showConfirmButton: false,
                     timer: 2000

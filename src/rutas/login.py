@@ -10,13 +10,15 @@ routes_login = Blueprint("routes_login", __name__)
 def validar_login():
     usuario = request.json["usuario"]
     contraseña = request.json["contraseña"]
-    verificacion = db.session.query(admins).filter(admins.correo == usuario,admins.contraseña == contraseña).first()
+    verificacion = db.session.query(admins).filter(admins.correo == usuario).first()
 
-    # Busca el usuario en la base de datos
     if verificacion:
-        return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
+        if verificacion.contraseña == contraseña:
+            return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
+        else:
+            return {"status": "Error", "message": "Contraseña incorrecta"}
     else:
-        return {"status": "Error", "message": "Datos incorrectos"}
+        return {"status": "Error", "message": "Correo incorrecto"}
 
     
     
