@@ -119,6 +119,7 @@ def obtener_nombres_odonlogo():
         i += 1	       
         datos.append({
             
+            'id_odontologo': odon.id ,
             'Nombre_odontologo': odon.nombre 
         })
     return jsonify(datos)

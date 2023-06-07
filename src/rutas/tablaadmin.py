@@ -11,16 +11,16 @@ routes_cita2 = Blueprint("routes_cita2", __name__)
 @routes_cita2.route('/mostrar_citas_admin', methods=['GET'])
 def mostarcitasuser():
     datos= {}
-    resultado = db.session.query(citas).select_from(citas).all()
+    resultado = db.session.query(citas, pacientes).select_from(citas).join(pacientes).all()
     i=0
     goria = []
-    for cate in resultado:
+    for cate ,paciente in resultado:
         i+=1	       
         datos[i] = {
         'id':cate.id,
         'Rol':cate.Rol,
-		'Nombre_completos':cate.Nombre_completo,
-		'Edad':cate.Edad,                                                    
+		'Nombre_completos':paciente.Name,
+		'Edad':paciente.edad,                                                    
 		'nombre_odontologos':cate.nombre_odontologo,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
@@ -41,6 +41,7 @@ def obtener_nombres_pacientes():
         i += 1	       
         datos.append({
             
+            'id_paciente': cate.id,
             'Nombre_paciente': cate.Name
         })
     return jsonify(datos)
@@ -48,9 +49,9 @@ def obtener_nombres_pacientes():
 @routes_cita2.route('/guardarcitas_admin', methods=['POST'])
 def savecita_admins():
 
-    Nombre_completo = request.form['Nombre_completo']
+    
     Rol = "admin"
-    Edad = request.form['Edad']
+    
     genero = request.form['odontlogos']
     fecha = request.form['fecha']
     consulta = request.form['consulta']
@@ -58,9 +59,10 @@ def savecita_admins():
     Num_tarjeta = request.form['Num_tarjeta']
     cita_estado = request.form['cita_estado']
     problema = request.form['problema']
+    id_paciente = request.form['Nombre_completo']
     # problema = date.today()
-    print(Nombre_completo)
-    new_cit = citas( Rol,Nombre_completo, Edad,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema)
+    
+    new_cit = citas( Rol,genero,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente)
     db.session.add(new_cit)
     db.session.commit()
  
@@ -137,7 +139,6 @@ def actualizar_cita_admin():
   # Obtener los datos enviados en la solicitud
     id = request.form.get('id')
     Nombre_completo = request.form['Nombre_completo']
-    Edad = request.form['Edad']
     nombre_odontologo = request.form['odontlogos']
     fecha = request.form['fecha']
     consulta = request.form['consulta']
@@ -152,8 +153,6 @@ def actualizar_cita_admin():
     # Verificar qué campos se deben actualizar
     if Nombre_completo:
         cita_actualizar.Nombre_completo = Nombre_completo
-    if Edad:
-        cita_actualizar.Edad = Edad
     if nombre_odontologo:
         cita_actualizar.nombre_odontologo = nombre_odontologo
     if fecha:

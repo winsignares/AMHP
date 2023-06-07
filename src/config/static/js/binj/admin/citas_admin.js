@@ -23,7 +23,7 @@ function mostrar() {
                 <td>${datos[index].consulta}</td>  
                 <td>${datos[index].tarje_credi}</td>  
                 <td>${datos[index].Num_tarjeta}</td>  
-                <td>${datos[index].estado_citas}</td>  
+                <td>${datos[index].estado_citas}</td>   
                 <td>${datos[index].problema}</td>  
                 <td><a onclick="actualizar_citas_admin(${datos[index].id})"class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminarcitaadmin(${datos[index].id}) " class="btn btn-danger btn-eliminar"">Eliminar</a></td>
@@ -61,9 +61,10 @@ function mostrarnombrepaciente() {
         const opcion = document.createElement("option");
         const opcion2 = document.createElement("option");
 
+        opcion.value = datos[index].id_paciente;
         opcion.text = datos[index].Nombre_paciente;
         opcion2.text = datos[index].Nombre_paciente;
-        
+
         selectnombre.appendChild(opcion);
         selectnombre2.appendChild(opcion2);
       }
@@ -80,8 +81,6 @@ window.addEventListener("load", function () {
 //-----------------------agendar citas-------------------------------------------------//
 //esta es la funcion de guardar citas como admin utilizando la ruta de "citas.py"
 function guardar_cita_admin() {
-  const nombres = document.getElementById("nombre_prueba");
-  const edades = document.getElementById("edades");
   const odontlogos = document.getElementById("odontlogos");
   const fecha = document.getElementById("fecha");
   const consultas = document.getElementById("consultas");
@@ -89,18 +88,20 @@ function guardar_cita_admin() {
   const cardNumber = document.getElementById("cardNumber");
   const estado_cita = document.getElementById("estado_cita");
   const problemas = document.getElementById("problemas");
+  const nombres = document.getElementById("nombre_prueba");
+
 
   // Validar si hay datos en todos los campos
   if (
-    nombres.value === "" ||
-    edades.value === "" ||
     odontlogos.value === "" ||
     fecha.value === "" ||
     consultas.value === "" ||
     tarjetas.value === "" ||
     cardNumber.value === "" ||
     estado_cita.value === "" ||
-    problemas.value === ""
+    problemas.value === "" ||
+    nombres.value === ""
+
   ) {
     // Mostrar la alerta de error
     Swal.fire({
@@ -118,8 +119,8 @@ function guardar_cita_admin() {
       .post(
         "guardarcitas_admin",
         {
-          Nombre_completo: nombres.value,
-          Edad: edades.value,
+
+
           odontlogos: odontlogos.value,
           fecha: fecha.value,
           consulta: consultas.value,
@@ -127,6 +128,7 @@ function guardar_cita_admin() {
           Num_tarjeta: cardNumber.value,
           cita_estado: estado_cita.value,
           problema: problemas.value,
+          Nombre_completo: nombres.value,
         },
         {
           headers: {
@@ -145,8 +147,8 @@ function guardar_cita_admin() {
         });
 
         // Limpiar los valores de los campos después de guardar
-        nombres.value = "";
-        edades.value = "";
+
+     
         odontlogos.value = "";
         fecha.value = "";
         consultas.value = "";
@@ -154,6 +156,7 @@ function guardar_cita_admin() {
         cardNumber.value = "";
         estado_cita.value = "";
         problemas.value = "";
+        nombres.value = "";
       });
   } catch (error) {
     console.error(error);
@@ -241,57 +244,57 @@ function actualizar_citas_admin(id) {
   modal.style.display = "block";
   //cierra el modal en cualquier parte de la pantalla
   window.onclick = function (event) {
-      if (event.target == modal) {
-          modal.style.display = "none";
-      }
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
   //este es el id del boton
   const btnActualizar_cita_amin = document.getElementById('btn-actualizarcita_admin');
   btnActualizar_cita_amin.onclick = function () {
-      // Obtener los nuevos valores de los campos del formulario
-      const nombres = document.getElementById("nombre_paciente_actualizar");
-      const edades = document.getElementById("edad_actualizar");
-      const odontlogos = document.getElementById("nombre_odontologo_actualizar");
-      const fecha = document.getElementById("fecha_actualizar");
-      const consultas = document.getElementById("consultas_actualizar");
-      const tarjetas = document.getElementById("tarjetas_actualizar");
-      const cardNumber = document.getElementById("cardNumber_actualizar");
-      const estado_cita = document.getElementById("estado_cita_actualizar");
-      const problemas = document.getElementById("problemas_actualizar");
+    // Obtener los nuevos valores de los campos del formulario
+    const nombres = document.getElementById("nombre_paciente_actualizar");
+    const edades = document.getElementById("edad_actualizar");
+    const odontlogos = document.getElementById("nombre_odontologo_actualizar");
+    const fecha = document.getElementById("fecha_actualizar");
+    const consultas = document.getElementById("consultas_actualizar");
+    const tarjetas = document.getElementById("tarjetas_actualizar");
+    const cardNumber = document.getElementById("cardNumber_actualizar");
+    const estado_cita = document.getElementById("estado_cita_actualizar");
+    const problemas = document.getElementById("problemas_actualizar");
 
-  
-      axios.post('actualizar_citas_admin', {
-        id:id_citas.value,
-        Nombre_completo: nombres.value,
-        Edad: edades.value,
-        odontlogos: odontlogos.value,
-        fecha: fecha.value,
-        consulta: consultas.value,
-        tarje_tade_credito: tarjetas.value,
-        Num_tarjeta: cardNumber.value,
-        cita_estado: estado_cita.value,
-        problema: problemas.value,
-      }, {
-          headers: {
-              'Content-Type': 'multipart/form-data'
 
-          }
+    axios.post('actualizar_citas_admin', {
+      id: id_citas.value,
+      Nombre_completo: nombres.value,
+      Edad: edades.value,
+      odontlogos: odontlogos.value,
+      fecha: fecha.value,
+      consulta: consultas.value,
+      tarje_tade_credito: tarjetas.value,
+      Num_tarjeta: cardNumber.value,
+      cita_estado: estado_cita.value,
+      problema: problemas.value,
+    }, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+
       }
-      ).then((res) => {
-          console.log(res.data)
-          Swal.fire({
-            position: 'top-center',
-            icon: 'success',
-            title: '¡Cita Actualizada Exitosa mente!',
-            showConfirmButton: false,
-            timer: 2000,
-          })
+    }
+    ).then((res) => {
+      console.log(res.data)
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Cita Actualizada Exitosa mente!',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+
+    })
+      .catch((error) => {
+        console.error(error)
 
       })
-          .catch((error) => {
-              console.error(error)
-              
-          })
 
   }
 
@@ -314,7 +317,7 @@ function eliminarcitaadmin(id) {
     confirmButtonText: 'Aceptar'
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire({ 
+      Swal.fire({
         title: '!Odontologo(a) Eliminado(a) con éxito!',
         icon: 'success'
       });
