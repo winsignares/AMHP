@@ -8,7 +8,7 @@ class citas(db.Model):
     Rol = db.Column(db.String(50))
     # Nombre_completo = db.Column(db.String(50))
     # Edad = db.Column(db.String(50))
-    nombre_odontologo = db.Column(db.String(50))
+    # nombre_odontologo = db.Column(db.String(50))
     fecha = db.Column(db.String(50))
     consulta = db.Column(db.String(50))
     tarje_tade_credito = db.Column(db.String(50))
@@ -19,11 +19,9 @@ class citas(db.Model):
     id_odontologos = db.Column(db.Integer,db.ForeignKey('tblodontologos.id'))
     
 
-    def __init__(self,Rol, nombre_odontologo,fecha,consulta,tarje_tade_credito, Num_tarjeta,estado_citas,problema,id_paciente):
+    def __init__(self,Rol,fecha,consulta,tarje_tade_credito, Num_tarjeta,estado_citas,problema,id_paciente,id_odontologos):
       
         self.Rol = Rol
-        
-        self.nombre_odontologo = nombre_odontologo
         self.fecha = fecha
         self.consulta = consulta 
         self.tarje_tade_credito = tarje_tade_credito
@@ -31,6 +29,7 @@ class citas(db.Model):
         self.estado_citas = estado_citas
         self.problema = problema
         self.id_paciente = id_paciente
+        self.id_odontologos = id_odontologos
        
     
  

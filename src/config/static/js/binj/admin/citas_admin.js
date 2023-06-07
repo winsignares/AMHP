@@ -59,10 +59,14 @@ function mostrarnombrepaciente() {
       i = 0;
       for (let index = 0; index < length; index++) {
         const opcion = document.createElement("option");
+
         const opcion2 = document.createElement("option");
 
         opcion.value = datos[index].id_paciente;
         opcion.text = datos[index].Nombre_paciente;
+
+
+        opcion2.value = datos[index].id_paciente;
         opcion2.text = datos[index].Nombre_paciente;
 
         selectnombre.appendChild(opcion);
@@ -148,7 +152,7 @@ function guardar_cita_admin() {
 
         // Limpiar los valores de los campos después de guardar
 
-     
+
         odontlogos.value = "";
         fecha.value = "";
         consultas.value = "";
@@ -213,8 +217,15 @@ function mostrarnombre_odontologo() {
         const opcion = document.createElement("option");
         const opcion2 = document.createElement("option");
 
+        // esta es el select donde va a ingresar 
+        opcion.value = datos[index].id_odontologo;
         opcion.text = datos[index].Nombre_odontologo;
+
+        // este es el selctec donde quiere que actualize
+        opcion2.value = datos[index].id_odontologo;
         opcion2.text = datos[index].Nombre_odontologo;
+
+
         selectodontologo.appendChild(opcion);
         selectodontologo2.appendChild(opcion2);
 
@@ -252,8 +263,7 @@ function actualizar_citas_admin(id) {
   const btnActualizar_cita_amin = document.getElementById('btn-actualizarcita_admin');
   btnActualizar_cita_amin.onclick = function () {
     // Obtener los nuevos valores de los campos del formulario
-    const nombres = document.getElementById("nombre_paciente_actualizar");
-    const edades = document.getElementById("edad_actualizar");
+    const nombres_actualizar = document.getElementById("nombre_paciente_actualizar");
     const odontlogos = document.getElementById("nombre_odontologo_actualizar");
     const fecha = document.getElementById("fecha_actualizar");
     const consultas = document.getElementById("consultas_actualizar");
@@ -265,9 +275,9 @@ function actualizar_citas_admin(id) {
 
     axios.post('actualizar_citas_admin', {
       id: id_citas.value,
-      Nombre_completo: nombres.value,
-      Edad: edades.value,
-      odontlogos: odontlogos.value,
+      Nombre_actualizar: nombres_actualizar.value,
+
+      odontlogos_actualizar: odontlogos.value,
       fecha: fecha.value,
       consulta: consultas.value,
       tarje_tade_credito: tarjetas.value,
