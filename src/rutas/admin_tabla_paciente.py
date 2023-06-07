@@ -11,6 +11,7 @@ def saveregistro_admin():
     Rol = "admin"
     fecha_registro = date.today()
     Name = request.form['Name']
+    edad = request.form['edad']
     cedula = request.form['cedula']
     telefono = request.form['telefono']
     direccion = request.form['direccion']
@@ -24,7 +25,7 @@ def saveregistro_admin():
     if existing_patient:
         return "Paciente already exists in the database"
 
-    new_reg = pacientes(Rol,fecha_registro,Name, cedula, telefono, direccion, Email, fecha_nacimiento)
+    new_reg = pacientes(Rol,fecha_registro,Name,edad, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
     return "Record saved successfully"
@@ -59,6 +60,7 @@ def mostarpaciente_admin():
 		'Rol':cate.Rol,
 		'fecha_de_regitro':cate.fecha_de_regitro,
 		'Name':cate.Name,
+		'edad':cate.edad,
 		'cedula':cate.cedula,                                                    
 		'telefono':cate.telefono,                                                    
 		'direccion':cate.direccion,                                                    
@@ -74,6 +76,7 @@ def actualizar_paciente():
     # Obtener los datos enviados en la solicitud
     id = request.form.get('id')
     name = request.form.get('Name')
+    edad = request.form.get('edad_new')
     cedula = request.form.get('cedula')
     telefono = request.form.get('telefono')
     direccion = request.form.get('direccion')
@@ -86,6 +89,8 @@ def actualizar_paciente():
     # Verificar qué campos se deben actualizar
     if name:
         paciente.Name = name
+    if edad:
+        paciente.edad = edad
     if cedula:
         paciente.cedula = cedula
     if telefono:

@@ -19,6 +19,7 @@ function mostrar() {
                 <td >${datos[index].Rol}</td>  
                 <td >${datos[index].fecha_de_regitro}</td>  
                 <td>${datos[index].Name}</td>
+                <td>${datos[index].edad}</td>
                 <td>${datos[index].cedula}</td>
                 <td>${datos[index].telefono}</td>  
                 <td>${datos[index].direccion}</td>  
@@ -63,6 +64,7 @@ function abrir_modal_actualizar(id) {
   btnActualizar.onclick = function () {
     // Obtener los nuevos valores de los campos del formulario
     const name_new = document.getElementById('Fullname_nuevo');
+    const edad_new = document.getElementById('edades_nuevo');
     const cedula_new = document.getElementById('Cedula_nuevo');
     const telefono_new = document.getElementById('Telefono_nuevo');
     const direccion_new = document.getElementById('Direccion_nuevo');
@@ -72,7 +74,8 @@ function abrir_modal_actualizar(id) {
     axios.post('actualizar_paciente_admin', {
       id: edwin.value,
       Name: name_new.value,
-      cedula: cedula_new.value, 
+      edad_new: edad_new.value,
+      cedula: cedula_new.value,
       telefono: telefono_new.value,
       direccion: direccion_new.value,
       Email: Correo_new.value,
@@ -105,6 +108,7 @@ function abrir_modal_actualizar(id) {
 //esta es la funcion de guardar paciente(registro) como admin utilizando la ruta de "admin_tabla_paciente.py"
 function registrar_paciente() {
   const name = document.getElementById('Fullname');
+  const edad = document.getElementById('edades');
   const Cedula = document.getElementById('Cedula');
   const Telefono = document.getElementById('Telefono');
   const Direccion = document.getElementById('Direccion');
@@ -114,6 +118,7 @@ function registrar_paciente() {
   // Validar si hay datos en todos los campos
   if (
     name.value === '' ||
+    edad.value === '' ||
     Cedula.value === '' ||
     Telefono.value === '' ||
     Direccion.value === '' ||
@@ -134,6 +139,7 @@ function registrar_paciente() {
   axios
     .post('guardarpaciente_admin', {
       Name: name.value,
+      edad: edad.value,
       cedula: Cedula.value,
       telefono: Telefono.value,
       direccion: Direccion.value,
@@ -167,6 +173,7 @@ function registrar_paciente() {
 
         // Restablecer los valores de los campos
         name.value = '';
+        edad.value = '';
         Cedula.value = '';
         Telefono.value = '';
         Direccion.value = '';
@@ -227,19 +234,19 @@ function eliminar(id) {
     confirmButtonColor: '#3085d6',
     cancelButtonColor: 'red',
     confirmButtonText: 'Aceptar'
-    
+
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire({ 
+      Swal.fire({
         title: 'paciente Eliminado(a) con éxito!',
         icon: 'success'
-        
+
       });
       axios.post('eliminar_paciente_admin', {
         id: id
       })
         .then(function (response) {
-          
+
           console.log(response);
           mostrar();
         })

@@ -8,15 +8,17 @@ class pacientes(db.Model):
     Rol = db.Column(db.String(50))
     fecha_de_regitro = db.Column(db.String(50))
     Name = db.Column(db.String(50))
+    edad = db.Column(db.String(50))
     cedula = db.Column(db.Integer)
     telefono = db.Column(db.Integer)
     direccion = db.Column(db.String(50))
     Email = db.Column(db.String(50))
     fecha_nacimiento = db.Column(db.String(50))
-    def __init__(self, Rol,fecha_de_regitro,Name,cedula,telefono,direccion,Email,fecha_nacimiento):
+    def __init__(self, Rol,fecha_de_regitro,Name,edad,cedula,telefono,direccion,Email,fecha_nacimiento):
         self.Rol = Rol
         self.fecha_de_regitro = fecha_de_regitro
         self.Name = Name
+        self.edad = edad
         self.cedula = cedula
         self.telefono = telefono
         self.direccion = direccion

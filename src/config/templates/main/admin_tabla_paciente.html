@@ -2,54 +2,58 @@
 {% block body %}
 <header id="home">
   <div class="menu">
-      <div class="logo"></div><!--logo-->
-      <nav class="desktop-menu">
-          <ul>         
-              <li><a href="/fronted/indexcalendario">Calendario</a></li>
-              <li><a href="/fronted/indexadmin_tabla_medico">Medico</a></li>
-              <li><a href="/fronted/indexcita2">Citas</a></li>
-              <li><a href="/fronted/indexprincipal">Cerrar sesion</a></li>
-          </ul>
-      </nav>
+    <div class="logo"></div><!--logo-->
+    <nav class="desktop-menu">
+      <ul>
+        <li><a href="/fronted/indexcalendario">Calendario</a></li>
+        <li><a href="/fronted/indexadmin_tabla_medico">Medico</a></li>
+        <li><a href="/fronted/indexcita2">Citas</a></li>
+        <li><a href="/fronted/indexprincipal">Cerrar sesion</a></li>
+      </ul>
+    </nav>
   </div>
-</div><!--container-->
-<div class="contenedor_de_la_tabla">
-  <div class="tabla_de_mi_cita">
-    <div class="d-flex mb-3">
-      <input type="text" id="buscadorpacienteadmin" onkeyup="buscadorpaciente()" class="form-control mr-2"
-        placeholder="Buscar en la tabla...">
-      <button class="btn btn-primary4" type="button" id="boton-buscar">Buscar</button>
-      <button id="myBtn_3" class="btn btn-primary5" type="button">Nuevo paciente</button>
-    </div>
-    <div class="table-responsive_paciente">
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Rol</th>
-            <th scope="col">fecha de registro</th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Cedula</th>
-            <th scope="col">Telefono</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Email</th>
-            <th scope="col">Fecha de nacimiento</th>
-            <th scope="col">option</th>
-          </tr>
-        </thead>
-        <tbody id="tabla">
-          <tr>
+  </div><!--container-->
+  <div class="contenedor_de_la_tabla">
+    <div class="tabla_de_mi_cita">
+      <div class="d-flex mb-3">
+        <input type="text" id="buscadorpacienteadmin" onkeyup="buscadorpaciente()" class="form-control mr-2"
+          placeholder="Buscar en la tabla...">
+        <button class="btn btn-primary4" type="button" id="boton-buscar">Buscar</button>
+        <button id="myBtn_3" class="btn btn-primary5" type="button">Nuevo paciente</button>
+      </div>
+      <div class="table-responsive_paciente">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Rol</th>
+              <th scope="col">fecha de registro</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Edad</th>
+              <th scope="col">Cedula</th>
+              <th scope="col">Telefono</th>
+              <th scope="col">Direccion</th>
+              <th scope="col">Email</th>
+              <th scope="col">Fecha de nacimiento</th>
+              <th scope="col">option</th>
+            </tr>
+          </thead>
+          <tbody id="tabla">
+            <tr>
 
 
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
     <div id="myModal_tabla_paciente_1" class="modal_tabla_paciente">
       <div class="modal-content3">
         <label for="Fullname">Full name</label>
         <input id="Fullname" type="text" placeholder="Fullname" name="Fullname">
+        <!-- inptu edad -->
+        <label for="edad">Edad:</label>
+        <input type="number" id="edades" placeholder="edad" name="edad" min="1" max="120" required />
         <!-- Cedula INPUT -->
         <label for="Cedula">Cedula</label>
         <input id="Cedula" type="text" placeholder="Cedula" name="Cedula">
@@ -72,12 +76,15 @@
     <!-- modal de actualizar  -->
     <div id="myModal_tabla_paciente_admin_actualizar" class="modal_tabla_paciente_admin_actualizar">
       <div class="modal-content3-actualizar">
-          <!-- id inpppput -->
+        <!-- id inpppput -->
         <label for="id">id</label>
         <input id="id_nuevo" type="text" name="idactu">
         <!-- fulll name imput -->
         <label for="Fullname">Full name</label>
         <input id="Fullname_nuevo" type="text" placeholder="Fullname" name="Fullname">
+        <!-- inptu edad -->
+        <label for="edad">Edad:</label>
+        <input type="number" id="edades_nuevo" placeholder="edad" name="edad" min="1" max="120" required />
         <!-- Cedula INPUT -->
         <label for="Cedula">Cedula</label>
         <input id="Cedula_nuevo" type="text" placeholder="Cedula" name="Cedula">
@@ -97,7 +104,7 @@
         <button id="btn-actualizarpaciente" class="btn-primary-actualizar">avtualizar</button>
       </div>
     </div>
-  <script src="{{url_for('static', filename='js/binj/admin/paciente_admin.js')}}"></script>
-  <script src="{{url_for('static', filename='js/binj/funcion_modal_paciente.js')}}"></script>
- 
-  {% endblock %}
+    <script src="{{url_for('static', filename='js/binj/admin/paciente_admin.js')}}"></script>
+    <script src="{{url_for('static', filename='js/binj/funcion_modal_paciente.js')}}"></script>
+
+    {% endblock %}
