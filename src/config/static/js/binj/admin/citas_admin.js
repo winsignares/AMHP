@@ -17,7 +17,7 @@ function mostrar() {
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].Rol}</td>  
                 <td>${datos[index].Nombre_completos}</td>
-                <td>${datos[index].Edad}</td>
+                <td>${datos[index].Cedula}</td>
                 <td>${datos[index].nombre_odontologos}</td>  
                 <td>${datos[index].fecha}</td>  
                 <td>${datos[index].consulta}</td>  

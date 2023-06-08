@@ -21,7 +21,7 @@ def mostarcitasuser():
         'id':cate.id,
         'Rol':cate.Rol,
 		'Nombre_completos':paciente.Name,
-		'Edad':paciente.edad,                                                    
+		'Cedula':paciente.cedula,                                                    
 		'nombre_odontologos':odontolo.nombre,                                                    
 		'fecha':cate.fecha,                                                    
 		'consulta':cate.consulta,                                                    
