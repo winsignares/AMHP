@@ -1,6 +1,5 @@
 function save_citas_user() {
-  const nombres = document.getElementById("nombres");
-  const edades = document.getElementById("edades");
+  const cedula_buscar = document.getElementById("cedula_buscar");
   const odontlogos = document.getElementById("nombre_odonto");
   const fechadipo_user = document.getElementById("fechadipo_user");
   const consultas = document.getElementById("consultas");
@@ -8,10 +7,9 @@ function save_citas_user() {
   const cardNumber = document.getElementById("cardNumber");
   const estado_cita = document.getElementById("estado_cita");
   const problemas = document.getElementById("problemas");
- 
+
   if (
-    nombres.value === "" ||
-    edades.value === "" ||
+    cedula_buscar.value === "" ||
     odontlogos.value === "" ||
     fechadipo_user.value === "" ||
     consultas.value === "" ||
@@ -36,8 +34,7 @@ function save_citas_user() {
       .post(
         "guardarcitas_user",
         {
-          Nombre_completo: nombres.value,
-          Edad: edades.value,
+          cedula_buscar: cedula_buscar.value,
           odontlogos: odontlogos.value,
           fecha: fechadipo_user.value,
           consulta: consultas.value,
@@ -54,29 +51,48 @@ function save_citas_user() {
       )
       .then((res) => {
         console.log(res.data);
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: '¡Cita agendada con Exito!',
-          showConfirmButton: false,
-          timer: 2000,
-        });
+        if (res.data === 'sisi') {
 
-        // Restablecer los valores de los campos
-        nombres.value = "";
-        edades.value = "";
-        odontlogos.value = "";
-        fechadipo_user.value = "";
-        consultas.value = "";
-        tarjetas.value = "";
-        cardNumber.value = "";
-        estado_cita.value = "";
-        problemas.value = "";
-      
-   
+
+          // Mostrar la alerta de paciente existente
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: '¡Cita agendada con Exito!',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+
+          // Restablecer los valores de los campos
+          cedula_buscar.value = "";
+          odontlogos.value = "";
+          fechadipo_user.value = "";
+          consultas.value = "";
+          tarjetas.value = "";
+          cardNumber.value = "";
+          estado_cita.value = "";
+          problemas.value = "";
+        } else if (res.data === 'Paciente already exists in the database') {
+          // Mostrar la alerta de éxito
+          Swal.fire({
+            position: 'top-center',
+            icon: 'warning',
+            title: 'El paciente no existente',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
       });
-  } catch (error) {
+
+  }
+  // Mostrar la alerta de éxito
+
+
+  catch (error) {
     console.error(error);
+
+
+
   }
 
 }
@@ -97,6 +113,7 @@ function mostrarnombre_odontologo() {
       for (let index = 0; index < length; index++) {
         const opcions = document.createElement("option");
 
+        opcions.value = datos[index].id_odontologo;
         opcions.text = datos[index].name_odontologo;
         select_name_odontologo.appendChild(opcions);
       }

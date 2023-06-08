@@ -3,6 +3,7 @@ from flask import Blueprint, Flask,  redirect, request, jsonify, session, render
 from flask_sqlalchemy import SQLAlchemy
 from model.cita import citas
 from model.odontologo import odontologos 
+from model.paciente import pacientes 
 from model.fechas_disponibles import fechas_disponi 
 # from datetime import datetime,time
 
@@ -12,32 +13,42 @@ routes_cita_user = Blueprint("routes_cita_user", __name__)
 
 @routes_cita_user.route('/guardarcitas_user', methods=['POST'])
 def savecita_user():
-
-    Nombre_completo = request.form['Nombre_completo'] 
-    Rol = "user"
-    Edad = request.form['Edad']
-    odontlogos = request.form['odontlogos']
-    fechadi = request.form['fecha']
-    consulta = request.form['consulta'] 
+    # Obtener los datos de la solicitud
+    cedula = request.form['cedula_buscar']
+    fecha = request.form['fecha']
+    consulta = request.form['consulta']
     tarje_tade_credito = request.form['tarje_tade_credito']
     Num_tarjeta = request.form['Num_tarjeta']
-    estado_cita = request.form['estado_cita']
+    cita_estado = request.form['estado_cita']
     problema = request.form['problema']
-    # problema = date.today()
-    print(Nombre_completo)
-    new_cit = citas(Rol, Nombre_completo, Edad,odontlogos,fechadi,consulta,tarje_tade_credito, Num_tarjeta,estado_cita,problema)
-    db.session.add(new_cit)
-    db.session.commit()
+    id_odontologo = request.form['odontlogos']
+    fechadis = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
+    # Verificar si la cédula existe en la base de datos
+    # paciente = pacientes.query.filter_by(cedula=cedula).first()
+    paciente = pacientes.query.filter( (pacientes.cedula == cedula) 
+    ).first()
+    if paciente:
+        # Obtener el ID del paciente
+        id_pacientes = paciente.id
 
-#esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 
-    fechas_disponibles=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechadi).first()
-    if fechas_disponibles:
-        db.session.delete(fechas_disponibles)  # Elimina el fecha
-        db.session.commit()  # Confirma los cambios en la base de datos
-        return jsonify({'message': 'fecha eliminado correctamente y cita agendada como user'})
+        # Crear la nueva cita
+        new_cit = citas(Rol="user", fecha=fecha, consulta=consulta, tarje_tade_credito=tarje_tade_credito,
+                        Num_tarjeta=Num_tarjeta, estado_citas=cita_estado, problema=problema,
+                        id_paciente=id_pacientes, id_odontologos=id_odontologo)
+
+        db.session.add(new_cit)
+        db.session.commit()
+        
+        # Eliminar la fecha disponible seleccionada
+        
+        if fechadis:
+            db.session.delete(fechadis)
+            db.session.commit()
+      
+        return"sisi"
     else:
-        return jsonify({'message': 'fecha no encontrado como user'})
-    
+       return "Paciente already exists in the database"
+
 
 
 
@@ -51,6 +62,7 @@ def select_odontologo_mostrar():
         i += 1	       
         datos.append({
             
+            'id_odontologo': odon.id, 
             'name_odontologo': odon.nombre 
         })
     return jsonify(datos)
