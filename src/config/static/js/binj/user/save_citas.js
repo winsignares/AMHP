@@ -143,7 +143,10 @@ function mostrarfechadispo_user() {
       i = 0;
       for (let index = 0; index < length; index++) {
         const opcions_fecha = document.createElement("option");
-        opcions_fecha.text = datos[index].fecha_disponomble_user;
+
+        opcions_fecha.value = datos[index].id_fechadisp;
+        opcions_fecha.text = datos[index].fecha_disp_user;
+        
         selectfecha_dispo_user.appendChild(opcions_fecha);
       }
     })

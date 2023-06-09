@@ -6,7 +6,6 @@ class fechas_disponi(db.Model):
     
     id  = db.Column(db.Integer, primary_key=True)
     fechas_dispon = db.Column(db.String(50))
-    id_citas = db.Column(db.Integer,db.ForeignKey('tblcitas.id'))
 
 
     def __init__(self, fechas_dispon):

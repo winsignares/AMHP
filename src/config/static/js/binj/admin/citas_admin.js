@@ -142,13 +142,14 @@ function guardar_cita_admin() {
       )
       .then((res) => {
         console.log(res.data);
-        Swal.fire({
+        if( res.data=== "se guardo la cita")
+         Swal.fire({
           position: 'top-center',
           icon: 'success',
           title: '¡Cita guardada Exitosamente!',
           showConfirmButton: false,
           timer: 2000,
-        });
+         });
 
         // Limpiar los valores de los campos después de guardar
 
@@ -292,6 +293,7 @@ function actualizar_citas_admin(id) {
     }
     ).then((res) => {
       console.log(res.data)
+      if(res.data==="se actualizo cita")
       Swal.fire({
         position: 'top-center',
         icon: 'success',

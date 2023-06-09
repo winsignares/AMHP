@@ -13,7 +13,7 @@ routes_cita_user = Blueprint("routes_cita_user", __name__)
 
 @routes_cita_user.route('/guardarcitas_user', methods=['POST'])
 def savecita_user():
-    # Obtener los datos de la solicitud
+   # Obtener los datos de la solicitud
     cedula = request.form['cedula_buscar']
     fecha = request.form['fecha']
     consulta = request.form['consulta']
@@ -32,9 +32,9 @@ def savecita_user():
         id_pacientes = paciente.id
 
         # Crear la nueva cita
-        new_cit = citas(Rol="user", fecha=fecha, consulta=consulta, tarje_tade_credito=tarje_tade_credito,
+        new_cit = citas(Rol="user", consulta=consulta, tarje_tade_credito=tarje_tade_credito,
                         Num_tarjeta=Num_tarjeta, estado_citas=cita_estado, problema=problema,
-                        id_paciente=id_pacientes, id_odontologos=id_odontologo)
+                        id_paciente=id_pacientes, id_odontologos=id_odontologo, id_fechadispo=fecha)
 
         db.session.add(new_cit)
         db.session.commit()
@@ -48,8 +48,6 @@ def savecita_user():
         return"sisi"
     else:
        return "Paciente already exists in the database"
-
-
 
 
 #este codigo saca solo el dato del nombre del odontologo para mostrarlo en un select
@@ -74,12 +72,14 @@ def select_odontologo_mostrar():
 @routes_cita_user.route('/obtener_fechas_dispo_como_user')
 def obtener_fechas_dispo():
     datos = []
-    resultado = db.session.query(fechas_disponi).select_from(fechas_disponi).all()
-    i = 0
-    for cate in resultado:
-        i += 1	       
-        datos.append({
-            'fecha_disponomble_user': cate.fechas_dispon
-        })
-    return jsonify(datos)
 
+    subconsulta = db.session.query(citas.id_fechadispo).subquery()
+    resultado = db.session.query(fechas_disponi).filter(fechas_disponi.id.notin_(subconsulta)).all()
+
+    for cate in resultado:
+        datos.append({
+            'id_fechadisp': cate.id,
+            'fecha_disp_user': cate.fechas_dispon
+        })
+    
+    return jsonify(datos)

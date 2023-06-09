@@ -12,10 +12,10 @@ routes_cita2 = Blueprint("routes_cita2", __name__)
 @routes_cita2.route('/mostrar_citas_admin', methods=['GET'])
 def mostarcitasuser():
     datos= {}
-    resultado = db.session.query(citas, pacientes,odontologos).select_from(citas).join(pacientes).join(odontologos).all()
+    resultado = db.session.query(citas, pacientes,odontologos,fechas_disponi).select_from(citas).join(pacientes).join(odontologos).join(fechas_disponi).all()
     i=0
     goria = []
-    for cate ,paciente,odontolo in resultado:
+    for cate ,paciente,odontolo,fecha_dis in resultado:
         i+=1	       
         datos[i] = {
         'id':cate.id,
@@ -23,11 +23,11 @@ def mostarcitasuser():
 		'Nombre_completos':paciente.Name,
 		'Cedula':paciente.cedula,                                                    
 		'nombre_odontologos':odontolo.nombre,                                                    
-		'fecha':cate.fecha,                                                    
+		'fecha':fecha_dis.fechas_dispon,                                                    
 		'consulta':cate.consulta,                                                    
 		'tarje_credi':cate.tarje_tade_credito,                                                    
-		'Num_tarjeta':cate.Num_tarjeta,                                                    
-		'estado_citas':cate.estado_citas,                                                    
+		'Num_tarjeta':cate.Num_tarjeta,                                                      
+		'estado_citas':cate.estado_citas,                                                     
 		'problema':cate.problema                                                     
         }
         goria.append(datos)
@@ -36,21 +36,24 @@ def mostarcitasuser():
 @routes_cita2.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():
     datos = []
-    resultado = db.session.query(pacientes).select_from(pacientes).all()
-    i = 0
+
+    subquery = db.session.query(citas.id_paciente).distinct()
+
+    resultado = db.session.query(pacientes).filter(~pacientes.id.in_(subquery)).all()
+
     for cate in resultado:
-        i += 1	       
         datos.append({
-            
             'id_paciente': cate.id,
             'Nombre_paciente': cate.Name
         })
+
     return jsonify(datos)
 
 @routes_cita2.route('/guardarcitas_admin', methods=['POST'])
 def savecita_admins():
     
-    
+    # id_fecha = citas.id_fechadispo
+    # fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == id_fecha).first()
     Rol = "admin"
     fecha = request.form['fecha']
     consulta = request.form['consulta']
@@ -62,54 +65,57 @@ def savecita_admins():
     id_odontologo = request.form['odontlogos']
     # problema = date.today()
     
-    new_cit = citas( Rol,fecha,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente,id_odontologo)
+    new_cit = citas( Rol,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente,id_odontologo,fecha)
     db.session.add(new_cit)
     db.session.commit()
- 
+    return "se guardo la cita"
+
+
 #esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 
-    fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
-    if fechadis:
-        db.session.delete(fechadis)  # Elimina el fecha
-        db.session.commit()  # Confirma los cambios en la base de datos
-        return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
-    else:
-        return jsonify({'message': 'fecha no encontrado'})
+    # id_fecha = citas.id_fechadispo
+    # fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == id_fecha).first()
+    # if fechadis:
+    #     db.session.delete(fechadis)  # Elimina el fecha
+    #     db.session.commit()  # Confirma los cambios en la base de datos
+    #     return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
+    # else:
+    #     return jsonify({'message': 'fecha no encontrado'})
     
 
  
 
 
-# @routes_cita2.route('/updatesolicitudes', methods=['POST'] )
-# def actualizarS():
-#     id = request.json['id']
-#     solicitudes = request.json['Nombre_proveedor','Telefono','Direccion','Descripcion']
-#     pusuario = solicitudes.query.get(id)
-#     pusuario.cantidad = solicitudes
-#     db.session.commit()
-#     return redirect('/updatesolicitudes')
-
 
 
 #esta guada  la fecha disponible de la tabla fecha disponible
-@routes_cita2.route('ingresar_fechas_disponibles', methods=['POST'])
+@routes_cita2.route('/ingresar_fechas_disponibles', methods=['POST'])
 def fecha_dis():
     fechas_dispon = request.form['fechas_dispon']
+    fecha_existente = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechas_dispon).first()
+    if fecha_existente:
+        return "La fecha ya existe" # Devolver un mensaje de error si la fecha ya existe en la base de datos
+
     new_fecha = fechas_disponi(fechas_dispon)
     db.session.add(new_fecha)
     db.session.commit()
-    return "si se puso la fecha disponoble"
+    return "Se ha guardado la fecha disponible exitosamente"
+
+
 
 #mustra los datos de fercha disponible en un select
 @routes_cita2.route('/obtener_fechas_dispo')
 def obtener_fechas_dispo():
     datos = []
-    resultado = db.session.query(fechas_disponi).select_from(fechas_disponi).all()
-    i = 0
+
+    subconsulta = db.session.query(citas.id_fechadispo).subquery()
+    resultado = db.session.query(fechas_disponi).filter(fechas_disponi.id.notin_(subconsulta)).all()
+
     for cate in resultado:
-        i += 1	       
         datos.append({
+            'id_fechadisp': cate.id,
             'fecha_disp': cate.fechas_dispon
         })
+    
     return jsonify(datos)
 
 
@@ -153,8 +159,7 @@ def actualizar_cita_admin():
 
     # Verificar qué campos se deben actualizar
  
-    if fecha:
-        cita_actualizar.fecha = fecha
+    
     if consulta:
         cita_actualizar.consulta = consulta
     if tarje_tade_credito:
@@ -169,18 +174,21 @@ def actualizar_cita_admin():
         cita_actualizar.id_paciente = id_paciente
     if id_odontologos:
         cita_actualizar.id_odontologos = id_odontologos
+    if fecha:
+        cita_actualizar.id_fechadispo = fecha
 
     # Guardar los cambios en la base de datos
     db.session.commit()
+    return "se actualizo cita"
 
 
-    fechadis_actualizar=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
-    if fechadis_actualizar:
-        db.session.delete(fechadis_actualizar)  # Elimina el fecha
-        db.session.commit()  # Confirma los cambios en la base de datos
-        return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
-    else:
-        return jsonify({'message': 'fecha no encontrado'})
+    # fechadis_actualizar=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
+    # if fechadis_actualizar:
+    #     db.session.delete(fechadis_actualizar)  # Elimina el fecha
+    #     db.session.commit()  # Confirma los cambios en la base de datos
+    #     return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
+    # else:
+    #     return jsonify({'message': 'fecha no encontrado'})
     
 
 
