@@ -1,3 +1,79 @@
+//----------------------funcion mostrar tabla de citas
+function mostrar_citas_disponibles() {
+  const divcate = document.getElementById("tabla_fecha_disponible");
+
+  axios
+    .get("mostrar_fecha_dispo_tabla", {
+      responseType: "json",
+    })
+
+    .then(function (response) {
+      let datos = response.data;
+      var length = Object.keys(datos).length + 1;
+      let mostrar = "";
+      i = 0;
+      for (let index = 1; index < length; index++) {
+        mostrar += ` <tr>   
+                <td>${datos[index].id}</td>  
+                <td>${datos[index].fechas_dispon}</td>  
+                <td><a onclick="eliminar_fecha_dispo_tabla(${datos[index].id}) " class="btn btn-danger ">Eliminar</a></td>
+              </tr> `;
+      }
+      divcate.innerHTML = mostrar;
+    })
+    .catch(function (error) {
+      // Maneja los errores aquí
+      console.log(error);
+    });
+}
+window.addEventListener("load", function () {
+  mostrar_citas_disponibles();
+});
+
+
+
+function eliminar_fecha_dispo_tabla(id) {
+  Swal.fire({
+    title: '¿Desea eliminar la fecha?',
+    text: 'Esta acción no se puede deshacer',
+    imageUrl: '/static/img/eliminar_fecha.jpg', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
+    imageWidth: 200, // Ancho de la imagen en píxeles
+    imageHeight: 200, // Alto de la imagen en píxeles
+    imageAlt: 'Imagen de la cita', // Descripción de la imagen
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: 'red',
+    confirmButtonText: 'Aceptar'
+
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: '¡Fecha eliminada!',
+        icon: 'success'
+
+      });
+      axios.post('eliminar_fecha_disponi_tabla', {
+        id: id
+      })
+        .then(function (response) {
+
+          console.log(response);
+          mostrar_citas_disponibles();
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    } else {
+      Swal.fire({
+        title: '¡Cancelado!',
+        icon: 'error'
+      });
+    }
+  });
+}
+
+
 //esta es la fecha o citas que introducira el amdin y se encntraran disponibles
 //se usa la tabla frecha dispononible
 function fecha_disponible_save() {
@@ -33,6 +109,7 @@ function fecha_disponible_save() {
         )
         .then((res) => {
           console.log(res.data);
+          mostrar_citas_disponibles();
           if(res.data==="La fecha ya existe"){
 
           

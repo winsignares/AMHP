@@ -170,8 +170,27 @@
     
     <br />
     <input onclick="fecha_disponible_save()" type="submit" value="Enviar" />
+  <div class="table-responsive_citas">
+    <table class="table"> 
+      <thead>
+        <tr>
+          <th scope="col">id</th>
+          <th scope="col">fecha</th>
+          <th scope="col">opcion</th>
+        </tr>
+      </thead>
+      <br>
+      <tbody id="tabla_fecha_disponible">
+        <tr>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
   </div>
 </div>
+
+
 <script src="{{url_for('static', filename='js/binj/admin/citas_admin.js')}}"></script>
 <script src="{{url_for('static', filename='js/binj/admin/fecha_disponible.js')}}"></script>
 <script src="{{url_for('static', filename='js/binj/funcion_modal.js')}}"></script>
