@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 //esta funcion muestra los datos en una tabla inmediatamente que se habre la vista
-function mostrar() {
+function mostrar_paciente() {
   const divcate = document.getElementById('tabla');
   axios.get('mostrar_pacientes_admin', {
     responseType: 'json'
@@ -37,7 +37,7 @@ function mostrar() {
     });
 }
 window.addEventListener('load', function () {
-  mostrar();
+  mostrar_paciente();
 })
 
 
@@ -87,6 +87,7 @@ function abrir_modal_actualizar(id) {
       }
     }
     ).then((res) => {
+      mostrar_paciente();
       console.log(res.data)
       Swal.fire({
         position: 'top-center',
@@ -152,6 +153,7 @@ function registrar_paciente() {
     })
     .then((res) => {
       console.log(res.data);
+      mostrar_paciente();
       if (res.data === 'Paciente already exists in the database') {
         // Mostrar la alerta de paciente existente
         Swal.fire({
@@ -225,30 +227,41 @@ function eliminar(id) {
   Swal.fire({
     title: '¿Desea eliminar el paciente?',
     text: 'Esta acción no se puede deshacer',
-    imageUrl: '/static/img/eliminar_paciente.png', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
-    imageWidth: 200, // Ancho de la imagen en píxeles
-    imageHeight: 200, // Alto de la imagen en píxeles
-    imageAlt: 'Imagen de la cita', // Descripción de la imagen
+    imageUrl: '/static/img/eliminar_paciente.png',
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: 'Imagen de la cita',
     icon: 'info',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: 'red',
     confirmButtonText: 'Aceptar'
-
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire({
-        title: 'paciente Eliminado(a) con éxito!',
-        icon: 'success'
-
-      });
       axios.post('eliminar_paciente_admin', {
         id: id
       })
         .then(function (response) {
-
+          mostrar_paciente();
           console.log(response);
-          mostrar();
+          if (response.data.message === 'Paciente eliminado correctamente') {
+            Swal.fire({
+              title: 'paciente Eliminado(a) con éxito!',
+              icon: 'success'
+            });
+            mostrar();
+          } else if (response.data.message === 'No se puede eliminar al paciente porque tiene citas asociadas') {
+            Swal.fire({
+              title: 'No se puede eliminar el paciente',
+              text: 'El paciente tiene citas asociadas',
+              icon: 'warning'
+            });
+          } else {
+            Swal.fire({
+              title: 'Error al eliminar el paciente',
+              icon: 'error'
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);

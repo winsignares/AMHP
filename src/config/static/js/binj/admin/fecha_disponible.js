@@ -31,35 +31,44 @@ window.addEventListener("load", function () {
 });
 
 
-
 function eliminar_fecha_dispo_tabla(id) {
   Swal.fire({
     title: '¿Desea eliminar la fecha?',
     text: 'Esta acción no se puede deshacer',
-    imageUrl: '/static/img/eliminar_fecha.jpg', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
-    imageWidth: 200, // Ancho de la imagen en píxeles
-    imageHeight: 200, // Alto de la imagen en píxeles
-    imageAlt: 'Imagen de la cita', // Descripción de la imagen
+    imageUrl: '/static/img/eliminar_fecha.jpg',
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: 'Imagen de la cita',
     icon: 'info',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
     cancelButtonColor: 'red',
     confirmButtonText: 'Aceptar'
-
   }).then((result) => {
     if (result.isConfirmed) {
-      Swal.fire({
-        title: '¡Fecha eliminada!',
-        icon: 'success'
-
-      });
       axios.post('eliminar_fecha_disponi_tabla', {
         id: id
       })
         .then(function (response) {
-
           console.log(response);
-          mostrar_citas_disponibles();
+          if (response.data.message === 'Fecha eliminada correctamente') {
+            Swal.fire({
+              title: '¡Fecha eliminada!',
+              icon: 'success'
+            });
+            mostrar_citas_disponibles();
+          } else if (response.data.message === 'No se puede eliminar la fecha porque tiene citas asociadas') {
+            Swal.fire({
+              title: 'No se puede eliminar la fecha',
+              text: 'La fecha tiene citas asociadas',
+              icon: 'warning'
+            });
+          } else {
+            Swal.fire({
+              title: 'Error al eliminar la fecha',
+              icon: 'error'
+            });
+          }
         })
         .catch(function (error) {
           console.log(error);
@@ -72,8 +81,6 @@ function eliminar_fecha_dispo_tabla(id) {
     }
   });
 }
-
-
 //esta es la fecha o citas que introducira el amdin y se encntraran disponibles
 //se usa la tabla frecha dispononible
 function fecha_disponible_save() {

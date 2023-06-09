@@ -1,6 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.paciente import pacientes
+from model.cita import citas
 from datetime import datetime,date
 routes_admin_tabla_paciente = Blueprint("routes_admin_tabla_paciente", __name__)
 
@@ -36,9 +37,12 @@ def eliminar_paciente_admin():
     # Obtener el ID del paciente a eliminar desde la solicitud POST
     id_paciente = request.json['id']
 
+    # Verificar si el paciente tiene citas asociadas
+    citas_paciente = citas.query.filter_by(id_paciente=id_paciente).first()
+    if citas_paciente:
+        return jsonify({'message': 'No se puede eliminar al paciente porque tiene citas asociadas'})
+
     # Lógica para eliminar el paciente en la base de datos
-    # Aquí debes escribir el código para eliminar el paciente utilizando la biblioteca o método que estés utilizando para interactuar con la base de datos
-    
     paciente = pacientes.query.get(id_paciente)  # Busca el paciente por ID
     if paciente:
         db.session.delete(paciente)  # Elimina el paciente

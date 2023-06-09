@@ -1,5 +1,5 @@
 //----------------------funcion mostrar tabla de citas
-function mostrar() {
+function mostrar_cita_admin_tabla() {
   const divcate = document.getElementById("tabla");
 
   axios
@@ -37,7 +37,7 @@ function mostrar() {
     });
 }
 window.addEventListener("load", function () {
-  mostrar();
+  mostrar_cita_admin_tabla();
 });
 
 
@@ -142,6 +142,8 @@ function guardar_cita_admin() {
       )
       .then((res) => {
         console.log(res.data);
+        mostrar_cita_admin_tabla();
+        mostrarnombrepaciente();
         if( res.data=== "se guardo la cita")
          Swal.fire({
           position: 'top-center',
