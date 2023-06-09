@@ -3,6 +3,7 @@ from flask import Blueprint, Flask,  redirect, request, jsonify, session, render
 # from model.odontologos import odontologoss
 from datetime import datetime,date
 from model.odontologo import odontologos
+from model.cita import citas
 
 
 routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
@@ -62,12 +63,15 @@ def eliminar_odontologo_admin():
     id_odontologo = request.json['id']
 
     # Lógica para eliminar el odontologo en la base de datos
-    # Aquí debes escribir el código para eliminar el odontologo utilizando la biblioteca o método que estés utilizando para interactuar con la base de datos
-    
-    odontologo = odontologos.query.get(id_odontologo)  # Busca el odontologo por ID
+    odontologo = odontologos.query.get(id_odontologo)  # Buscar el odontologo por ID
     if odontologo:
-        db.session.delete(odontologo)  # Elimina el odontologo
-        db.session.commit()  # Confirma los cambios en la base de datos
+        # Verificar si hay citas asociadas al odontologo
+        citas_odontologo = citas.query.filter_by(id_odontologos=id_odontologo).first()
+        if citas_odontologo:
+            return jsonify({'message': 'No se puede eliminar el odontologo porque tiene citas asociadas'})
+
+        db.session.delete(odontologo)  # Eliminar el odontologo
+        db.session.commit()  # Confirmar los cambios en la base de datos
         return jsonify({'message': 'odontologo eliminado correctamente'})
     else:
         return jsonify({'message': 'odontologo no encontrado'})
@@ -75,7 +79,6 @@ def eliminar_odontologo_admin():
 
 
 
-    
 @routes_admin_tabla_medico.route('/actualizar_odontologos_admin', methods=['POST'])
 def actualizar_odontologos():
     # Obtener los datos enviados en la solicitud

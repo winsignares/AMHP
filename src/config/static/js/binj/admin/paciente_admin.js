@@ -249,7 +249,7 @@ function eliminar(id) {
               title: 'paciente Eliminado(a) con éxito!',
               icon: 'success'
             });
-            mostrar();
+  
           } else if (response.data.message === 'No se puede eliminar al paciente porque tiene citas asociadas') {
             Swal.fire({
               title: 'No se puede eliminar el paciente',

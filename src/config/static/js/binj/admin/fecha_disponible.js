@@ -51,12 +51,13 @@ function eliminar_fecha_dispo_tabla(id) {
       })
         .then(function (response) {
           console.log(response);
+          mostrar_citas_disponibles();
           if (response.data.message === 'Fecha eliminada correctamente') {
             Swal.fire({
               title: '¡Fecha eliminada!',
               icon: 'success'
             });
-            mostrar_citas_disponibles();
+            
           } else if (response.data.message === 'No se puede eliminar la fecha porque tiene citas asociadas') {
             Swal.fire({
               title: 'No se puede eliminar la fecha',

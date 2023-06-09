@@ -340,7 +340,7 @@ function eliminarcitaadmin(id) {
       })
         .then(function (response) {
           console.log(response);
-          mostrar();
+          mostrar_cita_admin_tabla();
         })
         .catch(function (error) {
           console.log(error);

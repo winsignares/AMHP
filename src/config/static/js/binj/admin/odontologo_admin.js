@@ -1,5 +1,5 @@
 //esta funcion muestra los datos en una tabla inmediatamente que se habre la vista
-function mostrar() {
+function mostrar_odontologo() {
     const divcate = document.getElementById('tabla');
     axios.get('mostrar_odontologos_admin', {
         responseType: 'json'
@@ -34,7 +34,7 @@ function mostrar() {
         });
 }
 window.addEventListener('load', function () {
-    mostrar();
+  mostrar_odontologo();
 })
 
 
@@ -82,6 +82,7 @@ function registrar_odontologo() {
     })
     .then((res) => {
       console.log(res.data);
+      mostrar_odontologo();
       if (res.data === 'El odontólogo ya existe en la base de datos') {
         // Mostrar la alerta de odontólogo existente
         Swal.fire({
@@ -179,40 +180,53 @@ function acualizar_odontologo(id) {
 
 //funcion que elimina Odontologo
 
-  function eliminar_odontologo(id) {
-    Swal.fire({
-      title: '¿Desea eliminar al Odontologo(a)?',
-      text: 'Esta acción no se puede deshacer',
-      imageUrl: '/static/img/odontologo_eliminar.png', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
-      imageWidth: 200, // Ancho de la imagen en píxeles
-      imageHeight: 200, // Alto de la imagen en píxeles
-      imageAlt: 'Imagen de la cita', // Descripción de la imagen
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: 'red',
-      confirmButtonText: 'Aceptar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({ 
-          title: '!Odontologo(a) Eliminado(a) con éxito!',
-          icon: 'success'
-        });
-        axios.post('eliminar_odontologo_admin', {
-          id: id
+function eliminar_odontologo(id) {
+  Swal.fire({
+    title: '¿Desea eliminar al Odontologo(a)?',
+    text: 'Esta acción no se puede deshacer',
+    imageUrl: '/static/img/odontologo_eliminar.png',
+    imageWidth: 200,
+    imageHeight: 200,
+    imageAlt: 'Imagen de la cita',
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: 'red',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      axios.post('eliminar_odontologo_admin', {
+        id: id
+      })
+        .then(function (response) {
+          console.log(response);
+          if (response.data.message === 'odontologo eliminado correctamente') {
+            Swal.fire({
+              title: '¡Odontologo(a) eliminado(a) con éxito!',
+              icon: 'success'
+            });
+            mostrar_odontologo();
+          } else if (response.data.message === 'No se puede eliminar el odontologo porque tiene citas asociadas') {
+            Swal.fire({
+              title: 'No se puede eliminar el odontologo',
+              text: 'El odontologo tiene citas asociadas',
+              icon: 'warning'
+            });
+          } else {
+            Swal.fire({
+              title: 'Error al eliminar el odontologo',
+              icon: 'error'
+            });
+          }
         })
-          .then(function (response) {
-            console.log(response);
-            mostrar();
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      } else {
-        Swal.fire({
-          title: '¡Cancelado!',
-          icon: 'error'
+        .catch(function (error) {
+          console.log(error);
         });
-      }
-    });
-  }
+    } else {
+      Swal.fire({
+        title: '¡Cancelado!',
+        icon: 'error'
+      });
+    }
+  });
+}
