@@ -14,6 +14,8 @@ class pacientes(db.Model):
     direccion = db.Column(db.String(50))
     Email = db.Column(db.String(50))
     fecha_nacimiento = db.Column(db.String(50))
+
+    
     def __init__(self, Rol,fecha_de_regitro,Name,edad,cedula,telefono,direccion,Email,fecha_nacimiento):
         self.Rol = Rol
         self.fecha_de_regitro = fecha_de_regitro

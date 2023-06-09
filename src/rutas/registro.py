@@ -13,6 +13,7 @@ def saveregistro():
     Rol = "user" 
     fecha_registro = date.today()
     Name = request.form['Name']
+    edad = request.form['edad']
     cedula = request.form['cedula']
     telefono = request.form['telefono']
     direccion = request.form['direccion']
@@ -26,8 +27,8 @@ def saveregistro():
     if existing_patient:
         return "Paciente already exists in the database"
     
-    new_reg = pacientes(Rol,fecha_registro,Name, cedula, telefono, direccion, Email, fecha_nacimiento)
+    new_reg = pacientes(Rol,fecha_registro,Name,edad, cedula, telefono, direccion, Email, fecha_nacimiento)
     db.session.add(new_reg)
     db.session.commit()
-    return "Registro exitoso"
+    return "Registro exitoso" 
  

@@ -1,5 +1,6 @@
 function registrarme() {
     const name = document.getElementById('Fullname');
+    const edad = document.getElementById('edad');
     const Cedula = document.getElementById('Cedula');
     const Telefono = document.getElementById('Telefono');
     const Direccion = document.getElementById('Direccion');
@@ -9,6 +10,7 @@ function registrarme() {
     // Validar si hay datos en todos los campos
     if (
       name.value === '' ||
+      edad.value === '' ||
       Cedula.value === '' ||
       Telefono.value === '' ||
       Direccion.value === '' ||
@@ -29,6 +31,7 @@ function registrarme() {
     axios
       .post('guardaregistro', {
         Name: name.value,
+        edad: edad.value,
         cedula: Cedula.value,
         telefono: Telefono.value,
         direccion: Direccion.value,
@@ -62,6 +65,7 @@ function registrarme() {
   
           // Restablecer los valores de los campos
           name.value = '';
+          edad.value = '';
           Cedula.value = '';
           Telefono.value = '';
           Direccion.value = '';
