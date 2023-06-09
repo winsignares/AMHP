@@ -332,7 +332,7 @@ function eliminarcitaadmin(id) {
   }).then((result) => {
     if (result.isConfirmed) {
       Swal.fire({
-        title: '!Odontologo(a) Eliminado(a) con éxito!',
+        title: '!Cita Eliminada con éxito!',
         icon: 'success'
       });
       axios.post('eliminar_citas_admin', {

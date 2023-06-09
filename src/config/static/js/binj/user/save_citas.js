@@ -31,7 +31,7 @@ function save_citas_user() {
 
   try {
     axios
-      .post(
+      .post( 
         "guardarcitas_user",
         {
           cedula_buscar: cedula_buscar.value,

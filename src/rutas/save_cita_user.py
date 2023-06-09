@@ -41,9 +41,6 @@ def savecita_user():
         
         # Eliminar la fecha disponible seleccionada
         
-        if fechadis:
-            db.session.delete(fechadis)
-            db.session.commit()
       
         return"sisi"
     else:
