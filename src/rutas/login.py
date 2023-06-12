@@ -6,6 +6,8 @@ from model.admin import admins
 routes_login = Blueprint("routes_login", __name__)
 
 
+
+
 @routes_login.route("/login", methods=["POST"])
 def validar_login():
     usuario = request.json["usuario"]
@@ -13,12 +15,17 @@ def validar_login():
     verificacion = db.session.query(admins).filter(admins.correo == usuario).first()
 
     if verificacion:
+        admin_id = verificacion.id  # Obtener el id del administrador
+
         if verificacion.contraseña == contraseña:
+            session["admin_id"] = admin_id  # Guardar el admin_id en la sesión
+            
             return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
         else:
             return {"status": "Error", "message": "Contraseña incorrecta"}
     else:
         return {"status": "Error", "message": "Correo incorrecto"}
+    
 
     
     

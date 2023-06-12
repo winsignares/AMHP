@@ -20,6 +20,7 @@ def saveregistro():
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
     
+    
     # Check if the patient already exists in the database
     existing_patient = pacientes.query.filter(
         (pacientes.cedula == cedula) | (pacientes.Email == Email)

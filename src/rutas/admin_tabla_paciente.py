@@ -18,7 +18,8 @@ def saveregistro_admin():
     direccion = request.form['direccion']
     Email = request.form['Email']
     fecha_nacimiento = request.form['fecha_nacimiento']
-
+    id_admin = session.get("admin_id")
+    
     # Check if the patient already exists in the database
     existing_patient = pacientes.query.filter(
         (pacientes.cedula == cedula) | (pacientes.Email == Email)
@@ -26,11 +27,10 @@ def saveregistro_admin():
     if existing_patient:
         return "Paciente already exists in the database"
 
-    new_reg = pacientes(Rol,fecha_registro,Name,edad, cedula, telefono, direccion, Email, fecha_nacimiento)
+    new_reg = pacientes(Rol, fecha_registro, Name, edad, cedula, telefono, direccion, Email, fecha_nacimiento, id_admin)
     db.session.add(new_reg)
     db.session.commit()
     return "Record saved successfully"
-
 
 @routes_admin_tabla_paciente.route('/eliminar_paciente_admin', methods=['POST'])
 def eliminar_paciente_admin():

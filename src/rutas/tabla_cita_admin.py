@@ -31,7 +31,7 @@ def mostarcitasuser():
 		'problema':cate.problema                                                     
         }
         goria.append(datos)
-    return jsonify(datos)
+    return jsonify(datos)  
 
 @routes_cita_admin.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():
