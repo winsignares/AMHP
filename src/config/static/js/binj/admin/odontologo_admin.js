@@ -14,6 +14,7 @@ function mostrar_odontologo() {
                 mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].Rol}</td>  
+                <td>${datos[index].nombre_admin}</td>  
                 <td>${datos[index].fecha_de_regitro}</td>  
                 <td>${datos[index].nombre}</td>
                 <td>${datos[index].cedula}</td>

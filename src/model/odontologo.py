@@ -13,8 +13,9 @@ class odontologos(db.Model):
     telefono = db.Column(db.Integer)
     correo = db.Column(db.String(50))
     especialidad = db.Column(db.String(250))
+    id_admin = db.Column(db.Integer,db.ForeignKey('tbladmin.id'), nullable=True)
 
-    def __init__(self,Rol,fecha_de_regitro, nombre,cedula,direccion,telefono,correo,especialidad):
+    def __init__(self,Rol,fecha_de_regitro, nombre,cedula,direccion,telefono,correo,especialidad,id_admin=None):
         self.Rol = Rol
         self.fecha_de_regitro = fecha_de_regitro
         self.nombre = nombre
@@ -23,6 +24,7 @@ class odontologos(db.Model):
         self.telefono = telefono
         self.correo = correo
         self.especialidad = especialidad
+        self.id_admin = id_admin
     
 with app.app_context():
     db.create_all()

@@ -4,6 +4,7 @@ from flask import Blueprint, Flask,  redirect, request, jsonify, session, render
 from datetime import datetime,date
 from model.odontologo import odontologos
 from model.cita import citas
+from model.admin import admins
 
 
 routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
@@ -20,7 +21,8 @@ def saveodontologos_admin():
     direccion = request.form['direccion']
     telefono = request.form['telefono']
     correo = request.form['correo']
-    especialidad = request.form['especialidad']     
+    especialidad = request.form['especialidad']  
+    id_admin = session.get("admin_id")   
     print(nombre)
     
     # Check if the odontólogo already exists in the database
@@ -28,7 +30,7 @@ def saveodontologos_admin():
     if existing_odontologo:
         return "El odontólogo ya existe en la base de datos"
     
-    newodontologo = odontologos(Rol, fecha_registro, nombre, cedula, direccion, telefono, correo, especialidad)
+    newodontologo = odontologos(Rol, fecha_registro, nombre, cedula, direccion, telefono, correo, especialidad,id_admin)
     db.session.add(newodontologo)
     db.session.commit()
     return "Registro exitoso"
@@ -37,14 +39,15 @@ def saveodontologos_admin():
 @routes_admin_tabla_medico.route('/mostrar_odontologos_admin', methods=['GET'])
 def mostarodontologo_admin():
     datos= {}
-    resultado = db.session.query(odontologos).select_from(odontologos).all()
+    resultado = db.session.query(odontologos,admins).select_from(odontologos).join(admins).all()
     i=0
     goria = []
-    for cate in resultado:
+    for cate ,admin in resultado:
         i+=1	       
         datos[i] = {
         'id':cate.id,
         'Rol':cate.Rol,
+        'nombre_admin':admin.nombre,
         'fecha_de_regitro':cate.fecha_de_regitro,
 		'nombre':cate.nombre,
 		'cedula':cate.cedula,
