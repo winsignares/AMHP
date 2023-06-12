@@ -30,7 +30,7 @@ def guardar_admins():
     correo_admin = request.form['correo_admin']
     contra_admin = request.form['contra_admin']
 
-    # Check if the administrator already exists in the database
+    # Check if the administrator already exists in the database 
     existing_admin = admins.query.filter_by(correo=correo_admin).first()
     if existing_admin:
         return "El administrador ya existe en la base de datos"
@@ -39,3 +39,22 @@ def guardar_admins():
     db.session.add(new_admin)
     db.session.commit()
     return "Registro exitoso"
+
+@routes_login.route('/mostrar_admins', methods=['GET'])
+def mostrar_admins():
+    datos= {}
+    resultado = db.session.query(admins).select_from(admins).all()
+    i=0
+    goria = []
+    for cate in resultado:
+        i+=1	       
+        datos[i] = {
+        'id':cate.id,
+        'tipo_admin':cate.tipo_admin,
+		'nombre':cate.nombre,
+		'apellido':cate.apellido,                                                                                                      
+		'correo':cate.correo,                                                                                                      
+		'contraseña':cate.contraseña,                                                                                                      
+        }
+        goria.append(datos)
+    return jsonify(datos)

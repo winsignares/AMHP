@@ -5,11 +5,11 @@ from model.paciente import pacientes
 from model.odontologo import odontologos
 from model.fechas_disponibles import fechas_disponi
 import datetime
-routes_cita2 = Blueprint("routes_cita2", __name__)
+routes_cita_admin = Blueprint("routes_cita_admin", __name__)
 
 
 
-@routes_cita2.route('/mostrar_citas_admin', methods=['GET'])
+@routes_cita_admin.route('/mostrar_citas_admin', methods=['GET'])
 def mostarcitasuser():
     datos= {}
     resultado = db.session.query(citas, pacientes,odontologos,fechas_disponi).select_from(citas).join(pacientes).join(odontologos).join(fechas_disponi).all()
@@ -21,7 +21,7 @@ def mostarcitasuser():
         'id':cate.id,
         'Rol':cate.Rol,
 		'Nombre_completos':paciente.Name,
-		'Cedula':paciente.cedula,                                                    
+		'Cedula':paciente.cedula,                                                     
 		'nombre_odontologos':odontolo.nombre,                                                    
 		'fecha':fecha_dis.fechas_dispon,                                                    
 		'consulta':cate.consulta,                                                    
@@ -33,7 +33,7 @@ def mostarcitasuser():
         goria.append(datos)
     return jsonify(datos)
 
-@routes_cita2.route('/obtener_nombres_pacientes')
+@routes_cita_admin.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():
     datos = []
 
@@ -49,7 +49,7 @@ def obtener_nombres_pacientes():
 
     return jsonify(datos)
 
-@routes_cita2.route('/guardarcitas_admin', methods=['POST'])
+@routes_cita_admin.route('/guardarcitas_admin', methods=['POST'])
 def savecita_admins():
     
     # id_fecha = citas.id_fechadispo
@@ -88,7 +88,7 @@ def savecita_admins():
 
 
 #esta guada  la fecha disponible de la tabla fecha disponible
-@routes_cita2.route('/ingresar_fechas_disponibles', methods=['POST'])
+@routes_cita_admin.route('/ingresar_fechas_disponibles', methods=['POST'])
 def fecha_dis():
     fechas_dispon = request.form['fechas_dispon']
     fecha_existente = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechas_dispon).first()
@@ -103,7 +103,7 @@ def fecha_dis():
 
 
 #mustra los datos de fercha disponible en un select
-@routes_cita2.route('/obtener_fechas_dispo')
+@routes_cita_admin.route('/obtener_fechas_dispo')
 def obtener_fechas_dispo():
     datos = []
 
@@ -120,7 +120,7 @@ def obtener_fechas_dispo():
 
 
 # esto es para eliminar citas como admin
-@routes_cita2.route('/eliminar_citas_admin', methods=['POST'])
+@routes_cita_admin.route('/eliminar_citas_admin', methods=['POST'])
 def eliminar_citas_admin():
     # Obtener el ID del odontologo a eliminar desde la solicitud POST
     id_citas = request.json['id']
@@ -139,7 +139,7 @@ def eliminar_citas_admin():
 
 
 # actualizar citas
-@routes_cita2.route('/actualizar_citas_admin', methods=['POST'] )
+@routes_cita_admin.route('/actualizar_citas_admin', methods=['POST'] )
 def actualizar_cita_admin():
   
   # Obtener los datos enviados en la solicitud
