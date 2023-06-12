@@ -13,7 +13,7 @@ btn.onclick = function () {
 btn2.onclick = function () {
   modal2.style.display = "block";
 }
-// Cuando el usuario haga clic fuera del modal, cerrarlo 
+// Cuando el usuario haga clic fuera del modal, cerrarlo
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
@@ -21,7 +21,6 @@ window.onclick = function (event) {
     modal2.style.display = "none";
   }
 }
-
 
 
 
