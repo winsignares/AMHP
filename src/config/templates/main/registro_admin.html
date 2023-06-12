@@ -12,23 +12,57 @@
         </div>
     <meta charset="utf-8">
     <title>login</title>
-</head> 
-    <div class="login-box">
-        <h1 class="create">create Account admin</h1>
-        <!-- NAME INPUT -->
-        <label for="Fullname">Nombre</label>
-        <input id="nombre_admin" type="text" placeholder="nombre" name="nombre"> 
-        <!-- Cedula INPUT -->
-        <label for="Apellido">Apellido</label>
-        <input id="apellido_admin" type="text" placeholder="Apellido" name="Apellido">
-          <!-- Cedula INPUT -->
-          <label for="Correo">Correo</label>
-          <input id="correo_admin" type="Email" placeholder="Correo" name="Correo">
-        <!-- Telefono INPUT -->
-        <label for="Contraseña">Contraseña</label>
-        <input id="conrasena_admin" type="password" placeholder="password" name="password">
-        <input onclick="registro_admin()" type="submit" value="registrarme">
-    </div>
+    </head> 
+    <div class="contenedor_de_la_tabla">
+        <div class="tabla_de_registro_admin">
+          <div class="d-flex mb-3">
+          <input type="text" id="buscadorcitasadmin" onkeyup="buscadordecitas()" class="form-control mr-2" placeholder="Buscar en la tabla...">
+          <button id="myBtn_modal_registro_adin" class="btn btn-primary2" type="button">Otro registro</button>
+          
+      </div>
+    <div class="table-responsive_registro_admin">
+        <table class="table"> 
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">fecha</th>
+              <th scope="col">opcion</th>
+            </tr>
+          </thead>
+          <br>
+          <tbody id="tabla_fecha_disponible">
+            <tr>
+    
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+      <div id="myModal_regritoadmin" class="modal_tabla_admin">
+        <div class="modal-content">
+
+            <!-- NAME INPUT -->
+            <label for="Fullname">Nombre</label>
+            <input id="nombre_admin" type="text" placeholder="nombre" name="nombre"> 
+            <!-- Cedula INPUT -->
+            <label for="Apellido">Apellido</label>
+            <input id="apellido_admin" type="text" placeholder="Apellido" name="Apellido">
+              <!-- Cedula INPUT -->
+              <label for="Correo">Correo</label>
+              <input id="correo_admin" type="Email" placeholder="Correo" name="Correo">
+            <!-- Telefono INPUT -->
+            <label for="Contraseña">Contraseña</label>
+            <input id="conrasena_admin" type="password" placeholder="password" name="password">
+            <input onclick="registro_admin()" type="submit" value="registrarme">
+        </div>
+      </div>
+
+    
+ 
+    
 </body> 
 <script src="{{url_for('static', filename='js/binj/admin/login.js')}}"></script>
+<script src="{{url_for('static', filename='js/binj/funcion_modal_registroadmin.js')}}"></script>
+
 {% endblock %}

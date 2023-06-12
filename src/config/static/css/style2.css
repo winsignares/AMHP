@@ -875,6 +875,11 @@ body {
     max-width: 1400px;
     margin-left: 180px
 }
+.tabla_de_registro_admin {
+    margin-top: 100px;
+    max-width: 1400px;
+    margin-left: 180px
+}
 
 .mb-3 {
     margin-bottom: 1rem !important;
@@ -891,11 +896,17 @@ body {
     margin-top: 20px;
   }
   
-  .tabla_de_mi_cita {
+.tabla_de_mi_cita {
     margin-top: 100px;
     max-width: 1400px;
     margin-left: 180px;
   }
+  .tabla_de_registro_admin {
+    margin-top: 100px;
+    max-width: 1400px;
+    margin-left: 180px;
+  }
+  
   
   .mb-3 {
     margin-bottom: 1rem !important;
