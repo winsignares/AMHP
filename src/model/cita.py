@@ -14,9 +14,10 @@ class citas(db.Model):
     id_paciente = db.Column(db.Integer,db.ForeignKey('tblpacientes.id'))
     id_odontologos = db.Column(db.Integer,db.ForeignKey('tblodontologos.id'))
     id_fechadispo = db.Column(db.Integer,db.ForeignKey('tblfechadisponible.id'))
+    id_admin = db.Column(db.Integer,db.ForeignKey('tbladmin.id'), nullable=True)
     
 
-    def __init__(self,Rol,consulta,tarje_tade_credito, Num_tarjeta,estado_citas,problema,id_paciente,id_odontologos,id_fechadispo):
+    def __init__(self,Rol,consulta,tarje_tade_credito, Num_tarjeta,estado_citas,problema,id_paciente,id_odontologos,id_fechadispo,id_admin=None):
       
         self.Rol = Rol
         self.consulta = consulta 
@@ -27,6 +28,7 @@ class citas(db.Model):
         self.id_paciente = id_paciente
         self.id_odontologos = id_odontologos
         self.id_fechadispo = id_fechadispo
+        self.id_admin = id_admin
        
     
  

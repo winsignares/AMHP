@@ -63,9 +63,11 @@ def savecita_admins():
     problema = request.form['problema']
     id_paciente = request.form['Nombre_completo']
     id_odontologo = request.form['odontlogos']
+    id_odontologo = request.form['odontlogos']
+    id_admin = session.get("admin_id")
     # problema = date.today()
     
-    new_cit = citas( Rol,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente,id_odontologo,fecha)
+    new_cit = citas( Rol,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente,id_odontologo,fecha,id_admin)
     db.session.add(new_cit)
     db.session.commit()
     return "se guardo la cita"
