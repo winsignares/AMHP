@@ -4,7 +4,7 @@ from model.cita import citas
 from model.paciente import pacientes
 from model.odontologo import odontologos
 from model.admin import admins
-
+import secrets
 from model.fechas_disponibles import fechas_disponi
 import datetime
 routes_cita_admin = Blueprint("routes_cita_admin", __name__)
@@ -62,11 +62,10 @@ def obtener_nombres_pacientes():
 
     return jsonify(datos)
 
+
+
 @routes_cita_admin.route('/guardarcitas_admin', methods=['POST'])
 def savecita_admins():
-    
-    # id_fecha = citas.id_fechadispo
-    # fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == id_fecha).first()
     Rol = "admin"
     fecha = request.form['fecha']
     consulta = request.form['consulta']
@@ -76,14 +75,15 @@ def savecita_admins():
     problema = request.form['problema']
     id_paciente = request.form['Nombre_completo']
     id_odontologo = request.form['odontlogos']
-    id_odontologo = request.form['odontlogos']
     id_admin = session.get("admin_id")
-    # problema = date.today()
+    codigo = secrets.token_hex(4) 
     
-    new_cit = citas( Rol,consulta,tarje_tade_credito, Num_tarjeta,cita_estado,problema,id_paciente,id_odontologo,fecha,id_admin)
+    new_cit = citas(codigo, Rol, consulta, tarje_tade_credito, Num_tarjeta, cita_estado, problema, id_paciente, id_odontologo, fecha, id_admin)
     db.session.add(new_cit)
     db.session.commit()
-    return "se guardo la cita"
+    
+    return jsonify({"message": "Se guardó la cita exitosamente", "codigo": codigo})
+
 
 
 #esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 

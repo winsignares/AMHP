@@ -144,14 +144,16 @@ function guardar_cita_admin() {
         console.log(res.data);
         mostrar_cita_admin_tabla();
         mostrarnombrepaciente();
-        if( res.data=== "se guardo la cita")
-         Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: '¡Cita guardada Exitosamente!',
-          showConfirmButton: false,
-          timer: 2000,
-         });
+        if (res.data === "Se guardó la cita exitosamente") {
+          Swal.fire({
+            position: 'top-center',
+            icon: 'success',
+            title: '¡Cita guardada exitosamente!',
+            text: `Código: ${res.data.codigo}`,
+            showConfirmButton: false,
+            timer: 60000, // 1 minuto
+          });
+        }
 
         // Limpiar los valores de los campos después de guardar
 

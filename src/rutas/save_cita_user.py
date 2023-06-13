@@ -5,6 +5,7 @@ from model.cita import citas
 from model.odontologo import odontologos 
 from model.paciente import pacientes 
 from model.fechas_disponibles import fechas_disponi 
+import secrets
 # from datetime import datetime,time
 
 routes_cita_user = Blueprint("routes_cita_user", __name__)
@@ -22,6 +23,7 @@ def savecita_user():
     cita_estado = request.form['estado_cita']
     problema = request.form['problema']
     id_odontologo = request.form['odontlogos']
+    codigo = secrets.token_hex(4) 
     fechadis = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
     # Verificar si la cédula existe en la base de datos
     # paciente = pacientes.query.filter_by(cedula=cedula).first()
@@ -32,7 +34,7 @@ def savecita_user():
         id_pacientes = paciente.id
 
         # Crear la nueva cita
-        new_cit = citas(Rol="user", consulta=consulta, tarje_tade_credito=tarje_tade_credito,
+        new_cit = citas(codigo,Rol="user", consulta=consulta, tarje_tade_credito=tarje_tade_credito,
                         Num_tarjeta=Num_tarjeta, estado_citas=cita_estado, problema=problema,
                         id_paciente=id_pacientes, id_odontologos=id_odontologo, id_fechadispo=fecha)
 
@@ -42,7 +44,7 @@ def savecita_user():
         # Eliminar la fecha disponible seleccionada
         
       
-        return"sisi"
+        return {'message': 'sisi', 'codigo': codigo}
     else:
        return "Paciente already exists in the database"
 

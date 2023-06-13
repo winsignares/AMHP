@@ -77,7 +77,7 @@ def indexcita2():
    
 
  
- 
+  
 @routes_home.route("/indexadmin_tabla_paciente" )
 def indexadmin_tabla_paciente():
     admin_nombre = session.get("admin_nombre")  # Obtener el nombre del administrador de la sesión

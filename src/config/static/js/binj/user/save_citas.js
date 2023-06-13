@@ -51,18 +51,16 @@ function save_citas_user() {
       )
       .then((res) => {
         console.log(res.data);
-        if (res.data === 'sisi') {
-
-
-          // Mostrar la alerta de paciente existente
+        if (res.data.message === 'sisi') {
+          // Mostrar la alerta de éxito con el código
           Swal.fire({
             position: 'top-center',
             icon: 'success',
-            title: '¡Cita agendada con Exito!',
+            title: '¡Cita agendada con éxito!',
+            html: `Código de cita: <strong>${res.data.codigo}</strong><br><br>Descripción: este codigo es para consultar su cita por si olvida algun dato.`,
             showConfirmButton: false,
-            timer: 2000,
+            timer: 60000, // 1 minuto
           });
-
           // Restablecer los valores de los campos
           cedula_buscar.value = "";
           odontlogos.value = "";
@@ -72,7 +70,7 @@ function save_citas_user() {
           cardNumber.value = "";
           estado_cita.value = "";
           problemas.value = "";
-        } else if (res.data === 'Paciente already exists in the database') {
+        }  else if (res.data === 'Paciente already exists in the database') {
           // Mostrar la alerta de éxito
           Swal.fire({
             position: 'top-center',
