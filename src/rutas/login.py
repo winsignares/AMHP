@@ -1,34 +1,33 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.admin import admins
-
+from werkzeug.security import generate_password_hash, check_password_hash
 
 routes_login = Blueprint("routes_login", __name__)
 
 
 
 
-@routes_login.route("/login", methods=["POST"])
+@routes_login.route('/login', methods=['POST'])
 def validar_login():
     usuario = request.json["usuario"]
     contraseña = request.json["contraseña"]
     verificacion = db.session.query(admins).filter(admins.correo == usuario).first()
 
     if verificacion:
-        admin_id = verificacion.id  # Obtener el id del administrador
-        admin_nombre = verificacion.nombre  # Obtener el id del administrador
+        admin_id = verificacion.id  # Obtener el ID del administrador
+        admin_nombre = verificacion.nombre  # Obtener el nombre del administrador
 
-        if verificacion.contraseña == contraseña:
+        if check_password_hash(verificacion.contraseña, contraseña):
             session["admin_id"] = admin_id  # Guardar el admin_id en la sesión
-            session["admin_nombre"] = admin_nombre  # Guardar el admin_id en la sesión
-            
+            session["admin_nombre"] = admin_nombre  # Guardar el nombre del administrador en la sesión
+
             return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
         else:
             return {"status": "Error", "message": "Contraseña incorrecta"}
     else:
         return {"status": "Error", "message": "Correo incorrecto"}
     
-
     
     
 @routes_login.route('/guardar_admin', methods=['POST'])
@@ -51,7 +50,7 @@ def guardar_admins():
         new_admin = admins(tipo_admin, name_admin, apellido_admin, correo_admin, contra_admin)
         db.session.add(new_admin)
         db.session.commit()
-        return "Registro exitoso"
+        return "Registro exitoso" 
     else:
         return "No tienes permiso para realizar esta acción"
 
