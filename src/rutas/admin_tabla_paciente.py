@@ -33,6 +33,9 @@ def saveregistro_admin():
     db.session.commit()
     return "Record saved successfully"
 
+
+
+
 @routes_admin_tabla_paciente.route('/eliminar_paciente_admin', methods=['POST'])
 def eliminar_paciente_admin():
     # Obtener el ID del paciente a eliminar desde la solicitud POST
@@ -53,6 +56,8 @@ def eliminar_paciente_admin():
         return jsonify({'message': 'Paciente no encontrado'})
     
 
+
+
 @routes_admin_tabla_paciente.route('/mostrar_pacientes_admin', methods=['GET'])
 def mostarpaciente_admin():
     datos = {}
@@ -60,17 +65,18 @@ def mostarpaciente_admin():
     admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
 
     if admin_principal:  # Si el administrador actual es el administrador principal
-        resultado = db.session.query(pacientes).select_from(pacientes).all()
+        resultado = db.session.query(pacientes,admins).select_from(pacientes).join(admins).all()
     else:
-        resultado = db.session.query(pacientes).select_from(pacientes).filter(pacientes.id_admin == admin_id).all()
+        resultado = db.session.query(pacientes,admins).select_from(pacientes).join(admins).filter(pacientes.id_admin == admin_id).all()
 
     i = 0
     goria = []
-    for cate in resultado:
+    for cate ,admin in resultado:
         i += 1	       
         datos[i] = { 
             'id': cate.id,
             'Rol': cate.Rol,
+            'nombre_admin': admin.nombre,
             'fecha_de_regitro': cate.fecha_de_regitro,
             'Name': cate.Name,
             'edad': cate.edad,

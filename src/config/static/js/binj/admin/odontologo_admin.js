@@ -25,7 +25,6 @@ function mostrar_odontologo() {
                 <td><a onclick="acualizar_odontologo(${datos[index].id}) "class="btn btn-primary btn-edit">Actualizar</a></td>
                 <td><a onclick="eliminar_odontologo(${datos[index].id}) " class="btn btn-danger btn-eliminar">Eliminar</a></td>
               </tr> `;
-
             }
             divcate.innerHTML = mostrar
         })
