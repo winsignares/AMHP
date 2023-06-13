@@ -144,7 +144,7 @@ function guardar_cita_admin() {
         console.log(res.data);
         mostrar_cita_admin_tabla();
         mostrarnombrepaciente();
-        if (res.data === "Se guardó la cita exitosamente") {
+        if (res.data.message === "Se guardó la cita exitosamente") {
           Swal.fire({
             position: 'top-center',
             icon: 'success',
