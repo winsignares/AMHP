@@ -36,28 +36,43 @@ def saveodontologos_admin():
     return "Registro exitoso"
 
 
+
 @routes_admin_tabla_medico.route('/mostrar_odontologos_admin', methods=['GET'])
 def mostarodontologo_admin():
-    datos= {}
-    resultado = db.session.query(odontologos,admins).select_from(odontologos).join(admins).all()
-    i=0
+    datos = {}
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador de la sesión
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
+
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        resultado = db.session.query(odontologos, admins).select_from(odontologos).join(admins).all()
+    else:
+        resultado = (
+            db.session.query(odontologos, admins)
+            .select_from(odontologos)
+            .join(admins)
+            .filter(admins.id == admin_id)
+            .all()
+        )
+
+    i = 0
     goria = []
-    for cate ,admin in resultado:
-        i+=1	       
+    for cate, admin in resultado:
+        i += 1	       
         datos[i] = {
-        'id':cate.id,
-        'Rol':cate.Rol,
-        'nombre_admin':admin.nombre,
-        'fecha_de_regitro':cate.fecha_de_regitro,
-		'nombre':cate.nombre,
-		'cedula':cate.cedula,
-		'direccion':cate.direccion,                                                    
-		'telefono':cate.telefono,                                                    
-		'correo':cate.correo,                                                                                                       
-		'especialidad':cate.especialidad,                                                                                                       
+            'id': cate.id,
+            'Rol': cate.Rol,
+            'nombre_admin': admin.nombre,
+            'fecha_de_regitro': cate.fecha_de_regitro,
+            'nombre': cate.nombre,
+            'cedula': cate.cedula,
+            'direccion': cate.direccion,
+            'telefono': cate.telefono,
+            'correo': cate.correo,
+            'especialidad': cate.especialidad,
         }
         goria.append(datos)
     return jsonify(datos)
+
 
 
 @routes_admin_tabla_medico.route('/eliminar_odontologo_admin', methods=['POST'])

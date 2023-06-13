@@ -3,6 +3,7 @@ from flask import Blueprint, Flask,  redirect, request, jsonify, session, render
 from model.cita import citas
 from model.paciente import pacientes
 from model.odontologo import odontologos
+from model.admin import admins 
 from model.fechas_disponibles import fechas_disponi
 import datetime
 routes_cita_admin = Blueprint("routes_cita_admin", __name__)
@@ -11,27 +12,50 @@ routes_cita_admin = Blueprint("routes_cita_admin", __name__)
 
 @routes_cita_admin.route('/mostrar_citas_admin', methods=['GET'])
 def mostarcitasuser():
-    datos= {}
-    resultado = db.session.query(citas, pacientes,odontologos,fechas_disponi).select_from(citas).join(pacientes).join(odontologos).join(fechas_disponi).all()
-    i=0
+    datos = {}
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador de la sesión
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
+
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        resultado = (
+            db.session.query(citas, pacientes, odontologos, fechas_disponi)
+            .select_from(citas)
+            .join(pacientes)
+            .join(odontologos)
+            .join(fechas_disponi)
+            .all()
+        )
+    else:
+        resultado = (
+            db.session.query(citas, pacientes, odontologos, fechas_disponi)
+            .select_from(citas)
+            .join(pacientes)
+            .join(odontologos)
+            .join(fechas_disponi)
+            .filter(odontologos.id_admin == admin_id)
+            .all()
+        )
+
+    i = 0
     goria = []
-    for cate ,paciente,odontolo,fecha_dis in resultado:
-        i+=1	       
+    for cate, paciente, odontolo, fecha_dis in resultado:
+        i += 1
         datos[i] = {
-        'id':cate.id,
-        'Rol':cate.Rol,
-		'Nombre_completos':paciente.Name,
-		'Cedula':paciente.cedula,                                                     
-		'nombre_odontologos':odontolo.nombre,                                                    
-		'fecha':fecha_dis.fechas_dispon,                                                    
-		'consulta':cate.consulta,                                                    
-		'tarje_credi':cate.tarje_tade_credito,                                                    
-		'Num_tarjeta':cate.Num_tarjeta,                                                      
-		'estado_citas':cate.estado_citas,                                                     
-		'problema':cate.problema                                                     
+            'id': cate.id,
+            'Rol': cate.Rol,
+            'Nombre_completos': paciente.Name,
+            'Cedula': paciente.cedula,
+            'nombre_odontologos': odontolo.nombre,
+            'fecha': fecha_dis.fechas_dispon,
+            'consulta': cate.consulta,
+            'tarje_credi': cate.tarje_tade_credito,
+            'Num_tarjeta': cate.Num_tarjeta,
+            'estado_citas': cate.estado_citas,
+            'problema': cate.problema
         }
         goria.append(datos)
-    return jsonify(datos)  
+    return jsonify(datos)
+
 
 @routes_cita_admin.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():

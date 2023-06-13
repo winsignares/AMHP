@@ -2,6 +2,7 @@ from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.paciente import pacientes
 from model.cita import citas
+from model.admin import admins
 from datetime import datetime,date
 routes_admin_tabla_paciente = Blueprint("routes_admin_tabla_paciente", __name__)
 
@@ -51,28 +52,37 @@ def eliminar_paciente_admin():
     else:
         return jsonify({'message': 'Paciente no encontrado'})
     
+
 @routes_admin_tabla_paciente.route('/mostrar_pacientes_admin', methods=['GET'])
 def mostarpaciente_admin():
-    datos= {}
-    resultado = db.session.query(pacientes).select_from(pacientes).all()
-    i=0
+    datos = {}
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador de la sesión
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
+
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        resultado = db.session.query(pacientes).select_from(pacientes).all()
+    else:
+        resultado = db.session.query(pacientes).select_from(pacientes).filter(pacientes.id_admin == admin_id).all()
+
+    i = 0
     goria = []
     for cate in resultado:
-        i+=1	       
+        i += 1	       
         datos[i] = { 
-        'id':cate.id,
-		'Rol':cate.Rol,
-		'fecha_de_regitro':cate.fecha_de_regitro,
-		'Name':cate.Name,
-		'edad':cate.edad,
-		'cedula':cate.cedula,                                                    
-		'telefono':cate.telefono,                                                    
-		'direccion':cate.direccion,                                                    
-		'Email':cate.Email,                                                    
-		'fecha_nacimiento':cate.fecha_nacimiento,                                                    
+            'id': cate.id,
+            'Rol': cate.Rol,
+            'fecha_de_regitro': cate.fecha_de_regitro,
+            'Name': cate.Name,
+            'edad': cate.edad,
+            'cedula': cate.cedula,
+            'telefono': cate.telefono,
+            'direccion': cate.direccion,
+            'Email': cate.Email,
+            'fecha_nacimiento': cate.fecha_nacimiento
         }
         goria.append(datos)
     return jsonify(datos)
+
 
 
 @routes_admin_tabla_paciente.route('/actualizar_paciente_admin', methods=['POST'])
