@@ -93,11 +93,12 @@ def savecita_admins():
 @routes_cita_admin.route('/ingresar_fechas_disponibles', methods=['POST'])
 def fecha_dis():
     fechas_dispon = request.form['fechas_dispon']
+    id_admin = session.get("admin_id")   
     fecha_existente = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechas_dispon).first()
     if fecha_existente:
         return "La fecha ya existe" # Devolver un mensaje de error si la fecha ya existe en la base de datos
 
-    new_fecha = fechas_disponi(fechas_dispon)
+    new_fecha = fechas_disponi(fechas_dispon,id_admin)
     db.session.add(new_fecha)
     db.session.commit()
     return "Se ha guardado la fecha disponible exitosamente"

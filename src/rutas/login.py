@@ -47,6 +47,8 @@ def guardar_admins():
     db.session.commit()
     return "Registro exitoso"
 
+
+
 @routes_login.route('/mostrar_admins', methods=['GET'])
 def mostrar_admins():
     datos= {}
