@@ -107,7 +107,7 @@ def fecha_dis():
 
 #mustra los datos de fercha disponible en un select
 @routes_cita_admin.route('/obtener_fechas_dispo')
-def obtener_fechas_dispo():
+def obtener_fechas_dispo_select():
     datos = []
 
     subconsulta = db.session.query(citas.id_fechadispo).subquery()

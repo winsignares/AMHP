@@ -16,6 +16,7 @@ function mostrar_citas_disponibles() {
         mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].fechas_dispon}</td>  
+                <td>${datos[index].nombre_admin}</td>  
                 <td><a onclick="eliminar_fecha_dispo_tabla(${datos[index].id}) " class="btn btn-danger ">Eliminar</a></td>
               </tr> `;
       }
