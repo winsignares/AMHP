@@ -11,17 +11,6 @@ def indexcita():
     titulo = "Pagina cita"
     return render_template('/main/savecita_user.html', titles=titulo)
 
-@routes_home.route("/indexadmin_tabla_medico" )
-def indexadmin_tabla_medico():
-    titulo= "Pagina admin_tabla_medico"
-    return render_template('/main/admin_tabla_medico.html', titles=titulo)
-
-@routes_home.route("/indexadmin_tabla_paciente" )
-def indexadmin_tabla_paciente():
-    titulo= "Pagina admin_tabla_paciente"
-    return render_template('/main/admin_tabla_paciente.html', titles=titulo)
-
-
 
 @routes_home.route("/indexcontacto" )
 def indexblanqueamentos():
@@ -75,13 +64,52 @@ def indexregistro():
 
 
 
+
 @routes_home.route("/indexcita2" )
 def indexcita2():
+    admin_nombre = session.get("admin_nombre")  # Obtener el nombre del administrador de la sesión
     titulo= "Pagina cita2"
-    return render_template('/main/tablaadmin.html', titles=titulo)
+    if admin_nombre:
+        
+        return render_template('/main/tablaadmin.html', titles=titulo,admin_nombre=admin_nombre)
+    else:
+        return render_template('/main/login_admin.html')
+   
+
+ 
+ 
+@routes_home.route("/indexadmin_tabla_paciente" )
+def indexadmin_tabla_paciente():
+    admin_nombre = session.get("admin_nombre")  # Obtener el nombre del administrador de la sesión
+    titulo= "Pagina admin_tabla_paciente"
+    if admin_nombre:
+        
+        return render_template('/main/admin_tabla_paciente.html', titles=titulo,admin_nombre=admin_nombre)
+    else:
+        return render_template('/main/login_admin.html')
+    
+   
+
+@routes_home.route("/indexadmin_tabla_medico" )
+def indexadmin_tabla_medico():
+    admin_nombre = session.get("admin_nombre")  # Obtener el nombre del administrador de la sesión
+    titulo= "Pagina admin_tabla_medico"
+    if admin_nombre:
+        
+        return render_template('/main/admin_tabla_medico.html', titles=titulo,admin_nombre=admin_nombre)
+    else:
+        return render_template('/main/login_admin.html')
+
+
 
 
 @routes_home.route("/indexregistroadmin" )
-def jjjjjj():
+def registrp_admin_index():
+    admin_nombre = session.get("admin_nombre")  # Obtener el nombre del administrador de la sesión
     titulo= "Pagina registroadmin"
-    return render_template('/main/registro_admin.html', titles=titulo)
+    if admin_nombre:
+        return render_template('/main/registro_admin.html', titles=titulo)
+    else:
+        return render_template('/main/login_admin.html')
+
+

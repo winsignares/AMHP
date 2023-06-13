@@ -55,6 +55,15 @@ app.register_blueprint(routes_fecha_disponible , url_prefix="/fronted")
 
 
 
+@app.route('/logout')
+def logout():
+    # Eliminar datos de sesión, esto cerrará la sesión del usuario
+    session.pop('conectado', None)
+    session.pop('admin_id', None)
+    session.pop('admin_nombre', None)
+    
+    return redirect(url_for('index'))
+
 
 @app.errorhandler(404)
 def not_found(error):

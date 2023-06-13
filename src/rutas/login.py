@@ -16,9 +16,11 @@ def validar_login():
 
     if verificacion:
         admin_id = verificacion.id  # Obtener el id del administrador
+        admin_nombre = verificacion.nombre  # Obtener el id del administrador
 
         if verificacion.contraseña == contraseña:
             session["admin_id"] = admin_id  # Guardar el admin_id en la sesión
+            session["admin_nombre"] = admin_nombre  # Guardar el admin_id en la sesión
             
             return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
         else:
@@ -76,3 +78,6 @@ def mostrar_admins():
         return jsonify(datos)
     else:
         return "No tienes permiso para realizar esta acción"
+
+
+ 
