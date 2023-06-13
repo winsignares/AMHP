@@ -764,13 +764,16 @@ body {
     text-decoration: none;
     color: #333;
     padding: 5px 10px;
-} 
+}
 
 /* Estilos de la tabla de citas */
 .table-responsive_citas {
-    max-height: 400px; /* Establece la altura máxima deseada para el contenedor */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
-  }
+    max-height: 400px;
+    /* Establece la altura máxima deseada para el contenedor */
+    overflow-y: auto;
+    /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+}
+
 .contenedor_de_la_tabla {
     margin-top: 20px;
 }
@@ -804,7 +807,7 @@ body {
 .btn-primary1 {
     background-color: #007bff;
     margin: 1px 15px;
- 
+
 }
 
 .btn-primary2 {
@@ -875,6 +878,7 @@ body {
     max-width: 1400px;
     margin-left: 180px
 }
+
 .tabla_de_registro_admin {
     margin-top: 100px;
     max-width: 1400px;
@@ -888,145 +892,172 @@ body {
 
 /* css de tablas paciente */
 .table-responsive_paciente {
-  max-height: 400px; /* Establece la altura máxima deseada para el contenedor */
-  overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+    max-height: 400px;
+    /* Establece la altura máxima deseada para el contenedor */
+    overflow-y: auto;
+    /* Agrega una barra de desplazamiento vertical cuando sea necesario */
 }
 
 .contenedor_de_la_tabla {
     margin-top: 20px;
-  }
-  
+}
+
 .tabla_de_mi_cita {
     margin-top: 100px;
     max-width: 1400px;
     margin-left: 180px;
-  }
-  .tabla_de_registro_admin {
-    margin-top: 100px;
-    max-width: 1400px;
-    margin-left: 180px;
-  }
-  
-  
-  .mb-3 {
-    margin-bottom: 1rem !important;
-    margin-right: 597px;
-  }
-
-  .modal_tabla_paciente {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content3 {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .modal_tabla_paciente_admin_actualizar {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content3-actualizar {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  /* css de tabla odontologo */
-  .contenedor_de_la_tabla {
-    margin-top: 20px;
-  }
-  
-  .tabla_de_mi_cita {
-    margin-top: 100px;
-    max-width: 1400px;
-    margin-left: 180px;
-  }
-  
-  .mb-3 {
-    margin-bottom: 1rem !important;
-    margin-right: 597px;
-  }
-  
-  .table-responsive_medico {
-    max-height: 400px; /* Establece la altura máxima deseada para el contenedor */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
-  }
-  
-  
-  .modal_tabla_odontologo {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content4 {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .modal_tabla_odontologo_admin_actulizar {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  .modal-content4-actualizar {
-    background-color: #fff;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-  
-  .table-responsive_user {
-    max-height: 400px; /* Establece la altura máxima deseada para el contenedor */
-    overflow-y: auto; /* Agrega una barra de desplazamiento vertical cuando sea necesario */
-  }
-
-.btn-buscar{
-margin-right: auto;
-margin-left: -20%;
 }
-.btn-primary-actualizar{
+
+.tabla_de_registro_admin {
+    margin-top: 100px;
+    max-width: 1400px;
+    margin-left: 180px;
+}
+
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+    margin-right: 597px;
+}
+
+.modal_tabla_paciente {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content3 {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal_tabla_paciente_admin_actualizar {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content3-actualizar {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* css de tabla odontologo */
+.contenedor_de_la_tabla {
+    margin-top: 20px;
+}
+
+.tabla_de_mi_cita {
+    margin-top: 100px;
+    max-width: 1400px;
+    margin-left: 180px;
+}
+
+.mb-3 {
+    margin-bottom: 1rem !important;
+    margin-right: 597px;
+}
+
+.table-responsive_medico {
+    max-height: 400px;
+    /* Establece la altura máxima deseada para el contenedor */
+    overflow-y: auto;
+    /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+}
+
+
+.modal_tabla_odontologo {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content4 {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.modal_tabla_odontologo_admin_actulizar {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content4-actualizar {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.table-responsive_user {
+    max-height: 400px;
+    /* Establece la altura máxima deseada para el contenedor */
+    overflow-y: auto;
+    /* Agrega una barra de desplazamiento vertical cuando sea necesario */
+}
+
+.btn-buscar {
+    margin-right: auto;
+    margin-left: -20%;
+}
+
+.btn-primary-actualizar {
     background-color: #4caf50;
     color: white;
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
+}
+
+.nombre_admin {
+    background-color: #ffffff96;
+    margin-right: 78%;
+    border-radius: 4px;
+
+}
+
+.session {
+    font-size: 21px;
+    padding: 10px;
+    margin-left: 0.6em;
+}
+
+.session i {
+    margin-right: 0.9em;
+    
 }
