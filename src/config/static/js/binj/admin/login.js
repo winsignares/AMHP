@@ -140,6 +140,15 @@ function registro_admin() {
           showConfirmButton: false,
           timer: 2000,
         });
+      }else if (res.data === "No tienes permiso para realizar esta acción"){
+        Swal.fire({
+          position: 'top-center',
+          icon: 'warning',
+          title: 'solo eladmin princiapl puede registrar',
+          showConfirmButton: false,
+          timer: 2000,
+        });
+        
       } else {
         // Mostrar la alerta de éxito
         Swal.fire({

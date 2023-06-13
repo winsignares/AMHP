@@ -31,22 +31,27 @@ def validar_login():
     
 @routes_login.route('/guardar_admin', methods=['POST'])
 def guardar_admins():
-    tipo_admin = 2
-    name_admin = request.form['name_admin']
-    apellido_admin = request.form['apellido_admin']
-    correo_admin = request.form['correo_admin']
-    contra_admin = request.form['contra_admin']
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador de la sesión
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
 
-    # Check if the administrator already exists in the database 
-    existing_admin = admins.query.filter_by(correo=correo_admin).first()
-    if existing_admin:
-        return "El administrador ya existe en la base de datos"
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        tipo_admin = 2
+        name_admin = request.form['name_admin']
+        apellido_admin = request.form['apellido_admin']
+        correo_admin = request.form['correo_admin']
+        contra_admin = request.form['contra_admin']
 
-    new_admin = admins(tipo_admin,name_admin, apellido_admin, correo_admin, contra_admin)
-    db.session.add(new_admin)
-    db.session.commit()
-    return "Registro exitoso"
+        # Check if the administrator already exists in the database 
+        existing_admin = admins.query.filter_by(correo=correo_admin).first()
+        if existing_admin:
+            return "El administrador ya existe en la base de datos"
 
+        new_admin = admins(tipo_admin, name_admin, apellido_admin, correo_admin, contra_admin)
+        db.session.add(new_admin)
+        db.session.commit()
+        return "Registro exitoso"
+    else:
+        return "No tienes permiso para realizar esta acción"
 
 
 @routes_login.route('/mostrar_admins', methods=['GET'])

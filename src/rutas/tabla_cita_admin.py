@@ -42,6 +42,10 @@ def mostarcitasuser():
         goria.append(datos)
     return jsonify(datos)
 
+
+
+
+# esto mustra los
 @routes_cita_admin.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():
     datos = []
