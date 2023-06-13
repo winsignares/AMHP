@@ -56,19 +56,23 @@ def guardar_admins():
 
 @routes_login.route('/mostrar_admins', methods=['GET'])
 def mostrar_admins():
-    datos= {}
-    resultado = db.session.query(admins).select_from(admins).all()
-    i=0
-    goria = []
-    for cate in resultado:
-        i+=1	       
-        datos[i] = {
-        'id':cate.id,
-        'tipo_admin':cate.tipo_admin,
-		'nombre':cate.nombre,
-		'apellido':cate.apellido,                                                                                                      
-		'correo':cate.correo,                                                                                                      
-		'contraseña':cate.contraseña,                                                                                                      
-        }
-        goria.append(datos)
-    return jsonify(datos)
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador de la sesión
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
+
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        datos = {}
+        resultado = db.session.query(admins).select_from(admins).all()
+        i = 0
+        for cate in resultado:
+            i += 1
+            datos[i] = {
+                'id': cate.id,
+                'tipo_admin': cate.tipo_admin,
+                'nombre': cate.nombre,
+                'apellido': cate.apellido,
+                'correo': cate.correo,
+                'contraseña': cate.contraseña,
+            }
+        return jsonify(datos)
+    else:
+        return "No tienes permiso para realizar esta acción"
