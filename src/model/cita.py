@@ -16,7 +16,7 @@ class citas(db.Model):
     id_odontologos = db.Column(db.Integer,db.ForeignKey('tblodontologos.id'))
     id_fechadispo = db.Column(db.Integer,db.ForeignKey('tblfechadisponible.id'))
     id_admin = db.Column(db.Integer,db.ForeignKey('tbladmin.id'), nullable=True)
-    
+     
     
 
     def __init__(self,codigo_s,Rol,consulta,tarje_tade_credito, Num_tarjeta,estado_citas,problema,id_paciente,id_odontologos,id_fechadispo,id_admin=None):

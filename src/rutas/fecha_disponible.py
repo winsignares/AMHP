@@ -16,7 +16,7 @@ def mostarfechadispotabla():
 
     if admin_principal:  # Si el administrador actual es el administrador principal
         resultado = db.session.query(fechas_disponi, admins).select_from(fechas_disponi).join(admins).all()
-     
+    
 
     else:
         resultado = db.session.query(fechas_disponi, admins).select_from(fechas_disponi).join(admins).filter(admins.id == admin_id).all()
@@ -52,3 +52,19 @@ def eliminar_fecha_disponi_tabla():
         return jsonify({'message': 'Fecha eliminada correctamente'})
     else:
         return jsonify({'message': 'Fecha no encontrada'})
+    
+    
+    
+    #esta guada  la fecha disponible de la tabla fecha disponible
+@routes_fecha_disponible.route('/ingresar_fechas_disponibles', methods=['POST'])
+def fecha_dis():
+    fechas_dispon = request.form['fechas_dispon']
+    id_admin = session.get("admin_id")   
+    fecha_existente = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechas_dispon).first()
+    if fecha_existente:
+        return "La fecha ya existe" # Devolver un mensaje de error si la fecha ya existe en la base de datos
+
+    new_fecha = fechas_disponi(fechas_dispon,id_admin)
+    db.session.add(new_fecha)
+    db.session.commit()
+    return "Se ha guardado la fecha disponible exitosamente"

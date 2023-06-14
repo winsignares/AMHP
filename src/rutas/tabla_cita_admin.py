@@ -45,14 +45,23 @@ def mostarcitasuser():
 
 
 
-# esto mustra los
+# esto mustra los nombre de los pacientes el un select del formulario de agender cita como admin
 @routes_cita_admin.route('/obtener_nombres_pacientes')
 def obtener_nombres_pacientes():
     datos = []
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador actualmente logueado
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
 
-    subquery = db.session.query(citas.id_paciente).distinct()
-
-    resultado = db.session.query(pacientes).filter(~pacientes.id.in_(subquery)).all()
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        subquery = db.session.query(citas.id_paciente).distinct()
+        resultado = db.session.query(pacientes).filter(
+            (~pacientes.id.in_(subquery))
+        ).all()
+    else:
+        subquery = db.session.query(citas.id_paciente).distinct()
+        resultado = db.session.query(pacientes).filter(
+            (~pacientes.id.in_(subquery)) & (pacientes.id_admin == admin_id)
+        ).all()
 
     for cate in resultado:
         datos.append({
@@ -84,55 +93,33 @@ def savecita_admins():
     
     return jsonify({"message": "Se guardó la cita exitosamente", "codigo": codigo})
 
-
-
-#esto hace que se elimine el dato en la tabla fecha disponible apenas el usuario o admin elije esa fecha asi no se repiten las fechas 
-    # id_fecha = citas.id_fechadispo
-    # fechadis=db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == id_fecha).first()
-    # if fechadis:
-    #     db.session.delete(fechadis)  # Elimina el fecha
-    #     db.session.commit()  # Confirma los cambios en la base de datos
-    #     return jsonify({'message': 'fecha eliminado correctamente y cita agendada'})
-    # else:
-    #     return jsonify({'message': 'fecha no encontrado'})
     
-
- 
-
-
-
-
-#esta guada  la fecha disponible de la tabla fecha disponible
-@routes_cita_admin.route('/ingresar_fechas_disponibles', methods=['POST'])
-def fecha_dis():
-    fechas_dispon = request.form['fechas_dispon']
-    id_admin = session.get("admin_id")   
-    fecha_existente = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fechas_dispon).first()
-    if fecha_existente:
-        return "La fecha ya existe" # Devolver un mensaje de error si la fecha ya existe en la base de datos
-
-    new_fecha = fechas_disponi(fechas_dispon,id_admin)
-    db.session.add(new_fecha)
-    db.session.commit()
-    return "Se ha guardado la fecha disponible exitosamente"
-
-
-
 #mustra los datos de fercha disponible en un select
 @routes_cita_admin.route('/obtener_fechas_dispo')
 def obtener_fechas_dispo_select():
     datos = []
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador actualmente logueado
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
 
-    subconsulta = db.session.query(citas.id_fechadispo).subquery()
-    resultado = db.session.query(fechas_disponi).filter(fechas_disponi.id.notin_(subconsulta)).all()
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        subquery = db.session.query(citas.id_fechadispo).distinct()
+        resultado = db.session.query(fechas_disponi).filter(
+            fechas_disponi.id.notin_(subquery)
+        ).all()
+    else:
+        subquery = db.session.query(citas.id_fechadispo).distinct()
+        resultado = db.session.query(fechas_disponi).filter(
+            (fechas_disponi.id.notin_(subquery)) & (fechas_disponi.id_admin == admin_id)
+        ).all()
 
     for cate in resultado:
         datos.append({
             'id_fechadisp': cate.id,
             'fecha_disp': cate.fechas_dispon
         })
-    
+
     return jsonify(datos)
+
 
 
 # esto es para eliminar citas como admin

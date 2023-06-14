@@ -113,7 +113,7 @@ def actualizar_odontologos():
     # Verificar qué campos se deben actualizar
     if nombre:
         odontologo.nombre = nombre
-    if direccion:
+    if direccion: 
         odontologo.direccion = direccion
     if telefono:
         odontologo.telefono = telefono
@@ -130,17 +130,28 @@ def actualizar_odontologos():
 
 
 
-
+# esto hace que se muestre el monbre del odontologo en un select en el formulario de citas como admin
 @routes_admin_tabla_medico.route('/obtener_nombres_odonlogo')
-def obtener_nombres_odonlogo():
+def obtener_nombres_odontologos():
     datos = []
-    resultado = db.session.query(odontologos).select_from(odontologos).all()
-    i = 0
+    admin_id = session.get("admin_id")  # Obtener el ID del administrador actualmente logueado
+    admin_principal = db.session.query(admins).filter(admins.id == admin_id, admins.tipo_admin == 1).first()
+
+    if admin_principal:  # Si el administrador actual es el administrador principal
+        subquery = db.session.query(citas.id_odontologos).distinct()
+        resultado = db.session.query(odontologos).filter(
+            (~odontologos.id.in_(subquery))
+        ).all()
+    else:
+        subquery = db.session.query(citas.id_odontologos).distinct()
+        resultado = db.session.query(odontologos).filter(
+            (~odontologos.id.in_(subquery)) & (odontologos.id_admin == admin_id)
+        ).all()
+
     for odon in resultado:
-        i += 1	       
         datos.append({
-            
-            'id_odontologo': odon.id ,
-            'Nombre_odontologo': odon.nombre 
+            'id_odontologo': odon.id,
+            'Nombre_odontologo': odon.nombre
         })
+
     return jsonify(datos)

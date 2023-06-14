@@ -31,7 +31,7 @@ def saveregistro_admin():
     new_reg = pacientes(Rol, fecha_registro, Name, edad, cedula, telefono, direccion, Email, fecha_nacimiento, id_admin)
     db.session.add(new_reg)
     db.session.commit()
-    return "Record saved successfully"
+    return "Record saved successfully" 
 
 
 

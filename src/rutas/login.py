@@ -1,7 +1,7 @@
 from config.db import db, app, ma
 from flask import Blueprint, Flask,  redirect, request, jsonify, session, render_template
 from model.admin import admins
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash , check_password_hash
 
 routes_login = Blueprint("routes_login", __name__)
 
@@ -17,10 +17,12 @@ def validar_login():
     if verificacion:
         admin_id = verificacion.id  # Obtener el ID del administrador
         admin_nombre = verificacion.nombre  # Obtener el nombre del administrador
+        tipo_admin = verificacion.tipo_admin  # Obtener el nombre del administrador
 
         if check_password_hash(verificacion.contraseña, contraseña):
             session["admin_id"] = admin_id  # Guardar el admin_id en la sesión
             session["admin_nombre"] = admin_nombre  # Guardar el nombre del administrador en la sesión
+            session["tipo_admin"] = tipo_admin  # Guardar el nombre del administrador en la sesión
 
             return {"status": "Correcto", "message": "Inicio de sesión exitoso"}
         else:

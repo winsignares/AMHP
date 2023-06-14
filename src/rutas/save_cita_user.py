@@ -23,6 +23,7 @@ def savecita_user():
     cita_estado = request.form['estado_cita']
     problema = request.form['problema']
     id_odontologo = request.form['odontlogos']
+    
     codigo = secrets.token_hex(4) 
     fechadis = db.session.query(fechas_disponi).filter(fechas_disponi.fechas_dispon == fecha).first()
     # Verificar si la cédula existe en la base de datos

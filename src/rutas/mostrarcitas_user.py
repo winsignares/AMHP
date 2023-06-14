@@ -18,7 +18,7 @@ def buscar_cita():
     
 
 
-    resultado = db.session.query(citas, pacientes,odontologos).select_from(citas).join(pacientes).join(odontologos).filter(citas.id == id_buscar).all()
+    resultado = db.session.query(citas, pacientes,odontologos).select_from(citas).join(pacientes).join(odontologos).filter(citas.codigo_s == id_buscar).all()
     i=0
     goria = []
     for cate ,paciente,odontolo in resultado:
@@ -38,4 +38,5 @@ def buscar_cita():
         }
         goria.append(datos)
     return jsonify(datos)
+
     

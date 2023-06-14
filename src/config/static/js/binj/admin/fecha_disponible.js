@@ -164,7 +164,7 @@ function mostrarfechadispo() {
     .then(function (response) {
       let datos = response.data;
       var length = Object.keys(datos).length + 0;
-
+ 
       i = 0;
       for (let index = 0; index < length; index++) { 
         const opcions = document.createElement("option");
