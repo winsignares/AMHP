@@ -170,3 +170,76 @@ function registro_admin() {
       console.error(error);
     });
 }
+ 
+
+
+function eliminar(id) {
+  Swal.fire({
+    title: '¿Desea eliminar la Cita?',
+    text: 'Esta acción no se puede deshacer',
+    imageUrl: '/static/img/odontologo_eliminar.png', // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen que deseas mostrar
+    imageWidth: 200, // Ancho de la imagen en píxeles
+    imageHeight: 200, // Alto de la imagen en píxeles
+    imageAlt: 'Imagen de la cita', // Descripción de la imagen
+    icon: 'info',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: 'red',
+    confirmButtonText: 'Aceptar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+
+      axios.post('elimina_admin', {
+        id: id
+      })
+        .then(function (response) {
+          mostrar_admis();
+          console.log(response);
+          if(response.data.message==='admin eliminado correctamente'){
+
+          
+          Swal.fire({
+            title: '!admin Eliminado con éxito!',
+            icon: 'success'
+          });
+          
+        }else if(response.data.message==='No se puede eliminar al admin porque tiene citas asociadas'){
+          Swal.fire({
+            title: '!admin tiene citas asosciadas éxito!',
+            icon: 'warning'
+          });
+
+        } 
+        else if(response.data.message==='No se puede eliminar al admin porque tiene fecha_dispo asociadas'){
+          Swal.fire({
+            title: '!admin tiene pacientes asosciadas éxito!',
+            icon: 'warning'
+          });
+          
+        } else if(response.data.message==='No se puede eliminar al admin porque tiene paciente asociadas'){
+          Swal.fire({
+            title: '!admin tiene pacientes asosciadas éxito!',
+            icon: 'warning'
+          });
+          
+        } else if(response.data.message==='No se puede eliminar al admin porque tiene odontologo asociadas'){
+          Swal.fire({
+            title: '!admin tiene odontologo asosciadas éxito!',
+            icon: 'warning'
+          });
+          
+        }  else {
+          Swal.fire({
+            title: '¡Cancelado!',
+            icon: 'error'
+          });
+        }
+      }
+        )
+        .catch(function (error) {
+          console.log(error);
+        });
+    } 
+ 
+  });
+}
