@@ -16,7 +16,7 @@ routes_admin_tabla_medico = Blueprint("routes_admin_tabla_medico", __name__)
 def saveodontologos_admin():
     Rol = "Admin"
     fecha_registro = date.today()
-    nombre = request.form['nombre']
+    nombre = request.form['nombre'] 
     cedula = request.form['cedula_odon']
     direccion = request.form['direccion']
     telefono = request.form['telefono']
@@ -102,6 +102,7 @@ def actualizar_odontologos():
     # Obtener los datos enviados en la solicitud
     id = request.form.get('id')
     nombre = request.form['nombre']
+    cedula = request.form['cedula']
     direccion = request.form['direccion']
     telefono = request.form['telefono']
     correo = request.form['correo']
@@ -113,11 +114,19 @@ def actualizar_odontologos():
     # Verificar qué campos se deben actualizar
     if nombre:
         odontologo.nombre = nombre
+    if cedula:
+        paciente_existente = odontologos.query.filter_by(cedula=cedula).first()
+        if paciente_existente:
+            return jsonify({'message': 'la cedula ya existe en otro odontologo'})
+        odontologo.cedula = cedula
     if direccion: 
         odontologo.direccion = direccion
     if telefono:
         odontologo.telefono = telefono
     if correo:
+        odontologo_existente = odontologos.query.filter_by(correo=correo).first()
+        if odontologo_existente:
+            return jsonify({'message': 'el correo ya existe en otro odontologo'})
         odontologo.correo = correo
     if especialidad:
         odontologo.especialidad = especialidad

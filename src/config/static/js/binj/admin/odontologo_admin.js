@@ -139,6 +139,7 @@ function acualizar_odontologo(id) {
     btnActualizar2.onclick = function () {
         // Obtener los nuevos valores de los campos del formulario
         const nombres_nuevo2 = document.getElementById('nombres_nuevo2');
+        const cedula_nuevo2 = document.getElementById('cedula_nuevo2');
         const Direccion_nuevo2 = document.getElementById('Direccion_nuevo2');
         const Telefono_nuevo2 = document.getElementById('Telefono_nuevo2');
         const Email_nuevo2 = document.getElementById('Email_nuevo2');
@@ -148,8 +149,9 @@ function acualizar_odontologo(id) {
         axios.post('actualizar_odontologos_admin', {
             id: odontologo.value,
             nombre: nombres_nuevo2.value,
+            cedula: cedula_nuevo2.value,
             direccion: Direccion_nuevo2.value,
-            telefono: Telefono_nuevo2.value,
+            telefono: Telefono_nuevo2.value, 
             correo: Email_nuevo2.value,
             especialidad: Especialidad_nuevo2.value
         }, {
@@ -160,6 +162,9 @@ function acualizar_odontologo(id) {
         }
         ).then((res) => {
             console.log(res.data)
+            if(res.data.message==='Datos actualizados correctamente'){
+
+            
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',
@@ -167,7 +172,29 @@ function acualizar_odontologo(id) {
                 showConfirmButton: false,
                 timer: 2000,
               })
+             odontologo.value='',
+              nombres_nuevo2.value='',
+              cedula_nuevo2.value='',
+              Direccion_nuevo2.value='',
+               Telefono_nuevo2.value='',
+               Email_nuevo2.value='',
+               Especialidad_nuevo2.value=''
+            }
+            else if(res.data.message==='el correo ya existe en otro odontologo'){
+              Swal.fire({
+                title: '!El correo del odontologo ya existe en otro odontologo!',
+                icon: 'warning'
+              });
+              Email_nuevo2.value = '';
 
+
+            }else if (res.data.message==='la cedula ya existe en otro odontologo'){
+              Swal.fire({
+                title: '!La cedula del odontologo ya existe en otro odontologo!',
+                icon: 'warning'
+              });
+              cedula_nuevo2.value = '';
+            }
         })
             .catch((error) => {
                 console.error(error)

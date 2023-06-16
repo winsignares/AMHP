@@ -307,24 +307,33 @@ function abrir_modal_actualizar(id) {
         showConfirmButton: false,
         timer: 2000,
       });
+
+      nombre_admin_nuevo.value = '';
+      apellido_admin_nuevo.value = '';
+      correo_admin.value = '';
+      conrasena_admin_nuevo.value = '';
+
+
     }else if(res.data.message==="El nombre ya existe en otro administrador"){
       Swal.fire({
         title: '!el nombre del admin ya existe en otro admin!',
         icon: 'warning'
       });
-
+      nombre_admin_nuevo.value = '';
     } 
     else if(res.data.message==="El apellido ya existe en otro administrador"){
       Swal.fire({
         title: '!el apellido del admin ya existe en otro admin!',
         icon: 'warning'
       });
+      apellido_admin_nuevo.value = '';
       
     } else if(res.data.message==="El correo ya existe en otro administrador"){
       Swal.fire({
         title: '!el correo del admin ya existe en otro admin!',
         icon: 'warning'
       });
+      correo_admin.value = '';
       
     } 
   }

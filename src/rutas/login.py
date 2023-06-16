@@ -142,7 +142,7 @@ def actualizar_admin():
     admin_actualizar = admins.query.get(id)
 
     # Verificar qué campos se deben actualizar
-
+ 
     if nombre_admin_nuevo:
         admin_existente = admins.query.filter_by(nombre=nombre_admin_nuevo).first()
         if admin_existente:

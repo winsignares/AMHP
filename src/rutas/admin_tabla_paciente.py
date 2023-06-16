@@ -97,7 +97,7 @@ def actualizar_paciente():
     id = request.form.get('id')
     name = request.form.get('Name')
     edad = request.form.get('edad_new')
-    cedula = request.form.get('cedula')
+    cedulanuevo = request.form.get('cedula')
     telefono = request.form.get('telefono')
     direccion = request.form.get('direccion')
     email = request.form.get('Email')
@@ -111,13 +111,19 @@ def actualizar_paciente():
         paciente.Name = name
     if edad:
         paciente.edad = edad
-    if cedula:
-        paciente.cedula = cedula
+    if cedulanuevo:
+        paciente_existente = pacientes.query.filter_by(cedula=cedulanuevo).first()
+        if paciente_existente:
+            return jsonify({'message': 'la cedula ya existe en otro paciente'})
+        paciente.cedula = cedulanuevo
     if telefono:
         paciente.telefono = telefono
     if direccion:
         paciente.direccion = direccion
     if email:
+        paciente_existente = pacientes.query.filter_by(Email=email).first()
+        if paciente_existente:
+            return jsonify({'message': 'el correo ya existe en otro paciente'})
         paciente.Email = email
     if fecha_nacimiento:
         paciente.fecha_nacimiento = fecha_nacimiento

@@ -90,14 +90,36 @@ function abrir_modal_actualizar(id) {
     ).then((res) => {
       mostrar_paciente();
       console.log(res.data)
+      if (res.data.message==='Datos actualizados correctamente'){
       Swal.fire({
         position: 'top-center',
         icon: 'success',
         title: '¡Paciente Actualizado Exitosa mente!',
         showConfirmButton: false,
         timer: 2000,
-      })
+      });
+      name_new.value = '';
+      edad_new.value = '';
+      cedula_new.value = '';
+      telefono_new.value = '';
+      direccion_new.value = ''; 
+      Correo_new.value = '';
+      Fechadenacimento_new.value = '';
 
+
+    }else if(res.data.message==='la cedula ya existe en otro paciente'){
+      Swal.fire({
+        title: '!la cedula del paciente ya existe en otro paciente!',
+        icon: 'warning'
+      });
+      cedula_new.value = '';
+    }else if (res.data.message==='el correo ya existe en otro paciente'){
+      Swal.fire({
+        title: '!El correo del paciente ya existe en otro paciente!',
+        icon: 'warning'
+      });
+      Correo_new.value = '';
+    }
     })
       .catch((error) => {
         console.error(error)
