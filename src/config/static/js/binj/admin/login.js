@@ -152,7 +152,7 @@ function registro_admin() {
       } else {
         // Mostrar la alerta de éxito
         Swal.fire({
-          position: 'top-center',
+          position: 'top-center', 
           icon: 'success',
           title: '¡Administrador registrado exitosamente!',
           showConfirmButton: false,
@@ -172,7 +172,7 @@ function registro_admin() {
 }
  
 
-
+// esto es para eliminar al paciente
 function eliminar(id) {
   Swal.fire({
     title: '¿Desea eliminar la Cita?',
@@ -197,13 +197,20 @@ function eliminar(id) {
           console.log(response);
           if(response.data.message==='admin eliminado correctamente'){
 
-          
           Swal.fire({
             title: '!admin Eliminado con éxito!',
             icon: 'success'
           });
           
-        }else if(response.data.message==='No se puede eliminar al admin porque tiene citas asociadas'){
+        }
+        else if(response.data.message==='No se puede eliminar al administrador principal'){
+          Swal.fire({
+            title: '!Lo lamento!',
+            text: `no puede eliminar admin principal, aunque lo puede actualizar`,
+            icon: 'warning'
+          });
+
+        } else if(response.data.message==='No se puede eliminar al admin porque tiene citas asociadas'){
           Swal.fire({
             title: '!admin tiene citas asosciadas éxito!',
             icon: 'warning'
@@ -243,3 +250,93 @@ function eliminar(id) {
  
   });
 }
+
+
+
+
+
+// --------------actualizar citas---------------------
+function abrir_modal_actualizar(id) {
+  // ... resto del código
+
+  // Obtener el modal
+  var modal = document.getElementById("myModal_regritoadmin_actualizar");
+  const id_admin = document.getElementById("id_admin")
+
+  id_admin.value = id
+
+  // Abrir el modal
+  modal.style.display = "block";
+  //cierra el modal en cualquier parte de la pantalla
+  window.onclick = function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+  //este es el id del boton
+  const btnActualizar_admin = document.getElementById('btn-registro_admin_actualizar');
+  btnActualizar_admin.onclick = function () {
+    // Obtener los nuevos valores de los campos del formulario
+    
+    const nombre_admin_nuevo = document.getElementById("nombre_admin_nuevo");
+    const apellido_admin_nuevo = document.getElementById("apellido_admin_nuevo");
+    const correo_admin = document.getElementById("correo_admin_nuevo");
+    const conrasena_admin_nuevo = document.getElementById("conrasena_admin_nuevo");
+
+
+    axios.post('actualizar_admin', {
+      id: id_admin.value,
+      nombre_admin_nuevo: nombre_admin_nuevo.value,
+      apellido_admin_nuevo: apellido_admin_nuevo.value,
+      correo_admin: correo_admin.value,
+      conrasena_admin_nuevo: conrasena_admin_nuevo.value,
+    }, {
+      headers: { 
+        'Content-Type': 'multipart/form-data'
+
+      }
+    }
+    ).then((res) => {
+      console.log(res.data)
+
+      if(res.data==="se actualizo admin"){
+      Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: '¡Admin Actualizada Exitosa mente!',
+        showConfirmButton: false,
+        timer: 2000,
+      });
+    }else if(res.data.message==="El nombre ya existe en otro administrador"){
+      Swal.fire({
+        title: '!el nombre del admin ya existe en otro admin!',
+        icon: 'warning'
+      });
+
+    } 
+    else if(res.data.message==="El apellido ya existe en otro administrador"){
+      Swal.fire({
+        title: '!el apellido del admin ya existe en otro admin!',
+        icon: 'warning'
+      });
+      
+    } else if(res.data.message==="El correo ya existe en otro administrador"){
+      Swal.fire({
+        title: '!el correo del admin ya existe en otro admin!',
+        icon: 'warning'
+      });
+      
+    } 
+  }
+    )
+    .catch(function (error) {
+      console.log(error);
+    });
+} 
+
+}
+
+
+
+
+

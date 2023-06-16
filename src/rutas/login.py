@@ -94,6 +94,10 @@ def elimina_admin():
     # Lógica para eliminar el admin en la base de datos
     # Aquí debes escribir el código para eliminar el admin utilizando la biblioteca o método que estés utilizando para interactuar con la base de datos
     # esta pequeña validacion es por si el admin tiene aolgunas de estas asociadas esta le manda una alerta diciendo que no se puede eliminar
+    admin_principal = admins.query.filter_by(id=id_admin, tipo_admin=1).first()
+    if admin_principal:
+        return jsonify({'message': 'No se puede eliminar al administrador principal'})
+        
     citas_admin = citas.query.filter_by(id_admin=id_admin).first()
     if citas_admin:
         return jsonify({'message': 'No se puede eliminar al admin porque tiene citas asociadas'})
@@ -122,45 +126,47 @@ def elimina_admin():
         return jsonify({'message': 'admin no encontrado'})
     
 
-# # actualizar citas
-# @routes_cita_admin.route('/actualizar_citas_admin', methods=['POST'] )
-# def actualizar_cita_admin():
+# actualizar admin
+@routes_login.route('/actualizar_admin', methods=['POST'] )
+def actualizar_admin():
   
-#   # Obtener los datos enviados en la solicitud
-#     id = request.form.get('id')
+  # Obtener los datos enviados en la solicitud
+    id = request.form.get('id')
 
-#     fecha = request.form['fecha']
-#     consulta = request.form['consulta']
-#     tarje_tade_credito = request.form['tarje_tade_credito']
-#     Num_tarjeta = request.form['Num_tarjeta']
-#     cita_estado = request.form['cita_estado']
-#     problema = request.form['problema']
-#     id_paciente = request.form['Nombre_actualizar']
-#     id_odontologos = request.form['odontlogos_actualizar']
+    nombre_admin_nuevo = request.form['nombre_admin_nuevo']
+    apellido_admin_nuevo = request.form['apellido_admin_nuevo']
+    correo_admin = request.form['correo_admin']
+    conrasena_admin_nuevo = request.form['conrasena_admin_nuevo']
 
-#     # Obtener el registro existente de la base de datos
-#     cita_actualizar = admins.query.get(id)
+    # Obtener el registro existente de la base de datos
+    admin_actualizar = admins.query.get(id)
 
-#     # Verificar qué campos se deben actualizar
- 
+    # Verificar qué campos se deben actualizar
+
+    if nombre_admin_nuevo:
+        admin_existente = admins.query.filter_by(nombre=nombre_admin_nuevo).first()
+        if admin_existente:
+            return jsonify({'message': 'El nombre ya existe en otro administrador'})
+        admin_actualizar.nombre = nombre_admin_nuevo
+    if apellido_admin_nuevo:
+        # Verificar si el nuevo apellido ya existe en otro registro
+        admin_existente = admins.query.filter_by(apellido=apellido_admin_nuevo).first()
+        if admin_existente:
+            return jsonify({'message': 'El apellido ya existe en otro administrador'})
+        admin_actualizar.apellido = apellido_admin_nuevo
     
-#     if consulta:
-#         cita_actualizar.consulta = consulta
-#     if tarje_tade_credito:
-#         cita_actualizar.tarje_tade_credito = tarje_tade_credito
-#     if Num_tarjeta:
-#         cita_actualizar.Num_tarjeta = Num_tarjeta
-#     if cita_estado:
-#         cita_actualizar.estado_citas = cita_estado
-#     if problema:
-#         cita_actualizar.problema = problema
-#     if id_paciente:
-#         cita_actualizar.id_paciente = id_paciente
-#     if id_odontologos:
-#         cita_actualizar.id_odontologos = id_odontologos
-#     if fecha:
-#         cita_actualizar.id_fechadispo = fecha
+    if correo_admin:
+        # Verificar si el nuevo correo ya existe en otro registro
+        admin_existente = admins.query.filter_by(correo=correo_admin).first()
+        if admin_existente:
+            return jsonify({'message': 'El correo ya existe en otro administrador'})
+        admin_actualizar.correo = correo_admin
+        
+    if conrasena_admin_nuevo:
+        # Encriptar la nueva contraseña
+        hashed_password = generate_password_hash(conrasena_admin_nuevo)
+        admin_actualizar.contraseña = hashed_password
 
-#     # Guardar los cambios en la base de datos
-#     db.session.commit()
-#     return "se actualizo cita"
+    # Guardar los cambios en la base de datos
+    db.session.commit()
+    return "se actualizo admin"

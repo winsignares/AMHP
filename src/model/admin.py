@@ -18,7 +18,7 @@ class admins(db.Model):
         self.apellido = apellido
         self.correo = correo
         self.contraseña = generate_password_hash(contraseña)  # Generar el hash de la contraseña
-
+ 
 
         
 def create_admins():
