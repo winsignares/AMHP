@@ -31,7 +31,7 @@ class citas(db.Model):
         self.id_paciente = id_paciente
         self.id_odontologos = id_odontologos
         self.id_fechadispo = id_fechadispo
-        self.id_admin = id_admin
+        self.id_admin = id_admin 
         
        
     

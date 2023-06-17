@@ -14,7 +14,7 @@ function mostrar_paciente() {
       let mostrar = '';
       i = 0
       for (let index = 1; index < length; index++) {
-        mostrar += ` <tr>   
+        mostrar += ` <tr>     
                 <td >${datos[index].id}</td>  
                 <td >${datos[index].Rol}</td>  
                 <td >${datos[index].nombre_admin}</td>  

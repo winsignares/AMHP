@@ -69,7 +69,7 @@ def mostarpaciente_admin():
     else:
         resultado = db.session.query(pacientes,admins).select_from(pacientes).join(admins).filter(pacientes.id_admin == admin_id).all()
 
-    i = 0
+    i = 0 
     goria = []
     for cate ,admin in resultado:
         i += 1	       

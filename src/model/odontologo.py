@@ -26,5 +26,5 @@ class odontologos(db.Model):
         self.especialidad = especialidad
         self.id_admin = id_admin
     
-with app.app_context():
+with app.app_context(): 
     db.create_all()

@@ -10,33 +10,24 @@ routes_mos_user = Blueprint("routes_mos_user", __name__)
 
 
 
-@routes_mos_user.route("/buscarcita_user", methods=["POST"])
-def buscar_cita():
-  
-    id_buscar = request.json["buscar"]
-    datos= {}
+@routes_mos_user.route('/der', methods=['GET'])
+def mostarcitasuser():
     
-
-
-    resultado = db.session.query(citas, pacientes,odontologos).select_from(citas).join(pacientes).join(odontologos).filter(citas.codigo_s == id_buscar).all()
+    datos= {}
+    resultado = db.session.query(citas,pacientes,odontologos).select_from(citas).join(pacientes).join(odontologos).all()
+    # filter(admins.id == admin_id, admins.tipo_admin == 1).first()
     i=0
     goria = []
-    for cate ,paciente,odontolo in resultado:
+    for cita,paciente,odontolo in resultado:
         i+=1	       
         datos[i] = {
-        'id':cate.id,
-        'Rol':cate.Rol,
-		'Nombre_completos':paciente.Name,
-		'Edad':paciente.edad,                                                    
-		'nombre_odontologos':odontolo.nombre,                                                    
-		'fecha':cate.fecha,                                                    
-		'consulta':cate.consulta,                                                    
-		'tarje_credi':cate.tarje_tade_credito,                                                    
-		'Num_tarjeta':cate.Num_tarjeta,                                                    
-		'estado_citas':cate.estado_citas,                                                    
-		'problema':cate.problema                                                     
+         'id': cita.id,
+         'codigo_cita': cita.codigo_s,
+            'Nombre_completos': paciente.Name,
+            'nombre_odontologos': odontolo.nombre,
+            'consulta': cita.consulta,
+            'estado_citas': cita.estado_citas,
+            'problema': cita.problema                                                  
         }
         goria.append(datos)
     return jsonify(datos)
-
-    

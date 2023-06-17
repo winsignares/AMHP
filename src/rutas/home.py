@@ -40,7 +40,7 @@ def indexlogin():
     titulo= "Pagina login"
     return render_template('/main/login_admin.html', titles=titulo)
 
-
+ 
 
 @routes_home.route("/tablauser" )
 def indexcitauser():
