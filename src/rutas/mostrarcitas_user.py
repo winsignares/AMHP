@@ -38,15 +38,15 @@ def mostarcitasuser():
     cedula_buscar = request.json["codigo_cita_buscar"]
     datos = {}
     
-    resultado = db.session.query(citas, pacientes, odontologos).select_from(citas).join(pacientes).join(odontologos).filter(citas.codigo_s == cedula_buscar).all()
+    resultado = db.session.query(citas, pacientes, odontologos,fechas_disponi).select_from(citas).join(pacientes).join(odontologos).join(fechas_disponi).filter(citas.codigo_s == cedula_buscar).all()
     i = 0
     goria = []
-    for cita,paciente,odontolo in resultado:
+    for cita,paciente,odontolo,fechas_disponis in resultado:
         i += 1
         datos[i] = {
         'id': cita.id,
          'codigo_cita': cita.codigo_s,
-        #  'fechas_disponi': fechas_disponis.fechas_disponi,
+         'fechas_disponissss': fechas_disponis.fechas_dispon,
             'Nombre_completos': paciente.Name,
             'nombre_odontologos': odontolo.nombre,
             'consulta': cita.consulta,

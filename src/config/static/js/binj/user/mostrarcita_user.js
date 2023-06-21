@@ -19,7 +19,7 @@ function buscar_citas_user() {
         mostrar += ` <tr>   
         <td>${datos[index].id}</td>
         <td>${datos[index].codigo_cita}</td>
-     
+        <td>${datos[index].fechas_disponissss}</td>
       <td>${datos[index].Nombre_completos}</td>
       <td>${datos[index].nombre_odontologos}</td> 
 
