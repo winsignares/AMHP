@@ -1,10 +1,11 @@
 
 
-function mostrar_pssaciente() {
+function buscar_citas_user() {
   const divcate = document.getElementById('tabla');
   const codigo_cita_buscar = document.getElementById('buscarcitasuser_id');
 
-  axios.get('der', {
+  axios.post('der', {
+    codigo_cita_buscar: codigo_cita_buscar.value,
     
     responseType: 'json'
   })
@@ -18,6 +19,7 @@ function mostrar_pssaciente() {
         mostrar += ` <tr>   
         <td>${datos[index].id}</td>
         <td>${datos[index].codigo_cita}</td>
+     
       <td>${datos[index].Nombre_completos}</td>
       <td>${datos[index].nombre_odontologos}</td> 
 
@@ -35,9 +37,9 @@ function mostrar_pssaciente() {
       console.log(error);
     });
 }
-window.addEventListener('load', function () {
-  mostrar_pssaciente();
-})
+// window.addEventListener('load', function () {
+//   mostrar_pssaciente();
+// })
 
 
 
