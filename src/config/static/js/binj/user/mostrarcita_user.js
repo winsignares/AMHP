@@ -26,8 +26,7 @@ function buscar_citas_user() {
       <td>${datos[index].consulta}</td>  
       <td>${datos[index].estado_citas}</td> 
       <td>${datos[index].problema}</td>
-                <td><a onclick="abrir_modal_actualizar(${datos[index].id}) "class="btn btn-primary btn-edit">Actualizar</a></td>
-                <td><a onclick="eliminar(${datos[index].id})" class="btn btn-danger btn-eliminar">Eliminar</a></td>
+        
               </tr> `;
       }
       divcate.innerHTML = mostrar
