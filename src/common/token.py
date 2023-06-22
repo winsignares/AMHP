@@ -10,7 +10,7 @@ def generar_fecha_vencimiento(dias=0, horas=0, minutos=0, segundos=0):
     fecha_vencimiento = datetime.timestamp(fecha_actual + tiempo_vencimiento)
     return Out_response(datos=fecha_vencimiento)
 
-
+ 
 # Función para generar token
 def generar_token(user_token, pass_token):
     try:

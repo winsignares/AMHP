@@ -107,7 +107,7 @@ from config.db import db, app, ma
 #     input_thread = threading.Thread(target=input_thread)
 #     input_thread.start()
 
-#     event.wait(timeout)
+#     event.wait(timeout) 
 
 #     return result[0]
 
