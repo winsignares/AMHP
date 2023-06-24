@@ -3,7 +3,9 @@ pip install virtualenv[ESTO SE HACE DENTRO DE LA CARPETA AMHP, es decir hacemos 
 virtualenv venv
 cd \venv\scripts\activate.bat
 
-pip install flask flask-sqlalchemy flask-marshmallow marshmallow pymysql[ESTO SE HACE DENTRO DE LA CARPETA ENV, es decir hacemos un "cd SIBS"]
+
+estas sonlas dependencias a trabajar 
+pip install flask flask-sqlalchemy flask-marshmallow marshmallow pymysql    [ESTO SE HACE DENTRO DE LA CARPETA ENV, es decir hacemos un "cd SIBS"]
 
 /*sacamos las librerias */
 pip freeze > requirements.txt
