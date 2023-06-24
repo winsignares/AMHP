@@ -16,6 +16,7 @@ function mostrar_cita_admin_tabla() {
         mostrar += ` <tr>   
                 <td>${datos[index].id}</td>  
                 <td>${datos[index].Rol}</td>  
+                <td>${datos[index].Codigo}</td>  
                 <td>${datos[index].Nombre_completos}</td>
                 <td>${datos[index].Cedula}</td>
                 <td>${datos[index].nombre_odontologos}</td>  

@@ -29,6 +29,7 @@ def mostarcitasuser():
         datos[i] = {
             'id': cate.id,
             'Rol': cate.Rol,
+            'Codigo': cate.codigo_s	,
             'Nombre_completos': paciente.Name,
             'Cedula': paciente.cedula,                                                     
             'nombre_odontologos': odontolo.nombre,                                                    
