@@ -206,6 +206,8 @@ header .container {
     width: 100%;
     height: 100vh;
     background: url('../img/bg2.png') no-repeat;
+    overflow: hidden;
+    
 }
 
 #service .container .title {
@@ -228,7 +230,7 @@ header .container {
 #service .container .text {
     max-width: 600px;
     width: 100%;
-    margin-top: 20vh;
+    margin-top: 3%;
 }
 
 #service .container .text h1 {
@@ -294,6 +296,7 @@ header .container {
     width: 100%;
     height: 100vh;
     background: url('../img/bg3.png') no-repeat;
+    overflow: hidden;
 }
 
 #about .container .title {
@@ -1061,4 +1064,36 @@ body {
 .session i {
     margin-right: 0.9em;
     
+}
+
+.desktop-menu2 {
+    display: flex;
+    justify-content: end;
+    background-color: #ffffff;
+    box-shadow: #192123 0 2px 15px 0;
+    border-radius: 0 0 35px 35px;
+    position: relative;
+    top: -40px;
+}
+
+.desktop-menu2 ul {
+    list-style-type: none;
+    display: flex;
+}
+
+.desktop-menu2 li {
+    padding: 0 20px;
+}
+
+.desktop-menu2 li a {
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #48186D;
+    line-height: 100px;
+    transition: 0.5s;
+}
+
+.desktop-menu2 li a:hover {
+    color: #DC3DAA;
 }
