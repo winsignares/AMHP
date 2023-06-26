@@ -26,8 +26,7 @@ function buscar_citas_user() {
       <td>${datos[index].consulta}</td>  
       <td>${datos[index].estado_citas}</td> 
       <td>${datos[index].problema}</td>
-        
-              </tr> `;
+        </tr> `;
       }
       divcate.innerHTML = mostrar
     })
@@ -36,9 +35,6 @@ function buscar_citas_user() {
       console.log(error);
     });
 }
-// window.addEventListener('load', function () {
-//   mostrar_pssaciente();
-// })
 
 
 
